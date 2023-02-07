@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { UserAuth } from '../../context/AuthContext';
 
 export default function Home() {
   return (

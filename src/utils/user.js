@@ -4,13 +4,26 @@ import {
   collection,
   getFirestore,
   addDoc,
+  onSnapshot,
 } from 'firebase/firestore';
 import { db } from '../api/firebase';
 
-export async function createUser(user, { displayName, uid }) {
-  const listCollectionRef = collection(db, uid);
+export const createUserDocument = async (user) => {
+  console.log('user', user);
+  if (!user) return;
 
-  return await addDoc(listCollectionRef, {
-    userId: uid,
+  await addDoc(collection(db, 'users', `users/${user.user.uid}`), {
+    displayName: user.user.displayName,
+    uid: user.user.uid,
   });
-}
+
+  //   const snapshot = onSnapshot(userRef);
+  //   if (!snapshot) {
+  //     const { displayName, uid } = additionalData;
+  //     try {
+  //       await addDoc(collection(userRef, uid, displayName));
+  //     } catch (error) {
+  //       console.log('Error inputting user', error);
+  //     }
+  //   }
+};
