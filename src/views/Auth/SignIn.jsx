@@ -1,14 +1,18 @@
 import React from 'react';
 import { GoogleButton } from 'react-google-button';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { UserAuth } from '../../context/AuthContext';
 
 export default function SignIn() {
-  const { googleSignIn } = UserAuth();
+  const { googleSignIn, user } = UserAuth();
+  const history = useHistory();
 
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      if (user) {
+        history.push('/dashboard');
+      }
     } catch (error) {
       console.log(error);
     }

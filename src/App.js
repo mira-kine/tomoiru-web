@@ -10,10 +10,10 @@ function App() {
     <div>
       <AuthContextProvider>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/signin">
+          <Route path="/">
             <SignIn />
           </Route>
           <Route path="/signup">
