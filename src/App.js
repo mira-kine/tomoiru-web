@@ -1,17 +1,25 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
 import SignIn from './views/Auth/SignIn';
 import Dashboard from './views/Dashboard/Dashboard';
 import { AuthContextProvider } from './context/AuthContext';
+import { Route, Switch } from 'react-router-dom';
+import SignUp from './views/Auth/SignUp';
 
 function App() {
   return (
     <div>
       <AuthContextProvider>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/signin" element={<SignIn />} />
-        </Routes>
+        <Switch>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/signin">
+            <SignIn />
+          </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+        </Switch>
       </AuthContextProvider>
     </div>
   );
