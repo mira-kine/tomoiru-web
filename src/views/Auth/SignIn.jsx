@@ -13,7 +13,7 @@ export default function SignIn() {
       if (user) {
         history.push('/dashboard');
       } else {
-        history.push('/signin');
+        history.push('/signup');
       }
     } catch (error) {
       console.log(error);

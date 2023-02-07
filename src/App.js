@@ -1,4 +1,5 @@
 import './App.css';
+import Home from './views/Home/Home';
 import SignIn from './views/Auth/SignIn';
 import Dashboard from './views/Dashboard/Dashboard';
 import { AuthContextProvider } from './context/AuthContext';
@@ -10,13 +11,16 @@ function App() {
     <div>
       <AuthContextProvider>
         <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route exact path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/">
+          <Route exact path="/signin">
             <SignIn />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignUp />
           </Route>
         </Switch>
