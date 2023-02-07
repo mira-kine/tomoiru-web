@@ -5,6 +5,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
+import { createUser } from '../utils/user';
 
 import { auth } from '../api/firebase';
 

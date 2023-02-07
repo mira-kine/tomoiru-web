@@ -12,6 +12,8 @@ export default function SignIn() {
       await googleSignIn();
       if (user) {
         history.push('/dashboard');
+      } else {
+        history.push('/signin');
       }
     } catch (error) {
       console.log(error);
