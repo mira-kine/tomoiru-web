@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default function Auth() {
-  return <div>Auth</div>;
+  return (
+    <div>
+      <h1>Auth Form goes here</h1>
+    </div>
+  );
 }
-// adding dev
