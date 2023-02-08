@@ -7,9 +7,7 @@ const UserContext = createContext();
 function UserProvider({ children }) {
   const currentUser = getUser();
   const [user, setUser] = useState(
-    currentUser
-      ? { id: currentUser.user.id, email: currentUser.user.email }
-      : {}
+    currentUser ? { id: currentUser.id, email: currentUser.email } : {}
   );
 
   return (

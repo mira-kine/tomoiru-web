@@ -1,8 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
-export const client = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
-);
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+export const client = createClient(supabaseUrl, supabaseKey);
 export const parseData = ({ data, error }) => {
   if (error) throw error;
   return data;

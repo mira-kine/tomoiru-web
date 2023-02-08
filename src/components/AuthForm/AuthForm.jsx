@@ -48,6 +48,7 @@ export default function AuthForm({ onSubmit, label, isSigningUp }) {
                 onChange={handleForm}
               />
             </form>
+            <button onClick={handleSubmit}>Sign Up!</button>
           </div>
         )}
       </div>
