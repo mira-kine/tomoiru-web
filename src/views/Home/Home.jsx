@@ -1,5 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
-  return <div>Welcome to Tomoiru! Sign in?</div>;
+  return (
+    <>
+      <div>
+        <h2>Welcome to Tomoiru!</h2>
+      </div>
+      <div>
+        <span>
+          <Link to="/signin">Sign In?</Link>
+        </span>
+        <span>
+          <Link to="/signup">Sign Up?</Link>
+        </span>
+      </div>
+    </>
+  );
 }

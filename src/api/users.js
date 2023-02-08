@@ -1,39 +1,42 @@
 import { client } from './client';
 
 // get User
-export async function getUser() {
-  try {
-    const session = client.auth.getSession();
+// export async function getUser() {
+//   try {
+//     const session = client.auth.getSession();
 
-    console.log('session', session);
-    let { data, error, status } = await client
-      .from('users')
-      .select(`uuid, display_name`)
-      .eq('id', session.id)
-      .single();
+//     let { data, error, status } = await client
+//       .from('users')
+//       .select(`uuid, display_name`)
+//       .eq('id', session.id)
+//       .single();
 
-    if (error && status !== 406) {
-      throw error;
-    }
+//     if (error && status !== 406) {
+//       throw error;
+//     }
 
-    if (data) {
-      return { ...session.user, ...data };
-    }
-  } catch (error) {
-    throw error;
-  }
-}
+//     if (data) {
+//       return { ...session.user, ...data };
+//     }
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
 // sign up user
-export async function signUpUser(email, password) {
-  const { user, error } = await client.auth.signUp({ email, password });
-  if (error) throw error;
+// export async function signUpUser(email, password) {
+//   const { user, error } = await client.auth.signUp({ email, password });
+//   if (error) throw error;
+//   return user;
+// }
 
-  const resp = await client.from('users').insert({ id: user.id }).single();
-  if (resp.error) {
-    throw error;
-  }
-  return { ...user, ...resp.data };
+export async function signInWithGoogle() {
+  const { data, error } = await client.auth.signInWithOAuth({
+    provider: 'google',
+  });
+
+  if (error) throw error;
+  return data;
 }
 
 // sign in user

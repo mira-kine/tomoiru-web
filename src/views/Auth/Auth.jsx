@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { signInUser, signUpUser } from '../../api/users';
+import { signInUser, signInWithGoogle, signUpUser } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useUser } from '../../context/UserProvider';
 
@@ -14,7 +14,7 @@ export default function Auth({ isSigningUp = false }) {
     try {
       if (isSigningUp) {
         //call signUpUser fxn from users.js
-        await signUpUser(email, password);
+        await signInWithGoogle();
         history.replace('/signin');
       } else {
         // signIn by setting user through useUser hook in provider, redirect to dashboard

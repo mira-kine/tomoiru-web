@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
+import GoogleButton from 'react-google-button';
 
 export default function AuthForm({ onSubmit, label, isSigningUp }) {
   const { formState, handleForm, setFormError } = useForm({
@@ -48,7 +49,10 @@ export default function AuthForm({ onSubmit, label, isSigningUp }) {
                 onChange={handleForm}
               />
             </form>
-            <button onClick={handleSubmit}>Sign Up!</button>
+            {isSigningUp ? 'Need to Sign In?' : 'Need to Sign Up?'}
+            <button onClick={handleSubmit}>
+              {isSigningUp ? 'Sign up' : 'Sign in'}
+            </button>
           </div>
         )}
       </div>

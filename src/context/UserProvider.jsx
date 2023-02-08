@@ -5,7 +5,9 @@ import { createContext, useContext, useState } from 'react';
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const currentUser = getUser();
+  // const currentUser = getUser();
+  // temporary empy user object
+  const currentUser = {};
   const [user, setUser] = useState(
     currentUser ? { id: currentUser.id, email: currentUser.email } : {}
   );
