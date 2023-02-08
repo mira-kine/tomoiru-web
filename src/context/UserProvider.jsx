@@ -1,18 +1,28 @@
 // set up user context to keep user consistent throughout app after signing in.
 import { getUser } from '../api/users';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const currentUser = getUser();
-  console.log('currentUser', currentUser);
-  // temporary empy user object
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const [user, setUser] = useState(currentUser ? { id: currentUser.id } : {});
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getUser();
+      setCurrentUser(user);
+      setLoading(false);
+    };
+    fetchUser();
+  }, []);
+
+  if (loading) {
+    return <h1>loading...</h1>;
+  }
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
     </UserContext.Provider>
   );

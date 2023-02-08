@@ -30,13 +30,6 @@ export async function getUser() {
   }
 }
 
-// sign up user
-// export async function signUpUser(email, password) {
-//   const { user, error } = await client.auth.signUp({ email, password });
-//   if (error) throw error;
-//   return user;
-// }
-
 export async function signInWithGoogle() {
   const { data, error } = await client.auth.signInWithOAuth({
     provider: 'google',

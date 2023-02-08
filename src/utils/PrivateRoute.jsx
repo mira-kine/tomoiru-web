@@ -10,7 +10,9 @@ export default function ProtectedRoute({
     <Route
       path={path}
       {...rest}
-      render={() => (currentUser ? { ...children } : <Redirect to="/" />)}
+      render={() =>
+        currentUser ? { ...children } : <Redirect to="/dashboard" />
+      }
     />
   );
 }
