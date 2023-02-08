@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
-import { useForm } from '../../hooks/useForm';
+// import { useForm } from '../../hooks/useForm';
 import GoogleButton from 'react-google-button';
 
-export default function AuthForm({ onSubmit, label, isSigningUp }) {
-  const { formState, handleForm, setFormError } = useForm({
-    email: '',
-    password: '',
-  });
+export default function AuthForm({ onSubmit }) {
   const [loading, setLoading] = useState(false);
   // onSubmit is the handleAuth from Auth.js, API call will depend on
   // which type of form it is (sign in or sign up)
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { email, password } = formState;
+  const handleSubmit = async () => {
     try {
       setLoading(true);
-      await onSubmit(email, password);
+      await onSubmit();
     } catch (error) {
       throw error;
     } finally {
@@ -30,29 +24,7 @@ export default function AuthForm({ onSubmit, label, isSigningUp }) {
           'Loading'
         ) : (
           <div>
-            <h2>{isSigningUp ? 'Nice to meet you!' : 'Hi Tomo!'}</h2>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                aria-label="Email"
-                value={formState.email}
-                onChange={handleForm}
-                placeholder="Email"
-              />
-              <input
-                type="password"
-                name="password"
-                aria-label="Password"
-                value={formState.password}
-                placeholder="Password"
-                onChange={handleForm}
-              />
-            </form>
-            {isSigningUp ? 'Need to Sign In?' : 'Need to Sign Up?'}
-            <button onClick={handleSubmit}>
-              {isSigningUp ? 'Sign up' : 'Sign in'}
-            </button>
+            <GoogleButton onClick={() => handleSubmit()} />
           </div>
         )}
       </div>

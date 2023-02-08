@@ -17,9 +17,6 @@ function App() {
           <Route exact path="/signin">
             <Auth />
           </Route>
-          <Route exact path="/signup">
-            <Auth isSigningUp />
-          </Route>
           <PrivateRoute exact path="/dashboard">
             <Dashboard />
           </PrivateRoute>

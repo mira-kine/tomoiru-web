@@ -1,27 +1,34 @@
 import { client } from './client';
 
 // get User
-// export async function getUser() {
-//   try {
-//     const session = client.auth.getSession();
+export async function getUser() {
+  try {
+    const session = await client.auth.getSession();
+    const {
+      data: { user },
+    } = await client.auth.getUser();
 
-//     let { data, error, status } = await client
-//       .from('users')
-//       .select(`uuid, display_name`)
-//       .eq('id', session.id)
-//       .single();
+    if (!session) {
+      return null;
+    }
 
-//     if (error && status !== 406) {
-//       throw error;
-//     }
+    const { data, error, status } = await client
+      .from('users')
+      .select('id')
+      .match({ id: user.id })
+      .single();
 
-//     if (data) {
-//       return { ...session.user, ...data };
-//     }
-//   } catch (error) {
-//     throw error;
-//   }
-// }
+    if (error && status !== 406) {
+      throw error;
+    }
+
+    if (data) {
+      return { ...user, ...data };
+    }
+  } catch (error) {
+    throw error;
+  }
+}
 
 // sign up user
 // export async function signUpUser(email, password) {
@@ -38,12 +45,3 @@ export async function signInWithGoogle() {
   if (error) throw error;
   return data;
 }
-
-// sign in user
-export async function signInUser(email, password) {
-  const { user, error } = await client.auth.signInWithOtp({ email, password });
-  if (error) throw error;
-  return user;
-}
-
-// sign out user

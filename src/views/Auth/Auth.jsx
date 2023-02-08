@@ -2,38 +2,24 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { signInUser, signInWithGoogle, signUpUser } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
-import { useUser } from '../../context/UserProvider';
 
-export default function Auth({ isSigningUp = false }) {
-  const { setUser } = useUser();
+export default function Auth() {
   const history = useHistory();
 
   // create handle that handles events depending on sign up vs sign in
 
-  const handleAuth = async (email, password) => {
+  const handleAuth = async () => {
     try {
-      if (isSigningUp) {
-        //call signUpUser fxn from users.js
-        await signInWithGoogle();
-        history.replace('/signin');
-      } else {
-        // signIn by setting user through useUser hook in provider, redirect to dashboard
-        const resp = await signInUser(email, password);
-        setUser({ id: resp.id, email: resp.email });
-        // history.replace because you don't want to go back to log in page after you logged in
-        history.replace('/profile');
-      }
+      await signInWithGoogle();
+      history.replace('/dashboard');
+      // history.replace because you don't want to go back to log in page after you logged in
     } catch (error) {
       throw error;
     }
   };
   return (
     <div>
-      <AuthForm
-        onSubmit={handleAuth}
-        label={isSigningUp ? 'Sign Up' : 'Sign In'}
-        isSigningUp={isSigningUp}
-      />
+      <AuthForm onSubmit={handleAuth} />
     </div>
   );
 }
