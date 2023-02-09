@@ -8,7 +8,6 @@ import './Auth.css';
 export default function Auth() {
   const { currentUser } = useUser();
   const navigateTo = useNavigate();
-  console.log('currentUser', currentUser);
 
   const handleAuth = async () => {
     try {

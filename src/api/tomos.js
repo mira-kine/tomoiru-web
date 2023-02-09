@@ -1,4 +1,4 @@
-import { client } from './client';
+import { checkError, client } from './client';
 
 export async function getTomo(id) {
   try {
@@ -11,15 +11,26 @@ export async function getTomo(id) {
     if (!request) {
       return null;
     }
-    //   receives id from user
-    //   get session user id and match it with id in tomo
-    // if no id in tomo exists, return null
-    // return tomo
-    // match user by Id, get from table
 
     return request;
     //   if none then return null
   } catch (error) {
     throw error;
   }
+}
+
+export async function createTomo(currentUser, tomo) {
+  const resp = await client.from('tomos').insert({
+    uuid: currentUser.id,
+    name: tomo.name,
+  });
+
+  const req = await client
+    .from('users')
+    .update({ has_tomo: true })
+    .eq('id', currentUser.id);
+
+  console.log('req', req);
+
+  return checkError(resp);
 }
