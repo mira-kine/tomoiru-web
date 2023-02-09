@@ -1,5 +1,7 @@
 import './App.css';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
 import Dashboard from './views/Dashboard/Dashboard';
@@ -12,11 +14,12 @@ function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
 
   return (
-    <UserProvider>
-      <TomoProvider>
-        <Routes>
+    <Router>
+      <Switch>
+        <UserProvider>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Auth />} />
+          {/* <TomoProvider> */}
           <Route
             path="/dashboard"
             element={
@@ -33,9 +36,10 @@ function App() {
               </PrivateRoute>
             }
           />
-        </Routes>
-      </TomoProvider>
-    </UserProvider>
+          {/* </TomoProvider> */}
+        </UserProvider>
+      </Switch>
+    </Router>
   );
 }
 

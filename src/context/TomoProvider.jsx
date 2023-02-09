@@ -1,42 +1,46 @@
-import { getTomo } from '../api/tomos';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { useUser } from './UserProvider';
+// import { getTomo } from '../api/tomos';
+// import { createContext, useContext, useEffect, useState } from 'react';
+// import { useUser } from './UserProvider';
 
-const TomoContext = createContext();
+// const TomoContext = createContext();
 
-function TomoProvider({ children }) {
-  const [tomo, setTomo] = useState({});
-  const [loading, setLoading] = useState(true);
-  const { currentUser } = useUser();
-  console.log('currentUser', currentUser);
-  useEffect(() => {
-    const fetchTomo = async () => {
-      const resp = await getTomo(currentUser.id);
-      setTomo(resp);
-      setLoading(false);
-    };
-    fetchTomo();
-  }, [currentUser.id]);
+// function TomoProvider({ children }) {
+//   const [tomo, setTomo] = useState({});
+//   const [loading, setLoading] = useState(true);
+//   const { currentUser } = useUser();
+//   console.log('currentUser', currentUser);
 
-  if (loading) {
-    return <h1>loading...</h1>;
-  }
+//   useEffect(() => {
+//     const fetchTomo = async () => {
+//       const resp = await getTomo();
+//       if (!resp) {
+//         return null;
+//       }
+//       setTomo(resp);
+//       setLoading(false);
+//     };
+//     fetchTomo();
+//   }, [currentUser.id]);
 
-  return (
-    <TomoContext.Provider value={{ tomo, setTomo }}>
-      {children}
-    </TomoContext.Provider>
-  );
-}
+//   if (loading) {
+//     return <h1>loading...</h1>;
+//   }
 
-const useTomo = () => {
-  const context = useContext(TomoContext);
+//   return (
+//     <TomoContext.Provider value={{ tomo, setTomo }}>
+//       {children}
+//     </TomoContext.Provider>
+//   );
+// }
 
-  if (context === undefined) {
-    throw new Error('useTomo must be inside the TomoProvider wrapper');
-  }
+// const useTomo = () => {
+//   const context = useContext(TomoContext);
 
-  return context;
-};
+//   if (context === undefined) {
+//     throw new Error('useTomo must be inside the TomoProvider wrapper');
+//   }
 
-export { TomoProvider, useTomo };
+//   return context;
+// };
+
+// export { TomoProvider, useTomo };

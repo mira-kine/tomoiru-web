@@ -4,11 +4,10 @@ export async function uploadTomo(uuid, file) {
   const ext = file.name.split('.').pop();
   await client.storage
     .from('tomo-image')
-    .upload(`tomo-image/${uuid}.${ext}`, file, { upsert: true });
-  const { publicURL } = await client.storage
+    .upload(`${uuid}.${ext}`, file, { upsert: true });
+  const { publicURL } = client.storage
     .from('tomos')
-    .select('avatar')
-    .getPublicUrl(`tomo-image/${uuid}.${ext}`);
+    .getPublicUrl(`${uuid}.${ext}`);
   const resp = await client
     .from('tomos')
     .update({ avatar: publicURL })

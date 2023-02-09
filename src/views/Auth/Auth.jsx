@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getCurrentUser, signInWithGoogle } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useUser } from '../../context/UserProvider';
@@ -7,17 +7,17 @@ import './Auth.css';
 
 export default function Auth() {
   const { currentUser } = useUser();
-  const navigateTo = useNavigate();
+  const history = useHistory();
 
   const handleAuth = async () => {
     try {
       await signInWithGoogle();
       if (currentUser.has_tomo === false) {
         // if boolean false, first time tomo
-        navigateTo('/welcome', { replace: true });
+        history.push('/welcome');
       } else {
         // if boolean true, has tomo already
-        navigateTo('/dashboard', { replace: true });
+        history.push('/dashboard');
       }
     } catch (error) {
       throw error;
