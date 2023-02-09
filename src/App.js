@@ -17,8 +17,7 @@ function App() {
           path="/dashboard"
           element={
             <PrivateRoute isLoggedIn={isLoggedIn}>
-              {' '}
-              <Dashboard />{' '}
+              <Dashboard />
             </PrivateRoute>
           }
         />
