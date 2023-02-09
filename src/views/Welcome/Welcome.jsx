@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { uploadTomo } from '../../api/avatar';
 import { createTomo, getTomo } from '../../api/tomos';
 import { useUser } from '../../context/UserProvider';
@@ -9,7 +9,7 @@ export default function Welcome() {
   const [tomo, setTomo] = useState({});
   const { currentUser } = useUser();
   // form to create Tomo
-  const history = useHistory();
+  const navigateTo = useNavigate();
 
   const updateTomo = (key, value) => {
     tomo[key] = value;
@@ -24,7 +24,7 @@ export default function Welcome() {
     e.preventDefault();
     try {
       await createTomo(currentUser, tomo);
-      history.push('/dashboard');
+      navigateTo.push('/dashboard');
     } catch {
       alert('error creating');
     }

@@ -1,6 +1,5 @@
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
@@ -14,32 +13,30 @@ function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
 
   return (
-    <Router>
-      <Switch>
-        <UserProvider>
-          <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<Auth />} />
-          {/* <TomoProvider> */}
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute isLoggedIn={isLoggedIn}>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/welcome"
-            element={
-              <PrivateRoute isLoggedIn={isLoggedIn}>
-                <Welcome />
-              </PrivateRoute>
-            }
-          />
-          {/* </TomoProvider> */}
-        </UserProvider>
-      </Switch>
-    </Router>
+    <UserProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Auth />} />
+        {/* <TomoProvider> */}
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/welcome"
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+              <Welcome />
+            </PrivateRoute>
+          }
+        />
+        {/* </TomoProvider> */}
+      </Routes>
+    </UserProvider>
   );
 }
 
