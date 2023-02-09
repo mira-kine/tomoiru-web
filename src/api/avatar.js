@@ -3,8 +3,7 @@ import { checkError, client } from './client';
 export async function uploadTomo(uuid, file) {
   const ext = file.name.split('.').pop();
   await client.storage
-    .from('tomos')
-    .select('avatar')
+    .from('tomo-image')
     .upload(`tomo-image/${uuid}.${ext}`, file, { upsert: true });
   const { publicURL } = await client.storage
     .from('tomos')
