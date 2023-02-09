@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import GoogleButton from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
+import '../../views/Auth/Auth.css';
 
 export default function AuthForm({ onSubmit, authenticated }) {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ export default function AuthForm({ onSubmit, authenticated }) {
         {loading ? (
           'Loading'
         ) : (
-          <div>
+          <div id="google-button">
             <GoogleButton onClick={handleSubmit} />
           </div>
         )}
