@@ -1,5 +1,5 @@
 // set up user context to keep user consistent throughout app after signing in.
-import { getUser } from '../api/users';
+import { getCurrentUser } from '../api/users';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const UserContext = createContext();
@@ -13,7 +13,7 @@ function UserProvider({ children }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await getUser();
+      const user = await getCurrentUser();
       setCurrentUser(user);
       setAuthenticated(true);
       localStorage.setItem('authenticated', true);

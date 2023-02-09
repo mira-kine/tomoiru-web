@@ -6,12 +6,12 @@ import { useUser } from '../../context/UserProvider';
 import './Auth.css';
 
 export default function Auth() {
-  const { setCurrentUser } = useUser();
+  // const { setCurrentUser } = useUser();
 
   const handleAuth = async () => {
     try {
-      const resp = await signInWithGoogle();
-      await setCurrentUser(resp);
+      await signInWithGoogle();
+      // await setCurrentUser(resp);
     } catch (error) {
       throw error;
     }

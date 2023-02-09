@@ -1,15 +1,13 @@
-import { useNavigate } from 'react-router-dom';
 import { client } from './client';
 
 // get User
-export async function getUser() {
+export async function getCurrentUser() {
   try {
     const session = await client.auth.getSession();
-    console.log('session', session);
     const {
       data: { user },
     } = await client.auth.getUser();
-    console.log('user', user);
+
     if (!user || !session) {
       return null;
     }

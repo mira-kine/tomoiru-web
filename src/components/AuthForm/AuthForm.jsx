@@ -5,7 +5,7 @@ import '../../views/Auth/Auth.css';
 
 export default function AuthForm({ onSubmit, authenticated }) {
   const [loading, setLoading] = useState(false);
-  const navigateTo = useNavigate();
+  // const navigateTo = useNavigate();
 
   const handleSubmit = async () => {
     try {
