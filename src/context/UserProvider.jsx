@@ -22,7 +22,6 @@ function UserProvider({ children }) {
     setLoading(false);
   }, []);
 
-  console.log('currentUser', currentUser);
   if (loading) {
     return <h1>loading...</h1>;
   }
