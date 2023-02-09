@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { signInWithGoogle } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useUser } from '../../context/UserProvider';
-import { useNavigate } from 'react-router-dom';
 
 export default function Auth() {
   const { setCurrentUser } = useUser();
@@ -16,7 +15,7 @@ export default function Auth() {
       if (resp) {
         setCurrentUser(resp);
         setAuthenticated(true);
-        localStorage.setItem('authenticate', true);
+        localStorage.setItem('authenticated', true);
       }
       // history.replace because you don't want to go back to log in page after you logged in
     } catch (error) {

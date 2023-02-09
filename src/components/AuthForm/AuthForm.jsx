@@ -10,8 +10,8 @@ export default function AuthForm({ onSubmit, authenticated }) {
     try {
       setLoading(true);
       await onSubmit();
-      if (authenticated) {
-        navigateTo('/dashboard');
+      if (authenticated === true) {
+        navigateTo('/dashboard', { replace: true });
       }
     } catch (error) {
       throw error;

@@ -1,15 +1,10 @@
-import { Route, useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserProvider';
+import { Navigate } from 'react-router-dom';
 
-export default function ProtectedRoute({ children, ...rest }) {
-  const { currentUser } = useUser();
-  const navigateTo = useNavigate();
+const PrivateRoute = ({ isLoggedIn, children }) => {
+  if (!isLoggedIn) {
+    return <Navigate to="/" replace={true} />;
+  }
+  return children;
+};
 
-  console.log('currentUser', currentUser);
-  return (
-    <Route
-      {...rest}
-      render={() => (currentUser?.id ? children : navigateTo('/dashboard'))}
-    />
-  );
-}
+export default PrivateRoute;
