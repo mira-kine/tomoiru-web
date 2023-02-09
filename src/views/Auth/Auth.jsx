@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithGoogle } from '../../api/users';
+import { getCurrentUser, signInWithGoogle } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useUser } from '../../context/UserProvider';
 import './Auth.css';
 
 export default function Auth() {
-  // const { setCurrentUser } = useUser();
+  const { currentUser } = useUser();
+  const navigateTo = useNavigate();
 
   const handleAuth = async () => {
     try {
       await signInWithGoogle();
-      // await setCurrentUser(resp);
+      if (currentUser.has_tomo === false) {
+        // if boolean false, first time tomo
+        navigateTo('/welcome', { replace: true });
+      } else {
+        // if boolean true, has tomo already
+        navigateTo('/dashboard', { replace: true });
+      }
     } catch (error) {
       throw error;
     }

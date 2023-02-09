@@ -11,6 +11,7 @@ function TomoProvider({ children }) {
     const fetchTomo = async () => {
       const resp = await getTomo();
       setTomo(resp);
+      setLoading(false);
     };
     fetchTomo();
   }, []);

@@ -1,6 +1,6 @@
 import { client } from './client';
 
-export async function getTomo({ id }) {
+export async function getTomo(id) {
   try {
     const request = await client
       .from('tomos')

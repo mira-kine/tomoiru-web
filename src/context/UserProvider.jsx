@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(
     localStorage.getItem('authenticated') || false
@@ -22,6 +22,7 @@ function UserProvider({ children }) {
     setLoading(false);
   }, []);
 
+  console.log('currentUser', currentUser);
   if (loading) {
     return <h1>loading...</h1>;
   }

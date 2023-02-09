@@ -12,18 +12,18 @@ export async function getCurrentUser() {
       return null;
     }
 
-    const { data, error, status } = await client
+    const { data, error } = await client
       .from('users')
-      .select('id')
+      .select('*')
       .match({ id: user.id })
       .single();
 
-    if (error && status !== 406) {
+    if (error) {
       throw error;
     }
 
     if (data) {
-      return { ...user, ...data };
+      return { ...data };
     }
   } catch (error) {
     throw error;
@@ -31,14 +31,9 @@ export async function getCurrentUser() {
 }
 
 export async function signInWithGoogle() {
-  const { data, error } = await client.auth.signInWithOAuth(
-    {
-      provider: 'google',
-    },
-    {
-      redirectTo: 'http://localhost:3000/dashboard',
-    }
-  );
+  const { data, error } = await client.auth.signInWithOAuth({
+    provider: 'google',
+  });
 
   if (error) throw error;
   return data;
