@@ -11,9 +11,6 @@ export default function Home() {
         <span>
           <Link to="/signin">Sign In?</Link>
         </span>
-        <span>
-          <Link to="/signup">Sign Up?</Link>
-        </span>
       </div>
     </>
   );

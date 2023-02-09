@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import GoogleButton from 'react-google-button';
+import { useNavigate } from 'react-router-dom';
 
-export default function AuthForm({ onSubmit }) {
+export default function AuthForm({ onSubmit, authenticated }) {
   const [loading, setLoading] = useState(false);
+  const navigateTo = useNavigate();
 
   const handleSubmit = async () => {
     try {
       setLoading(true);
       await onSubmit();
+      if (authenticated) {
+        navigateTo('/dashboard');
+      }
     } catch (error) {
       throw error;
     } finally {
@@ -22,7 +27,7 @@ export default function AuthForm({ onSubmit }) {
           'Loading'
         ) : (
           <div>
-            <GoogleButton onClick={() => handleSubmit()} />
+            <GoogleButton onClick={handleSubmit} />
           </div>
         )}
       </div>

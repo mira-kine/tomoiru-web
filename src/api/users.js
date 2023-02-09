@@ -7,8 +7,8 @@ export async function getUser() {
     const {
       data: { user },
     } = await client.auth.getUser();
-
-    if (!session) {
+    console.log('user', user);
+    if (!user || !session) {
       return null;
     }
 

@@ -1,7 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './views/Home/Home';
-import PrivateRoute from './utils/PrivateRoute';
 import Auth from './views/Auth/Auth';
 import Dashboard from './views/Dashboard/Dashboard';
 import { UserProvider } from './context/UserProvider';
@@ -9,19 +8,11 @@ import { UserProvider } from './context/UserProvider';
 function App() {
   return (
     <UserProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/signin">
-            <Auth />
-          </Route>
-          <PrivateRoute exact path="/dashboard">
-            <Dashboard />
-          </PrivateRoute>
-        </Switch>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Auth />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </UserProvider>
   );
 }

@@ -1,17 +1,23 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { signInUser, signInWithGoogle, signUpUser } from '../../api/users';
+import React, { useState } from 'react';
+import { signInWithGoogle } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import { useUser } from '../../context/UserProvider';
+import { useNavigate } from 'react-router-dom';
 
 export default function Auth() {
-  const history = useHistory();
-
-  // create handle that handles events depending on sign up vs sign in
+  const { setCurrentUser } = useUser();
+  const [authenticated, setAuthenticated] = useState(
+    localStorage.getItem('authenticated') || false
+  );
 
   const handleAuth = async () => {
     try {
-      await signInWithGoogle();
-      history.replace('/dashboard');
+      const resp = await signInWithGoogle();
+      if (resp) {
+        setCurrentUser(resp);
+        setAuthenticated(true);
+        localStorage.setItem('authenticate', true);
+      }
       // history.replace because you don't want to go back to log in page after you logged in
     } catch (error) {
       throw error;
@@ -19,7 +25,7 @@ export default function Auth() {
   };
   return (
     <div>
-      <AuthForm onSubmit={handleAuth} />
+      <AuthForm onSubmit={handleAuth} authenticated={authenticated} />
     </div>
   );
 }
