@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import hamtaro from '../../assets/hamtaro.gif';
+import { useTomo } from '../../context/TomoProvider';
 
 export default function Dashboard() {
+  const { tomo } = useTomo();
   return (
     <div>
       <h1>Tomo dashboard page</h1>
       <div id="tomo-container">
-        <img src={hamtaro} alt="hamtaro gif" />
+        <img src={tomo.avatar} alt="hamtaro gif" />
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ export async function createTomo(currentUser, tomo) {
   const resp = await client.from('tomos').insert({
     uuid: currentUser.id,
     name: tomo.name,
+    avatar: tomo.avatar,
   });
 
   const req = await client

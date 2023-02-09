@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { uploadTomo } from '../../api/avatar';
 import { createTomo, getTomo } from '../../api/tomos';
 import { useUser } from '../../context/UserProvider';
 
@@ -13,6 +14,10 @@ export default function Welcome() {
   const updateTomo = (key, value) => {
     tomo[key] = value;
     setTomo({ ...tomo });
+  };
+
+  const uploadFile = async (e) => {
+    await uploadTomo(currentUser.id, e.target.files[0]);
   };
 
   const handleCreate = async (e) => {
@@ -36,6 +41,7 @@ export default function Welcome() {
           type="text"
           onInput={(e) => updateTomo('name', e.target.value)}
         />
+        <input type="file" onChange={uploadFile} />
       </form>
       <button onClick={handleCreate}>Can't wait to meet you!</button>
     </div>
