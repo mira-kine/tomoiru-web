@@ -7,14 +7,19 @@ const UserContext = createContext();
 function UserProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(
+    localStorage.getItem('authenticated') || false
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
       const user = await getUser();
       setCurrentUser(user);
-      setLoading(false);
+      setAuthenticated(true);
+      localStorage.setItem('authenticated', true);
     };
     fetchUser();
+    setLoading(false);
   }, []);
 
   if (loading) {
@@ -22,7 +27,9 @@ function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <UserContext.Provider
+      value={{ currentUser, setCurrentUser, authenticated }}
+    >
       {children}
     </UserContext.Provider>
   );

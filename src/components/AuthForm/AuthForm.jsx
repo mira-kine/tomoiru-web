@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GoogleButton from 'react-google-button';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../views/Auth/Auth.css';
 
 export default function AuthForm({ onSubmit, authenticated }) {
@@ -11,12 +11,10 @@ export default function AuthForm({ onSubmit, authenticated }) {
     try {
       setLoading(true);
       await onSubmit();
-      if (authenticated === true) {
-        navigateTo('/dashboard', { replace: true });
-      }
     } catch (error) {
       throw error;
     } finally {
+      // navigateTo('/dashboard', { replace: true });
       setLoading(false);
     }
   };

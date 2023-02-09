@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { client } from './client';
 
 // get User
 export async function getUser() {
   try {
     const session = await client.auth.getSession();
+    console.log('session', session);
     const {
       data: { user },
     } = await client.auth.getUser();
@@ -31,9 +33,14 @@ export async function getUser() {
 }
 
 export async function signInWithGoogle() {
-  const { data, error } = await client.auth.signInWithOAuth({
-    provider: 'google',
-  });
+  const { data, error } = await client.auth.signInWithOAuth(
+    {
+      provider: 'google',
+    },
+    {
+      redirectTo: 'http://localhost:3000/dashboard',
+    }
+  );
 
   if (error) throw error;
   return data;
