@@ -1,29 +1,29 @@
 import { client } from './client';
 
 // get User
-export async function getUser() {
+export async function getCurrentUser() {
   try {
     const session = await client.auth.getSession();
     const {
       data: { user },
     } = await client.auth.getUser();
-    console.log('user', user);
+
     if (!user || !session) {
       return null;
     }
 
-    const { data, error, status } = await client
+    const { data, error } = await client
       .from('users')
-      .select('id')
+      .select('*')
       .match({ id: user.id })
       .single();
 
-    if (error && status !== 406) {
+    if (error) {
       throw error;
     }
 
     if (data) {
-      return { ...user, ...data };
+      return { ...data };
     }
   } catch (error) {
     throw error;
