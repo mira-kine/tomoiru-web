@@ -1,16 +1,19 @@
 import { checkError, client } from './client';
 
-export async function getTomo(id) {
+export async function getTomo() {
+  const {
+    data: { user },
+  } = await client.auth.getUser();
   try {
     const { data, error } = await client
       .from('tomos')
       .select('*')
-      .eq('uuid', id)
+      .eq('uuid', user.id)
       .single();
     if (error) {
       throw error;
     }
-    if (!id) {
+    if (!user.id) {
       return null;
     }
 

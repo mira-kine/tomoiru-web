@@ -3,7 +3,6 @@ import { useTomo } from '../../context/TomoProvider';
 
 export default function Dashboard() {
   const { tomo } = useTomo();
-  console.log('tomo', tomo);
 
   return (
     <div>

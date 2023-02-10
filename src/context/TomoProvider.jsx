@@ -8,16 +8,19 @@ function TomoProvider({ children }) {
   const [tomo, setTomo] = useState({});
   const [loading, setLoading] = useState(true);
   const { currentUser } = useUser();
+  console.log('currentUser', currentUser);
 
   useEffect(() => {
     const fetchTomo = async () => {
-      const resp = await getTomo(currentUser.id);
-      setTomo(resp);
-      setLoading(false);
+      if (currentUser !== {}) {
+        const resp = await getTomo(currentUser.id);
+        setTomo(resp);
+      }
 
       if (!currentUser) {
         return null;
       }
+      setLoading(false);
     };
     fetchTomo();
   }, []);
