@@ -5,6 +5,8 @@ import './Dashboard.css';
 export default function Dashboard() {
   const { tomo } = useTomo();
 
+  // option to choose foods - button to direct to food recs
+
   return (
     <div id="dashboard-view-container">
       <div id="title-container">
