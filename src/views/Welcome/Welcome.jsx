@@ -8,6 +8,7 @@ export default function Welcome() {
   // some tomo state
   const [tomo, setTomo] = useState({});
   const { currentUser } = useUser();
+  const [file, setFile] = useState('');
   // form to create Tomo
   const navigateTo = useNavigate();
 
@@ -16,14 +17,11 @@ export default function Welcome() {
     setTomo({ ...tomo });
   };
 
-  const uploadFile = async (e) => {
-    await uploadTomo(currentUser.id, e.target.files[0]);
-  };
-
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await createTomo(currentUser, tomo);
+      const publicURL = await uploadTomo(currentUser.id, file);
+      await createTomo(currentUser, tomo, publicURL);
       navigateTo.push('/dashboard');
     } catch {
       alert('error creating');
@@ -41,7 +39,7 @@ export default function Welcome() {
           type="text"
           onInput={(e) => updateTomo('name', e.target.value)}
         />
-        <input type="file" onChange={uploadFile} />
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       </form>
       <button onClick={handleCreate}>Can't wait to meet you!</button>
     </div>

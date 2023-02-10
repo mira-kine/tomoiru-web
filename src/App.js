@@ -14,28 +14,30 @@ function App() {
 
   return (
     <UserProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<Auth />} />
-        {/* <TomoProvider> */}
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/welcome"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <Welcome />
-            </PrivateRoute>
-          }
-        />
-        {/* </TomoProvider> */}
-      </Routes>
+      <TomoProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<Auth />} />
+          {/* <TomoProvider> */}
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/welcome"
+            element={
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                <Welcome />
+              </PrivateRoute>
+            }
+          />
+          {/* </TomoProvider> */}
+        </Routes>
+      </TomoProvider>
     </UserProvider>
   );
 }

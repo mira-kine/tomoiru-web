@@ -1,17 +1,15 @@
-import { checkError, client } from './client';
+import { client } from './client';
 
 export async function uploadTomo(uuid, file) {
   const ext = file.name.split('.').pop();
-  await client.storage
+  await client.storage.from('tomo-image').upload(`image/${uuid}.${ext}`, file, {
+    cacheControl: '3600',
+    upsert: false,
+  });
+  const path = client.storage
     .from('tomo-image')
-    .upload(`${uuid}.${ext}`, file, { upsert: true });
-  const { publicURL } = client.storage
-    .from('tomos')
-    .getPublicUrl(`${uuid}.${ext}`);
-  const resp = await client
-    .from('tomos')
-    .update({ avatar: publicURL })
-    .eq('uuid', uuid)
-    .single();
-  return checkError(resp);
+    .getPublicUrl(`image/${uuid}.${ext}`);
+
+  const publicURL = path.data.publicUrl;
+  return publicURL;
 }
