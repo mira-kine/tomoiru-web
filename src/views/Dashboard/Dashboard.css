@@ -1,0 +1,28 @@
+#dashboard-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+#title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#tomo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 50vw;
+}
+
+#tomo-img {
+  max-height: 35vh;
+  max-width: 35vw;
+}
