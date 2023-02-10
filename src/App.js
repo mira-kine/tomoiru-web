@@ -18,7 +18,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Auth />} />
-          {/* <TomoProvider> */}
           <Route
             path="/dashboard"
             element={
@@ -35,7 +34,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* </TomoProvider> */}
         </Routes>
       </TomoProvider>
     </UserProvider>
