@@ -31,9 +31,14 @@ export async function getCurrentUser() {
 }
 
 export async function signInWithGoogle() {
-  const { data, error } = await client.auth.signInWithOAuth({
-    provider: 'google',
-  });
+  const { data, error } = await client.auth.signInWithOAuth(
+    {
+      provider: 'google',
+    },
+    {
+      redirectTo: 'http://localhost:3000/provider?refresh=true',
+    }
+  );
 
   if (error) throw error;
   return data;

@@ -1,10 +1,13 @@
 import { checkError, client } from './client';
 
 export async function getTomo(id) {
+  if (!id) {
+    return null;
+  }
   try {
     const { data, error } = await client
       .from('tomos')
-      .select()
+      .select('*')
       .eq('uuid', id)
       .single();
     if (error) {

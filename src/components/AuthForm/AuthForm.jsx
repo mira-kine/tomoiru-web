@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useNavigate } from 'react';
 import GoogleButton from 'react-google-button';
 import '../../views/Auth/Auth.css';
 
 export default function AuthForm({ onSubmit, authenticated }) {
   const [loading, setLoading] = useState(false);
+  // const navigateTo = useNavigate();
 
   const handleSubmit = async () => {
     try {
@@ -12,8 +13,8 @@ export default function AuthForm({ onSubmit, authenticated }) {
     } catch (error) {
       throw error;
     } finally {
-      // navigateTo('/dashboard', { replace: true });
       setLoading(false);
+      // navigateTo('/dashboard');
     }
   };
 

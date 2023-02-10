@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { uploadTomo } from '../../api/avatar';
-import { createTomo, getTomo } from '../../api/tomos';
+import { createTomo } from '../../api/tomos';
 import { useUser } from '../../context/UserProvider';
 
 export default function Welcome() {
@@ -22,7 +22,7 @@ export default function Welcome() {
     try {
       const publicURL = await uploadTomo(currentUser.id, file);
       await createTomo(currentUser, tomo, publicURL);
-      navigateTo.push('/dashboard');
+      navigateTo('/dashboard');
     } catch {
       alert('error creating');
     }
