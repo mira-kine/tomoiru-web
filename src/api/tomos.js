@@ -2,35 +2,35 @@ import { checkError, client } from './client';
 
 export async function getTomo(id) {
   try {
-    const request = await client
+    const { data, error } = await client
       .from('tomos')
       .select()
-      .match({ uuid: id })
+      .eq('uuid', id)
       .single();
-
-    if (!request) {
-      return null;
+    if (error) {
+      throw error;
     }
 
-    return request;
+    if (data) {
+      return { ...data };
+    }
     //   if none then return null
   } catch (error) {
     throw error;
   }
 }
 
-export async function createTomo(currentUser, tomo) {
+export async function createTomo(currentUser, tomo, publicURL) {
   const resp = await client.from('tomos').insert({
     uuid: currentUser.id,
     name: tomo.name,
+    avatar: publicURL,
   });
 
-  const req = await client
+  await client
     .from('users')
     .update({ has_tomo: true })
     .eq('id', currentUser.id);
-
-  console.log('req', req);
 
   return checkError(resp);
 }

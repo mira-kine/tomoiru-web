@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { uploadTomo } from '../../api/avatar';
 import { createTomo, getTomo } from '../../api/tomos';
 import { useUser } from '../../context/UserProvider';
 
@@ -7,6 +8,7 @@ export default function Welcome() {
   // some tomo state
   const [tomo, setTomo] = useState({});
   const { currentUser } = useUser();
+  const [file, setFile] = useState('');
   // form to create Tomo
   const navigateTo = useNavigate();
 
@@ -18,8 +20,9 @@ export default function Welcome() {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await createTomo(currentUser, tomo);
-      navigateTo('/dashboard');
+      const publicURL = await uploadTomo(currentUser.id, file);
+      await createTomo(currentUser, tomo, publicURL);
+      navigateTo.push('/dashboard');
     } catch {
       alert('error creating');
     }
@@ -36,6 +39,7 @@ export default function Welcome() {
           type="text"
           onInput={(e) => updateTomo('name', e.target.value)}
         />
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       </form>
       <button onClick={handleCreate}>Can't wait to meet you!</button>
     </div>

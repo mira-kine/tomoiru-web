@@ -14,10 +14,10 @@ export default function Auth() {
       await signInWithGoogle();
       if (currentUser.has_tomo === false) {
         // if boolean false, first time tomo
-        navigateTo('/welcome', { replace: true });
+        navigateTo.push('/welcome');
       } else {
         // if boolean true, has tomo already
-        navigateTo('/dashboard', { replace: true });
+        navigateTo.push('/dashboard');
       }
     } catch (error) {
       throw error;
