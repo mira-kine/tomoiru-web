@@ -12,6 +12,7 @@ export default function Home() {
         <div id="signin-container">
           <span id="signin-box">
             <Link to="/signin">Sign In?</Link>
+            <Link to="/signup">Sign Up?</Link>
           </span>
         </div>
       </div>

@@ -30,16 +30,38 @@ export async function getCurrentUser() {
   }
 }
 
-export async function signInWithGoogle() {
-  const { data, error } = await client.auth.signInWithOAuth(
-    {
-      provider: 'google',
-    },
-    {
-      redirectTo: 'http://localhost:3000/provider?refresh=true',
-    }
-  );
-
+export async function signUpUser(email, password) {
+  const { user, error } = await client.auth.signUp({ email, password });
   if (error) throw error;
-  return data;
+  return user;
 }
+
+export async function signInUser(email, password) {
+  const {
+    data: { user },
+    error,
+  } = await client.auth.signInWithPassword({ email, password });
+  if (error) throw error;
+  return user;
+}
+
+export async function signOut() {
+  const { error } = await client.auth.signOut();
+  if (error) throw error;
+}
+
+// Have to keep oauth on hold because supabase issues
+
+// export async function signInWithGoogle() {
+//   const { data, error } = await client.auth.signInWithOAuth(
+//     {
+//       provider: 'google',
+//     },
+//     {
+//       redirectTo: 'http://localhost:3000/provider?refresh=true',
+//     }
+//   );
+
+//   if (error) throw error;
+//   return data;
+// }

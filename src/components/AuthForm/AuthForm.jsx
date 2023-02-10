@@ -1,20 +1,29 @@
 import React, { useState, useNavigate } from 'react';
-import GoogleButton from 'react-google-button';
 import '../../views/Auth/Auth.css';
+import { useForm } from '../../hooks/useForm';
 
-export default function AuthForm({ onSubmit, authenticated }) {
+export default function AuthForm({
+  onSubmit,
+  authenticated,
+  isSigningUp,
+  label,
+}) {
   const [loading, setLoading] = useState(false);
-  // const navigateTo = useNavigate();
+  const { formState, handleForm } = useForm({
+    email: '',
+    password: '',
+  });
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = formState;
     try {
       setLoading(true);
-      await onSubmit();
+      await onSubmit(email, password);
     } catch (error) {
       throw error;
     } finally {
       setLoading(false);
-      // navigateTo('/dashboard');
     }
   };
 
@@ -24,10 +33,35 @@ export default function AuthForm({ onSubmit, authenticated }) {
         {loading ? (
           'Loading'
         ) : (
-          <div id="google-button">
-            <GoogleButton onClick={handleSubmit} />
-          </div>
+          <>
+            <span>
+              {isSigningUp
+                ? 'Glad you are here - Sign up!'
+                : 'Great to see you again - Sign in!'}
+            </span>
+          </>
         )}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            aria-label="Email"
+            value={formState.email}
+            onChange={handleForm}
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            name="password"
+            aria-label="Password"
+            placeholder="Password"
+            value={formState.password}
+            onChange={handleForm}
+          />
+          <button type="submit" disabled={loading}>
+            {label}
+          </button>
+        </form>
       </div>
     </>
   );
