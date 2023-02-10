@@ -1,9 +1,6 @@
 import { checkError, client } from './client';
 
 export async function getTomo(id) {
-  if (!id) {
-    return null;
-  }
   try {
     const { data, error } = await client
       .from('tomos')
@@ -12,6 +9,9 @@ export async function getTomo(id) {
       .single();
     if (error) {
       throw error;
+    }
+    if (!id) {
+      return null;
     }
 
     if (data) {

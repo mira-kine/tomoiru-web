@@ -1,4 +1,4 @@
-import React, { useState, useNavigate } from 'react';
+import React, { useState } from 'react';
 import '../../views/Auth/Auth.css';
 import { useForm } from '../../hooks/useForm';
 
