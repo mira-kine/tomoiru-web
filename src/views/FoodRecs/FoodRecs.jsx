@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getFoods } from '../../api/foods';
 import FoodList from '../../components/FoodList';
-import './FoodRecs';
+import YourTomo from '../../components/YourTomo';
+import './FoodRecs.css';
 
 export default function FoodRecs() {
   const [foodsList, setFoodsList] = useState([]);
@@ -22,7 +23,12 @@ export default function FoodRecs() {
 
   return (
     <div id="foodlist-page-container">
-      <FoodList foodsList={foodsList} />
+      <div id="avatar">
+        <YourTomo />
+      </div>
+      <div id="food-list-container">
+        <FoodList foodsList={foodsList} />
+      </div>
     </div>
   );
 }

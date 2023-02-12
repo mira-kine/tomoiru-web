@@ -1,0 +1,40 @@
+#foodlist-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  align-content: center;
+  justify-content: center;
+  border: 1px 1px black solid;
+  border-color: black;
+  background-color: blueviolet;
+}
+
+#avatar {
+  display: flex;
+  background-color: aqua;
+  padding: 1rem;
+  margin: 2rem;
+}
+
+#food-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: crimson;
+  padding: 1rem;
+  margin: 1rem;
+  width: 80vw;
+}
+
+#foodlist {
+  overflow-y: scroll;
+}
+
+#food-name {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+#foodlist-ul {
+  list-style: none;
+}
