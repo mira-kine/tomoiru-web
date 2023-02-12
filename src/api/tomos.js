@@ -4,6 +4,7 @@ export async function getTomo() {
   const {
     data: { user },
   } = await client.auth.getUser();
+
   try {
     const { data, error } = await client
       .from('tomos')
