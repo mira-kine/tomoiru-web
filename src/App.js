@@ -6,8 +6,9 @@ import Auth from './views/Auth/Auth';
 import Dashboard from './views/Dashboard/Dashboard';
 import PrivateRoute from './utils/PrivateRoute';
 import { UserProvider } from './context/UserProvider';
-import Welcome from './views/Welcome/Welcome';
 import { TomoProvider } from './context/TomoProvider';
+import Welcome from './views/Welcome/Welcome';
+import FoodRecs from './views/FoodRecs/FoodRecs';
 
 function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
@@ -32,6 +33,14 @@ function App() {
             element={
               <PrivateRoute isLoggedIn={isLoggedIn}>
                 <Welcome />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/food-recs"
+            element={
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                <FoodRecs />
               </PrivateRoute>
             }
           />
