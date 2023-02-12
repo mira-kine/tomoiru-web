@@ -9,6 +9,7 @@ import './Auth.css';
 export default function Auth({ isSigningUp = false }) {
   const { currentUser, setCurrentUser } = useUser();
   const navigateTo = useNavigate();
+  console.log('currentUser', currentUser);
 
   const handleAuth = async (email, password) => {
     try {

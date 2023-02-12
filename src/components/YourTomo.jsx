@@ -1,11 +1,10 @@
-import React from 'react';
-import { useTomo } from '../context/TomoProvider';
+// import React from 'react';
 
-export default function YourTomo() {
-  const { tomo } = useTomo();
-  return (
-    <>
-      <img id="tomo-img" src={tomo.avatar} alt="your tomo img" />
-    </>
-  );
-}
+// export default function YourTomo() {
+//   const { tomo } = useTomo();
+//   return (
+//     <>
+//       <img id="tomo-img" src={tomo.avatar} alt="your tomo img" />
+//     </>
+//   );
+// }
