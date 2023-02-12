@@ -20,13 +20,13 @@ export default function Welcome() {
   };
 
   const handleClick = (id) => {
-    setPickedTomo(id);
+    setPickedTomo(`tomo${id}`);
   };
 
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      const publicURL = await uploadTomo(currentUser.id, pickedTomo);
+      const publicURL = await uploadTomo(pickedTomo);
       await createTomo(currentUser, tomo, publicURL);
       navigateTo('/dashboard');
     } catch {
@@ -39,7 +39,6 @@ export default function Welcome() {
       <h1>Welcome! Let's create a tomo</h1>
       <form onSubmit={handleCreate}>
         {/* user picks one -> whatever the name is,  */}
-        {/* <input type="file" onChange={(e) => setFile(e.target.files[0])} /> */}
         <div id="options-container">
           {tomoOptions.map((img, index) => {
             return (

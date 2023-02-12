@@ -7,7 +7,7 @@ import { client } from './client';
 //     .download('tomo-options/avatar1.png');
 // }
 
-export async function uploadTomo(uuid, pickedTomo) {
+export async function uploadTomo(pickedTomo) {
   // const ext = file.name.split('.').pop();
   // await client.storage.from('tomo-image').upload(`image/${uuid}.${ext}`, file, {
   //   cacheControl: '3600',

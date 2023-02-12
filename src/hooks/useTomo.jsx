@@ -19,6 +19,5 @@ export function useTomo({ currentUser }) {
     fetchTomo();
   }, [currentUser]);
 
-  console.log('tomo', tomo);
-  return tomo;
+  return { ...tomo };
 }

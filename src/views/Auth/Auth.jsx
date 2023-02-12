@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUpUser } from '../../api/users';
 import { signInUser } from '../../api/users';
@@ -9,12 +9,13 @@ import './Auth.css';
 export default function Auth({ isSigningUp = false }) {
   const { currentUser, setCurrentUser } = useUser();
   const navigateTo = useNavigate();
-  console.log('currentUser', currentUser);
+  const [loading, setLoading] = useState(true);
 
   const handleAuth = async (email, password) => {
     try {
       if (isSigningUp) {
         await signUpUser(email, password);
+        setLoading(false);
         navigateTo('/signin');
       } else {
         const resp = await signInUser(email, password);
@@ -23,18 +24,28 @@ export default function Auth({ isSigningUp = false }) {
           email: resp.email,
           has_tomo: resp.has_tomo,
         });
-        if (currentUser.has_tomo === false) {
-          // if boolean false, first time tomo
-          navigateTo('/welcome');
-        } else {
-          // if boolean true, has tomo already
-          navigateTo('/dashboard');
-        }
+        // if (currentUser.has_tomo === false) {
+        //   // if boolean false, first time tomo
+        //   setLoading(false);
+        //   navigateTo('/welcome');
+        // } else {
+        //   // if boolean true, has tomo already
+        //   navigateTo('/dashboard');
+        // }
+
+        currentUser?.has_tomo
+          ? navigateTo('/welcome')
+          : navigateTo('/dashboard');
       }
     } catch (error) {
       throw error;
     }
   };
+
+  if (loading) {
+    <h1>Loading...</h1>;
+  }
+
   return (
     <div id="view-auth-container">
       <h2 id="signin-title">Meet your Tomo!</h2>
