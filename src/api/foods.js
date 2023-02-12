@@ -17,13 +17,13 @@ export async function getFoods() {
   }
 }
 
-export async function getFoodById(item) {
+export async function getFoodById(id) {
   try {
     const { data, error } = await client
       .from('food_recs')
       .select()
-      .eq('id', item.id)
-      .match();
+      .match({ id })
+      .single();
 
     if (error) {
       throw error;

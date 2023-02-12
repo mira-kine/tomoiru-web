@@ -8,19 +8,12 @@ import { useNavigate } from 'react-router-dom';
 export default function FoodList({ foodsList }) {
   // handleClick -> if I click on food name, display will change to name with description + button to eat it
   // const [showDisplay, setShowDisplay] = useState(false);
-  const [foodId, setFoodId] = useState({});
   const navigateTo = useNavigate();
-  const { selectedFood, setSelectedFood } = useFood(foodId);
 
   const handleDisplay = (item) => {
     navigateTo(`/food-recs/${item.id}`);
     // setFoodId(item.id);
     // setSelectedFood(item.id);
-  };
-
-  console.log('selectedFood', selectedFood);
-  const handleEat = (item) => {
-    setFoodId(item.id);
   };
 
   return (
@@ -32,8 +25,6 @@ export default function FoodList({ foodsList }) {
               <button id="foodlist-div" onClick={() => handleDisplay(item)}>
                 <span id="food-name">{item.name}</span>
               </button>
-
-              {/* <img src={ } /> - add image accordingly */}
             </div>
           );
         })}

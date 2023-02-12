@@ -1,11 +1,21 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFood } from '../hooks/useFood';
 
 export default function SelectedFood() {
   // refactoring to set food display by ID
   const { id } = useParams();
   const { selectedFood, setSelectedFood } = useFood(id);
+  console.log('selectedFood', selectedFood);
+  const navigateTo = useNavigate();
+
+  const handleBack = () => {
+    navigateTo('/food-recs');
+  };
+
+  const handleEat = (item) => {
+    //   set some type of selectedFood
+  };
 
   return (
     <>
@@ -18,7 +28,7 @@ export default function SelectedFood() {
             <span>{selectedFood.description}</span>
           </div>
           <div id="options-container">
-            <button onClick={handleDisplay}>Back to list</button>
+            <button onClick={handleBack}>Back to list</button>
             <button onClick={() => handleEat(selectedFood.id)}>
               Eat this!
             </button>
