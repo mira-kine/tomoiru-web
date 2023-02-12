@@ -8,11 +8,12 @@ export default function FoodList({ foodsList }) {
   const [foodId, setFoodId] = useState({});
 
   const handleDisplay = (item) => {
-    setFoodId(item.id);
     setShowDisplay(!showDisplay);
   };
 
-  console.log('foodId', foodId);
+  const handleEat = (item) => {
+    setFoodId(item.id);
+  };
 
   return (
     <div>
@@ -31,12 +32,21 @@ export default function FoodList({ foodsList }) {
           })}
         </div>
       ) : (
-        <div>
+        <div id="foodlist-with-display">
           {foodsList.map((item) => {
             return (
               <div key={item.id}>
-                <button onClick={handleDisplay}>{item.name}</button>
-                <span>{item.description}</span>
+                <div id="button-container">
+                  <span id="food-name">{item.name}</span>
+                </div>
+                {/* <img src={item.image} alt="item" /> */}
+                <div id="food-description-container">
+                  <span>{item.description}</span>
+                </div>
+                <div id="options-container">
+                  <button onClick={handleDisplay}>Back to list</button>
+                  <button onClick={() => handleEat(item.id)}>Eat this!</button>
+                </div>
               </div>
             );
           })}

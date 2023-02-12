@@ -39,3 +39,40 @@
 #foodlist-div {
   padding: 0.3rem;
 }
+
+#foodlist-with-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+#food-description-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  max-height: 20vh;
+  overflow-y: scroll hidden;
+  /* hide scroll */
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+#options-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#options-container > button {
+  padding: 0.7rem;
+  max-width: 30vw;
+  max-height: 5vh;
+}
