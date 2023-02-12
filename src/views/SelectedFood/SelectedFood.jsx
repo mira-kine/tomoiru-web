@@ -28,7 +28,6 @@ export default function SelectedFood() {
           </div>
           <div id="options-container">
             <button onClick={handleBack}>Back to list</button>
-            <button>Add this to my list</button>
             <button onClick={() => handleEat(selectedFood.id)}>
               Eat this!
             </button>
