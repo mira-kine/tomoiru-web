@@ -17,6 +17,26 @@ export async function getFoods() {
   }
 }
 
+export async function getFoodById(id) {
+  try {
+    const { data, error } = await client
+      .from('food_recs')
+      .select()
+      .match({ id })
+      .single();
+
+    if (error) {
+      throw error;
+    }
+
+    if (data) {
+      return { ...data };
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function eatFood() {
   try {
     // create function

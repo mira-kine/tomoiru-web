@@ -1,6 +1,5 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
 import Dashboard from './views/Dashboard/Dashboard';
@@ -8,6 +7,7 @@ import PrivateRoute from './utils/PrivateRoute';
 import { UserProvider } from './context/UserProvider';
 import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
+import SelectedFood from './views/SelectedFood/SelectedFood';
 
 function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
@@ -39,6 +39,14 @@ function App() {
           element={
             <PrivateRoute isLoggedIn={isLoggedIn}>
               <FoodRecs />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/food-recs/:id"
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+              <SelectedFood />
             </PrivateRoute>
           }
         />
