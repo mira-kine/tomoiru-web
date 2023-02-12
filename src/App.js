@@ -8,6 +8,7 @@ import PrivateRoute from './utils/PrivateRoute';
 import { UserProvider } from './context/UserProvider';
 import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
+import SelectedFood from './components/SelectedFood';
 
 function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
@@ -39,6 +40,14 @@ function App() {
           element={
             <PrivateRoute isLoggedIn={isLoggedIn}>
               <FoodRecs />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/food-recs/:id"
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+              <SelectedFood />
             </PrivateRoute>
           }
         />
