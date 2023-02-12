@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTomo } from '../../context/TomoProvider';
+import { useTomo } from '../../hooks/useTomo';
+import { useUser } from '../../context/UserProvider';
 import './Dashboard.css';
 
 export default function Dashboard() {
-  const { tomo } = useTomo();
+  const { currentUser } = useUser();
+  const tomo = useTomo({ currentUser });
   const navigateTo = useNavigate();
 
   // option to choose foods - button to direct to food recs

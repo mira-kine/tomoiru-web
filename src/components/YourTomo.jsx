@@ -1,8 +1,6 @@
 import React from 'react';
-import { useTomo } from '../context/TomoProvider';
 
-export default function YourTomo() {
-  const { tomo } = useTomo();
+export default function YourTomo({ tomo }) {
   return (
     <>
       <img id="tomo-img" src={tomo.avatar} alt="your tomo img" />

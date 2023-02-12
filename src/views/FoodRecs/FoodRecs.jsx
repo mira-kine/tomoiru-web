@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { getFoods } from '../../api/foods';
 import FoodList from '../../components/FoodList';
 import YourTomo from '../../components/YourTomo';
+import { useUser } from '../../context/UserProvider';
+import { useTomo } from '../../hooks/useTomo';
 import './FoodRecs.css';
 
 export default function FoodRecs() {
+  const { currentUser } = useUser();
+  const tomo = useTomo({ currentUser });
   const [foodsList, setFoodsList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +28,7 @@ export default function FoodRecs() {
   return (
     <div id="foodlist-page-container">
       <div id="avatar">
-        <YourTomo />
+        <YourTomo tomo={tomo} />
       </div>
       <div id="food-list-container">
         <FoodList foodsList={foodsList} />

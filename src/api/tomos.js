@@ -11,6 +11,7 @@ export async function getTomo() {
       .select('*')
       .eq('uuid', user.id)
       .single();
+
     if (error) {
       throw error;
     }
