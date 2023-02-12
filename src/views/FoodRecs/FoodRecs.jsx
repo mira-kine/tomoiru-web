@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFoods } from '../../api/foods';
 import FoodList from '../../components/FoodList';
+import './FoodRecs';
 
 export default function FoodRecs() {
   const [foodsList, setFoodsList] = useState([]);
@@ -20,7 +21,7 @@ export default function FoodRecs() {
   }
 
   return (
-    <div>
+    <div id="foodlist-page-container">
       <FoodList foodsList={foodsList} />
     </div>
   );

@@ -18,7 +18,7 @@ export default function Dashboard() {
         <h1>What shall we do today?</h1>
       </div>
       <div id="tomo-container">
-        <img id="tomo-img" src={tomo.avatar} alt="hamtaro gif" />
+        <img id="tomo-img" src={tomo.avatar} alt="your tomo img" />
       </div>
       <button onClick={handleClick}>Feed Me!</button>
     </div>
