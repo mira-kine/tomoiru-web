@@ -24,6 +24,7 @@
   padding: 1rem;
   margin: 1rem;
   width: 80vw;
+  min-height: 30vh;
 }
 
 #foodlist {
@@ -35,6 +36,6 @@
   font-weight: 500;
 }
 
-#foodlist-ul {
-  list-style: none;
+#foodlist-div {
+  padding: 0.3rem;
 }
