@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../views/FoodRecs/FoodRecs';
 import '../views/FoodRecs/FoodRecs.css';
 import { useFood } from '../hooks/useFood.jsx';
-import SelectedFood from './SelectedFood';
+import SelectedFood from '../views/SelectedFood/SelectedFood';
 import { useNavigate } from 'react-router-dom';
 
 export default function FoodList({ foodsList }) {
