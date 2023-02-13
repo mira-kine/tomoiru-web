@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  height: 80vh;
+  justify-content: center;
+  height: 90vh;
 }
 
 #name-container {
@@ -19,19 +20,28 @@
   /* set min width */
 }
 
-#options-container {
+#welcome-form {
   display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
+  flex-direction: column;
+  align-items: center;
   height: 50vh;
-  padding: 1rem;
-  margin: 1rem;
+  width: 50vw;
 }
 
-.tomo-option {
+#options-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#options-container > button {
+  padding: 0.7rem;
+  max-width: 5vw;
+  max-height: 10vh;
+}
+
+/* .tomo-option {
   height: 20vh;
   cursor: pointer;
   border: 1px solid black;
   padding: 1rem;
   /* responsive? */
-}

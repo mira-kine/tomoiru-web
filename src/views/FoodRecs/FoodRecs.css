@@ -83,15 +83,3 @@
   align-content: center;
   justify-content: center;
 }
-#options-container {
-  display: flex;
-  justify-content: space-between;
-  max-width: 10vw;
-  max-height: 5vh;
-}
-
-#options-container > button {
-  padding: 0.7rem;
-  max-width: 5vw;
-  max-height: 5vh;
-}
