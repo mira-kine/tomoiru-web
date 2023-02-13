@@ -23,6 +23,7 @@ export default function AuthForm({
       setLoading(true);
       await onSubmit(email, password);
     } catch (error) {
+      setErrorMessage('Error Signing In. Try again.');
       throw error;
     } finally {
       setLoading(false);

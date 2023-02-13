@@ -2,8 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from '../../api/users';
 
-export default function NavBar() {
+export default function NavBar({ isLoggedIn }) {
   const navigateTo = useNavigate();
+
   const handleSignOut = async () => {
     await signOut();
     localStorage.setItem('authenticated', false);
@@ -11,9 +12,16 @@ export default function NavBar() {
   };
 
   return (
-    <div>
-      <h1>NavBar</h1>
-      <button onClick={handleSignOut}>Sign Out</button>
-    </div>
+    <>
+      {isLoggedIn ? (
+        <div>
+          <button onClick={handleSignOut}>Sign Out</button>
+        </div>
+      ) : (
+        <div>
+          <h2>NavBar</h2>
+        </div>
+      )}
+    </>
   );
 }
