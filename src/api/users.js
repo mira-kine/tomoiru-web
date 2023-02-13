@@ -36,6 +36,7 @@ export async function signUpUser(email, password) {
     error,
   } = await client.auth.signUp({ email, password });
   if (error) throw error;
+
   return user;
 }
 
