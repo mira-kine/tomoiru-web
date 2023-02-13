@@ -9,9 +9,7 @@ export function useFood(foodId) {
     const fetchFoodById = async () => {
       try {
         const resp = await getFoodById(foodId);
-        console.log('resp', resp);
         setSelectedFood(resp);
-        // setFoodId(resp);
         setLoading(false);
       } catch (error) {
         throw error;
@@ -20,7 +18,7 @@ export function useFood(foodId) {
       }
     };
     fetchFoodById();
-  }, []);
+  }, [foodId]);
 
   if (loading) {
     <h1>Loading...</h1>;

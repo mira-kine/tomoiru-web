@@ -37,9 +37,24 @@ export async function getFoodById(id) {
   }
 }
 
-export async function eatFood() {
+export async function eatFood(currentUser, selectedFood) {
   try {
     // create function
+    // what do I want to do? :
+    // when I eat the food, add into my_foods and set as done = true
+    // add cute animation
+    // go back to dashboard
+    // happiness meter goes up (later on)
+    // if you eat the food, add to my_foods by id = rec_id in my_foods
+    // insert according to session user
+    //  set done as true
+    const resp = await client.from('my_foods').insert({
+      uuid: currentUser.id,
+      name: selectedFood.name,
+      rec_id: selectedFood.id,
+      done: true,
+    });
+    return checkError(resp);
   } catch (error) {
     throw error;
   }
