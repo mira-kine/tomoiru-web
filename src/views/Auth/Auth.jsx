@@ -9,33 +9,31 @@ import './Auth.css';
 export default function Auth({ isSigningUp = false }) {
   const { currentUser, setCurrentUser } = useUser();
   const navigateTo = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleAuth = async (email, password) => {
     try {
       if (isSigningUp) {
+        setLoading(true);
         await signUpUser(email, password);
-        setLoading(false);
+        await new Promise((r) => setTimeout(r, 1500));
         navigateTo('/signin');
       } else {
+        setLoading(true);
         const resp = await signInUser(email, password);
         setCurrentUser({
           id: resp.id,
           email: resp.email,
           has_tomo: resp.has_tomo,
         });
-        // if (currentUser.has_tomo === false) {
-        //   // if boolean false, first time tomo
-        //   setLoading(false);
-        //   navigateTo('/welcome');
-        // } else {
-        //   // if boolean true, has tomo already
-        //   navigateTo('/dashboard');
-        // }
+        await new Promise((r) => setTimeout(r, 1500));
 
-        currentUser?.has_tomo
-          ? navigateTo('/welcome')
-          : navigateTo('/dashboard');
+        setLoading(false);
+        if (currentUser.has_tomo) {
+          navigateTo('/dashboard');
+        } else {
+          navigateTo('/welcome');
+        }
       }
     } catch (error) {
       throw error;
@@ -47,15 +45,27 @@ export default function Auth({ isSigningUp = false }) {
   }
 
   return (
-    <div id="view-auth-container">
-      <h2 id="signin-title">Meet your Tomo!</h2>
-      <div id="google-button-div">
-        <AuthForm
-          onSubmit={handleAuth}
-          label={isSigningUp ? 'Sign Up!' : 'Meet your Tomo'}
-          isSigningUp={isSigningUp}
-        />
-      </div>
+    <div>
+      {loading ? (
+        <div id="loading-page">
+          {/* <span id="loading-logo">Loading....</span> */}
+          <img
+            src={require(`../../assets/ol-sushi.GIF`)}
+            alt="sushi loading prop"
+          />
+        </div>
+      ) : (
+        <div id="view-auth-container">
+          <h2 id="signin-title">Meet your Tomo!</h2>
+          <div id="google-button-div">
+            <AuthForm
+              onSubmit={handleAuth}
+              label={isSigningUp ? 'Sign Up!' : 'Meet your Tomo'}
+              isSigningUp={isSigningUp}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

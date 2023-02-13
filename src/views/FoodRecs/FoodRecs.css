@@ -2,33 +2,49 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 85vh;
   align-content: center;
   justify-content: center;
   border: 1px 1px black solid;
   border-color: black;
-  background-color: blueviolet;
+  height: 100%;
+}
+
+#avatar-div {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  position: absolute;
+  left: 16%;
 }
 
 #avatar {
   display: flex;
-  background-color: aqua;
+  align-items: center;
   padding: 1rem;
   margin: 2rem;
+}
+
+#tomo-image {
+  height: 10vh;
 }
 
 #food-list-container {
   display: flex;
   flex-direction: column;
-  background-color: crimson;
+  background-color: azure;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 25vw;
+  min-height: 35vh;
+  overflow-y: scroll;
+  left: 20%;
   padding: 1rem;
-  margin: 1rem;
-  width: 80vw;
-  min-height: 30vh;
 }
 
 #foodlist {
   overflow-y: scroll;
+  margin: 0.5rem;
 }
 
 #food-name {
@@ -38,6 +54,7 @@
 
 #foodlist-div {
   padding: 0.3rem;
+  margin: 0.3rem;
 }
 
 #foodlist-with-display {
@@ -69,10 +86,12 @@
 #options-container {
   display: flex;
   justify-content: space-between;
+  max-width: 10vw;
+  max-height: 5vh;
 }
 
 #options-container > button {
   padding: 0.7rem;
-  max-width: 30vw;
+  max-width: 5vw;
   max-height: 5vh;
 }

@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import '../../views/Auth/Auth.css';
 import { useForm } from '../../hooks/useForm';
 
-export default function AuthForm({
-  onSubmit,
-  authenticated,
-  isSigningUp,
-  label,
-}) {
+export default function AuthForm({ onSubmit, isSigningUp, label }) {
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({
     email: '',

@@ -4,7 +4,9 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-  height: 80vh;
+  height: 100vh;
+  background-image: url(../../assets/welcome.jpg);
+  background-size: cover;
 }
 
 #home-container {
@@ -19,11 +21,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: azure;
+  padding: 1rem;
+  border-radius: 30%;
+}
+
+#title-container > h2 {
+  z-index: 1;
+  font-weight: bold;
 }
 
 #signin-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+}
+
+.signin-box {
+  background-color: azure;
+  padding: 1.2rem;
+  border-radius: 30%;
+  margin: 1rem;
 }
