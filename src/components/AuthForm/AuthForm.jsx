@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../../views/Auth/Auth.css';
 import { useForm } from '../../hooks/useForm';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function AuthForm({ onSubmit, isSigningUp, label }) {
   const [loading, setLoading] = useState(false);
@@ -8,6 +9,7 @@ export default function AuthForm({ onSubmit, isSigningUp, label }) {
     email: '',
     password: '',
   });
+  const navigateTo = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +58,13 @@ export default function AuthForm({ onSubmit, isSigningUp, label }) {
           <button type="submit" disabled={loading}>
             {label}
           </button>
+          <div>
+            {!isSigningUp ? (
+              <Link to="/signup">No account? Sign up!</Link>
+            ) : (
+              <Link to="/signin">Already have a Tomo? Sign in!</Link>
+            )}
+          </div>
         </form>
       </div>
     </>

@@ -27,7 +27,6 @@ export default function Auth({ isSigningUp = false }) {
           has_tomo: resp.has_tomo,
         });
         await new Promise((r) => setTimeout(r, 1500));
-
         setLoading(false);
         if (currentUser.has_tomo) {
           navigateTo('/dashboard');
@@ -49,8 +48,8 @@ export default function Auth({ isSigningUp = false }) {
       {loading ? (
         <div id="loading-page">
           <img
-            src={require(`../../assets/ol-sushi.GIF`)}
-            alt="sushi loading prop"
+            src={require(`../../assets/hamtaro.gif`)}
+            alt="hamtaro loading prop"
           />
         </div>
       ) : (
