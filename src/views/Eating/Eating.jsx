@@ -7,11 +7,11 @@ export default function Eating() {
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    setInterval(() => {
+    const timer = setInterval(() => {
       setShowEating(false);
       navigateTo('/dashboard');
     }, 2700);
-    // clearTimeout(timer);
+    clearTimeout(timer);
   }, []);
 
   return <div>{showEating && <EatingAnimation />}</div>;
