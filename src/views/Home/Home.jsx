@@ -10,10 +10,10 @@ export default function Home() {
           <h2>Welcome to Tomoiru!</h2>
         </div>
         <div id="signin-container">
-          <span id="signin-box">
+          <span className="signin-box">
             <Link to="/signin">Sign In?</Link>
           </span>
-          <span id="signup-box">
+          <span className="signin-box">
             <Link to="/signup">Sign Up?</Link>
           </span>
         </div>
