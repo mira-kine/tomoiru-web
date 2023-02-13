@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { eatFood } from '../../api/foods';
 import { useUser } from '../../context/UserProvider';
 import { useFood } from '../../hooks/useFood';
+import './SelectedFood.css';
 
 export default function SelectedFood() {
   // refactoring to set food display by ID
@@ -31,7 +32,7 @@ export default function SelectedFood() {
           <div id="food-description-container">
             <span>{selectedFood.description}</span>
           </div>
-          <div id="options-container">
+          <div id="button-options-container">
             <button onClick={handleBack}>Back to list</button>
             <button onClick={() => handleEat(selectedFood)}>Eat this!</button>
           </div>

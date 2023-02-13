@@ -13,6 +13,7 @@ export default function FoodList({ foodsList }) {
 
   return (
     <div>
+      <h1>Pick something to eat!</h1>
       <div id="foodlist">
         {foodsList.map((item) => {
           return (

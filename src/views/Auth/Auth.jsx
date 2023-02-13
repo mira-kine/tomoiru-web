@@ -16,7 +16,7 @@ export default function Auth({ isSigningUp = false }) {
       if (isSigningUp) {
         setLoading(true);
         await signUpUser(email, password);
-        // await new Promise((r) => setTimeout(r, 1500));
+        await new Promise((r) => setTimeout(r, 1500));
         navigateTo('/signin');
       } else {
         setLoading(true);
@@ -26,7 +26,7 @@ export default function Auth({ isSigningUp = false }) {
           email: resp.email,
           has_tomo: resp.has_tomo,
         });
-        // await new Promise((r) => setTimeout(r, 1500));
+        await new Promise((r) => setTimeout(r, 1500));
 
         setLoading(false);
         if (currentUser.has_tomo) {
