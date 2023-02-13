@@ -7,7 +7,6 @@ import './Dashboard.css';
 export default function Dashboard() {
   const { currentUser } = useUser();
   const tomo = useTomo({ currentUser });
-  const [loading, setLoading] = useState(true);
   const navigateTo = useNavigate();
 
   // option to choose foods - button to direct to food recs
