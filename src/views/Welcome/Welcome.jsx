@@ -37,7 +37,7 @@ export default function Welcome() {
   return (
     <div id="welcome-container">
       <h1>Welcome! Let's create a tomo</h1>
-      <form onSubmit={handleCreate}>
+      <form onSubmit={handleCreate} id="welcome-form">
         {/* user picks one -> whatever the name is,  */}
         <div id="options-container">
           {tomoOptions.map((img, index) => {
