@@ -12,7 +12,7 @@ export default function Eating() {
       navigateTo('/dashboard');
     }, 2700);
     clearTimeout(timer);
-  }, []);
+  });
 
   return <div>{showEating && <EatingAnimation />}</div>;
 }
