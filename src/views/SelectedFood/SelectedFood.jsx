@@ -10,8 +10,6 @@ export default function SelectedFood() {
   const { selectedFood } = useFood(id);
   const { currentUser } = useUser();
   const navigateTo = useNavigate();
-  console.log('currentUser', currentUser);
-  console.log('selectedFood', selectedFood);
 
   const handleBack = () => {
     navigateTo('/food-recs');

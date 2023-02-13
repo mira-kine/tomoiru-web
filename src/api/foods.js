@@ -47,7 +47,7 @@ export async function eatFood(currentUser, selectedFood) {
     // happiness meter goes up (later on)
     // if you eat the food, add to my_foods by id = rec_id in my_foods
     // insert according to session user
-    //  set done as false
+    //  set done as true
     const resp = await client.from('my_foods').insert({
       uuid: currentUser.id,
       name: selectedFood.name,
