@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import '../../views/Auth/Auth.css';
 import { useForm } from '../../hooks/useForm';
+import { Link } from 'react-router-dom';
 
-export default function AuthForm({ onSubmit, isSigningUp, label }) {
+export default function AuthForm({
+  errorMessage,
+  setErrorMessage,
+  onSubmit,
+  isSigningUp,
+  label,
+}) {
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({
     email: '',
@@ -37,6 +44,7 @@ export default function AuthForm({ onSubmit, isSigningUp, label }) {
           </>
         )}
         <form onSubmit={handleSubmit}>
+          {errorMessage && <p>{errorMessage}</p>}
           <input
             type="email"
             name="email"
@@ -56,6 +64,13 @@ export default function AuthForm({ onSubmit, isSigningUp, label }) {
           <button type="submit" disabled={loading}>
             {label}
           </button>
+          <div>
+            {!isSigningUp ? (
+              <Link to="/signup">No account? Sign up!</Link>
+            ) : (
+              <Link to="/signin">Already have a Tomo? Sign in!</Link>
+            )}
+          </div>
         </form>
       </div>
     </>
