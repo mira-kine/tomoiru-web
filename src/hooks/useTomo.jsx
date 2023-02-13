@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getTomo } from '../api/tomos';
 
 export function useTomo({ currentUser }) {
@@ -18,6 +18,10 @@ export function useTomo({ currentUser }) {
     };
     fetchTomo();
   }, [currentUser]);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   return { ...tomo };
 }
