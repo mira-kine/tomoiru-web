@@ -10,6 +10,7 @@
   - Talk with your Tomo!
 ### Features in the future:
   - Learn japanese using the chat!
+  - I'm learning React Native so that you can find it in your app store and share with friends
 ### Skills used:
   - React
   - React-Router-Dom
