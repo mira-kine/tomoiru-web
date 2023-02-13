@@ -16,7 +16,7 @@ function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
 
   return (
-    <UserProvider>
+    <UserProvider isLoggedIn={isLoggedIn}>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

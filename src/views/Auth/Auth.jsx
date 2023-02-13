@@ -7,10 +7,10 @@ import { useUser } from '../../context/UserProvider';
 import './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
-  const { setCurrentUser } = useUser();
-  const navigateTo = useNavigate();
+  const { setIsLoggedIn } = useUser();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const navigateTo = useNavigate();
 
   const handleAuth = async (email, password) => {
     try {
@@ -26,16 +26,11 @@ export default function Auth({ isSigningUp = false }) {
         setLoading(false);
       } else {
         setLoading(true);
-        // sign in user and set it
-        const resp = await signInUser(email, password);
-        setCurrentUser({
-          id: resp.id,
-          email: resp.email,
-          has_tomo: resp.has_tomo,
-        });
+        // sign in user
+        await signInUser(email, password);
         await new Promise((r) => setTimeout(r, 1500));
-        setLoading(false);
         navigateTo('/dashboard');
+        setLoading(false);
       }
     } catch (error) {
       setErrorMessage('Something went wrong. Please try again.');

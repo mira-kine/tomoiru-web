@@ -21,8 +21,8 @@ export async function getCurrentUser() {
     if (error) {
       throw error;
     }
-
     if (data) {
+      localStorage.setItem('authenticated', true);
       return { ...data };
     }
   } catch (error) {
@@ -51,6 +51,7 @@ export async function signInUser(email, password) {
 
 export async function signOut() {
   const { error } = await client.auth.signOut();
+
   if (error) throw error;
 }
 

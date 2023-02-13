@@ -8,15 +8,16 @@ function UserProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(
-    localStorage.getItem('authenticated') || false
+    localStorage.setItem('authenticated', false) || false
   );
 
   useEffect(() => {
     const fetchUser = async () => {
       const user = await getCurrentUser();
-      setCurrentUser(user);
-      setAuthenticated(true);
-      localStorage.setItem('authenticated', true);
+      if (authenticated === true) {
+        setAuthenticated(true);
+        setCurrentUser(user);
+      }
     };
     fetchUser();
     setLoading(false);
@@ -27,9 +28,7 @@ function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider
-      value={{ currentUser, setCurrentUser, authenticated }}
-    >
+    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
     </UserContext.Provider>
   );
