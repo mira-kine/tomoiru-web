@@ -1,4 +1,4 @@
-import { client } from './client';
+import { client, checkError } from './client';
 
 // get User
 export async function getCurrentUser() {
@@ -32,12 +32,14 @@ export async function getCurrentUser() {
 
 export async function signUpUser(email, password) {
   const {
-    data: { user },
-    error,
+    data: { user, error },
   } = await client.auth.signUp({ email, password });
-  if (error) throw error;
 
-  return user;
+  if (error) {
+    throw error;
+  }
+
+  return checkError(user);
 }
 
 export async function signInUser(email, password) {

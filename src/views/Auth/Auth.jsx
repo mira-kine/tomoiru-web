@@ -7,7 +7,7 @@ import { useUser } from '../../context/UserProvider';
 import './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
-  const { setIsLoggedIn } = useUser();
+  const { currentUser } = useUser();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigateTo = useNavigate();

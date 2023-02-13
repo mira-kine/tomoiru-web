@@ -10,7 +10,6 @@ import FoodRecs from './views/FoodRecs/FoodRecs';
 import SelectedFood from './views/SelectedFood/SelectedFood';
 import Eating from './views/Eating/Eating';
 import NavBar from './components/NavBar/NavBar';
-import BlockSignUpRoute from './utils/BlockSignUp';
 
 function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
@@ -21,14 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Auth />} />
-        <Route
-          path="/signup"
-          element={
-            <BlockSignUpRoute>
-              <Auth isSigningUp />
-            </BlockSignUpRoute>
-          }
-        />
+        <Route path="/signup" element={<Auth isSigningUp />} />
         <Route
           path="/dashboard"
           element={
