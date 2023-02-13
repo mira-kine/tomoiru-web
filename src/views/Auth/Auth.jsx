@@ -3,11 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { signUpUser } from '../../api/users';
 import { signInUser } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
-import { useUser } from '../../context/UserProvider';
 import './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
-  const { currentUser } = useUser();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigateTo = useNavigate();

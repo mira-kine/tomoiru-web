@@ -21,7 +21,7 @@ function UserProvider({ children }) {
     };
     fetchUser();
     setLoading(false);
-  }, []);
+  }, [authenticated]);
 
   if (loading) {
     return <h1>loading...</h1>;
