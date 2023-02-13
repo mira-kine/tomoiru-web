@@ -1,4 +1,4 @@
-#home-view-container {
+#dashboard-view-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,23 +7,22 @@
   height: 80vh;
 }
 
-#home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem;
-}
-
 #title-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-#signin-container {
+#tomo-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 50vw;
+}
+
+#tomo-img {
+  max-height: 35vh;
+  max-width: 35vw;
 }

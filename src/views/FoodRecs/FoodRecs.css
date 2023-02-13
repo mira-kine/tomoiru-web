@@ -1,0 +1,78 @@
+#foodlist-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  align-content: center;
+  justify-content: center;
+  border: 1px 1px black solid;
+  border-color: black;
+  background-color: blueviolet;
+}
+
+#avatar {
+  display: flex;
+  background-color: aqua;
+  padding: 1rem;
+  margin: 2rem;
+}
+
+#food-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: crimson;
+  padding: 1rem;
+  margin: 1rem;
+  width: 80vw;
+  min-height: 30vh;
+}
+
+#foodlist {
+  overflow-y: scroll;
+}
+
+#food-name {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+#foodlist-div {
+  padding: 0.3rem;
+}
+
+#foodlist-with-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+#food-description-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  max-height: 20vh;
+  overflow-y: scroll hidden;
+  /* hide scroll */
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+#options-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#options-container > button {
+  padding: 0.7rem;
+  max-width: 30vw;
+  max-height: 5vh;
+}
