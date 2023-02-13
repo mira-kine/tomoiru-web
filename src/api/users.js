@@ -31,7 +31,10 @@ export async function getCurrentUser() {
 }
 
 export async function signUpUser(email, password) {
-  const { user, error } = await client.auth.signUp({ email, password });
+  const {
+    data: { user },
+    error,
+  } = await client.auth.signUp({ email, password });
   if (error) throw error;
   return user;
 }
