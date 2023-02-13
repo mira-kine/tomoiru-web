@@ -48,7 +48,6 @@ export default function Auth({ isSigningUp = false }) {
     <div>
       {loading ? (
         <div id="loading-page">
-          {/* <span id="loading-logo">Loading....</span> */}
           <img
             src={require(`../../assets/ol-sushi.GIF`)}
             alt="sushi loading prop"

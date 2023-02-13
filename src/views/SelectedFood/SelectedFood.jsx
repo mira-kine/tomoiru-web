@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { eatFood } from '../../api/foods';
 import { useUser } from '../../context/UserProvider';
@@ -11,6 +11,7 @@ export default function SelectedFood() {
   const { selectedFood } = useFood(id);
   const { currentUser } = useUser();
   const navigateTo = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleBack = () => {
     navigateTo('/food-recs');
@@ -18,26 +19,38 @@ export default function SelectedFood() {
 
   const handleEat = async () => {
     //   set some type of selectedFood
+    setLoading(true);
     await eatFood(currentUser, selectedFood);
-    navigateTo(`/eating`);
+    await new Promise((r) => setTimeout(r, 1500));
+    setLoading(false);
+    navigateTo('/dashboard');
   };
 
   return (
     <>
-      <div id="foodlist-with-display">
-        <div key={selectedFood.id}>
-          <div id="button-container">
-            <span id="food-name">{selectedFood.name}</span>
-          </div>
-          <div id="food-description-container">
-            <span>{selectedFood.description}</span>
-          </div>
-          <div id="button-options-container">
-            <button onClick={handleBack}>Back to list</button>
-            <button onClick={() => handleEat(selectedFood)}>Eat this!</button>
+      {loading ? (
+        <div id="loading-page">
+          <img
+            src={require(`../../assets/ol-sushi.GIF`)}
+            alt="sushi loading prop"
+          />
+        </div>
+      ) : (
+        <div id="foodlist-with-display">
+          <div key={selectedFood.id}>
+            <div id="button-container">
+              <span id="food-name">{selectedFood.name}</span>
+            </div>
+            <div id="food-description-container">
+              <span>{selectedFood.description}</span>
+            </div>
+            <div id="button-options-container">
+              <button onClick={handleBack}>Back to list</button>
+              <button onClick={() => handleEat(selectedFood)}>Eat this!</button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
