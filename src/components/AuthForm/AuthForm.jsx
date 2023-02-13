@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import '../../views/Auth/Auth.css';
 import { useForm } from '../../hooks/useForm';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export default function AuthForm({ onSubmit, isSigningUp, label }) {
+export default function AuthForm({
+  errorMessage,
+  setErrorMessage,
+  onSubmit,
+  isSigningUp,
+  label,
+}) {
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({
     email: '',
     password: '',
   });
-  const navigateTo = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +44,7 @@ export default function AuthForm({ onSubmit, isSigningUp, label }) {
           </>
         )}
         <form onSubmit={handleSubmit}>
+          {errorMessage && <p>{errorMessage}</p>}
           <input
             type="email"
             name="email"

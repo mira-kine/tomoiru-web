@@ -7,35 +7,33 @@ import { useUser } from '../../context/UserProvider';
 import './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
-  const { currentUser, setCurrentUser } = useUser();
-  const navigateTo = useNavigate();
+  const { currentUser } = useUser();
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigateTo = useNavigate();
 
   const handleAuth = async (email, password) => {
     try {
       if (isSigningUp) {
         setLoading(true);
+        // sign up user
         await signUpUser(email, password);
+        // wait for information to come
         await new Promise((r) => setTimeout(r, 1500));
+        // navigate to welcome page
         navigateTo('/signin');
+        // loading false
+        setLoading(false);
       } else {
         setLoading(true);
-        const resp = await signInUser(email, password);
-        setCurrentUser({
-          id: resp.id,
-          email: resp.email,
-          has_tomo: resp.has_tomo,
-        });
+        // sign in user
+        await signInUser(email, password);
         await new Promise((r) => setTimeout(r, 1500));
+        navigateTo('/dashboard');
         setLoading(false);
-        if (currentUser.has_tomo) {
-          navigateTo('/dashboard');
-        } else {
-          navigateTo('/welcome');
-        }
       }
     } catch (error) {
-      throw error;
+      setErrorMessage('Something went wrong. Please try again.');
     }
   };
 
@@ -60,6 +58,8 @@ export default function Auth({ isSigningUp = false }) {
               onSubmit={handleAuth}
               label={isSigningUp ? 'Sign Up!' : 'Meet your Tomo'}
               isSigningUp={isSigningUp}
+              errorMessage={errorMessage}
+              setErrorMessage={setErrorMessage}
             />
           </div>
         </div>

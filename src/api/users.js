@@ -1,4 +1,4 @@
-import { client } from './client';
+import { client, checkError } from './client';
 
 // get User
 export async function getCurrentUser() {
@@ -21,8 +21,8 @@ export async function getCurrentUser() {
     if (error) {
       throw error;
     }
-
     if (data) {
+      localStorage.setItem('authenticated', true);
       return { ...data };
     }
   } catch (error) {
@@ -32,11 +32,14 @@ export async function getCurrentUser() {
 
 export async function signUpUser(email, password) {
   const {
-    data: { user },
-    error,
+    data: { user, error },
   } = await client.auth.signUp({ email, password });
-  if (error) throw error;
-  return user;
+
+  if (error) {
+    throw error;
+  }
+
+  return checkError(user);
 }
 
 export async function signInUser(email, password) {
@@ -50,6 +53,7 @@ export async function signInUser(email, password) {
 
 export async function signOut() {
   const { error } = await client.auth.signOut();
+
   if (error) throw error;
 }
 
