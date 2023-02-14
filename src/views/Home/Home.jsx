@@ -7,15 +7,15 @@ export default function Home() {
     <div id="home-view-container">
       <div id="home-container">
         <div id="title-container">
-          <h2>Welcome to Tomoiru!</h2>
-        </div>
-        <div id="signin-container">
-          <span className="signin-box">
-            <Link to="/signin">Sign In?</Link>
-          </span>
-          <span className="signin-box">
-            <Link to="/signup">Sign Up?</Link>
-          </span>
+          <span>Welcome to Tomoiru!</span>
+          <div id="signin-container">
+            <div className="signin-box">
+              <Link to="/signin">Sign In?</Link>
+            </div>
+            <div className="signin-box">
+              <Link to="/signup">Sign Up?</Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

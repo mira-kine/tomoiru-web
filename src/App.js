@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <UserProvider>
-      <NavBar isLoggedIn={isLoggedIn} />
+      {/* <NavBar isLoggedIn={isLoggedIn} /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Auth />} />

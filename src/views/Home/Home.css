@@ -1,11 +1,10 @@
 #home-view-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  align-content: center;
   justify-content: center;
-  height: 100vh;
-  background-image: url(../../assets/welcome.jpg);
+  height: 100%;
+  width: 100%;
+  background-image: url(../../assets/dark_japan.gif);
   background-size: cover;
 }
 
@@ -13,22 +12,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-content: center;
   justify-content: center;
   margin: 2rem;
+  height: 40vh;
+  width: 55vw;
+  background-color: rgba(var(--chick), 0.3);
+  z-index: 2;
 }
 
 #title-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  background-color: azure;
-  padding: 1rem;
-  border-radius: 30%;
+  background-color: rgba(var(--melon), 1);
+  height: 70%;
+  width: 80%;
 }
 
-#title-container > h2 {
-  z-index: 1;
-  font-weight: bold;
+#title-container > span {
+  font-family: 'Tamagotchi-Normal', monospace, sans-serif;
+  font-size: x-large;
 }
 
 #signin-container {
@@ -37,8 +42,13 @@
 }
 
 .signin-box {
-  background-color: azure;
+  background-color: rgba(var(--blush), 0.8);
   padding: 1.2rem;
   border-radius: 30%;
   margin: 1rem;
+}
+
+.active {
+  pointer-events: none;
+  cursor: default;
 }
