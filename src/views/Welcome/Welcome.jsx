@@ -28,8 +28,6 @@ export default function Welcome() {
   // currying - handler itself is the pointer, not an anonymous function ON the onClick event
   // state rerenders correct data asynchronously
 
-  console.log('pickedTomo', pickedTomo);
-
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
