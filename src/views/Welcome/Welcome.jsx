@@ -40,7 +40,7 @@ export default function Welcome() {
         <h1>Welcome! Let's create a tomo</h1>
       </div>
       <div className="form-container">
-        <form onSubmit={handleCreate} id="welcome-form">
+        <form id="welcome-form">
           {/* user picks one -> whatever the name is,  */}
           <TomoCarousel handleClick={handleClick} />
 
@@ -55,7 +55,7 @@ export default function Welcome() {
           </div>
         </form>
       </div>
-      <button onClick={handleCreate}>Can't wait to meet you!</button>
+      <button onClick={() => handleCreate()}>Can't wait to meet you!</button>
     </div>
   );
 }
