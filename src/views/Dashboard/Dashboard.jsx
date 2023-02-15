@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTomo } from '../../hooks/useTomo';
-import { useUser } from '../../context/UserProvider';
 import NavBar from '../../components/NavBar/NavBar';
 import './Dashboard.css';
+import { useUser } from '../../context/UserProvider';
 
 export default function Dashboard() {
   const { currentUser } = useUser();

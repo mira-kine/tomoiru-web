@@ -17,7 +17,7 @@ export default function TomoCarousel({ handleClick }) {
                 key={img.id}
                 src={require(`../../assets/${img.path}`)}
                 alt={img.name}
-                onClick={() => handleClick(index)}
+                onClick={handleClick(index)}
               />
             </CarouselItem>
           );

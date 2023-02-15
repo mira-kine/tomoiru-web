@@ -8,19 +8,17 @@ export const CarouselItem = ({ children, width }) => {
     </div>
   );
 };
-
 const Carousel = ({ children }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const updateIndex = (newIndex) => {
-    if (newIndex < 0) {
+    if (newIndex < 0 || newIndex > children.length - 1) {
       newIndex = 0;
     } else if (newIndex >= React.Children.count(children)) {
       newIndex = React.Children.count(children) - 1;
     }
     setActiveIndex(newIndex);
   };
-
   return (
     <>
       <div className="carousel">

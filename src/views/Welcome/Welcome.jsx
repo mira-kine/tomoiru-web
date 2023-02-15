@@ -2,26 +2,33 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { uploadTomo } from '../../api/avatar';
 import { createTomo } from '../../api/tomos';
-import { useUser } from '../../context/UserProvider';
 import TomoCarousel from '../../components/TomoCarousel/TomoCarousel';
+import { useUser } from '../../context/UserProvider';
 import './Welcome.css';
 
 export default function Welcome() {
   // some tomo state
   const [tomo, setTomo] = useState({});
-  const { currentUser } = useUser();
   const [pickedTomo, setPickedTomo] = useState('');
-  // form to create Tomo
   const navigateTo = useNavigate();
+  const { currentUser } = useUser();
+
+  // form to create Tomo
+  const handleClick = (id) => () => {
+    setPickedTomo((prevState) => {
+      return { ...prevState, tomoId: `tomo${id}` };
+    });
+  };
 
   const updateTomo = (key, value) => {
     tomo[key] = value;
     setTomo({ ...tomo });
   };
 
-  const handleClick = (id) => {
-    setPickedTomo(`tomo${id}`);
-  };
+  // currying - handler itself is the pointer, not an anonymous function ON the onClick event
+  // state rerenders correct data asynchronously
+
+  console.log('pickedTomo', pickedTomo);
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -40,9 +47,9 @@ export default function Welcome() {
         <h1>Welcome! Let's create a tomo</h1>
       </div>
       <div className="form-container">
-        <form id="welcome-form">
+        <TomoCarousel handleClick={handleClick} />
+        <form id="welcome-form" onSubmit={(e) => handleCreate(e)}>
           {/* user picks one -> whatever the name is,  */}
-          <TomoCarousel handleClick={handleClick} />
 
           <div id="name-container">
             <input
@@ -55,7 +62,7 @@ export default function Welcome() {
           </div>
         </form>
       </div>
-      <button onClick={() => handleCreate()}>Can't wait to meet you!</button>
+      <button onClick={(e) => handleCreate(e)}>Can't wait to meet you!</button>
     </div>
   );
 }

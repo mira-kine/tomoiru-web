@@ -3,15 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { getCurrentUser, signUpUser } from '../../api/users';
 import { signInUser } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import { useAuth } from '../../context/AuthProvider';
 import { useUser } from '../../context/UserProvider';
 import './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const { setCurrentUser } = useUser();
+  const { setAuthToken } = useAuth();
+
   const navigateTo = useNavigate();
-  const { currentUser, setCurrentUser } = useUser();
-  console.log('currentUser', currentUser);
 
   const handleAuth = async (email, password) => {
     try {
@@ -28,26 +30,33 @@ export default function Auth({ isSigningUp = false }) {
       } else {
         setLoading(true);
         // sign in user
-        await signInUser(email, password);
-        const resp = await getCurrentUser();
-        await setCurrentUser({
-          id: resp.id,
-          email: resp.email,
-          has_tomo: resp.has_tomo,
-        });
-        await new Promise((r) => setTimeout(r, 1500));
-        if (currentUser.has_tomo) {
-          navigateTo('/dashboard');
+        const resp = await signInUser(email, password);
+        if (resp) {
+          const user = await getCurrentUser();
+          setAuthToken(true);
+          setCurrentUser({
+            id: user.id,
+            email: user.email,
+            has_tomo: user.has_tomo,
+          });
+          if (user.has_tomo) {
+            navigateTo('/dashboard');
+          } else {
+            navigateTo('/welcome');
+          }
         } else {
-          navigateTo('/welcome');
+          // error message
+          setErrorMessage('Something went wrong. Please try again.');
         }
-        setLoading(false);
+        // useEffect?
+        await new Promise((r) => setTimeout(r, 1500));
       }
     } catch (error) {
       setErrorMessage('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
-  console.log('currrentUser', currentUser);
 
   return (
     <>
