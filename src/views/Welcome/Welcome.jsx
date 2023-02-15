@@ -36,21 +36,25 @@ export default function Welcome() {
 
   return (
     <div id="welcome-container">
-      <h1>Welcome! Let's create a tomo</h1>
-      <form onSubmit={handleCreate} id="welcome-form">
-        {/* user picks one -> whatever the name is,  */}
-        <TomoCarousel handleClick={handleClick} />
+      <div id="welcome-title-container">
+        <h1>Welcome! Let's create a tomo</h1>
+      </div>
+      <div className="form-container">
+        <form onSubmit={handleCreate} id="welcome-form">
+          {/* user picks one -> whatever the name is,  */}
+          <TomoCarousel handleClick={handleClick} />
 
-        <div id="name-container">
-          <input
-            placeholder="name"
-            value={tomo.name}
-            name="name"
-            type="text"
-            onInput={(e) => updateTomo('name', e.target.value)}
-          />
-        </div>
-      </form>
+          <div id="name-container">
+            <input
+              placeholder="name"
+              value={tomo.name}
+              name="name"
+              type="text"
+              onInput={(e) => updateTomo('name', e.target.value)}
+            />
+          </div>
+        </form>
+      </div>
       <button onClick={handleCreate}>Can't wait to meet you!</button>
     </div>
   );

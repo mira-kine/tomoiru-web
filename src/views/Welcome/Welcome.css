@@ -21,24 +21,17 @@
   /* set min width */
 }
 
-#welcome-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 50vh;
-  width: 50vw;
-}
-
 #options-container {
-  display: flex;
-  justify-content: space-between;
+  background-color: blueviolet;
+  height: 50vmin;
+  width: 50vmin;
 }
 
-#options-container > button {
+/* #options-container > button {
   padding: 0.7rem;
   max-width: 5vw;
   max-height: 10vh;
-}
+} */
 
 /* .tomo-option {
   height: 20vh;
@@ -46,3 +39,15 @@
   border: 1px solid black;
   padding: 1rem;
   /* responsive? */
+
+#welcome-title-container {
+  font-family: 'Tamagotchi-Normal', monospace;
+}
+
+/* .form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+} */

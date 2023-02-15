@@ -41,14 +41,10 @@ export default function Auth({ isSigningUp = false }) {
     }
   };
 
-  if (loading) {
-    <h1>Loading...</h1>;
-  }
-
   return (
     <>
       {loading ? (
-        <div id="loading-page">
+        <div className="loading-page">
           <img
             src={require(`../../assets/hamtaro.gif`)}
             alt="hamtaro loading prop"
@@ -58,7 +54,7 @@ export default function Auth({ isSigningUp = false }) {
         <div id="auth-view-container">
           <div id="auth-container">
             <div id="auth-title-container">
-              <div id="auth-form-div">
+              <div id="auth-form-div" className="form-container">
                 <AuthForm
                   onSubmit={handleAuth}
                   label={isSigningUp ? 'Sign Up!' : 'Meet your Tomo'}
