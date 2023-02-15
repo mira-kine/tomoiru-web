@@ -7,17 +7,12 @@ export default function HomeButton() {
     <>
       <Link to="/signin" className="button button--piyo">
         <div className="button__wrapper">
-          <span className="button__text">Sign In?</span>
-        </div>
-        <div className="characterBox">
-          <div className="character wakeup">
-            <div className="character__face"></div>
-          </div>
+          <span className="button__text">Sign In</span>
         </div>
       </Link>
       <Link to="/signup" className="button button--piyo">
         <div className="button__wrapper">
-          <span className="button__text">Sign Up?</span>
+          <span className="button__text">Sign Up</span>
         </div>
         <div className="characterBox">
           <div className="character">
@@ -25,6 +20,14 @@ export default function HomeButton() {
           </div>
         </div>
       </Link>
+
+      <div className="piyo">
+        <div className="characterBox">
+          <div className="character wakeup">
+            <div className="character__face"></div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

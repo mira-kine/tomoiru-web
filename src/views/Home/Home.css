@@ -24,8 +24,10 @@
 #title-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-around;
   background-color: rgba(var(--melon), 1);
   height: 70%;
   width: 80%;
