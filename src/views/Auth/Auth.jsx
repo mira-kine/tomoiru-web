@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signUpUser } from '../../api/users';
+import { getCurrentUser, signUpUser } from '../../api/users';
 import { signInUser } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useUser } from '../../context/UserProvider';
@@ -10,7 +10,8 @@ export default function Auth({ isSigningUp = false }) {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigateTo = useNavigate();
-  const { currentUser } = useUser();
+  const { currentUser, setCurrentUser } = useUser();
+  console.log('currentUser', currentUser);
 
   const handleAuth = async (email, password) => {
     try {
@@ -28,6 +29,12 @@ export default function Auth({ isSigningUp = false }) {
         setLoading(true);
         // sign in user
         await signInUser(email, password);
+        const resp = await getCurrentUser();
+        await setCurrentUser({
+          id: resp.id,
+          email: resp.email,
+          has_tomo: resp.has_tomo,
+        });
         await new Promise((r) => setTimeout(r, 1500));
         if (currentUser.has_tomo) {
           navigateTo('/dashboard');
@@ -40,6 +47,7 @@ export default function Auth({ isSigningUp = false }) {
       setErrorMessage('Something went wrong. Please try again.');
     }
   };
+  console.log('currrentUser', currentUser);
 
   return (
     <>
