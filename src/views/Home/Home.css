@@ -39,16 +39,5 @@
 #signin-container {
   display: flex;
   justify-content: space-between;
-}
-
-.signin-box {
-  background-color: rgba(var(--blush), 0.8);
-  padding: 1.2rem;
-  border-radius: 30%;
-  margin: 1rem;
-}
-
-.active {
-  pointer-events: none;
-  cursor: default;
+  min-height: 30%;
 }

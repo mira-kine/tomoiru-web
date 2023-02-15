@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import HomeButton from '../../components/Buttons/HomeButton/HomeButton';
 import './Home.css';
 
 export default function Home() {
@@ -9,12 +9,7 @@ export default function Home() {
         <div id="title-container">
           <span>Welcome to Tomoiru!</span>
           <div id="signin-container">
-            <div className="signin-box">
-              <Link to="/signin">Sign In?</Link>
-            </div>
-            <div className="signin-box">
-              <Link to="/signup">Sign Up?</Link>
-            </div>
+            <HomeButton />
           </div>
         </div>
       </div>
