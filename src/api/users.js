@@ -23,7 +23,7 @@ export async function getCurrentUser() {
     }
     if (data) {
       localStorage.setItem('authenticated', true);
-      return { ...data };
+      return data;
     }
   } catch (error) {
     throw error;

@@ -1,4 +1,4 @@
-#loading-page {
+.loading-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@
   width: 80%;
 }
 
-#auth-form-div {
+.form-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
