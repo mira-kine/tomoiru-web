@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTomo } from '../../hooks/useTomo';
-import { useUser } from '../../context/UserProvider';
 import NavBar from '../../components/NavBar/NavBar';
 import './Dashboard.css';
 
-export default function Dashboard() {
-  const { currentUser } = useUser();
+export default function Dashboard({ currentUser }) {
+  // const [loading, setLoading] = useState(false);
   const tomo = useTomo({ currentUser });
   const navigateTo = useNavigate();
 
