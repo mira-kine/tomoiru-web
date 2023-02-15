@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Tamagotchi-Normal';
+  src: url('fonts/webfontkit-20230214-180236/tamagotchi_normal-webfont.woff2')
+      format('woff2'),
+    url('fonts/webfontkit-20230214-180236/tamagotchi_normal-webfont.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -16,4 +26,14 @@ code {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+}
+
+:root {
+  --blush: 241, 225, 226;
+  --periwinkle: 202, 194, 253;
+  --hot-pink: 248, 146, 249;
+  --melon: 186, 235, 214;
+  --peach: 247, 179, 144;
+  --white: 255, 255, 255;
+  --chick: 253, 246, 180;
 }

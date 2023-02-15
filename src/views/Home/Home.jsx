@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import HomeButton from '../../components/Buttons/HomeButton/HomeButton';
 import './Home.css';
 
 export default function Home() {
@@ -7,15 +7,11 @@ export default function Home() {
     <div id="home-view-container">
       <div id="home-container">
         <div id="title-container">
-          <h2>Welcome to Tomoiru!</h2>
-        </div>
-        <div id="signin-container">
-          <span className="signin-box">
-            <Link to="/signin">Sign In?</Link>
-          </span>
-          <span className="signin-box">
-            <Link to="/signup">Sign Up?</Link>
-          </span>
+          <span id="title">Welcome to Tomoiru!</span>
+          <div id="signin-container">
+            <HomeButton />
+          </div>
+          <span id="sub-title">Where you can travel Japan with a friend</span>
         </div>
       </div>
     </div>
