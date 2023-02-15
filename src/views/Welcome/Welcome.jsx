@@ -14,15 +14,21 @@ export default function Welcome() {
   const { currentUser } = useUser();
 
   // form to create Tomo
+  const handleClick = (id) => () => {
+    setPickedTomo((prevState) => {
+      return { ...prevState, tomoId: `tomo${id}` };
+    });
+  };
 
   const updateTomo = (key, value) => {
     tomo[key] = value;
     setTomo({ ...tomo });
   };
 
-  const handleClick = (id) => {
-    setPickedTomo(`tomo${id}`);
-  };
+  // currying - handler itself is the pointer, not an anonymous function ON the onClick event
+  // state rerenders correct data asynchronously
+
+  console.log('pickedTomo', pickedTomo);
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -42,7 +48,7 @@ export default function Welcome() {
       </div>
       <div className="form-container">
         <TomoCarousel handleClick={handleClick} />
-        <form id="welcome-form">
+        <form id="welcome-form" onSubmit={(e) => handleCreate(e)}>
           {/* user picks one -> whatever the name is,  */}
 
           <div id="name-container">
@@ -56,7 +62,7 @@ export default function Welcome() {
           </div>
         </form>
       </div>
-      <button onClick={() => handleCreate()}>Can't wait to meet you!</button>
+      <button onClick={(e) => handleCreate(e)}>Can't wait to meet you!</button>
     </div>
   );
 }
