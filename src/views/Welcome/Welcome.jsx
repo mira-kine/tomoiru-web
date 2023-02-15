@@ -40,9 +40,9 @@ export default function Welcome() {
         <h1>Welcome! Let's create a tomo</h1>
       </div>
       <div className="form-container">
+        <TomoCarousel handleClick={handleClick} />
         <form id="welcome-form">
           {/* user picks one -> whatever the name is,  */}
-          <TomoCarousel handleClick={handleClick} />
 
           <div id="name-container">
             <input
