@@ -40,7 +40,7 @@ export default function Auth({ isSigningUp = false }) {
   }
 
   return (
-    <div>
+    <>
       {loading ? (
         <div id="loading-page">
           <img
@@ -49,19 +49,22 @@ export default function Auth({ isSigningUp = false }) {
           />
         </div>
       ) : (
-        <div id="view-auth-container">
-          <h2 id="signin-title">Meet your Tomo!</h2>
-          <div id="google-button-div">
-            <AuthForm
-              onSubmit={handleAuth}
-              label={isSigningUp ? 'Sign Up!' : 'Meet your Tomo'}
-              isSigningUp={isSigningUp}
-              errorMessage={errorMessage}
-              setErrorMessage={setErrorMessage}
-            />
+        <div id="auth-view-container">
+          <div id="auth-container">
+            <div id="auth-title-container">
+              <div id="auth-form-div">
+                <AuthForm
+                  onSubmit={handleAuth}
+                  label={isSigningUp ? 'Sign Up!' : 'Meet your Tomo'}
+                  isSigningUp={isSigningUp}
+                  errorMessage={errorMessage}
+                  setErrorMessage={setErrorMessage}
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
