@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTomo } from '../../hooks/useTomo';
 import { useUser } from '../../context/UserProvider';
+import NavBar from '../../components/NavBar/NavBar';
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -16,6 +17,7 @@ export default function Dashboard() {
 
   return (
     <div id="dashboard-view-container">
+      <NavBar />
       <div id="title-container">
         <h1>What shall we do today?</h1>
       </div>

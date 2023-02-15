@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
@@ -9,14 +9,12 @@ import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
 import SelectedFood from './views/SelectedFood/SelectedFood';
 import Eating from './views/Eating/Eating';
-import NavBar from './components/NavBar/NavBar';
 
 function App() {
   const isLoggedIn = localStorage.getItem('authenticated');
 
   return (
     <UserProvider>
-      <NavBar isLoggedIn={isLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Auth />} />
