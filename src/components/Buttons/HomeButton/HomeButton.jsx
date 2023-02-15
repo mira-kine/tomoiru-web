@@ -15,19 +15,11 @@ export default function HomeButton() {
           <span className="button__text">Sign Up</span>
         </div>
         <div className="characterBox">
-          <div className="character">
-            <div className="character__face"></div>
-          </div>
-        </div>
-      </Link>
-
-      <div className="piyo">
-        <div className="characterBox">
           <div className="character wakeup">
             <div className="character__face"></div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

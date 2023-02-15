@@ -33,9 +33,15 @@
   width: 80%;
 }
 
-#title-container > span {
+#title {
   font-family: 'Tamagotchi-Normal', monospace, sans-serif;
-  font-size: x-large;
+  font-size: 2vw;
+}
+
+#sub-title {
+  font-family: monospace;
+  font-size: 1.8vmin;
+  padding: 0.2em;
 }
 
 #signin-container {

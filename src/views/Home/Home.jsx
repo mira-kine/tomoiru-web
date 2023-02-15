@@ -7,10 +7,11 @@ export default function Home() {
     <div id="home-view-container">
       <div id="home-container">
         <div id="title-container">
-          <span>Welcome to Tomoiru!</span>
+          <span id="title">Welcome to Tomoiru!</span>
           <div id="signin-container">
             <HomeButton />
           </div>
+          <span id="sub-title">Where you can travel Japan with a friend</span>
         </div>
       </div>
     </div>

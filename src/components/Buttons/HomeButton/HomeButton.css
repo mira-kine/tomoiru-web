@@ -13,13 +13,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 60px;
+  width: 10vmax;
+  height: 7vmin;
   box-sizing: border-box;
   text-decoration: none;
   border-radius: 40px;
   background: var(--main_color);
   font-family: monospace;
+  margin: 0.7rem;
 }
 .button::before {
   content: '';
@@ -31,7 +32,6 @@
   margin: auto 0;
   width: 24px;
   height: 24px;
-  background: var(--base_color);
   transition: all ease 0.2s;
 }
 .button__wrapper {
@@ -65,7 +65,7 @@
 .button__text {
   position: relative;
   z-index: 3;
-  font-size: 0.8rem;
+  font-size: 1.7vmin;
   letter-spacing: 4px;
   color: var(--base_color);
   transition: all 0.3s ease;
