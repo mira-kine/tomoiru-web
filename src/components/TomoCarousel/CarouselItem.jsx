@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Carousel.css';
 
 export const CarouselItem = ({ children, width }) => {
-  console.log('children', children);
   return (
     <div className="carousel-item" style={{ width: width }}>
       {children}
@@ -19,7 +18,6 @@ const Carousel = ({ children }) => {
       newIndex = React.Children.count(children) - 1;
     }
     setActiveIndex(newIndex);
-    console.log('newIndex', newIndex);
   };
   return (
     <>

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { uploadTomo } from '../../api/avatar';
 import { createTomo } from '../../api/tomos';
-import { getCurrentUser } from '../../api/users';
 import TomoCarousel from '../../components/TomoCarousel/TomoCarousel';
+import { useUser } from '../../context/UserProvider';
 import './Welcome.css';
 
 export default function Welcome() {
@@ -11,19 +11,8 @@ export default function Welcome() {
   const [tomo, setTomo] = useState({});
   const [pickedTomo, setPickedTomo] = useState('');
   const navigateTo = useNavigate();
-  const [currentUser, setCurrentUser] = useState({});
+  const { currentUser } = useUser();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await getCurrentUser();
-      if (user) {
-        setCurrentUser(user);
-      } else {
-        return;
-      }
-    };
-    fetchUser();
-  }, []);
   // form to create Tomo
 
   const updateTomo = (key, value) => {
