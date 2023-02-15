@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { uploadTomo } from '../../api/avatar';
 import { createTomo } from '../../api/tomos';
-import { useUser } from '../../context/UserProvider';
 import TomoCarousel from '../../components/TomoCarousel/TomoCarousel';
+import { useUser } from '../../context/UserProvider';
 import './Welcome.css';
 
 export default function Welcome() {
   // some tomo state
   const [tomo, setTomo] = useState({});
-  const { currentUser } = useUser();
   const [pickedTomo, setPickedTomo] = useState('');
-  // form to create Tomo
   const navigateTo = useNavigate();
+  const { currentUser } = useUser();
+
+  // form to create Tomo
 
   const updateTomo = (key, value) => {
     tomo[key] = value;

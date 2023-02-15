@@ -9,58 +9,59 @@ import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
 import SelectedFood from './views/SelectedFood/SelectedFood';
 import Eating from './views/Eating/Eating';
+import { AuthProvider } from './context/AuthProvider';
 
 function App() {
-  const isLoggedIn = localStorage.getItem('authenticated');
-
   return (
-    <UserProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<Auth />} />
-        <Route path="/signup" element={<Auth isSigningUp />} />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/welcome"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <Welcome />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/food-recs"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <FoodRecs />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/food-recs/:id"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <SelectedFood />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/eating"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <Eating />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </UserProvider>
+    <AuthProvider>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<Auth />} />
+          <Route path="/signup" element={<Auth isSigningUp />} />
+          <Route
+            path="/welcome"
+            element={
+              <PrivateRoute>
+                <Welcome />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/food-recs"
+            element={
+              <PrivateRoute>
+                <FoodRecs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/food-recs/:id"
+            element={
+              <PrivateRoute>
+                <SelectedFood />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/eating"
+            element={
+              <PrivateRoute>
+                <Eating />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </UserProvider>
+    </AuthProvider>
   );
 }
 

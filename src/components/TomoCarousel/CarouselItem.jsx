@@ -8,7 +8,6 @@ export const CarouselItem = ({ children, width }) => {
     </div>
   );
 };
-
 const Carousel = ({ children }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -20,7 +19,6 @@ const Carousel = ({ children }) => {
     }
     setActiveIndex(newIndex);
   };
-
   return (
     <>
       <div className="carousel">
