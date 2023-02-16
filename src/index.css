@@ -14,6 +14,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 code {
@@ -24,14 +27,14 @@ code {
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 :root {
   --blush: 241, 225, 226;
   --periwinkle: 187, 211, 251;
-  --hot-pink: 248, 146, 249;
+  --hotpink: 248, 146, 249;
   --melon: 186, 235, 214;
   --peach: 247, 179, 144;
   --white: 255, 255, 255;
