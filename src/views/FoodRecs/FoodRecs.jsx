@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFoods } from '../../api/foods';
 import FoodList from '../../components/FoodList';
-import YourTomo from '../../components/YourTomo';
+import { YourTomo } from '../../components/YourTomo/YourTomo';
 import { useUser } from '../../context/UserProvider';
 import { useTomo } from '../../hooks/useTomo';
 import './FoodRecs.css';
