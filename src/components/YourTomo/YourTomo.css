@@ -31,6 +31,18 @@
   filter: blur(5px);
 }
 
+.tomo__highlight {
+  position: absolute;
+  border-radius: 90% 10% 10% 90%;
+  background-color: rgba(var(--white), 0.5);
+  width: 22px;
+  height: 85px;
+  transform: rotate(35deg);
+  top: 10px;
+  left: 10%;
+  filter: blur(1px);
+}
+
 .screen {
   position: absolute;
   top: 27%;
