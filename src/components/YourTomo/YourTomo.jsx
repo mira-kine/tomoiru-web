@@ -5,8 +5,6 @@ export function YourTomo({ tomo }) {
   return (
     <>
       <div className="tomo">
-        <div class="loop"></div>
-
         <div className="tomo__inner">
           <div className="tomo__shadow">
             <div className="tomo__highlight"></div>
@@ -23,7 +21,7 @@ export function YourTomo({ tomo }) {
             </div>
 
             <div className="screen__inner">
-              <div>
+              <div className="tomo-img-div">
                 <img id="tomo-img" src={tomo.avatar} alt="your tomo img" />
               </div>
             </div>

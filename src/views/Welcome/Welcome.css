@@ -5,7 +5,9 @@
   align-content: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgba(var(--periwinkle), 1);
+  background-image: url(../../assets/dark_japan.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #name-container {

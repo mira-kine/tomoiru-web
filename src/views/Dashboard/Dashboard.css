@@ -13,8 +13,8 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  background-image: url(../../assets/grid.png);
-  background-color: rgba(var(--periwinkle));
+  background-image: url(../../assets/dark_japan.gif);
+  background-size: cover;
   height: 100vh;
   width: 100vw;
   position: absolute;
