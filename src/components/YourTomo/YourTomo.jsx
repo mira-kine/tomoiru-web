@@ -1,7 +1,7 @@
 import React from 'react';
 import './YourTomo.css';
 
-export function YourTomo({ tomo }) {
+export function YourTomo({ tomo, handleClick }) {
   return (
     <>
       <div className="tomo">
@@ -12,7 +12,7 @@ export function YourTomo({ tomo }) {
 
           <div className="screen">
             <div className="crack crack--top"></div>
-            <div className="crack, crack--right">
+            <div className="crack crack--right">
               <div className="crack__line"></div>
             </div>
             <div className="crack crack--bottom"></div>
@@ -27,9 +27,15 @@ export function YourTomo({ tomo }) {
             </div>
 
             <div className="buttons">
-              <div className="dashbutton dashbutton--a"></div>
-              <div className="dashbutton dashbutton--b"></div>
-              <div className="dashbutton dashbutton--c"></div>
+              <div className="dashbutton" id="button-a"></div>
+              <button
+                className="dashbutton"
+                id="button-b"
+                onClick={handleClick}
+              >
+                Feed
+              </button>
+              <div className="dashbutton" id="button-c"></div>
             </div>
           </div>
         </div>

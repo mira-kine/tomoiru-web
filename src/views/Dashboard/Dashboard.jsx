@@ -23,8 +23,7 @@ export default function Dashboard() {
         <div id="dashboard-title-container">
           <h1>What shall we do today?</h1>
         </div>
-        <YourTomo tomo={tomo} />
-        <button onClick={handleClick}>Feed Me!</button>
+        <YourTomo tomo={tomo} handleClick={handleClick} />
       </div>
     </div>
   );
