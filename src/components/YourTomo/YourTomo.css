@@ -121,3 +121,8 @@
 .dashbutton:active {
   background-color: rgba(var(--peach));
 }
+
+#button-a {
+  position: relative;
+  bottom: 24px;
+}
