@@ -1,48 +1,3 @@
-#foodlist-page-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  border: 1px 1px black solid;
-  border-color: black;
-  height: 100%;
-}
-
-#avatar-div {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  position: absolute;
-  left: 16%;
-}
-
-#avatar {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  margin: 2rem;
-}
-
-#tomo-image {
-  height: 10vh;
-}
-
-#food-list-container {
-  display: flex;
-  flex-direction: column;
-  background-color: azure;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  max-width: 50vw;
-  min-height: 35vh;
-  overflow-y: scroll;
-  left: 10%;
-  top: 50%;
-  padding: 1rem;
-}
-
 #foodlist {
   overflow-y: scroll;
   margin: 0.5rem;
@@ -83,16 +38,4 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-}
-
-#foodrecs-bg {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  background-image: url(../../assets/dark_japan.gif);
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
 }
