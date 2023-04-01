@@ -3,7 +3,6 @@
   height: 496px;
   background: rgba(var(--periwinkle), 1);
   text-align: center;
-  position: fixed;
   border-radius: 54% / 65% 65% 47% 47%;
   top: 20%;
   box-shadow: 10px 0 20px 10px rgba(var(--neonblue), 0.2);
@@ -13,7 +12,7 @@
 .tomo__inner {
   width: 400px;
   height: 496px;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   border-radius: 54% / 65% 65% 47% 47%;

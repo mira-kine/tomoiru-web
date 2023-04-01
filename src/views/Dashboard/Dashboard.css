@@ -1,31 +1,25 @@
 .home-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  border: 1px 1px black solid;
-  border-color: black;
   height: 100%;
 }
 
 .home-container-bg {
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  align-content: center;
+  flex-wrap: wrap;
   background-image: url(../../assets/dark_japan.gif);
   background-size: cover;
   height: 100vh;
   width: 100vw;
-  position: absolute;
+  overflow: hidden;
 }
 
 .tomo-container {
   display: flex;
   align-items: center;
   align-content: center;
-  position: absolute;
   left: 16%;
 }
 
@@ -36,21 +30,12 @@
   margin: 2rem;
 }
 
-/* #tomo-image {
-  height: 10vh;
-} */
-
 .interactive-box {
   display: flex;
   flex-direction: column;
   background-color: azure;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  max-width: 50vw;
-  min-height: 35vh;
+  width: 35vw;
+  height: 45vh;
   overflow-y: scroll;
-  left: 10%;
-  top: 50%;
   padding: 1rem;
 }
