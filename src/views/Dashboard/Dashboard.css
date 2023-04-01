@@ -1,14 +1,15 @@
-#dashboard-view-container {
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  height: 100vh;
+  justify-content: center;
+  border: 1px 1px black solid;
+  border-color: black;
+  height: 100%;
 }
 
-#dashboard-bg {
+.home-container-bg {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,26 +21,36 @@
   position: absolute;
 }
 
-#dashboard-title-container {
+.tomo-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  position: absolute;
+  left: 16%;
+}
+
+.tomo-div {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 2rem;
+}
+
+/* #tomo-image {
+  height: 10vh;
+} */
+
+.interactive-box {
   display: flex;
   flex-direction: column;
+  background-color: azure;
+  position: relative;
+  align-items: center;
   justify-content: center;
-  height: 10vmax;
-  font-family: 'Tamagotchi-Normal', monospace;
-}
-
-#tomo-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  position: absolute;
-  width: 640px;
-  height: 635px;
-  left: 125px;
-  top: 137px;
-}
-
-#tomo-img {
-  max-height: 35vh;
-  max-width: 35vw;
+  max-width: 50vw;
+  min-height: 35vh;
+  overflow-y: scroll;
+  left: 10%;
+  top: 50%;
+  padding: 1rem;
 }

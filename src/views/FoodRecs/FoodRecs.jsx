@@ -5,6 +5,7 @@ import { YourTomo } from '../../components/YourTomo/YourTomo';
 import { useUser } from '../../context/UserProvider';
 import { useTomo } from '../../hooks/useTomo';
 import './FoodRecs.css';
+import '../Dashboard/Dashboard.css';
 
 export default function FoodRecs() {
   const { currentUser } = useUser();
@@ -26,14 +27,14 @@ export default function FoodRecs() {
   }
 
   return (
-    <div id="foodlist-page-container">
-      <div id="foodrecs-bg">
-        <div id="avatar-div">
-          <div id="avatar">
+    <div class="home-container">
+      <div class="home-container-bg">
+        <div class="tomo-container">
+          <div class="tomo-div">
             <YourTomo tomo={tomo} />
           </div>
         </div>
-        <div id="food-list-container">
+        <div class="interactive-box">
           <FoodList foodsList={foodsList} />
         </div>
       </div>
