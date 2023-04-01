@@ -112,6 +112,11 @@
   outline: 0;
   transition: background-color 200ms ease, box-shadow 200ms ease;
   font-family: monospace;
+  font-weight: bold;
+}
+
+.dashbutton:hover {
+  color: rgba(174, 184, 214, 0.5);
 }
 
 .dashbutton:active {
