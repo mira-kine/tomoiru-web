@@ -1,44 +1,59 @@
-#dashboard-view-container {
+.home-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  height: 100vh;
-}
-
-#dashboard-bg {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
+  height: 100%;
   background-image: url(../../assets/dark_japan.gif);
   background-size: cover;
+}
+
+.home-container-bg {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
-  position: absolute;
+  overflow: hidden;
+}
+
+.tomo-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  left: 16%;
+  margin: 1rem;
+}
+
+.tomo-div {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 2rem;
+}
+
+.interactive-box {
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  width: 35vw;
+  height: 45vh;
+  overflow-y: scroll;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 #dashboard-title-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  height: 10vmax;
-  font-family: 'Tamagotchi-Normal', monospace;
+  color: rgba(var(--white), 1);
+  font-family: 'Tamagotchi-Normal', monospace, sans-serif;
+  width: 100vw;
+  height: 15vh;
+  margin-left: 1rem;
 }
 
-#tomo-container {
+.user-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 50vh;
-  width: 50vmin;
-  background-color: rgba(var(--chick), 0.8);
-}
-
-#tomo-img {
-  max-height: 35vh;
-  max-width: 35vw;
+  flex-wrap: wrap;
 }

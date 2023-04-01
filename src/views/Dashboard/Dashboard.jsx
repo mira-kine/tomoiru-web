@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useTomo } from '../../hooks/useTomo';
 import { YourTomo } from '../../components/YourTomo/YourTomo';
 import NavBar from '../../components/NavBar/NavBar';
-import './Dashboard.css';
 import { useUser } from '../../context/UserProvider';
+import './Dashboard.css';
 
 export default function Dashboard() {
   const { currentUser } = useUser();
@@ -17,13 +17,20 @@ export default function Dashboard() {
   };
 
   return (
-    <div id="dashboard-view-container">
-      <div id="dashboard-bg">
-        <NavBar />
-        <div id="dashboard-title-container">
-          <h1>What shall we do today?</h1>
+    <div class="home-container">
+      <NavBar />
+      <div id="dashboard-title-container">
+        <h1>What shall we do today?</h1>
+      </div>
+      <div class="home-container-bg">
+        <div class="user-container">
+          <div class="tomo-container">
+            <div class="tomo-div">
+              <YourTomo tomo={tomo} handleClick={handleClick} />
+            </div>
+          </div>
+          <div class="interactive-box">Chat box goes here</div>
         </div>
-        <YourTomo tomo={tomo} handleClick={handleClick} />
       </div>
     </div>
   );

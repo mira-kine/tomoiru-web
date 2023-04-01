@@ -1,7 +1,7 @@
 import React from 'react';
 import './YourTomo.css';
 
-export function YourTomo({ tomo, handleClick }) {
+export function YourTomo({ tomo, handleClick, handleHome }) {
   return (
     <>
       <div className="tomo">
@@ -27,7 +27,9 @@ export function YourTomo({ tomo, handleClick }) {
             </div>
 
             <div className="buttons">
-              <div className="dashbutton" id="button-a"></div>
+              <button className="dashbutton" id="button-a" onClick={handleHome}>
+                Home
+              </button>
               <button
                 className="dashbutton"
                 id="button-b"
