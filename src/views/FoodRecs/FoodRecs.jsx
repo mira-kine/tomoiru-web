@@ -27,13 +27,15 @@ export default function FoodRecs() {
 
   return (
     <div id="foodlist-page-container">
-      <div id="avatar-div">
-        <div id="avatar">
-          <YourTomo tomo={tomo} />
+      <div id="foodrecs-bg">
+        <div id="avatar-div">
+          <div id="avatar">
+            <YourTomo tomo={tomo} />
+          </div>
         </div>
-      </div>
-      <div id="food-list-container">
-        <FoodList foodsList={foodsList} />
+        <div id="food-list-container">
+          <FoodList foodsList={foodsList} />
+        </div>
       </div>
     </div>
   );

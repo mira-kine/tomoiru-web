@@ -32,13 +32,16 @@ code {
 }
 
 :root {
-  --blush: 241, 225, 226;
+  --white: 255, 255, 255;
+  --licorice: 34, 23, 19;
+  --armygreen: 112, 115, 84;
+  --neonblue: 77, 77, 255;
+  /* main color theme starts here */
   --periwinkle: 187, 211, 251;
   --melon: 186, 235, 214;
   --peach: 247, 179, 144;
-  --white: 255, 255, 255;
   --chick: 253, 246, 180;
-  --armygreen: 112, 115, 84;
-  --licorice: 34, 23, 19;
-  --neonblue: 77, 77, 255;
 }
+/* armygreen for tamagotchi background */
+/* neonblue for all highlights */
+/* licorice for type */
