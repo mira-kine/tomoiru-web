@@ -1,5 +1,7 @@
 .carousel {
   overflow: hidden;
+  background-color: rgba(var(--melon), 0.5);
+  width: 56vw;
 }
 
 .inner {
@@ -12,10 +14,20 @@
   align-items: center;
   justify-content: center;
   height: 300px;
-  color: white;
 }
 
 .indicators {
   display: flex;
   justify-content: center;
+  width: 100%;
+}
+
+#wrapper--carousel--prev {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#wrapper--carousel--next {
+  display: flex;
+  justify-content: flex-start;
 }

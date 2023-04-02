@@ -5,6 +5,7 @@ import { createTomo } from '../../api/tomos';
 import TomoCarousel from '../../components/TomoCarousel/TomoCarousel';
 import { useUser } from '../../context/UserProvider';
 import './Welcome.css';
+import '../../components/Buttons/HomeButton/HomeButton';
 
 export default function Welcome() {
   // some tomo state
@@ -60,7 +61,14 @@ export default function Welcome() {
           </div>
         </form>
       </div>
-      <button onClick={(e) => handleCreate(e)}>Can't wait to meet you!</button>
+      <div className="button__wrapper">
+        <button
+          className="button button--piyo"
+          onClick={(e) => handleCreate(e)}
+        >
+          <span className="button__text">Thank you!</span>
+        </button>
+      </div>
     </div>
   );
 }

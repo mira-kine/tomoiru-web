@@ -44,9 +44,6 @@ export default function Auth({ isSigningUp = false }) {
           } else {
             navigateTo('/welcome');
           }
-        } else {
-          // error message
-          setErrorMessage('Something went wrong. Please try again.');
         }
         // useEffect?
         await new Promise((r) => setTimeout(r, 1500));
