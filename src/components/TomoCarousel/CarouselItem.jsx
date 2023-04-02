@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Carousel.css';
+import '../Buttons/HomeButton/HomeButton';
 
 export const CarouselItem = ({ children, width }) => {
   return (
@@ -31,16 +32,24 @@ const Carousel = ({ children }) => {
           })}
         </div>
         <div className="indicators">
-          <button
-            onClick={() => {
-              updateIndex(activeIndex - 1);
-            }}
-          >
-            Previous Tomo
-          </button>
-          <button onClick={() => updateIndex(activeIndex + 1)}>
-            Next Tomo
-          </button>
+          <div className="button__wrapper" id="wrapper--carousel--prev">
+            <button
+              className="button button--piyo"
+              onClick={() => {
+                updateIndex(activeIndex - 1);
+              }}
+            >
+              <span className="button__text">Previous Tomo</span>
+            </button>
+          </div>
+          <div className="button__wrapper" id="wrapper--carousel--next">
+            <button
+              className="button button--piyo"
+              onClick={() => updateIndex(activeIndex + 1)}
+            >
+              <span className="button__text">Next Tomo</span>
+            </button>
+          </div>
         </div>
       </div>
     </>

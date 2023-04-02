@@ -12,19 +12,26 @@ export default function FoodList({ foodsList }) {
   };
 
   return (
-    <div>
-      <h1>Pick something to eat!</h1>
-      <div id="foodlist">
-        {foodsList.map((item) => {
-          return (
-            <div key={item.id}>
-              <button id="foodlist-div" onClick={() => handleDisplay(item)}>
-                <span id="food-name">{item.name}</span>
-              </button>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      {foodsList ? (
+        <>
+          <h1>Pick something to eat!</h1>
+          <div id="foodlist">
+            {foodsList.map((item) => {
+              return (
+                <div key={item.id}>
+                  <button id="foodlist-div" onClick={() => handleDisplay(item)}>
+                    <span id="food-name">{item.name}</span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <h1>Nothing here yet!</h1>
+      )}
+      ;
+    </>
   );
 }
