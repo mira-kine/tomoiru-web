@@ -18,3 +18,4 @@
   - Pipedream
   - CSS
   - Notion API
+  - Figma
