@@ -29,7 +29,7 @@ export default function Dashboard() {
               <YourTomo tomo={tomo} handleClick={handleClick} />
             </div>
           </div>
-          <div class="interactive-box">Chat box goes here</div>
+          {/* <div class="interactive-box">Chat box goes here</div> */}
         </div>
       </div>
     </div>
