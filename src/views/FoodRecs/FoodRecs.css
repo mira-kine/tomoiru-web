@@ -1,5 +1,5 @@
 #foodlist {
-  overflow-y: scroll;
+  overflow-y: scroll hidden;
   margin: 0.5rem;
 }
 
@@ -11,6 +11,7 @@
 #foodlist-div {
   padding: 0.3rem;
   margin: 0.3rem;
+  font-family: monospace;
 }
 
 #foodlist-with-display {
