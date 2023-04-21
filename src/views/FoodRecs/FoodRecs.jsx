@@ -10,47 +10,51 @@ import NavBar from '../../components/NavBar/NavBar';
 import { useNavigate } from 'react-router-dom';
 
 export default function FoodRecs() {
-  const { currentUser } = useUser();
-  const tomo = useTomo({ currentUser });
-  const [foodsList, setFoodsList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigateTo = useNavigate();
+  // const { currentUser } = useUser();
+  // const tomo = useTomo({ currentUser });
+  // const [foodsList, setFoodsList] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const navigateTo = useNavigate();
 
-  useEffect(() => {
-    const fetchFoods = async () => {
-      const resp = await getFoods();
-      setFoodsList(resp);
-      setLoading(false);
-    };
-    fetchFoods();
-  }, []);
+  // useEffect(() => {
+  //   const fetchFoods = async () => {
+  //     const resp = await getFoods();
+  //     setFoodsList(resp);
+  //   };
+  //   fetchFoods();
+  //   setLoading(false);
+  // }, []);
 
-  const handleHome = () => {
-    navigateTo('/dashboard');
-  };
+  // console.log('currentUser', currentUser);
 
-  if (loading) {
-    <h1>Loading...</h1>;
+  // const handleHome = () => {
+  //   navigateTo('/dashboard');
+  // };
 
-    return (
-      <div class="home-container">
-        <NavBar />
-        <div id="dashboard-title-container">
-          <h1>What shall we do today?</h1>
-        </div>
-        <div class="home-container-bg">
-          <div class="user-container">
-            <div class="tomo-container">
-              <div class="tomo-div">
-                <YourTomo tomo={tomo} handleHome={handleHome} />
-              </div>
-            </div>
-            <div class="interactive-box">
-              <FoodList foodsList={foodsList} />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   <h1>Loading...</h1>;
+
+  return (
+    // <div className="home-container">
+    //   <NavBar />
+    //   <div id="dashboard-title-container">
+    //     <h1>What shall we do today?</h1>
+    //   </div>
+    //   <div className="home-container-bg">
+    //     <div className="user-container">
+    //       <div className="tomo-container">
+    //         <div className="tomo-div">
+    //           <YourTomo tomo={tomo} handleHome={handleHome} />
+    //         </div>
+    //       </div>
+    //       <div className="interactive-box">
+    //         <FoodList foodsList={foodsList} />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <>
+      <h1>Hello</h1>
+    </>
+  );
 }

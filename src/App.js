@@ -36,7 +36,7 @@ function App() {
             }
           />
           <Route
-            path="/food-recs"
+            path="/dashboard/food-recs"
             element={
               <PrivateRoute>
                 <FoodRecs />
@@ -44,7 +44,7 @@ function App() {
             }
           />
           <Route
-            path="/food-recs/:id"
+            path="/dashboard/food-recs/:id"
             element={
               <PrivateRoute>
                 <SelectedFood />
