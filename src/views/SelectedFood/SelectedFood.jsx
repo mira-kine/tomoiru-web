@@ -29,18 +29,20 @@ export default function SelectedFood() {
   return (
     <>
       {loading ? (
-        <div id="loading-page">
-          <img
-            src={require(`../../assets/ol-sushi.GIF`)}
-            alt="sushi loading prop"
-          />
+        <div className="home-container">
+          <div id="loading-page">
+            <img
+              src={require(`../../assets/ol-sushi.GIF`)}
+              alt="sushi loading prop"
+            />
+          </div>
         </div>
       ) : (
         <div className="home-container">
           <div id="foodlist-with-display">
             <div key={selectedFood.id} id="foodlist-container">
               <div id="button-container">
-                <span id="food-name">{selectedFood.name}</span>
+                <span id="food-name-title">{selectedFood.name}</span>
               </div>
               <div id="food-description-container">
                 <span>{selectedFood.description}</span>
