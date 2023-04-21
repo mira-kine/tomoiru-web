@@ -8,7 +8,7 @@ export default function FoodList({ foodsList }) {
   const navigateTo = useNavigate();
 
   const handleDisplay = (item) => {
-    navigateTo(`/food-recs/${item.id}`);
+    navigateTo(`/dashboard/food-recs/${item.id}`);
   };
 
   return (
