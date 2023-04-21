@@ -13,7 +13,7 @@ export default function Dashboard() {
 
   // option to choose foods - button to direct to food recs
   const handleClick = () => {
-    navigateTo('/food-recs');
+    navigateTo('/dashboard/food-recs');
   };
 
   return (

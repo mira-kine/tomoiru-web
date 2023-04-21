@@ -37,9 +37,9 @@
   background-color: azure;
   width: 35vw;
   height: 45vh;
-  overflow-y: scroll;
   padding: 1rem;
   margin: 1rem;
+  font-family: monospace;
 }
 
 #dashboard-title-container {

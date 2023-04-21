@@ -31,7 +31,6 @@ export default function FoodList({ foodsList }) {
       ) : (
         <h1>Nothing here yet!</h1>
       )}
-      ;
     </>
   );
 }
