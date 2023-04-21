@@ -20,8 +20,14 @@ export default function FoodList({ foodsList }) {
             {foodsList.map((item) => {
               return (
                 <div key={item.id}>
-                  <button id="foodlist-div" onClick={() => handleDisplay(item)}>
-                    <span id="food-name">{item.name}</span>
+                  <button
+                    className="button button--piyo"
+                    id="foodlist-div"
+                    onClick={() => handleDisplay(item)}
+                  >
+                    <div className="button__wrapper">
+                      <div className="button__text">{item.name}</div>
+                    </div>
                   </button>
                 </div>
               );

@@ -35,6 +35,14 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* <Route
+            path="/dashboard/chat"
+            element={
+              <PrivateRoute>
+                <Chat />
+              </PrivateRoute>
+            }
+          /> */}
           <Route
             path="/dashboard/food-recs"
             element={
