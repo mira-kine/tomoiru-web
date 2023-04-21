@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
   const { authToken } = useAuth();
-  if (!authToken) {
+  if (authToken === false || !authToken) {
     return <Navigate to="/" replace={true} />;
   }
   return children;
