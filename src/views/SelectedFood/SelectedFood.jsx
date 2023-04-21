@@ -14,7 +14,7 @@ export default function SelectedFood() {
   const [loading, setLoading] = useState(false);
 
   const handleBack = () => {
-    navigateTo('/food-recs');
+    navigateTo('/dashboard/food-recs');
   };
 
   const handleEat = async () => {
@@ -29,24 +29,39 @@ export default function SelectedFood() {
   return (
     <>
       {loading ? (
-        <div id="loading-page">
-          <img
-            src={require(`../../assets/ol-sushi.GIF`)}
-            alt="sushi loading prop"
-          />
+        <div className="home-container">
+          <div id="loading-page">
+            <img
+              src={require(`../../assets/ol-sushi.GIF`)}
+              alt="sushi loading prop"
+            />
+          </div>
         </div>
       ) : (
-        <div id="foodlist-with-display">
-          <div key={selectedFood.id}>
-            <div id="button-container">
-              <span id="food-name">{selectedFood.name}</span>
-            </div>
-            <div id="food-description-container">
-              <span>{selectedFood.description}</span>
-            </div>
-            <div id="button-options-container">
-              <button onClick={handleBack}>Back to list</button>
-              <button onClick={() => handleEat(selectedFood)}>Eat this!</button>
+        <div className="home-container">
+          <div id="foodlist-with-display">
+            <div key={selectedFood.id} id="foodlist-container">
+              <div id="button-container">
+                <span id="food-name-title">{selectedFood.name}</span>
+              </div>
+              <div id="food-description-container">
+                <span>{selectedFood.description}</span>
+              </div>
+              <div id="button-options-container">
+                <button className="button button--piyo" onClick={handleBack}>
+                  <div className="button__wrapper">
+                    <div className="button__text">Back to list</div>
+                  </div>
+                </button>
+                <button
+                  className="button button--piyo"
+                  onClick={() => handleEat(selectedFood)}
+                >
+                  <div className="button__wrapper">
+                    <div className="button__text">Eat this!</div>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>

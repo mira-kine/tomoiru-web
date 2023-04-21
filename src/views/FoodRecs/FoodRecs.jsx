@@ -20,9 +20,9 @@ export default function FoodRecs() {
     const fetchFoods = async () => {
       const resp = await getFoods();
       setFoodsList(resp);
-      setLoading(false);
     };
     fetchFoods();
+    setLoading(false);
   }, []);
 
   const handleHome = () => {
@@ -31,26 +31,26 @@ export default function FoodRecs() {
 
   if (loading) {
     <h1>Loading...</h1>;
+  }
 
-    return (
-      <div class="home-container">
-        <NavBar />
-        <div id="dashboard-title-container">
-          <h1>What shall we do today?</h1>
-        </div>
-        <div class="home-container-bg">
-          <div class="user-container">
-            <div class="tomo-container">
-              <div class="tomo-div">
-                <YourTomo tomo={tomo} handleHome={handleHome} />
-              </div>
+  return (
+    <div className="home-container">
+      <NavBar />
+      <div id="dashboard-title-container">
+        <h1>What shall we do today?</h1>
+      </div>
+      <div className="home-container-bg">
+        <div className="user-container">
+          <div className="tomo-container">
+            <div className="tomo-div">
+              <YourTomo tomo={tomo} handleHome={handleHome} />
             </div>
-            <div class="interactive-box">
-              <FoodList foodsList={foodsList} />
-            </div>
+          </div>
+          <div className="interactive-box">
+            <FoodList foodsList={foodsList} />
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }

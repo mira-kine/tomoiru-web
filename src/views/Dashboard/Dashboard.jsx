@@ -13,7 +13,7 @@ export default function Dashboard() {
 
   // option to choose foods - button to direct to food recs
   const handleClick = () => {
-    navigateTo('/food-recs');
+    navigateTo('/dashboard/food-recs');
   };
 
   return (
@@ -29,7 +29,7 @@ export default function Dashboard() {
               <YourTomo tomo={tomo} handleClick={handleClick} />
             </div>
           </div>
-          <div class="interactive-box">Chat box goes here</div>
+          {/* <div class="interactive-box">Chat box goes here</div> */}
         </div>
       </div>
     </div>
