@@ -13,9 +13,11 @@ export default function Welcome() {
   const [pickedTomo, setPickedTomo] = useState('');
   const navigateTo = useNavigate();
   const { currentUser } = useUser();
+  const [toggle, setToggle] = useState(true);
 
   // form to create Tomo
   const handleClick = (id) => () => {
+    setToggle(!toggle);
     setPickedTomo((prevState) => {
       return { ...prevState, tomoId: `tomo${id}` };
     });
@@ -26,13 +28,18 @@ export default function Welcome() {
     setTomo({ ...tomo });
   };
 
-  console.log('pickedTomo', pickedTomo);
-
   // currying - handler itself is the pointer, not an anonymous function ON the onClick event
   // state rerenders correct data asynchronously
 
   const handleCreate = async (e) => {
     e.preventDefault();
+    if (
+      !pickedTomo ||
+      pickedTomo === 'tomoundefined' ||
+      pickedTomo === undefined
+    ) {
+      alert('select a tomo!');
+    }
     try {
       const publicURL = await uploadTomo(pickedTomo);
       await createTomo(currentUser, tomo, publicURL);
@@ -48,7 +55,7 @@ export default function Welcome() {
         <h1>Welcome! Let's create a tomo</h1>
       </div>
       <div className="form-container">
-        <TomoCarousel handleClick={handleClick} />
+        <TomoCarousel handleClick={handleClick} toggle={toggle} />
         <form id="welcome-form" onSubmit={(e) => handleCreate(e)}>
           <div id="name-container">
             <input

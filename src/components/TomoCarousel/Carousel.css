@@ -11,25 +11,20 @@
   transition: transform 0.3s;
 }
 
-.active,
-.carousel::hover {
-  white-space: nowrap;
-  transition: transform 0.3s;
-  background-color: aquamarine;
-}
-
 .carousel-item {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 300px;
+  padding-bottom: 1rem;
 }
 
 .indicators {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-top: 1rem;
 }
 
 #wrapper--carousel--prev {
