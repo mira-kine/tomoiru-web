@@ -10,15 +10,20 @@ export default function TomoCarousel({ handleClick }) {
       <Carousel>
         {tomoOptions.map((img, index) => {
           return (
-            <CarouselItem>
+            <CarouselItem handleClick={handleClick}>
               <img
                 className="tomo-option"
                 id={index}
                 key={img.id}
                 src={require(`../../assets/${img.path}`)}
                 alt={img.name}
-                onClick={handleClick(index)}
               />
+              <button
+                className="button button--option"
+                onClick={handleClick(index)}
+              >
+                <span className="button__text active">Select</span>
+              </button>
             </CarouselItem>
           );
         })}

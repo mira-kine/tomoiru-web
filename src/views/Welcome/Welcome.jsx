@@ -26,6 +26,8 @@ export default function Welcome() {
     setTomo({ ...tomo });
   };
 
+  console.log('pickedTomo', pickedTomo);
+
   // currying - handler itself is the pointer, not an anonymous function ON the onClick event
   // state rerenders correct data asynchronously
 
@@ -48,8 +50,6 @@ export default function Welcome() {
       <div className="form-container">
         <TomoCarousel handleClick={handleClick} />
         <form id="welcome-form" onSubmit={(e) => handleCreate(e)}>
-          {/* user picks one -> whatever the name is,  */}
-
           <div id="name-container">
             <input
               placeholder="name"
@@ -58,16 +58,14 @@ export default function Welcome() {
               type="text"
               onInput={(e) => updateTomo('name', e.target.value)}
             />
+            <button
+              className="button button--piyo"
+              onClick={(e) => handleCreate(e)}
+            >
+              <span className="button__text">Thank you!</span>
+            </button>
           </div>
         </form>
-      </div>
-      <div className="button__wrapper">
-        <button
-          className="button button--piyo"
-          onClick={(e) => handleCreate(e)}
-        >
-          <span className="button__text">Thank you!</span>
-        </button>
       </div>
     </div>
   );

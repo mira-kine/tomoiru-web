@@ -8,7 +8,6 @@ import { UserProvider } from './context/UserProvider';
 import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
 import SelectedFood from './views/SelectedFood/SelectedFood';
-import Eating from './views/Eating/Eating';
 import { AuthProvider } from './context/AuthProvider';
 
 function App() {
@@ -56,14 +55,6 @@ function App() {
             element={
               <PrivateRoute>
                 <SelectedFood />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/eating"
-            element={
-              <PrivateRoute>
-                <Eating />
               </PrivateRoute>
             }
           />
