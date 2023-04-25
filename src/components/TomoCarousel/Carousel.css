@@ -2,6 +2,9 @@
   overflow: hidden;
   background-color: rgba(var(--melon), 0.5);
   width: 56vw;
+  height: 56vh;
+  padding-top: 1.5rem;
+
 }
 
 .inner {
@@ -11,15 +14,18 @@
 
 .carousel-item {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 300px;
+  padding-bottom: 1rem;
 }
 
 .indicators {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-top: 1rem;
 }
 
 #wrapper--carousel--prev {
