@@ -22,11 +22,11 @@
   box-sizing: border-box;
   text-decoration: none;
   border-radius: 40px;
-  /* background: var(--main_color); */
   font-family: monospace;
   margin: 0.7rem;
   border: 0;
   outline: 0;
+  cursor: pointer;
 }
 
 .button::before {

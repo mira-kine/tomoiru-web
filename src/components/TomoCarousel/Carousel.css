@@ -11,6 +11,13 @@
   transition: transform 0.3s;
 }
 
+.active,
+.carousel::hover {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  background-color: aquamarine;
+}
+
 .carousel-item {
   display: inline-flex;
   flex-direction: column;
