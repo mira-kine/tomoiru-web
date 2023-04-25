@@ -12,7 +12,6 @@
 
 #name-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin: 1rem;
 }
@@ -29,27 +28,7 @@
   width: 50vmin;
 }
 
-/* #options-container > button {
-  padding: 0.7rem;
-  max-width: 5vw;
-  max-height: 10vh;
-} */
-
-/* .tomo-option {
-  height: 20vh;
-  cursor: pointer;
-  border: 1px solid black;
-  padding: 1rem;
-  /* responsive? */
-
 #welcome-title-container {
   font-family: 'Tamagotchi-Normal', monospace;
+  color: rgba(var(--white), 1);
 }
-
-/* .form-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-} */

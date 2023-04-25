@@ -1,49 +1,5 @@
-#foodlist-page-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  border: 1px 1px black solid;
-  border-color: black;
-  height: 100%;
-}
-
-#avatar-div {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  position: absolute;
-  left: 16%;
-}
-
-#avatar {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  margin: 2rem;
-}
-
-#tomo-image {
-  height: 10vh;
-}
-
-#food-list-container {
-  display: flex;
-  flex-direction: column;
-  background-color: azure;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  width: 25vw;
-  min-height: 35vh;
-  overflow-y: scroll;
-  left: 20%;
-  padding: 1rem;
-}
-
 #foodlist {
-  overflow-y: scroll;
+  overflow-y: scroll hidden;
   margin: 0.5rem;
 }
 
@@ -55,6 +11,7 @@
 #foodlist-div {
   padding: 0.3rem;
   margin: 0.3rem;
+  font-family: monospace;
 }
 
 #foodlist-with-display {

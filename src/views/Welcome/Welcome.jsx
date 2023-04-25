@@ -5,6 +5,7 @@ import { createTomo } from '../../api/tomos';
 import TomoCarousel from '../../components/TomoCarousel/TomoCarousel';
 import { useUser } from '../../context/UserProvider';
 import './Welcome.css';
+import '../../components/Buttons/HomeButton/HomeButton';
 
 export default function Welcome() {
   // some tomo state
@@ -12,9 +13,11 @@ export default function Welcome() {
   const [pickedTomo, setPickedTomo] = useState('');
   const navigateTo = useNavigate();
   const { currentUser } = useUser();
+  const [toggle, setToggle] = useState(true);
 
   // form to create Tomo
   const handleClick = (id) => () => {
+    setToggle(!toggle);
     setPickedTomo((prevState) => {
       return { ...prevState, tomoId: `tomo${id}` };
     });
@@ -30,6 +33,13 @@ export default function Welcome() {
 
   const handleCreate = async (e) => {
     e.preventDefault();
+    if (
+      !pickedTomo ||
+      pickedTomo === 'tomoundefined' ||
+      pickedTomo === undefined
+    ) {
+      alert('select a tomo!');
+    }
     try {
       const publicURL = await uploadTomo(pickedTomo);
       await createTomo(currentUser, tomo, publicURL);
@@ -45,10 +55,8 @@ export default function Welcome() {
         <h1>Welcome! Let's create a tomo</h1>
       </div>
       <div className="form-container">
-        <TomoCarousel handleClick={handleClick} />
+        <TomoCarousel handleClick={handleClick} toggle={toggle} />
         <form id="welcome-form" onSubmit={(e) => handleCreate(e)}>
-          {/* user picks one -> whatever the name is,  */}
-
           <div id="name-container">
             <input
               placeholder="name"
@@ -57,10 +65,15 @@ export default function Welcome() {
               type="text"
               onInput={(e) => updateTomo('name', e.target.value)}
             />
+            <button
+              className="button button--piyo"
+              onClick={(e) => handleCreate(e)}
+            >
+              <span className="button__text">Thank you!</span>
+            </button>
           </div>
         </form>
       </div>
-      <button onClick={(e) => handleCreate(e)}>Can't wait to meet you!</button>
     </div>
   );
 }
