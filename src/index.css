@@ -19,7 +19,6 @@ body {
   margin: 0;
   padding: 0;
   background-repeat: repeat;
-  background-color: rgba(var(--white));
   position: relative;
   background-image: linear-gradient(
       to bottom,

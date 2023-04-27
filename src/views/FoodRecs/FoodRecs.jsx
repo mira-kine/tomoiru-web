@@ -7,14 +7,12 @@ import { useTomo } from '../../hooks/useTomo';
 import './FoodRecs.css';
 import '../Dashboard/Dashboard.css';
 import NavBar from '../../components/NavBar/NavBar';
-import { useNavigate } from 'react-router-dom';
 
 export default function FoodRecs() {
   const { currentUser } = useUser();
   const tomo = useTomo({ currentUser });
   const [foodsList, setFoodsList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigateTo = useNavigate();
 
   useEffect(() => {
     const fetchFoods = async () => {
@@ -24,10 +22,6 @@ export default function FoodRecs() {
     fetchFoods();
     setLoading(false);
   }, []);
-
-  const handleHome = () => {
-    navigateTo('/dashboard');
-  };
 
   if (loading) {
     <h1>Loading...</h1>;
@@ -43,7 +37,7 @@ export default function FoodRecs() {
         <div className="user-container">
           <div className="tomo-container">
             <div className="tomo-div">
-              <YourTomo tomo={tomo} handleHome={handleHome} />
+              <YourTomo tomo={tomo} />
             </div>
           </div>
           <div className="interactive-box">

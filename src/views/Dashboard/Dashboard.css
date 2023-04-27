@@ -20,10 +20,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
-  min-width: 550px;
+  width: 35%;
+  min-width: 350px;
   height: 70%;
-  min-height: 500px;
+  min-height: 300px;
   padding: 2rem;
   margin-left: 4rem;
 }
@@ -38,11 +38,13 @@
 .interactive-box {
   display: flex;
   flex-direction: column;
-  background-color: azure;
+  justify-content: center;
+  background-color: aqua;
   width: 30vw;
   height: 45vh;
   padding: 1rem;
   margin: 1rem;
+  margin-left: 5rem;
   font-family: monospace;
 }
 

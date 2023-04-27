@@ -1,6 +1,5 @@
 .screen {
   width: 100%;
-  /* height: 50vh; */
   height: 100%;
 }
 
@@ -16,7 +15,6 @@
   justify-content: center;
   background-color: rgba(var(--armygreen), 0.7);
   width: 100%;
-  /* min-height: 50vh; */
   height: 100%;
   border-radius: 10%;
   overflow: hidden;
@@ -26,44 +24,31 @@
   box-shadow: inset 2px 2px 2px rgba(var(--armygreen), 10);
 }
 
-.screen__inner::before {
+.screen__inner:before {
   content: '';
   top: 0;
   border-radius: 13px 13px 0 0;
   border-bottom: 2px solid rgba(var(--peach), 10);
 }
 
-.screen__inner::after {
+.screen__inner:after {
   content: '';
   bottom: 0;
   border-radius: 0 0 13px 13px;
   border-bottom: 2px solid rgba(black, 1);
   background: black;
-}
-
-.tomo-img-div {
-  position: relative;
-  top: 15%;
-}
-
-#tomo-img {
-  position: relative;
-  height: 185px;
-  width: 170px;
+  display: block;
+  padding-bottom: 100%;
 }
 
 .buttons {
-  position: absolute;
-  top: 105%;
-  bottom: 15px;
-  width: 100%;
-  text-align: center;
-  font-family: monospace;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashbutton {
   display: inline-block;
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
   cursor: pointer;
   width: 55px;
@@ -85,9 +70,4 @@
 
 .dashbutton:active {
   background-color: rgba(var(--peach));
-}
-
-#button-a {
-  position: relative;
-  bottom: 24px;
 }
