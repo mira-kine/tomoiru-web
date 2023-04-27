@@ -2,33 +2,37 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-image: url(../../assets/dark_japan.gif);
-  background-size: cover;
 }
 
 .home-container-bg {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
+  align-content: space-between;
+  margin-top: 1rem;
 }
 
 .tomo-container {
   display: flex;
   align-items: center;
-  align-content: center;
-  left: 16%;
-  margin: 1rem;
+  justify-content: center;
+  width: 40%;
+  min-width: 550px;
+  height: 70%;
+  min-height: 500px;
+  padding: 2rem;
+  margin-left: 4rem;
 }
 
 .tomo-div {
   display: flex;
   align-items: center;
-  padding: 1rem;
-  margin: 2rem;
+  width: 100%;
+  height: 100%;
 }
 
 .interactive-box {
@@ -45,15 +49,9 @@
 #dashboard-title-container {
   display: flex;
   justify-content: center;
-  color: rgba(var(--white), 1);
+  color: rgba(var(--licorice), 1);
   font-family: 'Tamagotchi-Normal', monospace, sans-serif;
   width: 100vw;
   height: 15vh;
   margin-left: 1rem;
-}
-
-.user-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
 }

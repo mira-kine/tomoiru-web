@@ -23,11 +23,9 @@ export default function Dashboard() {
         <h1>What shall we do today?</h1>
       </div>
       <div class="home-container-bg">
-        <div class="user-container">
-          <div class="tomo-container">
-            <div class="tomo-div">
-              <YourTomo tomo={tomo} handleClick={handleClick} />
-            </div>
+        <div class="tomo-container">
+          <div class="tomo-div">
+            <YourTomo tomo={tomo} handleClick={handleClick} />
           </div>
         </div>
       </div>

@@ -5,9 +5,6 @@
   align-content: center;
   justify-content: center;
   height: 100vh;
-  background-image: url(../../assets/dark_japan.gif);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 #name-container {
@@ -23,7 +20,6 @@
 }
 
 #options-container {
-  background-color: blueviolet;
   height: 50vmin;
   width: 50vmin;
 }
