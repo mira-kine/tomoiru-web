@@ -24,38 +24,6 @@
   height: 100%;
 }
 
-.tomo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35%;
-  min-width: 350px;
-  height: 70%;
-  min-height: 300px;
-  padding: 2rem;
-  margin-left: 4rem;
-}
-
-.tomo-div {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-/* .interactive-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: aqua;
-  width: 30vw;
-  height: 45vh;
-  padding: 1rem;
-  margin: 1rem;
-  margin-left: 5rem;
-  font-family: monospace;
-} */
-
 #dashboard-title-container {
   display: flex;
   justify-content: center;
@@ -67,20 +35,23 @@
   margin-left: 1rem;
 }
 
+/* home */
 #button-a {
   position: absolute;
-  top: 35%;
-  right: 10%;
+  top: 20%;
+  left: 15%;
 }
 
+/* feed */
 #button-b {
   position: absolute;
-  bottom: 12%;
-  left: 56%;
+  bottom: 27%;
+  right: 30%;
 }
 
+/* chat */
 #button-c {
   position: absolute;
-  bottom: 12%;
-  left: 44%;
+  top: 35%;
+  left: 33%;
 }

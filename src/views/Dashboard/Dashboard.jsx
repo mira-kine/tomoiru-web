@@ -29,15 +29,9 @@ export default function Dashboard() {
       <div class="home-container-bg">
         <img
           className="home-bg-img"
-          src={require('../../assets/temp-bg.gif')}
+          src={require('../../assets/temp-bg.jpg')}
           alt="background of tomoiru gif"
         />
-        {/* <div class="tomo-container">
-          <div class="tomo-div">
-            <YourTomo tomo={tomo} />
-          </div>
-        </div> */}
-        {/* <div className="interactive-box"> */}
         <div className="buttons" id="dashbutton-input">
           <button className="dashbutton" id="button-a" onClick={handleHome}>
             Home
@@ -48,7 +42,6 @@ export default function Dashboard() {
           <div className="dashbutton" id="button-c">
             Chat
           </div>
-          {/* </div> */}
         </div>
       </div>
     </div>
