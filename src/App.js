@@ -9,11 +9,13 @@ import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
 import SelectedFood from './views/SelectedFood/SelectedFood';
 import { AuthProvider } from './context/AuthProvider';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
     <AuthProvider>
       <UserProvider>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Auth />} />

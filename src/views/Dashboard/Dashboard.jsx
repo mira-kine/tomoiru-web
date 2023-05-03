@@ -1,8 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTomo } from '../../hooks/useTomo';
-import { YourTomo } from '../../components/YourTomo/YourTomo';
-import NavBar from '../../components/NavBar/NavBar';
 import { useUser } from '../../context/UserProvider';
 import './Dashboard.css';
 
@@ -22,7 +19,6 @@ export default function Dashboard() {
 
   return (
     <div class="home-container">
-      <NavBar />
       <div id="dashboard-title-container">
         <h1>What shall we do today?</h1>
       </div>

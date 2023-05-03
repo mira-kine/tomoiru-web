@@ -13,8 +13,14 @@ export default function NavBar() {
   };
 
   return (
-    <div id="nav-container">
-      <button onClick={handleSignOut}>Sign Out</button>
+    <div className="nav-container">
+      <button
+        className="button button--piyo"
+        id="button-signout"
+        onClick={() => handleSignOut()}
+      >
+        <div className="button__wrapper">Sign Out</div>
+      </button>
     </div>
   );
 }

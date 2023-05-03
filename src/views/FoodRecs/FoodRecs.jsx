@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getFoods } from '../../api/foods';
 import FoodList from '../../components/FoodList';
-import { YourTomo } from '../../components/YourTomo/YourTomo';
 import { useUser } from '../../context/UserProvider';
-import { useTomo } from '../../hooks/useTomo';
 import './FoodRecs.css';
-import '../Dashboard/Dashboard.css';
-import NavBar from '../../components/NavBar/NavBar';
 
 export default function FoodRecs() {
   const { currentUser } = useUser();
-  const tomo = useTomo({ currentUser });
   const [foodsList, setFoodsList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,21 +23,15 @@ export default function FoodRecs() {
   }
 
   return (
-    <div className="home-container">
-      <NavBar />
-      <div id="dashboard-title-container">
-        <h1>What shall we do today?</h1>
-      </div>
-      <div className="home-container-bg">
-        <div className="user-container">
-          <div className="tomo-container">
-            <div className="tomo-div">
-              <YourTomo tomo={tomo} />
-            </div>
-          </div>
-          <div className="interactive-box">
-            <FoodList foodsList={foodsList} />
-          </div>
+    <div className="food-container">
+      <div className="food-container-bg">
+        <img
+          className="food-recs-bg"
+          src={require('../../assets/welcome.jpg')}
+          alt="cute background for eating page"
+        />
+        <div id="user-input-box">
+          <FoodList foodsList={foodsList} />
         </div>
       </div>
     </div>

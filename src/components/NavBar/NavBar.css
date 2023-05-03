@@ -1,3 +1,8 @@
 .nav-container {
-  position: fixed;
+  width: 100%;
+}
+
+#button-signout {
+  width: 10vmax;
+  background-color: rgba(var(--periwinkle));
 }
