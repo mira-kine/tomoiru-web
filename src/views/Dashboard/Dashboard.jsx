@@ -8,7 +8,7 @@ import './Dashboard.css';
 
 export default function Dashboard() {
   const { currentUser } = useUser();
-  const tomo = useTomo({ currentUser });
+  // const tomo = useTomo({ currentUser });
   const navigateTo = useNavigate();
 
   // option to choose foods - button to direct to food recs
@@ -27,23 +27,28 @@ export default function Dashboard() {
         <h1>What shall we do today?</h1>
       </div>
       <div class="home-container-bg">
-        <div class="tomo-container">
+        <img
+          className="home-bg-img"
+          src={require('../../assets/temp-bg.gif')}
+          alt="background of tomoiru gif"
+        />
+        {/* <div class="tomo-container">
           <div class="tomo-div">
             <YourTomo tomo={tomo} />
           </div>
-        </div>
-        <div className="interactive-box">
-          <div className="buttons" id="dashbutton-input">
-            <button className="dashbutton" id="button-a" onClick={handleHome}>
-              Home
-            </button>
-            <button className="dashbutton" id="button-b" onClick={handleFood}>
-              Feed
-            </button>
-            <div className="dashbutton" id="button-c">
-              Chat
-            </div>
+        </div> */}
+        {/* <div className="interactive-box"> */}
+        <div className="buttons" id="dashbutton-input">
+          <button className="dashbutton" id="button-a" onClick={handleHome}>
+            Home
+          </button>
+          <button className="dashbutton" id="button-b" onClick={handleFood}>
+            Feed
+          </button>
+          <div className="dashbutton" id="button-c">
+            Chat
           </div>
+          {/* </div> */}
         </div>
       </div>
     </div>
