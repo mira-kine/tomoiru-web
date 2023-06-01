@@ -27,7 +27,7 @@ export default function FoodRecs() {
       <div className="food-container-bg">
         <img
           className="food-recs-bg"
-          src={require('../../assets/welcome.jpg')}
+          src={require('../../assets/temp-bg.gif')}
           alt="cute background for eating page"
         />
         <div id="user-input-box">

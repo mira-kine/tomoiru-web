@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserProvider';
 import './Dashboard.css';
+import Spline from '@splinetool/react-spline';
 
 export default function Dashboard() {
   const { currentUser } = useUser();
@@ -19,16 +20,12 @@ export default function Dashboard() {
 
   return (
     <div class="home-container">
-      <div id="dashboard-title-container">
+      {/* <div id="dashboard-title-container">
         <h1>What shall we do today?</h1>
-      </div>
+      </div> */}
       <div class="home-container-bg">
-        <img
-          className="home-bg-img"
-          src={require('../../assets/temp-bg.jpg')}
-          alt="background of tomoiru gif"
-        />
-        <div className="buttons" id="dashbutton-input">
+        <Spline scene="https://prod.spline.design/FIfTPXvz7GZEqg8E/scene.splinecode" />
+        {/* <div className="buttons" id="dashbutton-input">
           <button className="dashbutton" id="button-a" onClick={handleHome}>
             Home
           </button>
@@ -38,8 +35,10 @@ export default function Dashboard() {
           <div className="dashbutton" id="button-c">
             Chat
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
+
+// next attach events to elements on spline model
