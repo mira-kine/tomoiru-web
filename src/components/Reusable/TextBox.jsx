@@ -1,5 +1,6 @@
 import React from 'react';
+import './TextBox.css';
 
 export default function TextBox() {
-  return <div>TextBox</div>;
+  return <div id="text-box-container">TextBox</div>;
 }
