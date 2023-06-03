@@ -8,6 +8,7 @@ export default function NavBar() {
 
   const handleSignOut = async () => {
     await signOut();
+    localStorage.clear();
     localStorage.setItem('authenticated', false);
     navigateTo('/');
   };

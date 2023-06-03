@@ -6,16 +6,11 @@ import AuthForm from '../../components/AuthForm/AuthForm';
 import { useAuth } from '../../context/AuthProvider';
 import './Auth.css';
 import { getCurrentUser } from '../../api/users';
-import { useStateWithStorage } from '../../hooks/useStateWithStorage';
 import { useUser } from '../../context/UserProvider';
 
 export default function Auth({ isSigningUp = false }) {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  // const [userLocalStorageData, setUserLocalStorageData] = useStateWithStorage(
-  //   'currentUserData',
-  //   null
-  // );
   const { currentUser } = useUser();
 
   // change to hook, not state management context
@@ -29,7 +24,7 @@ export default function Auth({ isSigningUp = false }) {
         // sign up user
         await signUpUser(email, password);
         // wait for information to come -> have pop up, signed up! now sign in
-        // navigate to welcome page
+        // navigate to signin page
         navigateTo('/signin');
         // loading false
         setLoading(false);
@@ -43,7 +38,6 @@ export default function Auth({ isSigningUp = false }) {
           // set user data to local storage
           localStorage.setItem('userLocalStorageData', JSON.stringify(user));
           // set auth status to local storage
-          console.log('currentUser', currentUser);
           setAuthToken(true);
         }
         if (currentUser.name) {
