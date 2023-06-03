@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
 import '../../components/Buttons/HomeButton/HomeButton';
+import TomomiWelcome from '../../components/TomomiWelcome/TomomiWelcome';
+import TextBox from '../../components/Reusable/TextBox';
+import UserInputWelcome from '../../components/UserInputs/UserInputWelcome';
 import { useUser } from '../../context/UserProvider';
 
 export default function Welcome() {
   const navigateTo = useNavigate();
   const { currentUser, updateUserData } = useUser();
-
-  // currying - handler itself is the pointer, not an anonymous function ON the onClick event
-  // state rerenders correct data asynchronously
-  const handleCreate = () => {
-    console.log('helloworld');
-    try {
-      navigateTo('/dashboard');
-    } catch (error) {
-      alert('sorry there was an error!');
-    }
-  };
+  // create two modes of state that renders components depending on what is available
+  const [userMode, setUserMode] = useState(false);
 
   return (
     <div id="welcome-container">
-      <div id="welcome-title-container">
+      {!userMode && <TomomiWelcome />}
+      {userMode && <UserInputWelcome />}
+      <div>
+        <TextBox />
+      </div>
+      {/* <div id="welcome-title-container">
         <h1>What is your name?</h1>
       </div>
       <div className="form-container">
@@ -42,7 +41,7 @@ export default function Welcome() {
             </button>
           </div>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }
