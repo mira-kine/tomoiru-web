@@ -43,6 +43,7 @@ export default function Auth({ isSigningUp = false }) {
         if (currentUser.name) {
           navigateTo('/dashboard');
         } else {
+          // show animation of introduction story and then send to welcome
           navigateTo('/welcome');
         }
       }
