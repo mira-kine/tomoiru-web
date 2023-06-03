@@ -5,14 +5,13 @@ import { createTomo } from '../../api/tomos';
 import TomoCarousel from '../../components/TomoCarousel/TomoCarousel';
 import './Welcome.css';
 import '../../components/Buttons/HomeButton/HomeButton';
-import { useUser } from '../../hooks/useUser';
 
 export default function Welcome() {
   // some tomo state
   const [tomo, setTomo] = useState({});
   const [pickedTomo, setPickedTomo] = useState('');
   const navigateTo = useNavigate();
-  const currentUser = useUser();
+  // const currentUser = useUser();
   const [toggle, setToggle] = useState(true);
 
   // form to create Tomo
@@ -42,7 +41,7 @@ export default function Welcome() {
     }
     try {
       const publicURL = await uploadTomo(pickedTomo);
-      await createTomo(currentUser, tomo, publicURL);
+      // await createTomo(currentUser, tomo, publicURL);
       navigateTo('/dashboard');
     } catch {
       alert('error creating');

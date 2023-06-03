@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getFoods } from '../../api/foods';
 import FoodList from '../../components/FoodList';
 import './FoodRecs.css';
-import { useUser } from '../../hooks/useUser';
 
 export default function FoodRecs() {
-  const currentUser = useUser();
   const [foodsList, setFoodsList] = useState([]);
   const [loading, setLoading] = useState(true);
 

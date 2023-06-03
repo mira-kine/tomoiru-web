@@ -3,13 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { eatFood } from '../../api/foods';
 import { useFood } from '../../hooks/useFood';
 import './SelectedFood.css';
-import { useUser } from '../../hooks/useUser';
 
 export default function SelectedFood() {
   // refactoring to set food display by ID
   const { id } = useParams();
   const { selectedFood } = useFood(id);
-  const currentUser = useUser();
   const navigateTo = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +18,7 @@ export default function SelectedFood() {
   const handleEat = async () => {
     //   set some type of selectedFood
     setLoading(true);
-    await eatFood(currentUser, selectedFood);
+    // await eatFood(currentUser, selectedFood);
     await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
     navigateTo('/dashboard');
