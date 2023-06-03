@@ -17,7 +17,7 @@ export default function Welcome() {
     <div id="welcome-container">
       {!userMode && <TomomiWelcome />}
       {userMode && <UserInputWelcome />}
-      <div>
+      <div id="text-container">
         <TextBox />
       </div>
       {/* <div id="welcome-title-container">
