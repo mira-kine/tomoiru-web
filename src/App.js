@@ -4,16 +4,18 @@ import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
 import Dashboard from './views/Dashboard/Dashboard';
 import PrivateRoute from './utils/PrivateRoute';
-import { UserProvider } from './context/UserProvider';
 import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
 import SelectedFood from './views/SelectedFood/SelectedFood';
 import { AuthProvider } from './context/AuthProvider';
+import { UserProvider } from './context/UserProvider';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
     <AuthProvider>
       <UserProvider>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Auth />} />

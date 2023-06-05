@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getCurrentUser, signUpUser } from '../../api/users';
+import { signUpUser } from '../../api/users';
 import { signInUser } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useAuth } from '../../context/AuthProvider';
-import { useUser } from '../../context/UserProvider';
 import './Auth.css';
+import { getCurrentUser } from '../../api/users';
+import { useUser } from '../../context/UserProvider';
 
 export default function Auth({ isSigningUp = false }) {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { setCurrentUser } = useUser();
-  const { setAuthToken } = useAuth();
+  const { currentUser } = useUser();
 
+  // change to hook, not state management context
+  const { setAuthToken } = useAuth();
   const navigateTo = useNavigate();
 
   const handleAuth = async (email, password) => {
@@ -21,9 +23,8 @@ export default function Auth({ isSigningUp = false }) {
         setLoading(true);
         // sign up user
         await signUpUser(email, password);
-        // wait for information to come
-        await new Promise((r) => setTimeout(r, 1500));
-        // navigate to welcome page
+        // wait for information to come -> have pop up, signed up! now sign in
+        // navigate to signin page
         navigateTo('/signin');
         // loading false
         setLoading(false);
@@ -32,21 +33,19 @@ export default function Auth({ isSigningUp = false }) {
         // sign in user
         const resp = await signInUser(email, password);
         if (resp) {
+          // get user data in parsed form
           const user = await getCurrentUser();
+          // set user data to local storage
+          localStorage.setItem('userLocalStorageData', JSON.stringify(user));
+          // set auth status to local storage
           setAuthToken(true);
-          setCurrentUser({
-            id: user.id,
-            email: user.email,
-            has_tomo: user.has_tomo,
-          });
-          if (user.has_tomo) {
-            navigateTo('/dashboard');
-          } else {
-            navigateTo('/welcome');
-          }
         }
-        // useEffect?
-        await new Promise((r) => setTimeout(r, 1500));
+        if (currentUser.name) {
+          navigateTo('/dashboard');
+        } else {
+          // show animation of introduction story and then send to welcome
+          navigateTo('/welcome');
+        }
       }
     } catch (error) {
       setErrorMessage('Something went wrong. Please try again.');
@@ -58,12 +57,7 @@ export default function Auth({ isSigningUp = false }) {
   return (
     <>
       {loading ? (
-        <div className="loading-page">
-          <img
-            src={require(`../../assets/hamtaro.gif`)}
-            alt="hamtaro loading prop"
-          />
-        </div>
+        <div className="loading-page">Loading...</div>
       ) : (
         <div id="auth-view-container">
           <div id="auth-container">

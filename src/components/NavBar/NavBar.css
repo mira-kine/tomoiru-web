@@ -1,2 +1,10 @@
 .nav-container {
+  width: 100%;
+  background-color: rgba(var(--white), 0);
+  position: absolute;
+}
+
+#button-signout {
+  width: 10vmax;
+  background-color: rgba(var(--periwinkle));
 }

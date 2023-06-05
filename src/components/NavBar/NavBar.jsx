@@ -8,13 +8,20 @@ export default function NavBar() {
 
   const handleSignOut = async () => {
     await signOut();
+    localStorage.clear();
     localStorage.setItem('authenticated', false);
     navigateTo('/');
   };
 
   return (
-    <div id="nav-container">
-      <button onClick={handleSignOut}>Sign Out</button>
+    <div className="nav-container">
+      <button
+        className="button button--piyo"
+        id="button-signout"
+        onClick={() => handleSignOut()}
+      >
+        <div className="button__wrapper">Sign Out</div>
+      </button>
     </div>
   );
 }

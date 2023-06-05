@@ -15,11 +15,6 @@ export default function HomeButton() {
         <div className="button__wrapper">
           <span className="button__text">Sign Up</span>
         </div>
-        {/* <div className="characterBox">
-          <div className="character wakeup">
-            <div className="character__face"></div>
-          </div> */}
-        {/* </div> */}
       </Link>
     </>
   );

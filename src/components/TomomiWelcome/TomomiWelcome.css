@@ -1,0 +1,8 @@
+#tomomi-welcome-div {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(var(--white), 0.3);
+  width: 50vw;
+  height: 50vh;
+  margin-bottom: 2rem;
+}

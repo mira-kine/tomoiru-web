@@ -5,30 +5,28 @@
   align-content: center;
   justify-content: center;
   height: 100vh;
-  background-image: url(../../assets/dark_japan.gif);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+  background-color: rgba(var(--peach), 0.8);
 
-#name-container {
-  display: flex;
-  align-items: center;
-  margin: 1rem;
-}
+  background: radial-gradient(
+    circle,
+    rgba(var(--peach), 1) 8%,
+    rgba(var(--chick), 1) 59%,
+    rgba(var(--melon), 1) 100%
+  );
 
-#name-container > input {
-  height: 5vh;
-  width: 20vw;
-  /* set min width */
-}
+  background: -moz-radial-gradient(
+    circle,
+    rgba(var(--peach), 1) 8%,
+    rgba(var(--chick), 1) 59%,
+    rgba(var(--melon), 1) 100%
+  );
 
-#options-container {
-  background-color: blueviolet;
-  height: 50vmin;
-  width: 50vmin;
-}
+  background: -webkit-radial-gradient(
+    circle,
+    rgba(var(--peach), 1) 8%,
+    rgba(var(--chick), 1) 59%,
+    rgba(var(--melon), 1) 100%
+  );
 
-#welcome-title-container {
-  font-family: 'Tamagotchi-Normal', monospace;
-  color: rgba(var(--white), 1);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F7B390", endColorstr="#FDF6B4", GradientType=1 );
 }

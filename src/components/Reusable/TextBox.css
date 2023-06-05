@@ -1,0 +1,7 @@
+#text-box-container {
+  background-color: rgba(var(--armygreen), 0.8);
+  width: 50vw;
+  height: 10vh;
+  display: flex;
+  margin: 2rem;
+}

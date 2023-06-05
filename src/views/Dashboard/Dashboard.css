@@ -2,58 +2,56 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-image: url(../../assets/dark_japan.gif);
-  background-size: cover;
+  overflow: hidden;
 }
 
 .home-container-bg {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
+  align-content: space-between;
+  margin-top: 1rem;
+  position: relative;
 }
 
-.tomo-container {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  left: 16%;
-  margin: 1rem;
-}
-
-.tomo-div {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  margin: 2rem;
-}
-
-.interactive-box {
-  display: flex;
-  flex-direction: column;
-  background-color: azure;
-  width: 30vw;
-  height: 45vh;
-  padding: 1rem;
-  margin: 1rem;
-  font-family: monospace;
+.home-bg-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 #dashboard-title-container {
   display: flex;
   justify-content: center;
-  color: rgba(var(--white), 1);
+  color: rgba(var(--licorice), 1);
+  background-color: aliceblue;
   font-family: 'Tamagotchi-Normal', monospace, sans-serif;
   width: 100vw;
   height: 15vh;
   margin-left: 1rem;
 }
 
-.user-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+/* home */
+#button-a {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+}
+
+/* feed */
+#button-b {
+  position: absolute;
+  bottom: 27%;
+  right: 30%;
+}
+
+/* chat */
+#button-c {
+  position: absolute;
+  top: 35%;
+  left: 33%;
 }

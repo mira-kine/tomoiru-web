@@ -1,36 +1,41 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTomo } from '../../hooks/useTomo';
-import { YourTomo } from '../../components/YourTomo/YourTomo';
-import NavBar from '../../components/NavBar/NavBar';
-import { useUser } from '../../context/UserProvider';
 import './Dashboard.css';
+import Spline from '@splinetool/react-spline';
 
 export default function Dashboard() {
-  const { currentUser } = useUser();
-  const tomo = useTomo({ currentUser });
   const navigateTo = useNavigate();
-
   // option to choose foods - button to direct to food recs
-  const handleClick = () => {
+  const handleFood = () => {
     navigateTo('/dashboard/food-recs');
   };
 
+  const handleHome = () => {
+    navigateTo('/dashboard');
+  };
+
   return (
-    <div class="home-container">
-      <NavBar />
-      <div id="dashboard-title-container">
+    <div className="home-container">
+      {/* <div id="dashboard-title-container">
         <h1>What shall we do today?</h1>
-      </div>
-      <div class="home-container-bg">
-        <div class="user-container">
-          <div class="tomo-container">
-            <div class="tomo-div">
-              <YourTomo tomo={tomo} handleClick={handleClick} />
-            </div>
+      </div> */}
+      <div className="home-container-bg">
+        {/* <Spline scene="https://prod.spline.design/FIfTPXvz7GZEqg8E/scene.splinecode" /> */}
+        {/* <div className="buttons" id="dashbutton-input">
+          <button className="dashbutton" id="button-a" onClick={handleHome}>
+            Home
+          </button>
+          <button className="dashbutton" id="button-b" onClick={handleFood}>
+            Feed
+          </button>
+          <div className="dashbutton" id="button-c">
+            Chat
           </div>
-        </div>
+        </div> */}
+        <h1>temp space</h1>
       </div>
     </div>
   );
 }
+
+// next attach events to elements on spline model
