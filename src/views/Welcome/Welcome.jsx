@@ -18,28 +18,6 @@ export default function Welcome() {
       {!userMode && <TomomiWelcome />}
       {userMode && <UserInputWelcome />}
       <TextBox />
-      {/* <div id="welcome-title-container">
-        <h1>What is your name?</h1>
-      </div>
-      <div className="form-container">
-        <form id="welcome-form" onSubmit={(e) => handleCreate(e)}>
-          <div id="name-container">
-            <input
-              placeholder="name"
-              value={currentUser.name}
-              name="name"
-              type="text"
-              // onInput={(e) => updateTomo('name', e.target.value)}
-            />
-            <button
-              className="button button--piyo"
-              onClick={(e) => handleCreate(e)}
-            >
-              <span className="button__text">Ok</span>
-            </button>
-          </div>
-        </form>
-      </div> */}
     </div>
   );
 }
