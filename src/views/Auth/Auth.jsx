@@ -24,6 +24,7 @@ export default function Auth({ isSigningUp = false }) {
         // sign up user
         await signUpUser(email, password);
         // wait for information to come -> have pop up, signed up! now sign in
+        alert('Signed up!');
         // navigate to signin page
         navigateTo('/signin');
         // loading false
@@ -39,12 +40,13 @@ export default function Auth({ isSigningUp = false }) {
           localStorage.setItem('userLocalStorageData', JSON.stringify(user));
           // set auth status to local storage
           setAuthToken(true);
-        }
-        if (currentUser.name) {
-          navigateTo('/dashboard');
-        } else {
-          // show animation of introduction story and then send to welcome
-          navigateTo('/welcome');
+          if (user.name) {
+            navigateTo('/dashboard');
+            setLoading(false);
+          } else {
+            // show animation of introduction story and then send to welcome
+            navigateTo('/welcome');
+          }
         }
       }
     } catch (error) {
