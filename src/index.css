@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'Tamagotchi-Normal';
-  src: url('fonts/webfontkit-20230214-180236/tamagotchi_normal-webfont.woff2')
-      format('woff2'),
-    url('fonts/webfontkit-20230214-180236/tamagotchi_normal-webfont.woff')
-      format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Bubbly';
+  src: url('fonts/Cherry_Bomb_One/CherryBombOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Text';
+  src: url('fonts/Gruppo/Gruppo-Regular.ttf');
 }
 
 body {
