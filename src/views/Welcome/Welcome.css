@@ -5,28 +5,6 @@
   align-content: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgba(var(--peach), 0.8);
-
-  background: radial-gradient(
-    circle,
-    rgba(var(--peach), 1) 8%,
-    rgba(var(--chick), 1) 59%,
-    rgba(var(--melon), 1) 100%
-  );
-
-  background: -moz-radial-gradient(
-    circle,
-    rgba(var(--peach), 1) 8%,
-    rgba(var(--chick), 1) 59%,
-    rgba(var(--melon), 1) 100%
-  );
-
-  background: -webkit-radial-gradient(
-    circle,
-    rgba(var(--peach), 1) 8%,
-    rgba(var(--chick), 1) 59%,
-    rgba(var(--melon), 1) 100%
-  );
-
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F7B390", endColorstr="#FDF6B4", GradientType=1 );
+  background-image: url('../../assets/Welcome-bg');
+  background-size: cover;
 }
