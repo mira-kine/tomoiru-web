@@ -23,11 +23,11 @@ export default function FoodRecs() {
   return (
     <div className="food-container">
       <div className="food-container-bg">
-        <img
+        {/* <img
           className="food-recs-bg"
           src={require('../../assets/temp-bg.gif')}
           alt="cute background for eating page"
-        />
+        /> */}
         <div id="user-input-box">
           <FoodList foodsList={foodsList} />
         </div>

@@ -5,6 +5,7 @@
   align-content: center;
   justify-content: center;
   height: 100vh;
-  background-image: url('../../assets/Welcome-bg');
+  background-image: url('../../assets/Welcome-bg.png');
   background-size: cover;
+  background-repeat: no-repeat;
 }
