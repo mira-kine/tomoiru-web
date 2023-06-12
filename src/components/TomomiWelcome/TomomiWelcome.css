@@ -1,13 +1,13 @@
 #tomomi-welcome-div {
   display: flex;
   flex-direction: column;
-  background-color: rgba(var(--white), 0.3);
-  width: 50vw;
-  height: 50vh;
+  background-color: rgba(var(--chick), 1);
+  max-width: 60vw;
   margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .tomomi {
-  width: 75%;
-  height: 60%;
+  width: 100%;
 }

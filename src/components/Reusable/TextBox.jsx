@@ -10,4 +10,3 @@ export default function TextBox({ userMode, setUserMode }) {
     </div>
   );
 }
-<p></p>;

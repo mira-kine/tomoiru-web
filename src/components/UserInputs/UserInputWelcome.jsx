@@ -18,6 +18,11 @@ export default function UserInputWelcome() {
       setLoading(false);
     }
   };
+
+  if (loading) {
+    <p>Loading...</p>;
+  }
+
   return (
     <div>
       <form onSubmit={handleWelcome}>
