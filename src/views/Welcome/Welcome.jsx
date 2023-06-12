@@ -11,13 +11,13 @@ export default function Welcome() {
   const navigateTo = useNavigate();
   const { currentUser, updateUserData } = useUser();
   // create two modes of state that renders components depending on what is available
-  const [userMode, setUserMode] = useState(false);
+  const [userMode, setUserMode] = useState(true);
 
   return (
     <div id="welcome-container">
-      {!userMode && <TomomiWelcome />}
+      <TomomiWelcome userMode={userMode} />
       {userMode && <UserInputWelcome />}
-      <TextBox />
+      <TextBox userMode={userMode} setUserMode={setUserMode} />
     </div>
   );
 }

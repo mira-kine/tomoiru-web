@@ -51,13 +51,10 @@ export async function signInUser(email, password) {
   return user;
 }
 
-export async function updateUserName(currentUser) {
+export async function updateUserName(userName) {
   // take current user info from currentUser AFTER useUser updates it to local storage and user state
   // update server with it according to the id of currentUser
-  const resp = await client
-    .from('users')
-    .update(currentUser)
-    .eq('name', currentUser.name);
+  const resp = await client.from('users').update(userName).eq('name', userName);
   return checkError(resp);
 }
 
