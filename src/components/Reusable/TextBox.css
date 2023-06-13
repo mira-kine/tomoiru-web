@@ -1,12 +1,11 @@
 #text-box-container {
-  background-color: rgba(var(--armygreen), 0.8);
-  width: 50vw;
-  height: 5vh;
+  background-color: rgba(var(--armygreen), 0.5);
+  min-width: 50vw;
   /* inline block so that width of container div is set by width of p text inside */
   display: inline-block;
-  padding: 2rem;
+  padding: 1rem;
   font-family: 'Text', sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .typed {

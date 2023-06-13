@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { updateUserName } from '../../api/users';
+import { useUser } from '../../context/UserProvider';
 
 export default function UserInputWelcome() {
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({ userName: '' });
+  const { currentUser, updateUserData } = useUser();
 
   const handleWelcome = async (e) => {
     e.preventDefault();
@@ -12,6 +14,7 @@ export default function UserInputWelcome() {
     try {
       setLoading(true);
       await updateUserName(userName);
+      // update local storage user data with userName
     } catch (error) {
       throw error;
     } finally {
