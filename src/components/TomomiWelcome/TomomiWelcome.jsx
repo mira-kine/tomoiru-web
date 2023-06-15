@@ -14,7 +14,7 @@ export default function TomomiWelcome({ userMode }) {
       {userMode && (
         <img
           className="tomomi"
-          src={require('../../assets/tomomi_talking.png')}
+          src={require('../../assets/tomomi_open.png')}
           alt="tomomi character animating talking"
         />
       )}

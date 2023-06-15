@@ -13,8 +13,9 @@ export default function UserInputWelcome() {
     const { userName } = formState;
     try {
       setLoading(true);
-      await updateUserName(userName);
+      await updateUserName(userName, currentUser.id);
       // update local storage user data with userName
+      updateUserData(userName);
     } catch (error) {
       throw error;
     } finally {
@@ -22,6 +23,8 @@ export default function UserInputWelcome() {
     }
   };
 
+  console.log('currentUser', currentUser);
+  console.log('formState', formState);
   if (loading) {
     <p>Loading...</p>;
   }

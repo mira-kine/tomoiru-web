@@ -11,7 +11,6 @@ import { useUser } from '../../context/UserProvider';
 export default function Auth({ isSigningUp = false }) {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { currentUser } = useUser();
 
   // change to hook, not state management context
   const { setAuthToken } = useAuth();

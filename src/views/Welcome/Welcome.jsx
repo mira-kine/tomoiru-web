@@ -9,13 +9,11 @@ import UserInputWelcome from '../../components/UserInputs/UserInputWelcome';
 export default function Welcome() {
   const navigateTo = useNavigate();
   // create two modes of state that renders components depending on what is available
-  const [userMode, setUserMode] = useState(true);
 
   return (
     <div id="welcome-container">
-      <TomomiWelcome userMode={userMode} />
-      {userMode && <UserInputWelcome />}
-      <TextBox userMode={userMode} setUserMode={setUserMode} />
+      <TomomiWelcome />
+      <TextBox />
     </div>
   );
 }

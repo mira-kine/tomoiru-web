@@ -23,10 +23,13 @@ function UserProvider({ children }) {
 
   const updateUserData = (newUserData) => {
     // update user with new data
-    setCurrentUser(newUserData);
+    // setCurrentUser(newUserData);
+    setCurrentUser((prevState) => {
+      return { ...prevState, user_name: newUserData };
+    });
 
     // store updated user data in local storage
-    localStorage.setItem('userLocalStorageData', JSON.stringify(newUserData));
+    localStorage.setItem('userLocalStorageData', JSON.stringify(currentUser));
   };
 
   if (loading) {
