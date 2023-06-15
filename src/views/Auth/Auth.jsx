@@ -6,7 +6,6 @@ import AuthForm from '../../components/AuthForm/AuthForm';
 import { useAuth } from '../../context/AuthProvider';
 import './Auth.css';
 import { getCurrentUser } from '../../api/users';
-import { useUser } from '../../context/UserProvider';
 
 export default function Auth({ isSigningUp = false }) {
   const [loading, setLoading] = useState(false);
@@ -39,7 +38,7 @@ export default function Auth({ isSigningUp = false }) {
           localStorage.setItem('userLocalStorageData', JSON.stringify(user));
           // set auth status to local storage
           setAuthToken(true);
-          if (user.name) {
+          if (user.user_name) {
             navigateTo('/dashboard');
             setLoading(false);
           } else {

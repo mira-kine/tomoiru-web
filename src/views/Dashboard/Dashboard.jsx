@@ -4,15 +4,8 @@ import './Dashboard.css';
 import Spline from '@splinetool/react-spline';
 
 export default function Dashboard() {
-  const navigateTo = useNavigate();
+  // const navigateTo = useNavigate();
   // option to choose foods - button to direct to food recs
-  const handleFood = () => {
-    navigateTo('/dashboard/food-recs');
-  };
-
-  const handleHome = () => {
-    navigateTo('/dashboard');
-  };
 
   return (
     <div className="home-container">
@@ -20,7 +13,8 @@ export default function Dashboard() {
         <h1>What shall we do today?</h1>
       </div> */}
       <div className="home-container-bg">
-        {/* <Spline scene="https://prod.spline.design/FIfTPXvz7GZEqg8E/scene.splinecode" /> */}
+        <Spline scene="https://prod.spline.design/FIfTPXvz7GZEqg8E/scene.splinecode" />
+
         {/* <div className="buttons" id="dashbutton-input">
           <button className="dashbutton" id="button-a" onClick={handleHome}>
             Home
@@ -32,7 +26,6 @@ export default function Dashboard() {
             Chat
           </div>
         </div> */}
-        <h1>temp space</h1>
       </div>
     </div>
   );
