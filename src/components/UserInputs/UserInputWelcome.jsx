@@ -3,7 +3,7 @@ import { useForm } from '../../hooks/useForm';
 import { updateUserName } from '../../api/users';
 import { useUser } from '../../context/UserProvider';
 
-export default function UserInputWelcome() {
+export default function UserInputWelcome({ setUserMode, userMode }) {
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({ userName: '' });
   const { currentUser, updateUserData } = useUser();
@@ -16,6 +16,7 @@ export default function UserInputWelcome() {
       await updateUserName(userName, currentUser.id);
       // update local storage user data with userName
       updateUserData(userName);
+      setUserMode(false);
     } catch (error) {
       throw error;
     } finally {
@@ -23,8 +24,6 @@ export default function UserInputWelcome() {
     }
   };
 
-  console.log('currentUser', currentUser);
-  console.log('formState', formState);
   if (loading) {
     <p>Loading...</p>;
   }
