@@ -9,22 +9,22 @@ export default function Dashboard() {
 
   return (
     <div className="home-container">
-      {/* <div id="dashboard-title-container">
-        <h1>What shall we do today?</h1>
-      </div> */}
+      <div id="dashboard-title-container">
+        <h1>Dashboard</h1>
+      </div>
       <div className="home-container-bg">
-        <Spline scene="https://prod.spline.design/FIfTPXvz7GZEqg8E/scene.splinecode" />
-
-        {/* <div className="buttons" id="dashbutton-input">
-          <button className="dashbutton" id="button-a" onClick={handleHome}>
-            Home
-          </button>
-          <button className="dashbutton" id="button-b" onClick={handleFood}>
-            Feed
-          </button>
-          <div className="dashbutton" id="button-c">
-            Chat
-          </div>
+        <div className="tomomi-house-container">
+          <Spline
+            className="tomomi-house"
+            scene="https://prod.spline.design/BUslBJhv5ZSWmILk/scene.splinecode"
+          />
+        </div>
+        {/* <Spline scene="https://prod.spline.design/FIfTPXvz7GZEqg8E/scene.splinecode" /> */}
+        {/* <div className="tomomi-house">
+          <img
+            src={require('../../assets/tomoiru-temp-bg.png')}
+            alt="tomomi house background"
+          />
         </div> */}
       </div>
     </div>
