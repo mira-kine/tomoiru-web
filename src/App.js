@@ -7,6 +7,7 @@ import PrivateRoute from './utils/PrivateRoute';
 import Welcome from './views/Welcome/Welcome';
 import FoodRecs from './views/FoodRecs/FoodRecs';
 import SelectedFood from './views/SelectedFood/SelectedFood';
+import Chat from './views/Chat/Chat';
 import { AuthProvider } from './context/AuthProvider';
 import { UserProvider } from './context/UserProvider';
 import NavBar from './components/NavBar/NavBar';
@@ -36,14 +37,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route
+          <Route
             path="/dashboard/chat"
             element={
               <PrivateRoute>
                 <Chat />
               </PrivateRoute>
             }
-          /> */}
+          />
           <Route
             path="/dashboard/food-recs"
             element={
