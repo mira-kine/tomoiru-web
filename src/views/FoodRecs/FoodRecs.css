@@ -11,7 +11,7 @@
 #foodlist-div {
   padding: 0.3rem;
   margin: 0.3rem;
-  font-family: monospace;
+  font-family: 'Text', monospace;
 }
 
 #foodlist-with-display {

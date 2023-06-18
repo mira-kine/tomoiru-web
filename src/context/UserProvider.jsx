@@ -4,21 +4,10 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(
+    localStorage.getItem('userLocalStorageData') || null
+  );
   const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const user = await getCurrentUser();
-  //     if (user) {
-  //       setCurrentUser(JSON.stringify(user));
-  //     } else {
-  //       return;
-  //     }
-  //   };
-  //   fetchUser();
-  //   setLoading(false);
-  // }, [setCurrentUser]);
 
   useEffect(() => {
     // get user data from local storage
@@ -34,10 +23,13 @@ function UserProvider({ children }) {
 
   const updateUserData = (newUserData) => {
     // update user with new data
-    setCurrentUser(newUserData);
+    // setCurrentUser(newUserData);
+    setCurrentUser((prevState) => {
+      return { ...prevState, user_name: newUserData };
+    });
 
     // store updated user data in local storage
-    localStorage.setItem('userLocalStorageData', JSON.stringify(newUserData));
+    localStorage.setItem('userLocalStorageData', JSON.stringify(currentUser));
   };
 
   if (loading) {

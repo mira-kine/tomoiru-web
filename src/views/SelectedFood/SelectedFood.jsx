@@ -29,10 +29,10 @@ export default function SelectedFood() {
       {loading ? (
         <div className="home-container">
           <div id="loading-page">
-            <img
+            {/* <img
               src={require(`../../assets/ol-sushi.GIF`)}
               alt="sushi loading prop"
-            />
+            /> */}
           </div>
         </div>
       ) : (
