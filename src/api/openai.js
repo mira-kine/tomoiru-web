@@ -1,4 +1,4 @@
-import { client, checkError } from './client';
+import { client } from './client.js';
 import { Configuration, OpenAIApi } from 'openai';
 
 // Initialize supabase client
@@ -21,11 +21,20 @@ async function generateEmbeddings() {
   ];
 
   for (const document of documents) {
-    // turn each string into embedding
+    // turn each string in the documents array into an embedding
     const input = document.replace(/\n/g, '');
     const embeddingResp = await openai.createEmbedding({
       model: 'text-embedding-ada-002', // current most recent model to create embeddings
+      input,
+    });
+
+    const [{ embedding }] = embeddingResp.data.data;
+    // store embedding and text into supabasedb
+    await client.from('documents').insert({
+      content: document,
+      embedding,
     });
   }
 }
-// store embedding and text into supabasedb
+
+generateEmbeddings();
