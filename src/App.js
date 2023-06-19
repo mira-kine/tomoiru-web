@@ -13,10 +13,12 @@ import { UserProvider } from './context/UserProvider';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
+  const isLoggedIn = localStorage.getItem('authenticated');
+  console.log('isLoggedIn', isLoggedIn);
   return (
     <AuthProvider>
       <UserProvider>
-        <NavBar />
+        {isLoggedIn === true && <NavBar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Auth />} />

@@ -16,7 +16,7 @@ export default function Dashboard() {
         <div className="tomomi-house-container">
           <Spline
             className="tomomi-house"
-            scene="https://prod.spline.design/BUslBJhv5ZSWmILk/scene.splinecode"
+            scene="https://prod.spline.design/kSovaMZ-tN4qcT9P/scene.splinecode"
           />
         </div>
       </div>
