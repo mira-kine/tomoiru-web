@@ -65,7 +65,7 @@ export default function Auth({ isSigningUp = false }) {
               <div id="auth-form-div" className="form-container">
                 <AuthForm
                   onSubmit={handleAuth}
-                  label={isSigningUp ? 'Sign Up!' : 'Meet your Tomo'}
+                  label={isSigningUp ? 'Sign Up!' : 'Welcome!'}
                   isSigningUp={isSigningUp}
                   errorMessage={errorMessage}
                   setErrorMessage={setErrorMessage}
