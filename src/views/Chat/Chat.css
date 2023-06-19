@@ -1,8 +1,7 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  margin-top: 6rem;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   align-content: center;
   width: 100vw;
