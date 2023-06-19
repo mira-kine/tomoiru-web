@@ -4,7 +4,7 @@ import { useStateWithStorage } from '../hooks/useStateWithStorage';
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [authToken, setAuthToken] = useStateWithStorage(false, 'authenticated');
+  const [authToken, setAuthToken] = useStateWithStorage('authenticated', false);
 
   return (
     <AuthContext.Provider value={{ authToken, setAuthToken }}>

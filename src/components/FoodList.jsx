@@ -21,7 +21,7 @@ export default function FoodList({ foodsList }) {
               return (
                 <div key={item.id}>
                   <button
-                    className="button button--piyo"
+                    className="button button--yellow"
                     id="foodlist-div"
                     onClick={() => handleDisplay(item)}
                   >

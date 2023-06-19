@@ -4,14 +4,16 @@ import './Home.css';
 
 export default function Home() {
   return (
-    <div id="home-view-container">
-      <div id="hello-container">
-        <div id="title-container">
-          <span id="title">Welcome to Tomoiru!</span>
-          <div id="signin-container">
-            <HomeButton />
+    <div className="home-view-container">
+      <div className="hello-container">
+        <div className="title-container">
+          <div className="title tomoiru-title"> Tomoiru</div>
+          <div className="sub-title">
+            Where you can travel to Japan with a friend
           </div>
-          <span id="sub-title">Where you can travel Japan with a friend</span>
+        </div>
+        <div className="signin-container">
+          <HomeButton />
         </div>
       </div>
     </div>

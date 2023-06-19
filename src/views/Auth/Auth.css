@@ -1,11 +1,11 @@
-.loading-page {
+/* .loading-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-items: center;
   height: 80vh;
-}
+} */
 
 #auth-view-container {
   display: flex;
@@ -13,8 +13,9 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-image: url(../../assets/dark_japan.gif);
+  background-image: url('../../assets/Welcome_Big.jpg');
   background-size: cover;
+  background-position: center;
 }
 
 #auth-container {
@@ -25,7 +26,6 @@
   margin: 2rem;
   height: 70vh;
   width: 65vw;
-  background-color: rgba(var(--chick), 0.3);
   z-index: 2;
 }
 
@@ -37,7 +37,6 @@
   flex-wrap: wrap;
   margin: 2rem;
   align-content: space-around;
-  background-color: rgba(var(--melon), 1);
   height: 80%;
   width: 80%;
 }
@@ -49,16 +48,21 @@
   flex-wrap: wrap;
   align-items: center;
   margin-top: 0.5rem;
+  padding: 2rem;
+  border-radius: 10%;
+  background-color: rgba(var(--melon), 0.6);
 }
 
 #auth-title {
-  font-family: 'Tamagotchi-Normal', monospace, sans-serif;
-  font-size: 2vw;
+  font-family: 'Bubbly', monospace, sans-serif;
+  font-size: 4vw;
+  color: rgba(var(--licorce), 1);
+  -webkit-text-stroke: 2px white;
 }
 
 #sub-title-auth {
-  font-family: monospace;
-  font-size: 1.8vmin;
+  font-family: 'Text', monospace;
+  font-size: 3vmin;
   padding: 0.2em;
 }
 

@@ -1,36 +1,27 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTomo } from '../../hooks/useTomo';
-import { YourTomo } from '../../components/YourTomo/YourTomo';
-import NavBar from '../../components/NavBar/NavBar';
-import { useUser } from '../../context/UserProvider';
 import './Dashboard.css';
+import Spline from '@splinetool/react-spline';
 
 export default function Dashboard() {
-  const { currentUser } = useUser();
-  const tomo = useTomo({ currentUser });
-  const navigateTo = useNavigate();
-
+  // const navigateTo = useNavigate();
   // option to choose foods - button to direct to food recs
-  const handleClick = () => {
-    navigateTo('/dashboard/food-recs');
-  };
 
   return (
-    <div class="home-container">
-      <NavBar />
+    <div className="home-container">
       <div id="dashboard-title-container">
-        <h1>What shall we do today?</h1>
+        <h1>Home</h1>
       </div>
-      <div class="home-container-bg">
-        <div class="user-container">
-          <div class="tomo-container">
-            <div class="tomo-div">
-              <YourTomo tomo={tomo} handleClick={handleClick} />
-            </div>
-          </div>
+      <div className="home-container-bg">
+        <div className="tomomi-house-container">
+          <Spline
+            className="tomomi-house"
+            scene="https://prod.spline.design/kSovaMZ-tN4qcT9P/scene.splinecode"
+          />
         </div>
       </div>
     </div>
   );
 }
+
+// next attach events to elements on spline model

@@ -1,0 +1,31 @@
+#text-box-container {
+  background-color: rgba(var(--armygreen), 0.5);
+  width: 50vw;
+  /* inline block so that width of container div is set by width of p text inside */
+  display: inline-block;
+  padding: 1rem;
+  font-family: 'Text', sans-serif;
+  font-size: 1.2rem;
+}
+
+.typed {
+  overflow: hidden;
+  white-space: nowrap;
+  /* width:0 hides text at start of animation. Animation will change width to reveal text */
+  width: 0;
+  animation: typing;
+  animation-duration: 1.7s;
+  /* steps(30, end) makes animation play in stepwise manner */
+  animation-timing-function: steps(30, end);
+  /* keep width at 100% or else it will reset to 0 */
+  animation-fill-mode: forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

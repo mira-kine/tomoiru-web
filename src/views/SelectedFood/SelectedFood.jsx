@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { eatFood } from '../../api/foods';
-import { useUser } from '../../context/UserProvider';
 import { useFood } from '../../hooks/useFood';
 import './SelectedFood.css';
 
@@ -9,7 +8,6 @@ export default function SelectedFood() {
   // refactoring to set food display by ID
   const { id } = useParams();
   const { selectedFood } = useFood(id);
-  const { currentUser } = useUser();
   const navigateTo = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +18,7 @@ export default function SelectedFood() {
   const handleEat = async () => {
     //   set some type of selectedFood
     setLoading(true);
-    await eatFood(currentUser, selectedFood);
+    // await eatFood(currentUser, selectedFood);
     await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
     navigateTo('/dashboard');
@@ -31,10 +29,10 @@ export default function SelectedFood() {
       {loading ? (
         <div className="home-container">
           <div id="loading-page">
-            <img
+            {/* <img
               src={require(`../../assets/ol-sushi.GIF`)}
               alt="sushi loading prop"
-            />
+            /> */}
           </div>
         </div>
       ) : (
@@ -48,13 +46,13 @@ export default function SelectedFood() {
                 <span>{selectedFood.description}</span>
               </div>
               <div id="button-options-container">
-                <button className="button button--piyo" onClick={handleBack}>
+                <button className="button button--yellow" onClick={handleBack}>
                   <div className="button__wrapper">
                     <div className="button__text">Back to list</div>
                   </div>
                 </button>
                 <button
-                  className="button button--piyo"
+                  className="button button--yellow"
                   onClick={() => handleEat(selectedFood)}
                 >
                   <div className="button__wrapper">
