@@ -1,0 +1,20 @@
+{
+  "name": "tomoiru-web-server-package",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Mira Kinebuchi <mirak0419@gmail.com>",
+  "description": "tomoiru-web app server package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "tomoiru-web.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.26.0",
+    "openai": "^3.3.0"
+  }
+}
