@@ -7,13 +7,13 @@ import { useUser } from '../../context/UserProvider';
 export default function NavBar() {
   const navigateTo = useNavigate();
   const { currentUser } = useUser();
-  console.log('currentUser', currentUser);
 
   const handleSignOut = async () => {
     await signOut();
     localStorage.clear();
     localStorage.setItem('authenticated', false);
     navigateTo('/');
+    navigateTo(0);
   };
 
   return (
