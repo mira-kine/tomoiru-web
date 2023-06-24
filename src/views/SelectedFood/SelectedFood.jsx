@@ -45,13 +45,13 @@ export default function SelectedFood() {
                 <span>{selectedFood.description}</span>
               </div>
               <div id="button-options-container">
-                <button className="button button--piyo" onClick={handleBack}>
+                <button className="button button--yellow" onClick={handleBack}>
                   <div className="button__wrapper">
                     <div className="button__text">Back to list</div>
                   </div>
                 </button>
                 <button
-                  className="button button--piyo"
+                  className="button button--yellow"
                   onClick={() => handleEat(selectedFood)}
                 >
                   <div className="button__wrapper">

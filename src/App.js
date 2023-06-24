@@ -17,6 +17,7 @@ function App() {
       <UserProvider>
         <NavBar />
         <Routes>
+          {/* {isLoggedIn === true && <NavBar />} */}
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Auth />} />
           <Route path="/signup" element={<Auth isSigningUp />} />

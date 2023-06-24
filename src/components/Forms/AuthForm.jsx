@@ -64,7 +64,7 @@ export default function AuthForm({
         <button
           type="submit"
           disabled={loading}
-          className="button button--piyo"
+          className="button button--yellow"
         >
           <div className="button__wrapper">
             <div className="button__text">{label}</div>
