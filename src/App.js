@@ -1,15 +1,15 @@
 // import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Home from './views/Home/Home';
-import Auth from './views/Auth/Auth';
-import Dashboard from './views/Dashboard/Dashboard';
+import Home from './views/Home';
+import Auth from './views/Auth';
+import Dashboard from './views/Dashboard';
 import PrivateRoute from './utils/PrivateRoute';
-import Welcome from './views/Welcome/Welcome';
+import Welcome from './views/Welcome';
 import Chat from './views/Chat/Chat';
 import { AuthProvider } from './context/AuthProvider';
 import { UserProvider } from './context/UserProvider';
-import NavBar from './components/NavBar/NavBar';
-import About from './views/About/About';
+import NavBar from './components/NavBar';
+import About from './views/About';
 
 function App() {
   return (

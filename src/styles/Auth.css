@@ -13,7 +13,7 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-image: url('../../assets/Welcome_Big.jpg');
+  background-image: url('../assets/Welcome_Big.jpg');
   background-size: cover;
 }
 

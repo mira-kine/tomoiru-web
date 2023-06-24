@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react';
-import './TextBox.css';
 import { useUser } from '../../context/UserProvider';
 import UserInputWelcome from '../UserInputs/UserInputWelcome';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/TextBox.css';
 
 export default function TextBox({ userMode, setUserMode }) {
   const { currentUser } = useUser();
