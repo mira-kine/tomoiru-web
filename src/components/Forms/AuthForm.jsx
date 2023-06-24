@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../../views/Auth/Auth.css';
 import { useForm } from '../../hooks/useForm';
 import { Link } from 'react-router-dom';
+import '../../styles/Auth.css';
 
 export default function AuthForm({
   errorMessage,
