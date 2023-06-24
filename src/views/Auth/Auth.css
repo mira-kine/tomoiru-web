@@ -15,6 +15,7 @@
   width: 100%;
   background-image: url('../../assets/Welcome_Big.jpg');
   background-size: cover;
+  background-position: center;
 }
 
 #auth-container {
