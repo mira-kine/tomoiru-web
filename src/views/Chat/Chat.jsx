@@ -8,3 +8,5 @@ export default function Chat() {
     </div>
   );
 }
+
+// starting chat openai api here

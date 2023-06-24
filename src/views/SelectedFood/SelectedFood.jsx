@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { eatFood } from '../../api/foods';
 import { useFood } from '../../hooks/useFood';
 import './SelectedFood.css';
 

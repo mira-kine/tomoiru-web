@@ -5,12 +5,11 @@ import Auth from './views/Auth/Auth';
 import Dashboard from './views/Dashboard/Dashboard';
 import PrivateRoute from './utils/PrivateRoute';
 import Welcome from './views/Welcome/Welcome';
-import FoodRecs from './views/FoodRecs/FoodRecs';
-import SelectedFood from './views/SelectedFood/SelectedFood';
 import Chat from './views/Chat/Chat';
 import { AuthProvider } from './context/AuthProvider';
 import { UserProvider } from './context/UserProvider';
 import NavBar from './components/NavBar/NavBar';
+import About from './views/About/About';
 
 function App() {
   return (
@@ -30,6 +29,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/about" element={<About />} />
           <Route
             path="/dashboard"
             element={
@@ -46,7 +46,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
+          {/* <Route
             path="/dashboard/food-recs"
             element={
               <PrivateRoute>
@@ -61,7 +61,7 @@ function App() {
                 <SelectedFood />
               </PrivateRoute>
             }
-          />
+          /> */}
         </Routes>
       </UserProvider>
     </AuthProvider>
