@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@splinetool/react-spline": "^2.2.6",
-    "@splinetool/runtime": "^0.9.354",
+    "@splinetool/runtime": "^0.9.373",
     "@supabase/gotrue-js": "^2.11.0",
     "@supabase/supabase-js": "^2.7.1",
     "@testing-library/jest-dom": "^5.16.5",

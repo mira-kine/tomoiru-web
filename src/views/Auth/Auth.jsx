@@ -6,6 +6,7 @@ import AuthForm from '../../components/AuthForm/AuthForm';
 import { useAuth } from '../../context/AuthProvider';
 import './Auth.css';
 import { getCurrentUser } from '../../api/users';
+import Loading from '../../components/Loading';
 
 export default function Auth({ isSigningUp = false }) {
   const [loading, setLoading] = useState(false);
@@ -40,7 +41,8 @@ export default function Auth({ isSigningUp = false }) {
           setAuthToken(true);
           if (user.user_name) {
             navigateTo('/dashboard');
-            setLoading(false);
+            navigateTo(0);
+            // setLoading(false);
           } else {
             // show animation of introduction story and then send to welcome
             navigateTo('/welcome');
@@ -57,7 +59,7 @@ export default function Auth({ isSigningUp = false }) {
   return (
     <>
       {loading ? (
-        <div className="loading-page">Loading...</div>
+        <Loading />
       ) : (
         <div id="auth-view-container">
           <div id="auth-container">

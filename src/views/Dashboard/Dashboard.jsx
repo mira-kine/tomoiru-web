@@ -5,7 +5,7 @@ import Spline from '@splinetool/react-spline';
 export default function Dashboard() {
   // const navigateTo = useNavigate();
   // option to choose foods - button to direct to food recs
-
+  console.log('Spline', Spline);
   return (
     <div className="home-container">
       <div id="dashboard-title-container">
