@@ -5,7 +5,7 @@ import { signInUser } from '../api/users';
 import AuthForm from '../components/Forms/AuthForm';
 import { useAuth } from '../context/AuthProvider';
 import { getCurrentUser } from '../api/users';
-import Loading from '../components/Loading';
+import Loading from '../components/Reusable/Loading';
 import '../styles/Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
