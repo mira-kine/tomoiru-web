@@ -23,7 +23,7 @@
   background: rgba(var(--white));
   color: rgba(var(--licorice));
   opacity: 0.85;
-  height: 50px;
+  height: 70px;
   z-index: 12;
 }
 
@@ -72,7 +72,7 @@
     height: 32px;
     width: 30px;
     top: 0px;
-    left: 20px;
+    left: 15px;
     z-index: 5;
     opacity: 0;
   }
@@ -82,7 +82,7 @@
     height: 23px;
     width: 35px;
     position: absolute;
-    top: 0px;
+    top: 10px;
     left: 20px;
     z-index: 2;
     display: flex;

@@ -1,5 +1,6 @@
 // set up user context to keep user consistent throughout app after signing in.
 import { createContext, useContext, useEffect, useState } from 'react';
+import Loading from '../components/Reusable/Loading';
 
 const UserContext = createContext();
 
@@ -33,7 +34,11 @@ function UserProvider({ children }) {
   };
 
   if (loading) {
-    return <h1>loading...</h1>;
+    return (
+      <>
+        <Loading />
+      </>
+    );
   }
 
   return (
