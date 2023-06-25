@@ -2,5 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 50%;
+}
+
+.spinner {
+  width: 500px;
 }

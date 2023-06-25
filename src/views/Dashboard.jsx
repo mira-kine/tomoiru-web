@@ -10,16 +10,16 @@ export default function Dashboard() {
 
   return (
     <div className="home-container">
-      {modelLoading && (
-        <>
-          <Loading />
-        </>
-      )}
       <div id="dashboard-title-container">
         <h1>Home</h1>
       </div>
       <div className="home-container-bg">
         <div className="tomomi-house-container">
+          {modelLoading && (
+            <>
+              <Loading />
+            </>
+          )}
           <Spline
             onLoad={() => setModelLoading(false)}
             scene="https://prod.spline.design/kSovaMZ-tN4qcT9P/scene.splinecode"
