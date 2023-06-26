@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { updateUserName } from '../../api/users';
 import { useUser } from '../../context/UserProvider';
+import Loading from '../Reusable/Loading';
 
 export default function UserInputWelcome({ setUserMode, userMode }) {
   const [loading, setLoading] = useState(false);
@@ -24,12 +25,9 @@ export default function UserInputWelcome({ setUserMode, userMode }) {
     }
   };
 
-  if (loading) {
-    <p>Loading...</p>;
-  }
-
   return (
     <div>
+      {loading && <Loading />}
       <form onSubmit={handleWelcome}>
         <input
           type="text"

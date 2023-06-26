@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { Link } from 'react-router-dom';
 import '../../styles/Auth.css';
+import Loading from '../Reusable/Loading';
 
 export default function AuthForm({
   errorMessage,
@@ -32,17 +33,12 @@ export default function AuthForm({
 
   return (
     <>
-      {loading ? (
-        'Loading'
-      ) : (
-        <>
-          <div id="auth-title">
-            <span>
-              {isSigningUp ? 'Glad you are here' : 'Great to see you again'}
-            </span>
-          </div>
-        </>
-      )}
+      {loading && <Loading />}
+      <div id="auth-title">
+        <span>
+          {isSigningUp ? 'Glad you are here' : 'Great to see you again'}
+        </span>
+      </div>
       <form onSubmit={handleSubmit}>
         {errorMessage && <p>{errorMessage}</p>}
         <input

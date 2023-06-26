@@ -1,0 +1,10 @@
+.loading-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.spinner {
+  width: 500px;
+}
