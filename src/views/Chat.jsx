@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../styles/Chat.css';
 import Loading from '../components/Reusable/Loading';
 import { useForm } from '../hooks/useForm';
 
 export default function Chat() {
-  const [responses, setResponses] = useState([]);
+  // const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({ userInput: '' });
 

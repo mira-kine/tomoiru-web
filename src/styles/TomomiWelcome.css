@@ -1,10 +1,8 @@
 #tomomi-welcome-div {
   display: flex;
   flex-direction: column;
-  background-color: rgba(var(--chick), 1);
   width: 60vw;
-  max-width: 500px;
-  margin-bottom: 2rem;
+  max-width: 375px;
   justify-content: center;
   align-items: center;
   padding: 1rem;

@@ -33,47 +33,50 @@ export default function AuthForm({
 
   return (
     <>
-      {loading && <Loading />}
       <div id="auth-title">
         <span>
           {isSigningUp ? 'Glad you are here' : 'Great to see you again'}
         </span>
       </div>
-      <form onSubmit={handleSubmit}>
-        {errorMessage && <p>{errorMessage}</p>}
-        <input
-          type="email"
-          name="email"
-          aria-label="Email"
-          value={formState.email}
-          onChange={handleForm}
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          name="password"
-          aria-label="Password"
-          placeholder="Password"
-          value={formState.password}
-          onChange={handleForm}
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="button button--yellow"
-        >
-          <div className="button__wrapper">
-            <div className="button__text">{label}</div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          {errorMessage && <p>{errorMessage}</p>}
+          <input
+            type="email"
+            name="email"
+            aria-label="Email"
+            value={formState.email}
+            onChange={handleForm}
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            name="password"
+            aria-label="Password"
+            placeholder="Password"
+            value={formState.password}
+            onChange={handleForm}
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="button button--yellow"
+          >
+            <div className="button__wrapper">
+              <div className="button__text">{label}</div>
+            </div>
+          </button>
+          <div id="sub-title-auth">
+            {!isSigningUp ? (
+              <Link to="/signup">No account? Sign up!</Link>
+            ) : (
+              <Link to="/signin">Already have a Tomo? Sign in!</Link>
+            )}
           </div>
-        </button>
-        <div id="sub-title-auth">
-          {!isSigningUp ? (
-            <Link to="/signup">No account? Sign up!</Link>
-          ) : (
-            <Link to="/signin">Already have a Tomo? Sign in!</Link>
-          )}
-        </div>
-      </form>
+        </form>
+      )}
     </>
   );
 }
