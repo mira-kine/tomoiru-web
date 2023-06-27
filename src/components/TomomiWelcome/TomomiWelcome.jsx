@@ -1,5 +1,5 @@
 import React from 'react';
-import './TomomiWelcome.css';
+import '../../styles/TomomiWelcome.css';
 
 export default function TomomiWelcome({ userMode }) {
   return (

@@ -44,15 +44,8 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
   height: 80%;
   margin-top: 3rem;
+  border: 3px dotted rgba(var(--licorice));
 }
-/* 
-.tomomi-house {
-  width: 100%;
-  /* height: 100%; */
-/* display: flex;
-  justify-content: center;
-  align-items: center; */
-/* } */

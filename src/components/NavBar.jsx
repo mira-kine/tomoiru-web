@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from '../../api/users';
-import './NavBar.css';
-import { useUser } from '../../context/UserProvider';
+import { signOut } from '../api/users';
+import { useUser } from '../context/UserProvider';
+import '../styles/NavBar.css';
 
 export default function NavBar() {
   const navigateTo = useNavigate();
