@@ -32,6 +32,7 @@ export default function Auth({ isSigningUp = false }) {
         setLoading(true);
         // sign in user
         const resp = await signInUser(email, password);
+
         if (resp) {
           // get user data in parsed form
           const user = await getCurrentUser();
@@ -50,7 +51,11 @@ export default function Auth({ isSigningUp = false }) {
         }
       }
     } catch (error) {
-      setErrorMessage('Something went wrong. Please try again.');
+      if (error.status === 400 || error.status === 401) {
+        setErrorMessage('Invalid email or password. Please try again.');
+      } else {
+        setErrorMessage('Something went wrong. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
