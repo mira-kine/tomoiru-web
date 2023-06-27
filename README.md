@@ -1,5 +1,5 @@
 # Tomoiru-web app
-## My friends always ask me for recommendations on things to do and eat in Japan... So I thought I'd make it more fun for them by bringing back the old times
+## My friends always ask me for recommendations on things to do and eat in Japan... So I thought I'd make it more fun for them by creating a virtual buddy
 ### Features Available:
   - Meet Tomomi and get introduced to your room!
   - Chat with Tomomi! (English version available only)
@@ -10,12 +10,16 @@
 ### Features in the future:
   - Refactoring to React Native so that you can find it in your app store and share with friends
 ### Skills used:
+#Client Side
   - React
   - React-Router-Dom
+  - Figma
+  - Spline (3D Modeling)
+
+#Server Side
   - PostGreSQL (Supabase)
   - Pipedream
-  - CSS
   - Notion API
-  - Figma
   - OpenAPI
-  - Spline (3D modeling)
+  - [Embedbase API](https://embedbase.xyz/)
+  - [Nextra Documents](https://nextra.site/) for MDX data
