@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Chat.css';
 import Loading from '../components/Reusable/Loading';
 import { useForm } from '../hooks/useForm';
 
 export default function Chat() {
-  const [responses, setResponses] = useState([]);
+  // const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({ userInput: '' });
+  const navigateTo = useNavigate();
+
+  const handleBack = () => {
+    setLoading(true);
+    navigateTo('/dashboard');
+  };
 
   return (
     <div className="chat-container">
@@ -29,6 +36,7 @@ export default function Chat() {
               />
             </div>
           </form>
+          <button onClick={() => handleBack()}>go back</button>
         </div>
       )}
     </div>
