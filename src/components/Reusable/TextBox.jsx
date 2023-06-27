@@ -31,7 +31,7 @@ export default function TextBox() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleUserInput = () => {
-    if (state.index < 2) {
+    if (state.index < 2 || state.index >= 3) {
       dispatch({ type: 'next' });
     }
     if (state.index === 1) {
@@ -41,8 +41,6 @@ export default function TextBox() {
       navigateTo('/dashboard');
     }
   };
-
-  console.log('state', state);
 
   const handleWelcome = async (e) => {
     e.preventDefault();
@@ -60,7 +58,7 @@ export default function TextBox() {
       setLoading(false);
     }
   };
-
+  console.log('state', state);
   return (
     <div id="text-box-container">
       {loading ? (
@@ -69,24 +67,42 @@ export default function TextBox() {
         </div>
       ) : (
         <>
-          {userMode && (
-            <form onSubmit={handleWelcome}>
-              <input
-                type="text"
-                value={formState.userName}
-                onChange={handleForm}
-                aria-label="name"
-                name="userName"
-              />
-              <button onClick={handleWelcome}>This is me!</button>
-            </form>
-          )}
           {/* display only the first index */}
           {/* find where the state matches the current index */}
-          <div>
-            <p className="typed">{welcomeText.at(state.index).text}</p>
+          <div className="text-container">
+            <div className="text-box typed">
+              {welcomeText.at(state.index).text}
+            </div>
+            {!userMode && (
+              <button
+                className="button button__welcome"
+                onClick={() => handleUserInput()}
+              >
+                <div className="button__wrapper button__wrapper2">
+                  <div className="button__text">Next</div>
+                </div>
+              </button>
+            )}
+            {userMode && (
+              <form className="welcome-form" onSubmit={handleWelcome}>
+                <input
+                  type="text"
+                  value={formState.userName}
+                  onChange={handleForm}
+                  aria-label="name"
+                  name="userName"
+                />
+                <button
+                  className="button button--yellow"
+                  onClick={handleWelcome}
+                >
+                  <div className="button__wrapper button__wrapper2">
+                    <div className="button__text">This is Me!</div>
+                  </div>
+                </button>
+              </form>
+            )}
           </div>
-          {!userMode && <button onClick={() => handleUserInput()}>Next</button>}
           {/* when click, increment index and display that next */}
           {/* go until the end where you cannot increment anymore, change to navigate to wherever */}
         </>
