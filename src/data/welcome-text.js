@@ -17,18 +17,30 @@ export const welcomeText = [
   },
   {
     id: 4,
-    text: 'Welcome to my home. I live in Tokyo, Japan!',
+    text: 'Welcome to your new home in Japan!',
   },
   {
     id: 5,
-    text: 'Here, you can chat with me and ask for recommendations',
+    text: 'I have already set up your room for you.',
   },
   {
     id: 6,
-    text: 'Food, cultural questions, train stations, etc!',
+    text: 'There, you can relax and rest your precious self..',
   },
   {
     id: 7,
+    text: '..and then if you have questions you can chat with me!',
+  },
+  {
+    id: 8,
+    text: 'Food, cultural questions, train stations, etc.',
+  },
+  {
+    id: 9,
     text: "It's a cozy place meant for you to feel less alone while you travel",
+  },
+  {
+    id: 10,
+    text: "So let's head over now and check out your room!",
   },
 ];
