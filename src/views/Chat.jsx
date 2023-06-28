@@ -20,23 +20,36 @@ export default function Chat() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="chat-box">
-          {/* {responses ? responses.map((msg) => {
+        <div className="computer">
+          <div className="chat-bg">
+            <button className="button chat__button" onClick={handleBack}>
+              <div className="button__wrapper chat__button_wrapper">
+                <div className="button__text">{'<'}</div>
+              </div>
+            </button>
+            {/* {responses ? responses.map((msg) => {
               <span>{msg}</span>
             })} */}
-          <form className="chat-form">
-            <div className="chat-input">
-              <label>You:</label>
-              <input
-                type="text"
-                value={formState.userInput}
-                onChange={handleForm}
-                aria-label="user chat input"
-                name="userInput"
-              />
-            </div>
-          </form>
-          <button onClick={() => handleBack()}>go back</button>
+            <div className="chat-box">Chats go here</div>
+            <form className="chat-form">
+              <div className="chat-input">
+                <label>You:</label>
+                <input
+                  type="text"
+                  value={formState.userInput}
+                  onChange={handleForm}
+                  aria-label="user chat input"
+                  name="userInput"
+                  placeholder="write your message here"
+                />
+                <button className="button chat__button" onClick={handleBack}>
+                  <div className="button__wrapper chat__button_wrapper">
+                    <div className="button__text">{'^'}</div>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </div>
