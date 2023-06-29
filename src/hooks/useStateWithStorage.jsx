@@ -5,7 +5,7 @@ export function useStateWithStorage(storageKey, initialValue) {
     //   get item in storage key
     const currentValue = localStorage.getItem(storageKey);
     // if no current value, set it to initial value
-    return currentValue ? currentValue : initialValue;
+    return currentValue || initialValue;
   });
   useEffect(() => {
     if (value === null || value === undefined) {

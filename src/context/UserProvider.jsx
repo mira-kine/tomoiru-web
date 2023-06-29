@@ -1,5 +1,5 @@
 // set up user context to keep user consistent throughout app after signing in.
-import { createContext, useContext, useEffect, useState } from 'react';
+import { React, createContext, useContext, useEffect, useState } from 'react';
 import Loading from '../components/Reusable/Loading';
 
 const UserContext = createContext();
