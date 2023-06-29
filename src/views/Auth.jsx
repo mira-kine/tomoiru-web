@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signUpUser } from '../api/users';
-import { signInUser } from '../api/users';
+import { signUpUser, signInUser, getCurrentUser } from '../api/users';
 import AuthForm from '../components/Forms/AuthForm';
 import { useAuth } from '../context/AuthProvider';
-import { getCurrentUser } from '../api/users';
 import Loading from '../components/Reusable/Loading';
 import '../styles/Auth.css';
 

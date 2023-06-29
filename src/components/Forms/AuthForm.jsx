@@ -9,12 +9,12 @@ export default function AuthForm({
   setErrorMessage,
   onSubmit,
   isSigningUp,
-  label,
+  label
 }) {
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({
     email: '',
-    password: '',
+    password: ''
   });
 
   const handleSubmit = async (e) => {
