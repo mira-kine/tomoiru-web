@@ -17,6 +17,7 @@
     "react-google-button": "^0.7.2",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "typescript": "^5.1.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "@craco/types": "^7.1.0",
     "prettier-eslint": "^15.0.1"
   },
   "type": "module"

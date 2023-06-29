@@ -13,5 +13,20 @@ module.exports = {
       },
     },
   },
+  typescript: {
+    enableTypeChecking: true,
+  },
+  babel: {
+    presets: [
+      /* ... */
+    ],
+    plugins: [
+      /* ... */
+    ],
+    loaderOptions: (babelLoaderOptions, { env, paths }) => {
+      /* ... */
+      return babelLoaderOptions;
+    },
+  },
 };
 // changed to cjs
