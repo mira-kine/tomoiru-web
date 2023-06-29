@@ -5,10 +5,12 @@ import {
 } from 'eventsource-parser';
 // // shape payload aka what will be sent in the stream of messages to give chatGPT
 
-export async function OpenAIStream(payload: {
-  model: '',
-  messages: { role: 'user', content: '', stream: boolean },
-}) {
+export async function OpenAIStream(
+  payload = {
+    model: '',
+    messages: { role: 'user', content: '', stream: false },
+  }
+) {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
@@ -25,7 +27,7 @@ export async function OpenAIStream(payload: {
   const stream = new ReadableStream({
     async start(controller) {
       // callback
-      function onParse(event: ParsedEvent | ReconnectInterval) {
+      function onParse(event = ParsedEvent || ReconnectInterval) {
         if (event.type === 'event') {
           const data = event.data;
           // https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream
@@ -62,6 +64,5 @@ export async function OpenAIStream(payload: {
       }
     },
   });
-
   return stream;
 }
