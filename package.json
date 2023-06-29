@@ -2,6 +2,7 @@
   "name": "tomoiru-web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "tomoiru-web.netlify.app",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@dqbd/tiktoken": "^1.0.7",
