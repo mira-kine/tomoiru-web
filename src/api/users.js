@@ -2,37 +2,33 @@ import { client, checkError } from './client';
 
 // get User
 export async function getCurrentUser() {
-  try {
-    const session = await client.auth.getSession();
-    const {
-      data: { user },
-    } = await client.auth.getUser();
+  const session = await client.auth.getSession();
+  const {
+    data: { user }
+  } = await client.auth.getUser();
 
-    if (!user || !session) {
-      return null;
-    }
+  if (!user || !session) {
+    return null;
+  }
 
-    const { data, error } = await client
-      .from('users')
-      .select('*')
-      .match({ id: user.id })
-      .single();
+  const { data, error } = await client
+    .from('users')
+    .select('*')
+    .match({ id: user.id })
+    .single();
 
-    if (error) {
-      throw error;
-    }
-    if (data) {
-      localStorage.setItem('authenticated', true);
-      return data;
-    }
-  } catch (error) {
+  if (error) {
     throw error;
+  }
+  if (data) {
+    localStorage.setItem('authenticated', true);
+    return data;
   }
 }
 
 export async function signUpUser(email, password) {
   const {
-    data: { user, error },
+    data: { user, error }
   } = await client.auth.signUp({ email, password });
 
   if (error) {
@@ -45,7 +41,7 @@ export async function signUpUser(email, password) {
 export async function signInUser(email, password) {
   const {
     data: { user },
-    error,
+    error
   } = await client.auth.signInWithPassword({ email, password });
   if (error) throw error;
   return user;

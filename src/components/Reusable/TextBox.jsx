@@ -52,8 +52,6 @@ export default function TextBox() {
       updateUserData(userName);
       dispatch({ type: 'next' });
       setUserMode(false);
-    } catch (error) {
-      throw error;
     } finally {
       setLoading(false);
     }
