@@ -10,46 +10,35 @@ export default function Chat() {
   const { formState, handleForm } = useForm({ query: '' });
   const [response, setResponse] = useState('');
   const navigateTo = useNavigate();
+
   const handleBack = () => {
     setLoading(true);
     navigateTo('/dashboard');
   };
 
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
+  const handleSubmit: SubmitHandler<ChatSubmit> = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ): Promise<void> => {
+    e.preventDefault();
     const { query } = formState;
-    console.log('query', query);
     setResponse('');
+    setLoading(true);
     // build prompt first
     const promptResp = await fetch('/api/buildPrompt', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        prompt: query,
-      }),
+        prompt: query
+      })
     });
-    console.log('promptResp', promptResp);
-    const promptData = await promptResp.json();
-    // send info through api search according to user query which is the value of the form in the build prompt
-    console.log('promptData', promptData);
-    // user query will be the const {query} = formState
-    const chatResp = await fetch('/api/payload.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        prompt: promptData.prompt,
-      }),
-    });
-    console.log('chatResp', chatResp);
-    if (!chatResp.ok) {
-      throw new Error(chatResp.statusText);
+    if (!promptResp.ok) {
+      throw new Error(promptResp.statusText);
     }
-    const data = chatResp.body;
-    if (!data) {
+    // Readable Stream data
+    const data = promptResp.body;
+    if (data === null) {
       return;
     }
 
@@ -63,9 +52,12 @@ export default function Chat() {
       // update client side with answer
       setResponse((prev) => prev + chunkValue);
     }
-  };
+    // // send info through api search according to user query which is the value of the form in the build prompt
 
-  console.log('response', response);
+    // const reader = data.getReader();
+    // const decoder = new TextDecoder();
+    // let done = false;
+  };
 
   return (
     <div className="chat-container">
@@ -79,9 +71,9 @@ export default function Chat() {
                 <div className="button__text">{'<'}</div>
               </div>
             </button>
-            {response && <div>Temp {response}</div>}
+            {response !== null && <div>Temp {response}</div>}
             <div className="chat-box">Chats go here</div>
-            <form className="chat-form" onSubmit={handleSubmit}>
+            <form className="chat-form">
               <div className="chat-input">
                 <label>You:</label>
                 <input
@@ -94,7 +86,7 @@ export default function Chat() {
                 />
                 <button
                   className="button chat__button"
-                  onClick={() => handleSubmit()}
+                  onClick={(e) => handleSubmit(e)}
                 >
                   <div className="button__wrapper chat__button_wrapper">
                     <div className="button__text">{'^'}</div>

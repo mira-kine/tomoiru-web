@@ -1,16 +1,18 @@
 import {
   createParser,
   ParsedEvent,
-  ReconnectInterval,
+  ReconnectInterval
 } from 'eventsource-parser';
 // // shape payload aka what will be sent in the stream of messages to give chatGPT
 
-export async function OpenAIStream(
-  payload = {
-    model: '',
-    messages: { role: 'user', content: '', stream: false },
-  }
-) {
+export interface OpenAIStreamPayload {
+  model: string;
+  // this is a list of messages to give ChatGPT
+  messages: { role: 'user'; content: string }[];
+  stream: boolean;
+}
+
+export async function OpenAIStream(payload: OpenAIStreamPayload) {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
@@ -18,16 +20,16 @@ export async function OpenAIStream(
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ''}`,
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ''}`
     },
     method: 'POST',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
 
   const stream = new ReadableStream({
     async start(controller) {
       // callback
-      function onParse(event = ParsedEvent || ReconnectInterval) {
+      function onParse(event: ParsedEvent | ReconnectInterval) {
         if (event.type === 'event') {
           const data = event.data;
           // https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream
@@ -59,10 +61,11 @@ export async function OpenAIStream(
       // this ensures we properly read chunks and invoke an event for each SSE event stream
       const parser = createParser(onParse);
       // https://web.dev/streams/#asynchronous-iteration
-      for await (const chunk of res.body) {
+      for await (const chunk of res.body as any) {
         parser.feed(decoder.decode(chunk));
       }
-    },
+    }
   });
+
   return stream;
 }
