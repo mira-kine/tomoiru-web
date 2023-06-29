@@ -83,3 +83,4 @@ export default function Auth({ isSigningUp = false }) {
     </>
   );
 }
+// cleaned up eslint
