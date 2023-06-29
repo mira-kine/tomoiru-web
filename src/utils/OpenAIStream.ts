@@ -1,22 +1,34 @@
-import {
-  createParser,
-  ParsedEvent,
-  ReconnectInterval
-} from 'eventsource-parser';
+import { createParser } from 'eventsource-parser';
+import type { ParsedEvent, ReconnectInterval } from 'eventsource-parser';
+import * as dotenv from 'dotenv';
+dotenv.config();
 // // shape payload aka what will be sent in the stream of messages to give chatGPT
+
+export type ChatGPTAgent = 'user' | 'system';
+
+export interface ChatGPTMessage {
+  role: ChatGPTAgent;
+  content: string;
+}
 
 export interface OpenAIStreamPayload {
   model: string;
-  // this is a list of messages to give ChatGPT
-  messages: { role: 'user'; content: string }[];
+  messages: ChatGPTMessage[];
+  temperature: number;
+  top_p: number;
+  frequency_penalty: number;
+  presence_penalty: number;
+  max_tokens: number;
   stream: boolean;
+  n: number;
 }
-
+// consistently stream data from chat completions api
 export async function OpenAIStream(payload: OpenAIStreamPayload) {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
   let counter = 0;
+
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     headers: {
       'Content-Type': 'application/json',
@@ -41,8 +53,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
           try {
             const json = JSON.parse(data);
             // get the text response from ChatGPT
-            const text = json.choices[0]?.delta?.content;
-            if (!text) return;
+            const text = json.choices[0]?.delta?.content || '';
             if (counter < 2 && (text.match(/\n/) || []).length) {
               // this is a prefix character (i.e., "\n\n"), do nothing
               return;

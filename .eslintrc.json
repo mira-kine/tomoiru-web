@@ -19,6 +19,8 @@
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/restrict-plus-operands": "off",
     "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
     "comma-dangle": "off",
     "react/prop-types": "off",
     "multiline-ternary": "off",

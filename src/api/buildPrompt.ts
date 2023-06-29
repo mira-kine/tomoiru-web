@@ -50,6 +50,9 @@ const createContext = async (userInput: string, maxLen = 1800) => {
 
 // create endpoint that returns an answer to client
 export default async function buildPrompt(req: Request, res: Response) {
+  if (req.body === null) {
+    throw new Error('Missing body from request');
+  }
   const prompt: string = req.body.prompt;
   const context: string = await createContext(prompt);
   const newPrompt = `You are a kind, gentle and sweet friend who lives in Japan. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nContext: ${context}\n\n---\n\nQuestion: ${prompt}\nAnswer:`;

@@ -16,7 +16,7 @@ export default function Chat() {
     navigateTo('/dashboard');
   };
 
-  const handleSubmit: SubmitHandler<ChatSubmit> = async (
+  const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault();
@@ -52,11 +52,7 @@ export default function Chat() {
       // update client side with answer
       setResponse((prev) => prev + chunkValue);
     }
-    // // send info through api search according to user query which is the value of the form in the build prompt
-
-    // const reader = data.getReader();
-    // const decoder = new TextDecoder();
-    // let done = false;
+    setLoading(false);
   };
 
   return (
