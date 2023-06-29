@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@dqbd/tiktoken": "^1.0.7",
     "@supabase/gotrue-js": "^2.11.0",
     "@supabase/supabase-js": "^2.26.0",
