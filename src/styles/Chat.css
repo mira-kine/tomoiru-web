@@ -1,28 +1,63 @@
 .chat-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--chick), 0.2);
 }
-.chat-box {
+
+.computer {
   display: flex;
-  width: 80%;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 82%;
+  position: absolute;
+  top: 14%;
+  background-color: rgb(55, 55, 55);
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px black;
+}
+
+.chat-bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 96%;
+  height: 87%;
+  top: 3%;
   min-width: 400px;
   min-height: 300px;
+  box-shadow: 0px 0px 10px rgba(var(--periwinkle));
+  border-radius: 20px;
+  background-image: url('../assets/auth_background.jpg');
+}
+
+.chat-box {
+  width: 80%;
   height: 70%;
-  margin-top: 2rem;
-  border: 1px solid black;
-  border-radius: 5%;
-  background-color: rgba(var(--armygreen), 0.7);
+  position: relative;
+  left: 10%;
+  background-color: rgba(var(--white), 0.9);
+  border-radius: 10px;
+  padding: 2rem;
+  overflow-y: scroll;
+  border: 1px solid rgba(var(--peach));
+  box-shadow: 5px 5px 15px rgba(var(--licorice), 0.7);
+  font-family: 'Text', sans-serif;
+  font-weight: 900;
+  font-size: 1.5vmax;
 }
 
 .chat-form {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: flex-end;
+  position: relative;
+  left: 8%;
 }
 
 .chat-input {
@@ -36,4 +71,34 @@
 
 .chat-input input {
   width: 70%;
+  border: hidden;
+  border-radius: 10px;
+  background-color: rgba(var(--white), 0.9);
+  border: 1px solid rgba(var(--peach));
+  box-shadow: 5px 5px 15px rgba(var(--licorice), 0.7);
+  font-family: 'Text', sans-serif;
+  font-weight: 900;
+  font-size: 1.5vmax;
+  overflow-x: scroll;
+}
+
+.chat-input label {
+  font-family: 'Text', sans-serif;
+  font-size: 1.5vmax;
+  font-weight: 900;
+}
+
+.chat__button {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(24, 118, 241);
+  border: solid;
+  color: rgba(var(--white), 1);
+  font-family: 'Text', sans-serif;
+  font-weight: 800;
+}
+
+.chat__button:hover {
+  background-color: rgba(var(--melon), 1);
+  box-shadow: inset 0px 0px 8px rgba(var(--armygreen));
 }

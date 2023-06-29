@@ -14,3 +14,4 @@ module.exports = {
     },
   },
 };
+// changed to cjs
