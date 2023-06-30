@@ -18,7 +18,7 @@ const search = async (query: string) => {
       Authorization: 'Bearer ' + apiKey
     },
     body: JSON.stringify({
-      query: query
+      query
     })
   }).then((response) => response.json());
 };

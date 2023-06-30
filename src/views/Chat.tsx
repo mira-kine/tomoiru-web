@@ -24,6 +24,7 @@ export default function Chat() {
     setResponse('');
     setLoading(true);
     // build prompt first
+
     const promptResp = await fetch('/api/buildPrompt', {
       method: 'POST',
       headers: {
