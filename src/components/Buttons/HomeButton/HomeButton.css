@@ -1,10 +1,10 @@
 .button--yellow {
   background: #f4cf47;
-  --sub_color1: #f4e19c;
+  /* --sub_color1: #f4e19c;
   --base_color: #000;
   --border_radius1: 60px 60px 40px 40px / 48px 48px 30px 30px;
   --border_radius2: 70px 70px 40px 40px / 48px 48px 30px 30px;
-  --border_radius3: 40px 40px 40px 40px / 48px 48px 30px 30px;
+  --border_radius3: 40px 40px 40px 40px / 48px 48px 30px 30px; */
 }
 
 .button--option {
@@ -63,7 +63,7 @@
   z-index: 3;
   font-size: 3vmin;
   letter-spacing: 4px;
-  color: var(--base_color);
+  color: rgba(var(--chick));
   transition: all 0.3s ease;
 }
 
