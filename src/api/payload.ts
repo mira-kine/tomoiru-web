@@ -7,10 +7,21 @@ if (!process.env.OPENAI_API_KEY) {
   throw new Error('Missing env var from OpenAI');
 }
 // handle edge function
-export async function responseHandler(req: Request): Promise<Response> {
-  const { prompt } = (await req.json()) as {
-    prompt?: string;
+export async function responseHandler(query: string): Promise<Response> {
+  // const { prompt } = (await req.json()) as {
+  //   prompt?: string;
+  // };
+  const req = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application.json'
+    },
+    body: JSON.stringify({
+      query
+    })
   };
+  const prompt = await buildPrompt(req);
+
   if (!prompt) {
     return new Response('No prompt in the request', { status: 400 });
   }
@@ -45,4 +56,4 @@ export async function responseHandler(req: Request): Promise<Response> {
 //   const stream = await OpenAIStream(payload);
 //   return new res(stream);
 // };
-// export default responseHandler;
+export default responseHandler;
