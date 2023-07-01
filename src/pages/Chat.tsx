@@ -1,15 +1,22 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Chat.css';
 import Loading from '../components/Reusable/Loading';
-import { useForm } from '../hooks/useForm';
+// import buildPrompt from '../api/buildPrompt.ts';
+// import { useForm } from '../hooks/useForm';
 
 export default function Chat() {
   // const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { formState, handleForm } = useForm({ query: '' });
+  // const { formState, handleForm } = useForm({ query: '' });
+  const [query, setQuery] = useState<string>('');
   const [response, setResponse] = useState('');
   const navigateTo = useNavigate();
+
+  // MVP hardcode prompt here, but later on fix buildPrompt.ts to generate according to similarity
+
+  const prompt = `You are a kind, gentle and sweet friend who lives in Japan. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nQuestion: ${query}\nAnswer:`;
 
   const handleBack = () => {
     setLoading(true);
@@ -20,25 +27,30 @@ export default function Chat() {
     e: React.MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault();
-    const { query } = formState;
     setResponse('');
     setLoading(true);
+<<<<<<< HEAD:src/pages/Chat.tsx
     // build prompt first
 
     const promptResp = await fetch('/api/buildPrompt', {
+=======
+
+    const chatResp = await fetch('/api/payload', {
+>>>>>>> d2333940 (working on readable stream coming through to chat):src/views/Chat.tsx
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application.json'
       },
       body: JSON.stringify({
-        prompt: query
+        prompt
       })
     });
-    if (!promptResp.ok) {
-      throw new Error(promptResp.statusText);
+
+    if (!chatResp.ok) {
+      throw new Error(chatResp.statusText);
     }
     // Readable Stream data
-    const data = promptResp.body;
+    const data = chatResp.body;
     if (data === null) {
       return;
     }
@@ -75,8 +87,10 @@ export default function Chat() {
                 <label>You:</label>
                 <input
                   type="text"
-                  value={formState.query}
-                  onChange={handleForm}
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                  }}
                   aria-label="user chat input"
                   name="query"
                   placeholder="write your message here"

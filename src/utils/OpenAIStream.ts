@@ -1,7 +1,5 @@
 import { createParser } from 'eventsource-parser';
 import type { ParsedEvent, ReconnectInterval } from 'eventsource-parser';
-import * as dotenv from 'dotenv';
-dotenv.config();
 // // shape payload aka what will be sent in the stream of messages to give chatGPT
 
 export type ChatGPTAgent = 'user' | 'system';
@@ -53,7 +51,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
           try {
             const json = JSON.parse(data);
             // get the text response from ChatGPT
-            const text = json.choices[0]?.delta?.content || '';
+            const text = json.choices[0].delta?.content || '';
             if (counter < 2 && (text.match(/\n/) || []).length) {
               // this is a prefix character (i.e., "\n\n"), do nothing
               return;
