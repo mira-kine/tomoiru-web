@@ -24,36 +24,36 @@ export default function Chat() {
     navigateTo('/dashboard');
   };
 
-  const handleSubmit = async (
-    e: React.MouseEvent<HTMLButtonElement>
-  ): Promise<void> => {
-    e.preventDefault();
-    setResponse('');
-    setLoading(true);
-    // build prompt first
+  // const handleSubmit = async (
+  //   e: React.MouseEvent<HTMLButtonElement>
+  // ): Promise<void> => {
+  //   e.preventDefault();
+  //   setResponse('');
+  //   setLoading(true);
+  //   // build prompt first
 
-    const promptResp = await fetch('/api/buildPrompt', {
-    if (!chatResp.ok) {
-      throw new Error(chatResp.statusText);
-    }
-    // Readable Stream data
-    const data = chatResp.body;
-    if (data === null) {
-      return;
-    }
+  //   const chatResp = await fetch('/api/buildPrompt', {
+  //   if (!chatResp.ok) {
+  //     throw new Error(chatResp.statusText);
+  //   }
+  //   // Readable Stream data
+  //   const data = chatResp.body;
+  //   if (data === null) {
+  //     return;
+  //   }
 
-    const reader = data.getReader();
-    const decoder = new TextDecoder();
-    let done = false;
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      const chunkValue = decoder.decode(value);
-      // update client side with answer
-      setResponse((prev) => prev + chunkValue);
-    }
-    setLoading(false);
-  };
+  //   const reader = data.getReader();
+  //   const decoder = new TextDecoder();
+  //   let done = false;
+  //   while (!done) {
+  //     const { value, done: doneReading } = await reader.read();
+  //     done = doneReading;
+  //     const chunkValue = decoder.decode(value);
+  //     // update client side with answer
+  //     setResponse((prev) => prev + chunkValue);
+  //   }
+  //   setLoading(false);
+  // };
 
   return (
     <div className="chat-container">
@@ -82,10 +82,7 @@ export default function Chat() {
                   name="query"
                   placeholder="write your message here"
                 />
-                <button
-                  className="button chat__button"
-                  onClick={(e) => handleSubmit(e)}
-                >
+                <button className="button chat__button">
                   <div className="button__wrapper chat__button_wrapper">
                     <div className="button__text">{'^'}</div>
                   </div>

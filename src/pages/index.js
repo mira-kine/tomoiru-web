@@ -1,17 +1,74 @@
+// Will be rendered as the main component of this page
 import React from 'react';
-// import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import { BrowserRouter as Router } from 'react-router-dom';
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-// <React.StrictMode>
-<Router>
-  <App />
-</Router>;
-// </React.StrictMode>
-// );
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import Auth from './Auth';
+import Dashboard from './Dashboard';
+import PrivateRoute from '../utils/PrivateRoute';
+import Welcome from './Welcome';
+import Chat from './Chat';
+import { AuthProvider } from '../context/AuthProvider';
+import { UserProvider } from '../context/UserProvider';
+import NavBar from '../components/NavBar';
+import About from './About';
+// import './App.css';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+export default function App() {
+  return (
+    <AuthProvider>
+      <UserProvider>
+        <NavBar />
+        <Router>
+          <Routes>
+            {/* {isLoggedIn === true && <NavBar />} */}
+            <Route path="/" element={<Home />} />
+            <Route path="/signin" element={<Auth />} />
+            <Route path="/signup" element={<Auth isSigningUp />} />
+            <Route
+              path="/welcome"
+              element={
+                <PrivateRoute>
+                  <Welcome />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/dashboard/chat"
+              element={
+                <PrivateRoute>
+                  <Chat />
+                </PrivateRoute>
+              }
+            />
+            {/* <Route
+            path="/dashboard/food-recs"
+            element={
+              <PrivateRoute>
+                <FoodRecs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/food-recs/:id"
+            element={
+              <PrivateRoute>
+                <SelectedFood />
+              </PrivateRoute>
+            }
+          /> */}
+          </Routes>
+        </Router>
+      </UserProvider>
+    </AuthProvider>
+  );
+}
