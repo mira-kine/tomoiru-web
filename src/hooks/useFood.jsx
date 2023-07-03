@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getFoodById } from '../api/foods';
 
 export function useFood(foodId) {
@@ -11,8 +11,6 @@ export function useFood(foodId) {
         const resp = await getFoodById(foodId);
         setSelectedFood(resp);
         setLoading(false);
-      } catch (error) {
-        throw error;
       } finally {
         setLoading(false);
       }

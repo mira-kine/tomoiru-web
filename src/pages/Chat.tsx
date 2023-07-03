@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/Chat.css';
+import { useRouter } from 'next/navigation';
 import Loading from '../components/Reusable/Loading';
 import responsHandler from '../payload.ts';
 // import buildPrompt from '../api/buildPrompt.ts';
@@ -13,15 +12,14 @@ export default function Chat() {
   // const { formState, handleForm } = useForm({ query: '' });
   const [query, setQuery] = useState<string>('');
   const [response, setResponse] = useState([]);
-  const navigateTo = useNavigate();
-
+  const router = useRouter();
   // MVP hardcode prompt here, but later on fix buildPrompt.ts to generate according to similarity
 
   // const prompt = `You are a kind, gentle and sweet friend who lives in Japan. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nQuestion: ${query}\nAnswer:`;
 
   const handleBack = () => {
     setLoading(true);
-    navigateTo('/dashboard');
+    router.push('/dashboard');
   };
 
   // const handleSubmit = async (

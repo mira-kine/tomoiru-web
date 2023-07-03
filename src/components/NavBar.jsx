@@ -1,19 +1,19 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from '../api/users';
+import { signOut } from '../pages/api/users';
 import { useUser } from '../context/UserProvider';
-import '../styles/NavBar.css';
+// import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function NavBar() {
-  const navigateTo = useNavigate();
+  // const router = useRouter();
+
   const { currentUser } = useUser();
 
   const handleSignOut = async () => {
     await signOut();
     localStorage.clear();
     localStorage.setItem('authenticated', false);
-    navigateTo('/');
-    navigateTo(0);
+    // router.push('/home');
   };
 
   return (
@@ -29,18 +29,20 @@ export default function NavBar() {
           {currentUser?.user_name ? (
             <>
               <li>
-                <Link to="/dashboard">Home</Link>
+                <Link href="/dashboard">Home</Link>
               </li>
               <li>
-                <Link to="/dashboard/chat">Chat</Link>
+                <Link href="/chat">Chat</Link>
               </li>
               <li>
-                <Link onClick={() => handleSignOut()}>Sign Out</Link>
+                <Link href="/" onClick={() => handleSignOut()}>
+                  Sign Out
+                </Link>
               </li>
             </>
           ) : null}
           <li>
-            <Link to="/about">About</Link>
+            <Link href="/about">About</Link>
           </li>
         </ul>
       </div>

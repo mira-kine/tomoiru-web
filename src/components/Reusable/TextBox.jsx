@@ -1,15 +1,13 @@
 import React, { useReducer, useState } from 'react';
-import { useUser } from '../../context/UserProvider';
-import { useNavigate } from 'react-router-dom';
 import { updateUserName } from '../../api/users';
 import Loading from '../Reusable/Loading';
 import { useForm } from '../../hooks/useForm';
-import '../../styles/TextBox.css';
 import { welcomeText } from '../../data/welcome-text.js';
+import { useRouter } from 'next/navigation';
 
 export default function TextBox() {
   const { currentUser, updateUserData } = useUser();
-  const navigateTo = useNavigate();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({ userName: '' });
   const [userMode, setUserMode] = useState(false);
@@ -38,7 +36,7 @@ export default function TextBox() {
       dispatch({ type: 'stop' });
     }
     if (state.index === welcomeText.length - 1) {
-      navigateTo('/dashboard');
+      router.push('/dashboard');
     }
   };
 

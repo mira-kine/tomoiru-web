@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 
 export function useStateWithStorage(storageKey, initialValue) {
-  const [value, setValue] = useState(() => {
+  const [value, setValue] = useState(
+    localStorage.getItem(storageKey) || initialValue
     //   get item in storage key
-    const currentValue = localStorage.getItem(storageKey);
     // if no current value, set it to initial value
-    return currentValue || initialValue;
-  });
+  );
   useEffect(() => {
     if (value === null || value === undefined) {
       // remove item if null or undefined

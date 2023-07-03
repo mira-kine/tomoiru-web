@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/Dashboard.css';
 // import Loading from '../components/Reusable/Loading';
 
 export default function Dashboard() {
@@ -15,7 +14,7 @@ export default function Dashboard() {
         <div className="tomomi-house-container">
           <img
             className="tomomi-house-img"
-            src={require('../assets/tomoiru-room.png')}
+            src={'../assets/tomoiru-room.png'}
             alt="built in spline 3D modeling of a corner of a room"
           />
         </div>
