@@ -1,7 +1,6 @@
 // Will be rendered as the main component of this page
 import React from 'react';
 import HomeButton from '../components/Buttons/HomeButton/HomeButton';
-import AuthForm from '../components/Forms/AuthForm';
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
           </div>
         </div>
         <div className="signin-container">
-          <AuthForm />
           <HomeButton />
         </div>
       </div>
