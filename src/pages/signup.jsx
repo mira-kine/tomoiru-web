@@ -3,6 +3,7 @@ import { signUpUser } from './api/users';
 import SignUpForm from '../components/Forms/SignUpForm';
 import Loading from '../components/Reusable/Loading';
 import { useRouter } from 'next/navigation';
+import { supabase } from '../utils/supabase';
 
 export default function signup() {
   const [loading, setLoading] = useState(false);

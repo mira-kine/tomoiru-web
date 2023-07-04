@@ -14,8 +14,9 @@ export default function App({
   initialSession: Session;
 }>) {
   // Create a new supabase browser client on every first render.
-  const [supabaseClient] = useState(() => createPagesBrowserClient());
 
+  const [supabaseClient] = useState(() => createPagesBrowserClient());
+  // You can now determine if a user is authenticated by checking that the user object returned by the useUser() hook is defined.
   return (
     <SessionContextProvider
       supabaseClient={supabaseClient}

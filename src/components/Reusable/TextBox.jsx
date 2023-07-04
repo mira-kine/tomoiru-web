@@ -4,9 +4,10 @@ import Loading from '../Reusable/Loading';
 import { useForm } from '../../hooks/useForm';
 import { welcomeText } from '../../data/welcome-text.js';
 import { useRouter } from 'next/navigation';
+import { useUser } from '@supabase/auth-helpers-react';
 
 export default function TextBox() {
-  const { currentUser, updateUserData } = useUser();
+  const user = useUser();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { formState, handleForm } = useForm({ userName: '' });
@@ -45,9 +46,8 @@ export default function TextBox() {
     const { userName } = formState;
     try {
       setLoading(true);
-      await updateUserName(userName, currentUser.id);
+      await updateUserName(userName, user.id);
       // update local storage user data with userName
-      updateUserData(userName);
       dispatch({ type: 'next' });
       setUserMode(false);
     } finally {

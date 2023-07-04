@@ -1,13 +1,10 @@
 import React from 'react';
 import { signOut } from '../pages/api/users';
-import { useUser } from '../context/UserProvider';
-// import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useUser } from '@supabase/auth-helpers-react';
 
 export default function NavBar() {
-  // const router = useRouter();
-
-  const { currentUser } = useUser();
+  const user = useUser();
 
   const handleSignOut = async () => {
     await signOut();
@@ -26,7 +23,7 @@ export default function NavBar() {
           <span className="line line3"></span>
         </div>
         <ul className="menu-items">
-          {currentUser?.user_name ? (
+          {user?.user_name ? (
             <>
               <li>
                 <Link href="/dashboard">Home</Link>
