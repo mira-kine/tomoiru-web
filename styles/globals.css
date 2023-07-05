@@ -4,12 +4,12 @@
 
 @font-face {
   font-family: 'Bubbly';
-  src: url('/src/fonts/Cherry_Bomb_One/CherryBombOne-Regular.ttf');
+  src: url('/public/fonts/Cherry_Bomb_One/CherryBombOne-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Text';
-  src: url('/src/fonts/Gruppo/Gruppo-Regular.ttf');
+  font-family: 'Gruppo';
+  src: url('/public/fonts/Gruppo/Gruppo-Regular.ttf');
 }
 
 body {
@@ -30,22 +30,6 @@ code {
     monospace;
 }
 
-#root {
-  overflow: hidden;
-  height: 100vh;
-  width: 100%;
-}
-
-:root {
-  --white: 255, 255, 255;
-  --licorice: 34, 23, 19;
-  --armygreen: 112, 115, 84;
-  /* main color theme starts here */
-  --periwinkle: 187, 211, 251;
-  --melon: 186, 235, 214;
-  --peach: 247, 179, 144;
-  --chick: 253, 246, 180;
-}
 /* armygreen for tamagotchi background */
 /* licorice for type */
 

@@ -8,7 +8,21 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        white: '#FFFFFF',
+        licorice: '#221713',
+        armygreen: '#707354',
+        periwinkle: '#BBD3FB',
+        melon: '#BAEBD6',
+        peach: '#F7B390',
+        chick: '#FDF6B4'
+      },
+      fontFamily: {
+        script: ['var(--font-cherry'],
+        sans: ['var(--font-gruppo']
+      }
+    }
   },
   plugins: []
 };

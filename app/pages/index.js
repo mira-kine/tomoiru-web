@@ -4,10 +4,13 @@ import HomeButton from '../components/Buttons/HomeButton/HomeButton';
 
 export default function Home() {
   return (
-    <div className="home-view-container">
-      <div className="hello-container">
-        <div className="title-container">
-          <div className="title tomoiru-title"> Tomoiru</div>
+    <div className="flex items-center justify-center h-screen w-screen bg-[url('/assets/auth_background.jpg')] bg-cover bg-center">
+      <div className="flex flex-column items-center content-center m-8 h-1/2 w-3/5 bg-melon rounded-lg opacity-80">
+        <div className="flex flex-column flex-wrap">
+          <div className="flex justify-center flex-wrap font-bubbly">
+            {' '}
+            Tomoiru
+          </div>
           <div className="sub-title">
             Where you can travel to Japan with a friend
           </div>
