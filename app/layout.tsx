@@ -1,6 +1,6 @@
 import React from 'react';
 // import Navbar from '../components/Navbar';
-// import localFont from 'next/font/local';
+import localFont from 'next/font/local';
 // These styles apply to every route in the application
 import '../styles/globals.css';
 import type { Metadata } from 'next';
@@ -11,17 +11,17 @@ export const metadata: Metadata = {
 };
 
 // font files can be colocated inside of app
-// const bubbly = localFont({
-//   src: './fonts/Cherry/CherryBombOne-Regular.ttf',
-//   display: 'swap',
-//   variable: '--font-cherry'
-// });
+const bubbly = localFont({
+  src: '../public/fonts/Cherry/CherryBombOne-Regular.ttf',
+  display: 'swap',
+  variable: '--font-cherry'
+});
 
-// const gruppo = localFont({
-//   src: './fonts/Gruppo/Gruppo-Regular.ttf',
-//   display: 'swap',
-//   variable: '--font-gruppo'
-// });
+const gruppo = localFont({
+  src: '../public/fonts/Gruppo/Gruppo-Regular.ttf',
+  display: 'swap',
+  variable: '--font-gruppo'
+});
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${bubbly.variable} ${gruppo.variable}`}>
       <body>{children}</body>
     </html>
   );
