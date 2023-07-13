@@ -12,10 +12,7 @@ export default function Title() {
         <Image
           src="/assets/auth_background.jpg"
           alt="drawn background of the sky"
-          // width="1680"
-          // height="250"
           layout="fill"
-          // sizes="100vw"
           className="w-full h-full inset-0 object-cover absolute -z-1"
         />
       </div>
