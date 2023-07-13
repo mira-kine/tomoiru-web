@@ -1,8 +1,32 @@
-/*!**************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[12].use[3]!./styles/globals.css ***!
-  \**************************************************************************************************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[4].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[4].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Cherry/CherryBombOne-Regular.ttf","display":"swap","variable":"--font-cherry"}],"variableName":"bubbly"} ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__bubbly_b04cb1';
+src: url(/_next/static/media/2c2458fa32eb69a2-s.p.ttf) format('truetype');
+font-display: swap;
+}@font-face {font-family: '__bubbly_Fallback_b04cb1';src: local("Arial");ascent-override: 109.01%;descent-override: 27.06%;line-gap-override: 0.00%;size-adjust: 106.42%
+}.__className_b04cb1 {font-family: '__bubbly_b04cb1', '__bubbly_Fallback_b04cb1'
+}.__variable_b04cb1 {--font-cherry: '__bubbly_b04cb1', '__bubbly_Fallback_b04cb1'
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[4].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[4].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Gruppo/Gruppo-Regular.ttf","display":"swap","variable":"--font-gruppo"}],"variableName":"gruppo"} ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__gruppo_0b3a0a';
+src: url(/_next/static/media/ddddd7ef3b18f99c-s.p.ttf) format('truetype');
+font-display: swap;
+}@font-face {font-family: '__gruppo_Fallback_0b3a0a';src: local("Arial");ascent-override: 77.71%;descent-override: 16.12%;line-gap-override: 0.00%;size-adjust: 102.98%
+}.__className_0b3a0a {font-family: '__gruppo_0b3a0a', '__gruppo_Fallback_0b3a0a'
+}.__variable_0b3a0a {--font-gruppo: '__gruppo_0b3a0a', '__gruppo_Fallback_0b3a0a'
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[4].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[4].oneOf[12].use[3]!./app/global.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
 /*
-! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -35,7 +59,7 @@ html {
   line-height: 1.5; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */ /* 3 */
   tab-size: 4; /* 3 */
-  font-family: var(--font-gruppo; /* 4 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
   font-feature-settings: normal; /* 5 */
   font-variation-settings: normal; /* 6 */
 }
@@ -168,6 +192,8 @@ optgroup,
 select,
 textarea {
   font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
   font-size: 100%; /* 1 */
   font-weight: inherit; /* 1 */
   line-height: inherit; /* 1 */
@@ -302,6 +328,13 @@ ul,
 menu {
   list-style: none;
   margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+dialog {
   padding: 0;
 }
 
@@ -499,11 +532,17 @@ video {
     max-width: 1280px;
   }
 }
-@media (min-width: 1536px) {
-
-  .container {
-    max-width: 1536px;
-  }
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.inset-0 {
+  inset: 0px;
+}
+.z-10 {
+  z-index: 10;
 }
 .m-8 {
   margin: 2rem;
@@ -514,11 +553,17 @@ video {
 .h-1\/2 {
   height: 50%;
 }
+.h-full {
+  height: 100%;
+}
 .h-screen {
   height: 100vh;
 }
 .w-3\/5 {
   width: 60%;
+}
+.w-full {
+  width: 100%;
 }
 .w-screen {
   width: 100vw;
@@ -542,24 +587,18 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(186 235 214 / var(--tw-bg-opacity));
 }
-.bg-\[url\(\'\.\.\/public\/assets\/auth_background\.jpg\'\)\] {
-  background-image: url(/_next/static/media/auth_background.7af9d381.jpg);
-}
-.bg-\[url\(\'\/assets\/auth_background\.jpg\'\)\] {
-  background-image: url('/assets/auth_background.jpg');
-}
-.bg-cover {
-  background-size: cover;
-}
-.bg-center {
-  background-position: center;
+.object-cover {
+  object-fit: cover;
 }
 .font-sans {
-  font-family: var(--font-gruppo;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .opacity-80 {
   opacity: 0.8;
 }
+/* @import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities'; */
 
 @font-face {
   font-family: 'Bubbly';
@@ -581,7 +620,7 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  position: relative;
+  overflow: hidden;
 }
 
 code {
@@ -595,28 +634,4 @@ code {
 /* material assets for spline */
 /* floor: rgb(255, 190, 80 */
 /* walls: rgb(186, 235, 201 */
-
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[3].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Cherry/CherryBombOne-Regular.ttf","display":"swap","variable":"--font-cherry"}],"variableName":"bubbly"} ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-@font-face {
-font-family: '__bubbly_456046';
-src: url(/_next/static/media/2c2458fa32eb69a2-s.p.ttf) format('truetype');
-font-display: swap;
-}@font-face {font-family: '__bubbly_Fallback_456046';src: local("Arial");ascent-override: 109.01%;descent-override: 27.06%;line-gap-override: 0.00%;size-adjust: 106.42%
-}.__className_456046 {font-family: '__bubbly_456046', '__bubbly_Fallback_456046'
-}.__variable_456046 {--font-cherry: '__bubbly_456046', '__bubbly_Fallback_456046'
-}
-
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[3].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Gruppo/Gruppo-Regular.ttf","display":"swap","variable":"--font-gruppo"}],"variableName":"gruppo"} ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-@font-face {
-font-family: '__gruppo_fa28bd';
-src: url(/_next/static/media/ddddd7ef3b18f99c-s.p.ttf) format('truetype');
-font-display: swap;
-}@font-face {font-family: '__gruppo_Fallback_fa28bd';src: local("Arial");ascent-override: 77.71%;descent-override: 16.12%;line-gap-override: 0.00%;size-adjust: 102.98%
-}.__className_fa28bd {font-family: '__gruppo_fa28bd', '__gruppo_Fallback_fa28bd'
-}.__variable_fa28bd {--font-gruppo: '__gruppo_fa28bd', '__gruppo_Fallback_fa28bd'
-}
 

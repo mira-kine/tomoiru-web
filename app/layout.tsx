@@ -2,8 +2,8 @@ import React from 'react';
 // import Navbar from '../components/Navbar';
 import localFont from 'next/font/local';
 // These styles apply to every route in the application
-import '../styles/globals.css';
 import type { Metadata } from 'next';
+import './global.css';
 
 export const metadata: Metadata = {
   title: 'Tomoiru',

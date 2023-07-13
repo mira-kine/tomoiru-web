@@ -6,6 +6,12 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
+    screens: {
+      mobile: '640px',
+      tablet: '768px',
+      laptop: '1024px',
+      desktop: '1280px'
+    },
     extend: {
       colors: {
         white: '#FFFFFF',
@@ -15,10 +21,6 @@ module.exports = {
         melon: '#BAEBD6',
         peach: '#F7B390',
         chick: '#FDF6B4'
-      },
-      fontFamily: {
-        script: ['var(--font-cherry'],
-        sans: ['var(--font-gruppo']
       }
     }
   },
