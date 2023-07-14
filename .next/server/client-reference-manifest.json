@@ -55,6 +55,22 @@
         "chunks": [],
         "async": false
       }
+    },
+    "(app-client)/./app/auth/signin/page.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/auth/signin/page.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./app/auth/signup/page.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/auth/signup/page.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
     }
   },
   "edgeSSRModuleMapping": {},
@@ -171,6 +187,22 @@
       ],
       "async": false
     },
+    "/Users/mkine/personal-projects/tomoiru-web/app/auth/signin/page.tsx": {
+      "id": "(app-client)/./app/auth/signin/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/auth/signin/page:static/chunks/app/auth/signin/page.js"
+      ],
+      "async": false
+    },
+    "/Users/mkine/personal-projects/tomoiru-web/app/auth/signup/page.tsx": {
+      "id": "(app-client)/./app/auth/signup/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/auth/signup/page:static/chunks/app/auth/signup/page.js"
+      ],
+      "async": false
+    },
     "/Users/mkine/personal-projects/tomoiru-web/node_modules/next/font/local/target.css?{\"path\":\"app/layout.tsx\",\"import\":\"\",\"arguments\":[{\"src\":\"../public/fonts/Cherry/CherryBombOne-Regular.ttf\",\"display\":\"swap\",\"variable\":\"--font-cherry\"}],\"variableName\":\"bubbly\"}": {
       "id": "(app-client)/./node_modules/next/font/local/target.css?{\"path\":\"app/layout.tsx\",\"import\":\"\",\"arguments\":[{\"src\":\"../public/fonts/Cherry/CherryBombOne-Regular.ttf\",\"display\":\"swap\",\"variable\":\"--font-cherry\"}],\"variableName\":\"bubbly\"}",
       "name": "*",
@@ -198,6 +230,9 @@
   },
   "entryCSSFiles": {
     "/Users/mkine/personal-projects/tomoiru-web/app/page": [],
+    "/Users/mkine/personal-projects/tomoiru-web/app/auth/signin/page": [],
+    "/Users/mkine/personal-projects/tomoiru-web/app/loading": [],
+    "/Users/mkine/personal-projects/tomoiru-web/app/auth/signup/page": [],
     "/Users/mkine/personal-projects/tomoiru-web/app/layout": [
       "static/css/app/layout.css"
     ]
