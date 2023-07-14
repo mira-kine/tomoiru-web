@@ -1,80 +1,80 @@
-import { client, checkError } from './client';
+// import { client, checkError } from './client';
 
-// get User
-export async function getCurrentUser() {
-  const session = await client.auth.getSession();
-  const {
-    data: { user }
-  } = await client.auth.getUser();
+// // get User
+// export async function getCurrentUser() {
+//   const session = await client.auth.getSession();
+//   const {
+//     data: { user }
+//   } = await client.auth.getUser();
 
-  if (!user || !session) {
-    return null;
-  }
+//   if (!user || !session) {
+//     return null;
+//   }
 
-  const { data, error } = await client
-    .from('users')
-    .select('*')
-    .match({ id: user.id })
-    .single();
+//   const { data, error } = await client
+//     .from('users')
+//     .select('*')
+//     .match({ id: user.id })
+//     .single();
 
-  if (error) {
-    throw error;
-  }
-  if (data) {
-    localStorage.setItem('authenticated', true);
-    return data;
-  }
-}
+//   if (error) {
+//     throw error;
+//   }
+//   if (data) {
+//     localStorage.setItem('authenticated', true);
+//     return data;
+//   }
+// }
 
-export async function signUpUser(email, password) {
-  const {
-    data: { user, error }
-  } = await client.auth.signUp({ email, password });
+// export async function signUpUser(email, password) {
+//   const {
+//     data: { user, error }
+//   } = await client.auth.signUp({ email, password });
 
-  if (error) {
-    throw error;
-  }
+//   if (error) {
+//     throw error;
+//   }
 
-  return checkError(user);
-}
+//   return checkError(user);
+// }
 
-export async function signInUser(email, password) {
-  const {
-    data: { user },
-    error
-  } = await client.auth.signInWithPassword({ email, password });
-  if (error) throw error;
-  return user;
-}
+// export async function signInUser(email, password) {
+//   const {
+//     data: { user },
+//     error
+//   } = await client.auth.signInWithPassword({ email, password });
+//   if (error) throw error;
+//   return user;
+// }
 
-export async function updateUserName(userName, id) {
-  // take current user info from currentUser AFTER useUser updates it to local storage and user state
-  // update server with it according to the id of currentUser
-  const resp = await client
-    .from('users')
-    .update({ user_name: userName })
-    .eq('id', id);
-  return checkError(resp);
-}
+// export async function updateUserName(userName, id) {
+//   // take current user info from currentUser AFTER useUser updates it to local storage and user state
+//   // update server with it according to the id of currentUser
+//   const resp = await client
+//     .from('users')
+//     .update({ user_name: userName })
+//     .eq('id', id);
+//   return checkError(resp);
+// }
 
-export async function signOut() {
-  const { error } = await client.auth.signOut();
-
-  if (error) throw error;
-}
-
-// Have to keep oauth on hold because supabase issues
-
-// export async function signInWithGoogle() {
-//   const { data, error } = await client.auth.signInWithOAuth(
-//     {
-//       provider: 'google',
-//     },
-//     {
-//       redirectTo: 'http://localhost:3000/provider?refresh=true',
-//     }
-//   );
+// export async function signOut() {
+//   const { error } = await client.auth.signOut();
 
 //   if (error) throw error;
-//   return data;
 // }
+
+// // Have to keep oauth on hold because supabase issues
+
+// // export async function signInWithGoogle() {
+// //   const { data, error } = await client.auth.signInWithOAuth(
+// //     {
+// //       provider: 'google',
+// //     },
+// //     {
+// //       redirectTo: 'http://localhost:3000/provider?refresh=true',
+// //     }
+// //   );
+
+// //   if (error) throw error;
+// //   return data;
+// // }

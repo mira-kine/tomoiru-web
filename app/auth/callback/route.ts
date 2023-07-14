@@ -13,7 +13,10 @@ export async function GET(request: NextRequest) {
     const supabase = createRouteHandlerClient<Database>({ cookies });
     await supabase.auth.exchangeCodeForSession(code);
   }
-
   // URL to redirect to after sign in process completes
   return NextResponse.redirect(requestUrl.origin);
 }
+
+// Next.js auth helpers are configured to use serverside auth flow to sign users in.
+// This requires setting up a Code Exchange route to exchange auth code for user's session,
+// ... which is set as a cookie for future requests made to Supabase

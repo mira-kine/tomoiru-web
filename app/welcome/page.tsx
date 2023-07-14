@@ -1,6 +1,6 @@
 import React from 'react';
-import '../components/Buttons/HomeButton/HomeButton';
-import TomomiWelcome from '../components/TomomiWelcome/TomomiWelcome';
+// import '../components/Buttons/HomeButton/HomeButton';
+import TomomiWelcome from './TomomiWelcome';
 import TextBox from '../components/Reusable/TextBox';
 
 export default function Welcome() {

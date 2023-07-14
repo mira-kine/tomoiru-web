@@ -1,5 +1,5 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[4].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[4].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Cherry/CherryBombOne-Regular.ttf","display":"swap","variable":"--font-cherry"}],"variableName":"bubbly"} ***!
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[5].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Cherry/CherryBombOne-Regular.ttf","display":"swap","variable":"--font-cherry"}],"variableName":"bubbly"} ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @font-face {
 font-family: '__bubbly_b04cb1';
@@ -11,7 +11,7 @@ font-display: swap;
 }
 
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[4].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[4].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Gruppo/Gruppo-Regular.ttf","display":"swap","variable":"--font-gruppo"}],"variableName":"gruppo"} ***!
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[5].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"app/layout.tsx","import":"","arguments":[{"src":"../public/fonts/Gruppo/Gruppo-Regular.ttf","display":"swap","variable":"--font-gruppo"}],"variableName":"gruppo"} ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @font-face {
 font-family: '__gruppo_0b3a0a';
@@ -23,7 +23,7 @@ font-display: swap;
 }
 
 /*!**********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[4].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[4].oneOf[12].use[3]!./app/global.css ***!
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[3]!./app/global.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************/
 /*
 ! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
@@ -541,9 +541,6 @@ video {
 .inset-0 {
   inset: 0px;
 }
-.left-2 {
-  left: 0.5rem;
-}
 .m-2 {
   margin: 0.5rem;
 }
@@ -565,17 +562,26 @@ video {
 .h-1\/2 {
   height: 50%;
 }
+.h-3\/4 {
+  height: 75%;
+}
+.h-5\/6 {
+  height: 83.333333%;
+}
 .h-full {
   height: 100%;
 }
 .h-screen {
   height: 100vh;
 }
-.h-3\/4 {
-  height: 75%;
+.w-1\/2 {
+  width: 50%;
 }
-.h-5\/6 {
-  height: 83.333333%;
+.w-1\/6 {
+  width: 16.666667%;
+}
+.w-3\/4 {
+  width: 75%;
 }
 .w-5\/6 {
   width: 83.333333%;
@@ -585,18 +591,6 @@ video {
 }
 .w-screen {
   width: 100vw;
-}
-.w-1\/2 {
-  width: 50%;
-}
-.w-1 {
-  width: 0.25rem;
-}
-.w-1\/6 {
-  width: 16.666667%;
-}
-.w-3\/4 {
-  width: 75%;
 }
 .flex-col {
   flex-direction: column;
@@ -654,11 +648,11 @@ video {
 .p-2 {
   padding: 0.5rem;
 }
-.p-4 {
-  padding: 1rem;
-}
 .p-3 {
   padding: 0.75rem;
+}
+.p-4 {
+  padding: 1rem;
 }
 .px-5 {
   padding-left: 1.25rem;
@@ -675,21 +669,6 @@ video {
 .pb-4 {
   padding-bottom: 1rem;
 }
-.pl-2 {
-  padding-left: 0.5rem;
-}
-.pl-4 {
-  padding-left: 1rem;
-}
-.pl-8 {
-  padding-left: 2rem;
-}
-.pl-11 {
-  padding-left: 2.75rem;
-}
-.pl-12 {
-  padding-left: 3rem;
-}
 .text-center {
   text-align: center;
 }
@@ -699,6 +678,10 @@ video {
 .font-script {
   font-family: var(--font-cherry);
 }
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
 .text-7xl {
   font-size: 4.5rem;
   line-height: 1;
@@ -706,22 +689,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
-}
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 .font-bold {
   font-weight: 700;
@@ -824,13 +791,13 @@ code {
     line-height: 2.25rem;
   }
 
-  .tablet\:text-9xl {
-    font-size: 8rem;
+  .tablet\:text-6xl {
+    font-size: 3.75rem;
     line-height: 1;
   }
 
-  .tablet\:text-6xl {
-    font-size: 3.75rem;
+  .tablet\:text-9xl {
+    font-size: 8rem;
     line-height: 1;
   }
 
@@ -838,13 +805,13 @@ code {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
-
-  .tablet\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
 }
 @media (min-width: 1024px) {
+
+  .laptop\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 
   .laptop\:text-5xl {
     font-size: 3rem;
@@ -854,16 +821,6 @@ code {
   .laptop\:text-8xl {
     font-size: 6rem;
     line-height: 1;
-  }
-
-  .laptop\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
-  .laptop\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 }
 @media (min-width: 1280px) {

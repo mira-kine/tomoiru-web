@@ -1,9 +1,21 @@
-import React from 'react';
-// import Loading from '../components/Reusable/Loading';
+'use client';
+import React, { useEffect, useState } from 'react';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export default function Dashboard() {
-  // const navigateTo = useNavigate();
   // option to choose foods - button to direct to food recs
+  const [user, setUser] = useState({});
+
+  const supabase = createClientComponentClient();
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await supabase.from('user').select();
+      setUser(data);
+    };
+    fetchData();
+  }, []);
+
+  console.log('user', user);
 
   return (
     <div className="home-container">

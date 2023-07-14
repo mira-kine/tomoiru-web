@@ -1,3 +1,4 @@
+'use client';
 import React, { useReducer, useState } from 'react';
 import { updateUserName } from '../../api/users';
 import Loading from '../Reusable/Loading';
