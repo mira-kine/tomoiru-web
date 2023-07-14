@@ -13,6 +13,10 @@ module.exports = {
       desktop: '1280px'
     },
     extend: {
+      fontFamily: {
+        script: ['var(--font-cherry)'],
+        sans: ['var(--font-gruppo)']
+      },
       colors: {
         white: '#FFFFFF',
         licorice: '#221713',

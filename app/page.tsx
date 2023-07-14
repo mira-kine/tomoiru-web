@@ -18,11 +18,11 @@ export default function Title() {
       </div>
       <div className="flex flex-column items-center content-center m-8 h-1/2 w-3/5 bg-melon rounded-lg opacity-80 z-10">
         <div className="flex flex-column flex-wrap">
-          <div className="flex justify-center flex-wrap font-sans">
+          <div className="flex justify-center flex-wrap font-script">
             {' '}
             Tomoiru
           </div>
-          <div className="sub-title">
+          <div className="sub-title font-sans">
             Where you can travel to Japan with a friend
           </div>
         </div>
