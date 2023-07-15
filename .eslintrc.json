@@ -21,6 +21,14 @@
     "@typescript-eslint/promise-function-async": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        "checksVoidReturn": {
+          "attributes": false
+        }
+      }
+    ],
     "comma-dangle": "off",
     "react/prop-types": "off",
     "multiline-ternary": "off",

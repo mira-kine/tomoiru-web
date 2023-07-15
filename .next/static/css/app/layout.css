@@ -697,6 +697,14 @@ video {
   --tw-text-opacity: 1;
   color: rgb(34 23 19 / var(--tw-text-opacity));
 }
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-melon {
+  --tw-text-opacity: 1;
+  color: rgb(186 235 214 / var(--tw-text-opacity));
+}
 .opacity-80 {
   opacity: 0.8;
 }
@@ -828,6 +836,11 @@ code {
   .desktop\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .desktop\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
