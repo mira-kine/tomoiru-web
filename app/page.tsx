@@ -30,13 +30,13 @@ export default function Title() {
               type="button"
               className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2"
             >
-              <Link href="/auth/signin">Sign In</Link>
+              <Link href="/signin">Sign In</Link>
             </button>
             <button
               type="button"
               className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2"
             >
-              <Link href="/auth/signup">Sign Up</Link>
+              <Link href="/signup">Sign Up</Link>
             </button>
           </div>
         </div>
