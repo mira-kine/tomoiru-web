@@ -22,13 +22,19 @@ export default function LogIn() {
       email,
       password
     });
-    // const {
-    //   data: { session }
-    // } = await supabase.auth.getSession();
-    // if (session) {
-    //   router.push('/dashboard');
-    // }
-    router.push('/dashboard');
+    const {
+      data: { session }
+    } = await supabase.auth.getSession();
+    const { data } = await supabase
+      .from('users')
+      .select('user_name')
+      .match({ id: session.user.id });
+    // set this somewhere in a cookie for future usage
+    if (session && data) {
+      router.push('/dashboard');
+    } else {
+      router.push('/welcome');
+    }
     router.refresh();
   };
 

@@ -27,7 +27,6 @@ const search = async (query) => {
 // create context here with similar data from our query from the db
 const createContext = async (query, maxLen = 1800) => {
   const searchResp = await search(query);
-  console.log('searchResp', searchResp);
   let currentLength = 0;
   const returns = [];
 
@@ -45,7 +44,6 @@ const createContext = async (query, maxLen = 1800) => {
     }
     //   add sentence into resulting array "returns"
     returns.push(sentence);
-    console.log('returns', returns);
     //   join the entries and return
   }
   return searchResp.join('\n\n###\n\n');

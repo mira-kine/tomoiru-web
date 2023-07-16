@@ -1,5 +1,5 @@
 import React from 'react';
-// import Navbar from '../components/Navbar';
+import NavBar from './components/NavBar';
 import localFont from 'next/font/local';
 // These styles apply to every route in the application
 import type { Metadata } from 'next';
@@ -32,7 +32,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${bubbly.variable} ${gruppo.variable}`}>
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }

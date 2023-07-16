@@ -1,4 +1,4 @@
-// File: /Users/mkine/personal-projects/tomoiru-web/app/dashboard/page.jsx
+// File: /Users/mkine/personal-projects/tomoiru-web/app/dashboard/page.tsx
 import * as entry from '../../../../app/dashboard/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
