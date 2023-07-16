@@ -1,10 +1,11 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function Dashboard() {
   // user id is already in session
 
   const [name, setName] = useState('temporary');
+  console.log('setName', setName);
   // set name with whatever is in cookie
   return (
     <div className="home-container">
