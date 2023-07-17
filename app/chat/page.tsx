@@ -65,31 +65,35 @@ export default function Chat() {
   };
 
   return (
-    <div className="chat-container">
-      <div className="computer">
-        <div className="chat-bg">
+    <div className="flex justify-center items-center content-center w-full h-full bg-periwinkle">
+      <div className="flex justify-center items-center w-4/5 h-4/5 absolute top-24 bg-licorice opacity-70 rounded-3xl shadow-xl shadow-black">
+        <div className="flex flex-col justify-start items-center relative w-11/12 h-5/6 min-w-[75%] shadow-white bg-black rounded-3xl pb-8">
           <button onClick={handleBack}>
-            <div>{'<'}</div>
+            <span className="text-white">{'<'}</span>
           </button>
-          <div className="chat-box">
+          <div className="w-10/12 h-4/5 bg-white relative rounded-xl p-12 font-sans overflow-y-auto">
             Chats go here
             {response !== null && <div>Temp {response}</div>}
-            <form className="chat-form" onSubmit={handleChat}>
-              <div className="chat-input">
-                <label>You:</label>
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => {
-                    setQuery(e.target.value);
-                  }}
-                  aria-label="user chat input"
-                  name="query"
-                  placeholder="write your message here"
-                />
-              </div>
-            </form>
           </div>
+          <form
+            className="w-10/12 bg-pink flex justify-start mt-8"
+            onSubmit={handleChat}
+          >
+            <div className="w-full">
+              {/* <label className="font-sans text-white">You:</label> */}
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+                aria-label="user chat input"
+                name="query"
+                placeholder="write your message here"
+                className="rounded-xl w-full p-4 truncate overflow-y-scroll"
+              />
+            </div>
+          </form>
         </div>
       </div>
     </div>
