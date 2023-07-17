@@ -25,8 +25,8 @@ const search = async (query: string) => {
 };
 
 // create context here with similar data from our query from the db aka user message
-const createContext = async (message: string, maxLen = 1800) => {
-  const searchResp = await search(message);
+const createContext = async (query: string, maxLen = 1800) => {
+  const searchResp = await search(query);
   let currentLength = 0;
   const returns = [];
 
