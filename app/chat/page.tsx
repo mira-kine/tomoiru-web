@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function Chat() {
-  const [query, setQuery] = useState<string>('');
+  const [message, setMessage] = useState('');
   const [response, setResponse] = useState([]);
   const router = useRouter();
-
   // const prompt = `You are a kind, gentle and sweet friend who lives in Japan. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nQuestion: ${query}\nAnswer:`;
 
   const handleBack = () => {
@@ -21,20 +20,22 @@ export default function Chat() {
       setResponse('');
     }
     // build contextualized prompt
-    const promptResp = await fetch('/api/buildPrompt', {
+    const promptResp = await fetch('/prompt/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        prompt: query
+        prompt: message
       })
     });
+    console.log('message', message);
+    console.log('promptResp', promptResp);
 
     const promptData = await promptResp.json();
     // send this prompt to chatGPT
-
-    const chatResp = await fetch('/api/chat', {
+    console.log('promptData', promptData);
+    const chatResp = await fetch('/chat/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application.json'
@@ -46,6 +47,7 @@ export default function Chat() {
     if (!chatResp.ok) {
       throw new Error(chatResp.statusText);
     }
+
     const data = chatResp.body;
 
     // turning into readable stream
@@ -63,7 +65,6 @@ export default function Chat() {
       setResponse((prev) => prev + chunkValue);
     }
   };
-
   return (
     <div className="flex justify-center items-center content-center w-full h-full bg-periwinkle">
       <div className="flex justify-center items-center w-4/5 h-4/5 absolute top-24 bg-licorice opacity-70 rounded-3xl shadow-xl shadow-black">
@@ -73,7 +74,8 @@ export default function Chat() {
           </button>
           <div className="w-10/12 h-4/5 bg-white relative rounded-xl p-12 font-sans overflow-y-auto">
             Chats go here
-            {response !== null && <div>Temp {response}</div>}
+            {/* map through responses here */}
+            {response !== null && <div>{response}</div>}
           </div>
           <form
             className="w-10/12 bg-pink flex justify-start mt-8"
@@ -83,9 +85,9 @@ export default function Chat() {
               {/* <label className="font-sans text-white">You:</label> */}
               <input
                 type="text"
-                value={query}
+                value={message}
                 onChange={(e) => {
-                  setQuery(e.target.value);
+                  setMessage(e.target.value);
                 }}
                 aria-label="user chat input"
                 name="query"
@@ -93,6 +95,9 @@ export default function Chat() {
                 className="rounded-xl w-full p-4 truncate overflow-y-scroll"
               />
             </div>
+            <button className="text-white p-2" onClick={handleChat}>
+              Ask
+            </button>
           </form>
         </div>
       </div>
