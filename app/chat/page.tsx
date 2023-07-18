@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation';
 
 export default function Chat() {
   const [message, setMessage] = useState('');
-  const [response, setResponse] = useState([]);
+  const [response, setResponse] = useState('');
+  const [fullChat, setFullChat] = useState([]);
   const router = useRouter();
   // const prompt = `You are a kind, gentle and sweet friend who lives in Japan. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nQuestion: ${query}\nAnswer:`;
 
@@ -15,9 +16,9 @@ export default function Chat() {
   const handleChat = async (e: any) => {
     e.preventDefault();
     // set response with whatever previous answers were
-    // if (response.length < 1) {
-    //   setResponse('');
-    // }
+    if (response.length < 1) {
+      setResponse('');
+    }
     // build contextualized prompt
     const promptResp = await fetch('/prompt/api', {
       method: 'POST',
@@ -59,8 +60,9 @@ export default function Chat() {
         // getting read in chunks
         const chunkValue = decoder.decode(value);
         // update interface with answer in responses
-        setResponse.push(chunkValue);
+        setResponse((prev) => prev + chunkValue);
       }
+      setFullChat(fullchat.push(response));
     }
   };
   return (
@@ -73,7 +75,7 @@ export default function Chat() {
           <div className="w-10/12 h-4/5 bg-white relative rounded-xl p-12 font-sans overflow-y-auto">
             Chats go here
             {/* map through responses here */}
-            {response !== null && <div>{response}</div>}
+            {response !== null && <div>{fullChat}</div>}
           </div>
           <form
             className="w-10/12 bg-pink flex justify-start mt-8"
