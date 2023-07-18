@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+{
+  "/page": "app/page.js",
+<<<<<<< HEAD
+  "/dashboard/page": "app/dashboard/page.js",
+  "/login/page": "app/login/page.js",
+=======
+  "/login/page": "app/login/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+>>>>>>> dev
+  "/chat/page": "app/chat/page.js"
+}
+=======
+{}
+>>>>>>> main
