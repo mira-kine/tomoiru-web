@@ -59,7 +59,7 @@ export default function Chat() {
         // getting read in chunks
         const chunkValue = decoder.decode(value);
         // update interface with answer in responses
-        setResponse((prev) => prev + chunkValue);
+        setResponse.push(chunkValue);
       }
     }
   };
