@@ -1,11 +1,9 @@
 // an endpoint to make streaming call to chatGPT from chat page
 import { OpenAIStream } from '../../utils/OpenAIStream';
 import type { OpenAIStreamPayload } from '../../utils/OpenAIStream';
+export const runtime = 'edge';
 
 // using Vercel deployment edge function for this endpoint
-export const config = {
-  runtime: 'edge'
-};
 
 interface RequestPayload {
   prompt: string;
