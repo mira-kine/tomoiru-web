@@ -23,8 +23,13 @@
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
+<<<<<<< HEAD
 /******/ 			id: moduleId,
 /******/ 			loaded: false,
+=======
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+>>>>>>> main
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
@@ -40,9 +45,12 @@
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
 /******/ 		}
 /******/ 	
+<<<<<<< HEAD
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
 /******/ 	
+=======
+>>>>>>> main
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
@@ -91,6 +99,7 @@
 /******/ 		};
 /******/ 	}();
 /******/ 	
+<<<<<<< HEAD
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	!function() {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -167,6 +176,8 @@
 /******/ 		};
 /******/ 	}();
 /******/ 	
+=======
+>>>>>>> main
 /******/ 	/* webpack/runtime/get javascript update chunk filename */
 /******/ 	!function() {
 /******/ 		// This function allow to reference all chunks
@@ -181,7 +192,11 @@
 /******/ 		// This function allow to reference all chunks
 /******/ 		__webpack_require__.miniCssF = function(chunkId) {
 /******/ 			// return url for filenames based on template
+<<<<<<< HEAD
 /******/ 			return "static/css/" + chunkId + ".css";
+=======
+/******/ 			return undefined;
+>>>>>>> main
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -192,6 +207,7 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 /******/ 		__webpack_require__.h = function() { return "bcc04f1d89557933"; }
 =======
@@ -209,6 +225,9 @@
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+=======
+/******/ 		__webpack_require__.h = function() { return "08bbe3671c2a994f"; }
+>>>>>>> main
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -261,6 +280,7 @@
 /******/ 		};
 /******/ 	}();
 /******/ 	
+<<<<<<< HEAD
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	!function() {
 /******/ 		// define __esModule on exports
@@ -281,6 +301,8 @@
 /******/ 		};
 /******/ 	}();
 /******/ 	
+=======
+>>>>>>> main
 /******/ 	/* webpack/runtime/trusted types policy */
 /******/ 	!function() {
 /******/ 		var policy;
@@ -837,6 +859,7 @@
 /******/ 			"webpack": 0
 /******/ 		};
 /******/ 		
+<<<<<<< HEAD
 /******/ 		__webpack_require__.f.j = function(chunkId, promises) {
 /******/ 				// JSONP chunk loading for javascript
 /******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
@@ -875,6 +898,9 @@
 /******/ 					}
 /******/ 				}
 /******/ 		};
+=======
+/******/ 		// no chunk on demand loading
+>>>>>>> main
 /******/ 		
 /******/ 		// no prefetching
 /******/ 		
