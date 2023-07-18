@@ -62,7 +62,7 @@ export default function Chat() {
         // update interface with answer in responses
         setResponse((prev) => prev + chunkValue);
       }
-      setFullChat(fullchat.push(response));
+      setFullChat(fullChat.push(response));
     }
   };
   return (
