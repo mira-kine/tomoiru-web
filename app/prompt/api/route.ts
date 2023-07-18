@@ -11,6 +11,7 @@ const DATASET_ID = 'tomoiru-japan-data';
 const apikey = process.env.EMBEDBASE_API_KEY;
 
 // search Embebase with a string query -> searching through the documents
+
 const search = async (query: string) => {
   return fetch(`${URL}/v1/${DATASET_ID}/search`, {
     method: 'POST',
@@ -24,7 +25,6 @@ const search = async (query: string) => {
   }).then((response) => response.json());
 };
 // create context here with similar data from our query from the db aka user message
-
 const createContext = async (message: string, maxLen = 1800) => {
   const searchResp = await search(message);
   let currentLength = 0;
