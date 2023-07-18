@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 export default function Chat() {
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
-  const [fullChat, setFullChat] = useState([]);
   const router = useRouter();
+  // const fullChat = [];
   // const prompt = `You are a kind, gentle and sweet friend who lives in Japan. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nQuestion: ${query}\nAnswer:`;
 
   const handleBack = () => {
@@ -19,6 +19,7 @@ export default function Chat() {
     if (response.length < 1) {
       setResponse('');
     }
+    // fullChat.push({ You: message });
     // build contextualized prompt
     const promptResp = await fetch('/prompt/api', {
       method: 'POST',
@@ -29,7 +30,6 @@ export default function Chat() {
         prompt: message
       })
     });
-
     const promptData = await promptResp.json();
     // send this prompt to chatGPT
     const chatResp = await fetch('/chat/api', {
@@ -62,7 +62,7 @@ export default function Chat() {
         // update interface with answer in responses
         setResponse((prev) => prev + chunkValue);
       }
-      setFullChat(fullChat.push(response));
+      // fullChat.push({ Tomomi: response });
     }
   };
   return (
@@ -72,10 +72,13 @@ export default function Chat() {
           <button onClick={handleBack}>
             <span className="text-white">{'<'}</span>
           </button>
-          <div className="w-10/12 h-4/5 bg-white relative rounded-xl p-12 font-sans overflow-y-auto">
-            Chats go here
+          <div className="w-11/12 h-4/5 bg-white relative rounded-xl p-12 font-sans overflow-y-auto font-bold">
             {/* map through responses here */}
-            {response !== null && <div>{fullChat}</div>}
+            {response !== null && (
+              <div className="bg-melon p-2 rounded-lg relative w-9/12">
+                {response}
+              </div>
+            )}
           </div>
           <form
             className="w-10/12 bg-pink flex justify-start mt-8"
