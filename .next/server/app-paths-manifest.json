@@ -1,7 +1,1 @@
-{
-  "/page": "app/page.js",
-  "/chat/page": "app/chat/page.js",
-  "/login/page": "app/login/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/prompt/api/route": "app/prompt/api/route.js"
-}
+{}
