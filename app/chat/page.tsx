@@ -9,7 +9,6 @@ export default function Chat() {
   // const prompt = `You are a kind, gentle and sweet friend who lives in Japan. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nQuestion: ${query}\nAnswer:`;
 
   const handleBack = () => {
-    setLoading(true);
     router.push('/dashboard');
   };
 
