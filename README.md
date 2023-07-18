@@ -29,3 +29,6 @@
 - Figma
 - OpenAI API
 - Spline (3D modeling with 3Js under the hood)
+- Next.js - a framework built on top of React to allow server-side rendering and automatic code splitting -> why nextJs over react ssr?
+
+<!-- reconfigure local storage to persisting storage on nextjs -->
