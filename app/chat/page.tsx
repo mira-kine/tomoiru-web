@@ -29,12 +29,9 @@ export default function Chat() {
         prompt: message
       })
     });
-    console.log('message', message);
-    console.log('promptResp', promptResp);
 
     const promptData = await promptResp.json();
     // send this prompt to chatGPT
-    console.log('promptData', promptData);
     const chatResp = await fetch('/chat/api', {
       method: 'POST',
       headers: {
@@ -104,5 +101,3 @@ export default function Chat() {
     </div>
   );
 }
-
-// starting chat openai api here

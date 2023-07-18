@@ -123,6 +123,7 @@ export default function LogIn() {
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
+                      minLength="8"
                       className="p-2 m-2 w-3/4 text-md tablet:text-xl"
                     />
                     <div className="p-3">
