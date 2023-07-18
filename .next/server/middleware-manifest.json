@@ -20,26 +20,6 @@
       "assets": []
     }
   },
-  "functions": {
-    "/chat/api/route": {
-      "files": [
-        "server/middleware-build-manifest.js",
-        "server/middleware-react-loadable-manifest.js",
-        "server/next-font-manifest.js",
-        "server/edge-runtime-webpack.js",
-        "server/app/chat/api/route.js"
-      ],
-      "name": "app/chat/api/route",
-      "page": "/chat/api/route",
-      "matchers": [
-        {
-          "regexp": "^/chat/api$",
-          "originalSource": "/chat/api"
-        }
-      ],
-      "wasm": [],
-      "assets": []
-    }
-  },
+  "functions": {},
   "version": 2
 }
