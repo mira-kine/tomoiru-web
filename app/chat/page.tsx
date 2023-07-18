@@ -46,19 +46,21 @@ export default function Chat() {
 
     const data = chatResp.body;
 
-    // turning into readable stream
-    const reader = data.getReader();
-    const decoder = new TextDecoder();
-    let done = false;
+    if (data) {
+      // turning into readable stream
+      const reader = data.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
 
-    // read the streaming chatGPT answer
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      // getting read in chunks
-      const chunkValue = decoder.decode(value);
-      // update interface with answer in responses
-      setResponse((prev) => prev + chunkValue);
+      // read the streaming chatGPT answer
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        // getting read in chunks
+        const chunkValue = decoder.decode(value);
+        // update interface with answer in responses
+        setResponse((prev) => prev + chunkValue);
+      }
     }
   };
   return (
