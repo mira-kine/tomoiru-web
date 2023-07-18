@@ -8,11 +8,7 @@ import { NextResponse, NextRequest } from 'next/server';
 const encoding = get_encoding('cl100k_base');
 const URL = 'https://api.embedbase.xyz';
 const DATASET_ID = 'tomoiru-japan-data';
-<<<<<<< HEAD
 const apikey = process.env.EMBEDBASE_API_KEY;
-=======
-const API_KEY = process.env.EMBEDBASE_API_KEY;
->>>>>>> main
 
 // search Embebase with a string query -> searching through the documents
 
@@ -20,11 +16,7 @@ const search = async (query: string) => {
   const searchData = await fetch(`${URL}/v1/${DATASET_ID}/search`, {
     method: 'POST',
     headers: {
-<<<<<<< HEAD
       Authorization: 'Bearer ' + apikey,
-=======
-      Authorization: 'Bearer ' + API_KEY,
->>>>>>> main
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -56,7 +48,6 @@ const createContext = async (message: string, maxLen = 1800) => {
 };
 
 // create endpoint that returns an answer to client
-<<<<<<< HEAD
 export async function POST(req: Request): Promise<NextResponse> {
   // with new app router Nextjs 13, have to await req.json first
   const { prompt } = await req.json();
@@ -64,13 +55,6 @@ export async function POST(req: Request): Promise<NextResponse> {
   if (req.body === null) {
     throw new Error('Missing body from request');
   }
-=======
-export async function POST(req: Request, res: NextResponse) {
-  if (req.body === null) {
-    throw new Error('Missing body from request');
-  }
-  const prompt = req.body.prompt;
->>>>>>> main
   const context = await createContext(prompt);
   const newPrompt = `You are a kind, gentle and sweet friend who lives in Japan. You know all about Japan including it's culture, transportation techniques, food recommendation places, etc. Answer the question based on the context below to the best of your ability, and if the question cannot be answered based on the context, say "Ah, sorry. I am not sure about that one, I will have to check it out!"\n\nContext: ${context}\n\n---\n\nQuestion: ${prompt}\nAnswer:`;
   return NextResponse.json({ prompt: newPrompt });

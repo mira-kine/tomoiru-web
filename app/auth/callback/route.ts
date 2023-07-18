@@ -3,11 +3,7 @@ import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 // import type { NextRequest } from 'next/server';
-<<<<<<< HEAD
 import type { Database } from '../../../types/supabase';
-=======
-// import type { Database } from '@/lib/database.types';
->>>>>>> main
 
 export async function GET(request: Request) {
   // The `/auth/callback` route is required for the server-side auth flow implemented
