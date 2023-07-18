@@ -15,9 +15,9 @@ export default function Chat() {
   const handleChat = async (e: any) => {
     e.preventDefault();
     // set response with whatever previous answers were
-    if (response.length < 1) {
-      setResponse('');
-    }
+    // if (response.length < 1) {
+    //   setResponse('');
+    // }
     // build contextualized prompt
     const promptResp = await fetch('/prompt/api', {
       method: 'POST',
