@@ -1,4 +1,5 @@
 // createChatContex -> following embedbase documentation
+// createChatContex -> following embedbase documentation
 // A helpful rule of thumb is that one token generally corresponds to ~4 characters of text for common English text. This translates to roughly ¾ of a word (so 100 tokens ~= 75 words).
 /* eslint-disable */
 import { get_encoding } from '@dqbd/tiktoken';
@@ -21,8 +22,7 @@ const search = async (query: string) => {
     body: JSON.stringify({
       query: query
     })
-  });
-  return searchData.json();
+  }).then((response) => response.json());
 };
 // create context here with similar data from our query from the db aka user message
 const createContext = async (message: string, maxLen = 1800) => {
