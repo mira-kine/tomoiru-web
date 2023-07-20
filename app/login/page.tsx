@@ -6,7 +6,7 @@ import type { Database } from '../types/supabase';
 
 // Client Components can be used to trigger the authentication process from event handlers.
 // ... aka createClientComponentClient from auth-helpers-nextjs
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 export default function LogIn() {
   const [errorMessage, setErrorMessage] = useState('');
