@@ -36,6 +36,7 @@ export default function LogIn() {
       } else {
         router.push('/welcome');
       }
+      ``;
     }
     router.refresh();
   };
