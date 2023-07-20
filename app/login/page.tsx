@@ -6,7 +6,7 @@ import type { Database } from '../types/supabase';
 
 // Client Components can be used to trigger the authentication process from event handlers.
 // ... aka createClientComponentClient from auth-helpers-nextjs
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 export default function LogIn() {
   const [errorMessage, setErrorMessage] = useState('');
@@ -18,6 +18,7 @@ export default function LogIn() {
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMessage('');
     await supabase.auth.signInWithPassword({
       email,
       password
@@ -25,11 +26,17 @@ export default function LogIn() {
     const {
       data: { session }
     } = await supabase.auth.getSession();
+
+    if (!session) {
+      setErrorMessage('No user found. Try again, or sign up with new account');
+    }
+
     const { data } = await supabase
       .from('users')
       .select('user_name')
       .match({ id: session.user.id });
     // set this somewhere in a cookie for future usage
+    console.log('session', session);
     if (session && data) {
       router.push('/dashboard');
     } else {
@@ -40,6 +47,7 @@ export default function LogIn() {
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMessage('');
     try {
       await supabase.auth.signUp({
         email,
@@ -52,6 +60,11 @@ export default function LogIn() {
     } catch (error) {
       setErrorMessage('Error signing up. Try again');
     }
+  };
+
+  const handleSwitchView = () => {
+    setErrorMessage('');
+    setView('signin');
   };
 
   return (
@@ -102,7 +115,6 @@ export default function LogIn() {
                     onSubmit={(e) => handleSignIn(e)}
                     className="flex flex-col m-2 justify-center content-center wrap items-center w-5/6"
                   >
-                    {errorMessage && <p>{errorMessage}</p>}
                     <input
                       type="email"
                       name="email"
@@ -127,6 +139,7 @@ export default function LogIn() {
                       className="p-2 m-2 w-3/4 text-md tablet:text-xl"
                     />
                     <div className="p-3">
+                      {errorMessage && <p>{errorMessage}</p>}
                       {view === 'signin' && (
                         <>
                           <button
@@ -159,7 +172,7 @@ export default function LogIn() {
                           <span>Already have an account?</span>
                           <button
                             onClick={() => {
-                              setView('signin');
+                              handleSwitchView();
                             }}
                           >
                             Sign In
