@@ -30,18 +30,20 @@ const createContext = async (message: string, maxLen = 1800) => {
   let currentLength = 0;
   const returns = [];
   // Have to add limit to tokens (length)
-  for (const similarity of searchResp['similarities']) {
-    // put similarities in data together
-    const sentence = similarity['data'];
-    //   count tokens
-    const numTokens = encoding.encode(sentence).length;
-    //   1 token is about 4 characters
-    currentLength += numTokens + 4;
-    if (currentLength > maxLen) {
-      break;
+  if (searchResp) {
+    for (const similarity of searchResp['similarities']) {
+      // put similarities in data together
+      const sentence = similarity['data'];
+      //   count tokens
+      const numTokens = encoding.encode(sentence).length;
+      //   1 token is about 4 characters
+      currentLength += numTokens + 4;
+      if (currentLength > maxLen) {
+        break;
+      }
+      //   add sentence into resulting array "returns"
+      returns.push(sentence);
     }
-    //   add sentence into resulting array "returns"
-    returns.push(sentence);
   }
   //   join the entries and return the array
   return returns.join('\n\n###\n\n');
