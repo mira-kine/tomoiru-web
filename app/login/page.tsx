@@ -16,7 +16,7 @@ export default function LogIn() {
   const router = useRouter();
   const supabase = createClientComponentClient<Database>();
 
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (e: any) => {
     e.preventDefault();
     setErrorMessage('');
     await supabase.auth.signInWithPassword({
@@ -44,7 +44,7 @@ export default function LogIn() {
     router.refresh();
   };
 
-  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (e: any) => {
     e.preventDefault();
     setErrorMessage('');
     try {
