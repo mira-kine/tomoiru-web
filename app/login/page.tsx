@@ -17,6 +17,7 @@ export default function LogIn() {
   const [view, setView] = useState('signin');
   const router = useRouter();
   const supabase = createClientComponentClient<Database>();
+  console.log('view', view);
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -147,7 +148,7 @@ export default function LogIn() {
                     onSubmit={(e) => handleSignIn(e)}
                     className="flex flex-col m-2 justify-center content-center wrap items-center w-5/6"
                   >
-                    <div className="m-2 w-5/6 text-md tablet:text-xl">
+                    <div className="m-2 w-full text-md tablet:text-xl max-w-lg">
                       <input
                         value={email}
                         type="email"
@@ -157,10 +158,10 @@ export default function LogIn() {
                           setEmail(e.target.value);
                         }}
                         placeholder="Email"
-                        className="p-2 m-2 w-full text-md tablet:text-xl"
+                        className="p-2 m-2 w-11/12 tablet:w-full text-md tablet:text-xl"
                       />
                     </div>
-                    <div className="m-2 w-full text-md tablet:text-xl flex items-center justify-center">
+                    <div className="m-2 w-full text-md tablet:text-xl flex items-center max-w-lg relative">
                       <input
                         value={password}
                         type={visible ? 'text' : 'password'}
@@ -170,11 +171,11 @@ export default function LogIn() {
                         onChange={(e) => {
                           setPassword(e.target.value);
                         }}
-                        className="p-2 m-2 w-3/4 text-md tablet:text-xl"
+                        className="p-2 m-2 w-full tablet:pr-11 text-md tablet:text-xl"
                       />
                       {visible ? (
                         <span
-                          className="hover:text-white p-3 hover:cursor-pointer"
+                          className="hover:text-white hover:cursor-pointer"
                           onClick={() => {
                             setVisible(!visible);
                           }}
@@ -201,7 +202,7 @@ export default function LogIn() {
                         </span>
                       ) : (
                         <span
-                          className="hover:text-white p-3 hover:cursor-pointer"
+                          className="hover:text-white hover:cursor-pointer absolute right-4 z-12"
                           onClick={() => {
                             setVisible(!visible);
                           }}
