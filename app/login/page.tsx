@@ -26,21 +26,20 @@ export default function LogIn() {
     const {
       data: { session }
     } = await supabase.auth.getSession();
-
     if (!session) {
       setErrorMessage('No user found. Try again, or sign up with new account');
     }
-
-    const { data } = await supabase
-      .from('users')
-      .select('user_name')
-      .match({ id: session.user.id });
-    // set this somewhere in a cookie for future usage
-    console.log('session', session);
-    if (session && data) {
-      router.push('/dashboard');
-    } else {
-      router.push('/welcome');
+    if (session) {
+      const { data } = await supabase
+        .from('users')
+        .select('user_name')
+        .match({ id: session.user.id });
+      // set this somewhere in a cookie for future usage
+      if (session && data) {
+        router.push('/dashboard');
+      } else {
+        router.push('/welcome');
+      }
     }
     router.refresh();
   };
