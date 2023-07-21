@@ -12,7 +12,7 @@ const apikey = process.env.EMBEDBASE_API_KEY;
 
 // search Embebase with a string query -> searching through the documents
 
-const search = async (query: string) => {
+const search = async (query: string): Promise<any> => {
   const searchData = await fetch(`${URL}/v1/${DATASET_ID}/search`, {
     method: 'POST',
     headers: {
@@ -30,20 +30,18 @@ const createContext = async (message: string, maxLen = 1800) => {
   let currentLength = 0;
   const returns = [];
   // Have to add limit to tokens (length)
-  if (searchResp) {
-    for (const similarity of searchResp['similarities']) {
-      // put similarities in data together
-      const sentence = similarity['data'];
-      //   count tokens
-      const numTokens = encoding.encode(sentence).length;
-      //   1 token is about 4 characters
-      currentLength += numTokens + 4;
-      if (currentLength > maxLen) {
-        break;
-      }
-      //   add sentence into resulting array "returns"
-      returns.push(sentence);
+  for (const similarity of searchResp['similarities']) {
+    // put similarities in data together
+    const sentence = similarity['data'];
+    //   count tokens
+    const numTokens = encoding.encode(sentence).length;
+    //   1 token is about 4 characters
+    currentLength += numTokens + 4;
+    if (currentLength > maxLen) {
+      break;
     }
+    //   add sentence into resulting array "returns"
+    returns.push(sentence);
   }
   //   join the entries and return the array
   return returns.join('\n\n###\n\n');
