@@ -32,13 +32,13 @@ export default function LogIn() {
     if (!session) {
       setErrorMessage('No user found. Try again, or sign up with new account');
     }
-    console.log('session', session);
     const { data } = await supabase
       .from('users')
       .select('user_name')
       .match({ id: session.user.id });
+    console.log('data', data);
     // set this somewhere in a cookie for future usage
-    if (session && data) {
+    if (session && data?.user_name) {
       router.push('/dashboard');
     } else {
       router.push('/welcome');
