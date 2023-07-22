@@ -17,7 +17,6 @@ export default function LogIn() {
   const [view, setView] = useState('signin');
   const router = useRouter();
   const supabase = createClientComponentClient<Database>();
-  console.log('view', view);
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,13 +32,12 @@ export default function LogIn() {
     if (!session) {
       setErrorMessage('No user found. Try again, or sign up with new account');
     }
-
+    console.log('session', session);
     const { data } = await supabase
       .from('users')
       .select('user_name')
       .match({ id: session.user.id });
     // set this somewhere in a cookie for future usage
-    console.log('session', session);
     if (session && data) {
       router.push('/dashboard');
     } else {
@@ -96,17 +94,6 @@ export default function LogIn() {
               </div>
             </div>
           )}
-          {view === 'check-email' ? (
-            <>
-              <div
-                className="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"
-                role="alert"
-              >
-                <p className="font-bold">Please check your email to confirm</p>
-                <p className="text-sm">then sign back in to meet Tomomi!</p>
-              </div>
-            </>
-          ) : null}
 
           <Image
             src="/assets/auth_background.jpg"
@@ -115,25 +102,25 @@ export default function LogIn() {
             className="w-full h-full inset-0 object-cover absolute -z-1"
           />
         </div>
-        <div className="flex flex-col items-center justify-center m-2 h-3/4 w-3/4 z-2">
-          <div className="flex flex-col align-center justify-center wrap m-2 h-5/6 w-5/6">
-            <div className="flex flex-col justify-between wrap align-center mt-1 p-2 bg-melon rounded-lg opacity-80 p-4 items-center w-full">
-              <div className="flex flex-col justify-center p-2 items-center">
+        <div className="flex flex-col items-center justify-center m-2 h-3/4 tablet:h-full w-5/6 tablet:w-11/12 z-2">
+          <div className="flex flex-col align-center justify-center wrap m-2 h-5/6 tablet:h-full laptop:h-5/6 w-5/6">
+            <div className="flex flex-col justify-between wrap align-center mt-1 p-2 bg-melon drop-shadow-lg rounded-xl opacity-80 p-4 items-center w-full tablet:h-3/4 tablet:justify-center laptop:h-full laptop:p-4">
+              <div className="flex flex-col justify-center p-2 items-center wrap tablet:m-8">
                 {view === 'signin' ? (
                   <>
-                    <span className="text-4xl tablet:text-6xl laptop:text-8xl p-2 font-script flex">
+                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-2 font-script flex">
                       Welcome
                     </span>
-                    <span className="text-4xl tablet:text-6xl laptop:text-8xl p-2 font-script">
+                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-2 font-script">
                       Back
                     </span>
                   </>
                 ) : (
                   <>
-                    <span className="text-4xl tablet:text-6xl laptop:text-8xl p-2 font-script flex">
+                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-1 font-script flex">
                       Glad you
                     </span>
-                    <span className="text-4xl tablet:text-6xl laptop:text-8xl p-2 font-script">
+                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-1 font-script">
                       are here
                     </span>
                   </>
@@ -141,7 +128,19 @@ export default function LogIn() {
               </div>
               {/* add check email view for now because current ver pkce + supabase does not auto confirm */}
               {view === 'check-email' ? (
-                <></>
+                <>
+                  <div
+                    className="bg-periwinkle/100 border-t border-b border-blue-500 text-licorice px-4 py-3 flex flex-col items-center content-center justify-center m-4 laptop:m-0 drop-shadow-lg"
+                    role="alert"
+                  >
+                    <p className="font-extrabold font-sans text-md tablet:text-2xl laptop:text-3xl">
+                      Please check your email to confirm
+                    </p>
+                    <p className="text-sm font-sans tablet:text-xl laptop:text-xl">
+                      Then sign back in to meet Tomomi!
+                    </p>
+                  </div>
+                </>
               ) : (
                 <>
                   <form
@@ -175,7 +174,7 @@ export default function LogIn() {
                       />
                       {visible ? (
                         <span
-                          className="hover:text-white hover:cursor-pointer"
+                          className="text-licorice hover:text-melon hover:cursor-pointer absolute right-4 z-12"
                           onClick={() => {
                             setVisible(!visible);
                           }}
@@ -202,7 +201,7 @@ export default function LogIn() {
                         </span>
                       ) : (
                         <span
-                          className="hover:text-white hover:cursor-pointer absolute right-4 z-12"
+                          className="text-licorice hover:text-melon hover:cursor-pointer absolute right-4 z-12"
                           onClick={() => {
                             setVisible(!visible);
                           }}
