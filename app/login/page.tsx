@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { createPagesBrowserClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
-import type { Database } from '../types/supabase';
+import type { Database } from '../../types/supabase';
 import Image from 'next/legacy/image';
 
 // Client Components can be used to trigger the authentication process from event handlers.
