@@ -12,7 +12,7 @@ const apikey = process.env.EMBEDBASE_API_KEY;
 
 // search Embebase with a string query -> searching through the documents
 
-const search = async (query: string) => {
+const search = async (query: string): Promise<any> => {
   const searchData = await fetch(`${URL}/v1/${DATASET_ID}/search`, {
     method: 'POST',
     headers: {

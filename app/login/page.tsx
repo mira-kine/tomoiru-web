@@ -18,7 +18,7 @@ export default function LogIn() {
   const router = useRouter();
   const supabase = createPagesBrowserClient<Database>();
 
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (e: any) => {
     e.preventDefault();
     setErrorMessage('');
     await supabase.auth.signInWithPassword({
@@ -32,21 +32,23 @@ export default function LogIn() {
     if (!session) {
       setErrorMessage('No user found. Try again, or sign up with new account');
     }
+    
+    if (session) {
     const { data } = await supabase
       .from('users')
       .select('user_name')
       .match({ id: session.user.id });
-    console.log('data', data);
     // set this somewhere in a cookie for future usage
     if (session && data?.user_name) {
       router.push('/dashboard');
     } else {
       router.push('/welcome');
     }
+    }
     router.refresh();
   };
 
-  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (e: any) => {
     e.preventDefault();
     setErrorMessage('');
     try {
