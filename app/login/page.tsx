@@ -32,18 +32,18 @@ export default function LogIn() {
     if (!session) {
       setErrorMessage('No user found. Try again, or sign up with new account');
     }
-    
+
     if (session) {
-    const { data } = await supabase
-      .from('users')
-      .select('user_name')
-      .match({ id: session.user.id });
-    // set this somewhere in a cookie for future usage
-    if (session && data?.user_name) {
-      router.push('/dashboard');
-    } else {
-      router.push('/welcome');
-    }
+      const { data } = await supabase
+        .from('users')
+        .select('user_name')
+        .match({ id: session.user.id });
+      // set this somewhere in a cookie for future usage
+      if (session && data?.user_name) {
+        router.push('/dashboard');
+      } else {
+        router.push('/welcome');
+      }
     }
     router.refresh();
   };
