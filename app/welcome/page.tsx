@@ -1,3 +1,4 @@
+'use-client';
 import React from 'react';
 // import '../components/Buttons/HomeButton/HomeButton';
 import TomomiWelcome from './TomomiWelcome';
