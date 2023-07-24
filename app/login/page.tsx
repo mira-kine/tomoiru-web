@@ -39,7 +39,7 @@ export default function LogIn() {
         .select('user_name')
         .match({ id: session.user.id });
       // set this somewhere in a cookie for future usage
-      if (data['user_name']) {
+      if (data?.user_name) {
         router.push('/dashboard');
       } else {
         router.push('/welcome');
