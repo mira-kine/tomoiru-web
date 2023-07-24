@@ -90,8 +90,9 @@ export default function LogIn() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-bold">Our privacy policy has changed</p>
-                  <p className="text-sm">{errorMessage}</p>
+                  <p className="text-sm tablet:text-md font-bold">
+                    {errorMessage}
+                  </p>
                 </div>
               </div>
             </div>
