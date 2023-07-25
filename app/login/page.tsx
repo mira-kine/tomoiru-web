@@ -35,7 +35,7 @@ export default function LogIn() {
     }
 
     if (session) {
-      const { data } = await supabase
+      const { data }: any = await supabase
         .from('users')
         .select('*')
         .match({ id: session.user.id });
