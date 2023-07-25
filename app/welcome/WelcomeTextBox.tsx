@@ -4,7 +4,7 @@ import { welcomeText } from '../data/welcome-text.js';
 import { useRouter } from 'next/navigation';
 
 interface WelcomeProps {
-  handleWelcome: () => void;
+  handleWelcome: (username: string) => void;
 }
 export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const [userMode, setUserMode] = useState(false);
