@@ -11,7 +11,7 @@ export default function WelcomeInput({ session }: { session: Session | null }) {
   const supabase = createPagesBrowserClient<Database>();
 
   // updating username and send to db
-  const handleWelcome = async (username: string) => {
+  const handleWelcome = async (username: string): Promise<void> => {
     try {
       const {
         data: { user }
