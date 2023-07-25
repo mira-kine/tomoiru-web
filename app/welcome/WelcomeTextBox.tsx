@@ -12,7 +12,7 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const router = useRouter();
 
   const initialState = { index: 0 };
-  function reducer(state: number, action: any) {
+  function reducer(state: any, action: any) {
     switch (action.type) {
       case 'next':
         return { index: state.index + 1 };
