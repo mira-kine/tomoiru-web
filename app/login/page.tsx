@@ -25,6 +25,7 @@ export default function LogIn() {
       email,
       password
     });
+
     const {
       data: { session }
     } = await supabase.auth.getSession();
@@ -36,9 +37,11 @@ export default function LogIn() {
     if (session) {
       const { data } = await supabase
         .from('users')
-        .select('user_name')
+        .select('*')
         .match({ id: session.user.id });
-      // set this somewhere in a cookie for future usage
+
+      // set this somewhere in session data for future usage
+
       if (data?.user_name) {
         router.push('/dashboard');
       } else {

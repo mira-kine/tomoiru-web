@@ -1,3 +1,4 @@
+// temporary text for now
 export const welcomeText = [
   {
     id: 0,
