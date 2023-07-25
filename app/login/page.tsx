@@ -25,6 +25,7 @@ export default function LogIn() {
       email,
       password
     });
+
     const {
       data: { session }
     } = await supabase.auth.getSession();
@@ -36,10 +37,12 @@ export default function LogIn() {
     if (session) {
       const { data } = await supabase
         .from('users')
-        .select('user_name')
+        .select('*')
         .match({ id: session.user.id });
-      // set this somewhere in a cookie for future usage
-      if (data?.[0]) {
+
+      // set this somewhere in session data for future usage
+
+      if (data?.user_name) {
         router.push('/dashboard');
       } else {
         router.push('/welcome');
@@ -160,7 +163,7 @@ export default function LogIn() {
                           setEmail(e.target.value);
                         }}
                         placeholder="Email"
-                        className="p-2 m-2 w-11/12 tablet:w-full text-md tablet:text-xl"
+                        className="p-2 m-2 w-11/12 tablet:w-full text-md tablet:text-xl shadow-lg shadow-licorice/20"
                       />
                     </div>
                     <div className="m-2 w-full text-md tablet:text-xl flex items-center max-w-lg relative">
@@ -173,7 +176,7 @@ export default function LogIn() {
                         onChange={(e) => {
                           setPassword(e.target.value);
                         }}
-                        className="p-2 m-2 w-full tablet:pr-11 text-md tablet:text-xl"
+                        className="p-2 m-2 w-full tablet:pr-11 text-md tablet:text-xl shadow-lg shadow-licorice/20"
                       />
                       {visible ? (
                         <span
@@ -231,7 +234,7 @@ export default function LogIn() {
                         <>
                           <button
                             type="submit"
-                            className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2"
+                            className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/20"
                             onClick={handleSignIn}
                           >
                             Sign In
@@ -255,7 +258,7 @@ export default function LogIn() {
                         <>
                           <button
                             type="submit"
-                            className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2"
+                            className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-md shadow-licorice/20"
                             onClick={handleSignUp}
                           >
                             Sign Up
