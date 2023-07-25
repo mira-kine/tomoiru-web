@@ -5,7 +5,7 @@ import {
   type Session,
   createPagesBrowserClient
 } from '@supabase/auth-helpers-nextjs';
-import type { Database } from '../types/supabase';
+import type { Database } from '../../types/supabase';
 
 export default function WelcomeInput({ session }: { session: Session | null }) {
   const supabase = createPagesBrowserClient<Database>();
