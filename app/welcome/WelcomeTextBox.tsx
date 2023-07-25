@@ -3,7 +3,7 @@ import React, { useReducer, useState } from 'react';
 import { welcomeText } from '../data/welcome-text.js';
 import { useRouter } from 'next/navigation';
 
-export default function WelcomeTextBox({ handleWelcome }) {
+export default function WelcomeTextBox({ handleWelcome }): Promise<void> {
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState('');
   const router = useRouter();
