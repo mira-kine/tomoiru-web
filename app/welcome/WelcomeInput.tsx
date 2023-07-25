@@ -16,12 +16,14 @@ export default function WelcomeInput({ session }: { session: Session | null }) {
       const {
         data: { user }
       } = await supabase.auth.getUser();
-      await supabase
-        .from('users')
-        .update({
-          user_name: username
-        })
-        .eq('id', user.id);
+      if (user) {
+        await supabase
+          .from('users')
+          .update({
+            user_name: username
+          })
+          .eq('id', user.id);
+      }
     } catch (error) {
       alert('Error updating the data');
     }
