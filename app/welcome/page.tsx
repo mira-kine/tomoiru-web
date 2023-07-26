@@ -46,7 +46,6 @@ export default async function Welcome() {
           src="/assets/welcome-bg.png"
           alt="drawn background of japanese style entrance"
           layout="fill"
-          priority="true"
           className="w-full h-full inset-0 object-cover absolute"
         />
       </div>
