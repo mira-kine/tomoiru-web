@@ -4,6 +4,8 @@ import localFont from 'next/font/local';
 // These styles apply to every route in the application
 import type { Metadata } from 'next';
 import './global.css';
+// adding this line to fix current bug of dyanmic serve error
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Tomoiru',

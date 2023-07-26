@@ -54,7 +54,7 @@ export default async function Welcome() {
           className="w-full"
           src="/assets/tomomi_open.png"
           width={375}
-          height={320}
+          height={335}
           alt="tomomi character animating talking"
         />
       </div>
