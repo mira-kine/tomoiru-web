@@ -7,18 +7,10 @@ interface WelcomeProps {
   handleWelcome: (username: string) => Promise<any>;
 }
 
-interface WelcomeText {
-  id: number;
-  text?: string;
-}
-
-type WelcomeTextArray = WelcomeText[];
-
 export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState('');
   const router = useRouter();
-  const welcomeTexts = welcomeText<WelcomeTextArray>;
 
   const initialState = { index: 0 };
   function reducer(state: any, action: any) {
