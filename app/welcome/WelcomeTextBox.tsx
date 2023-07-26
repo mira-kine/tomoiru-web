@@ -7,7 +7,14 @@ interface WelcomeProps {
   handleWelcome: (username: string) => Promise<any>;
 }
 
-export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
+interface WelcomeTextProps {
+  welcomeText?: string;
+}
+
+export default function WelcomeTextBox(
+  { handleWelcome }: WelcomeProps,
+  props: WelcomeTextProps
+) {
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState('');
   const router = useRouter();
