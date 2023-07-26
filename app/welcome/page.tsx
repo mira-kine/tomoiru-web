@@ -1,7 +1,7 @@
 import WelcomeInput from './WelcomeInput';
 import Image from 'next/legacy/image';
 import React from 'react';
-import type { Database } from '../types/supabase';
+import type { Database } from '../../types/supabase';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
