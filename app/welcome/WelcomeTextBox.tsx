@@ -7,17 +7,18 @@ interface WelcomeProps {
   handleWelcome: (username: string) => Promise<any>;
 }
 
-interface WelcomeTextProps {
-  welcomeText?: string;
+interface WelcomeText {
+  id: number;
+  text?: string;
 }
 
-export default function WelcomeTextBox(
-  { handleWelcome }: WelcomeProps,
-  props: WelcomeTextProps
-) {
+type WelcomeTextArray = WelcomeText[];
+
+export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState('');
   const router = useRouter();
+  const welcomeTexts = welcomeText<WelcomeTextArray>;
 
   const initialState = { index: 0 };
   function reducer(state: any, action: any) {
@@ -60,7 +61,7 @@ export default function WelcomeTextBox(
       {/* display only the first index */}
       {/* find where the state matches the current index */}
       <div className="text-2xl">
-        {welcomeText?.at(state.index).text ?? 'Hi'}
+        {welcomeTexts?.at(state.index).text ?? 'Hi'}
       </div>
       {!userMode && (
         <div className="flex justify-end">
