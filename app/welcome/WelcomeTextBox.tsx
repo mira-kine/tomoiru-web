@@ -6,6 +6,11 @@ import { useRouter } from 'next/navigation';
 interface WelcomeProps {
   handleWelcome: (username: string) => Promise<any>;
 }
+
+interface WelcomeTextProps {
+  welcomeText?: string;
+}
+
 export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState('');
