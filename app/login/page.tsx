@@ -42,7 +42,7 @@ export default function LogIn() {
 
       // set this somewhere in session data for future usage
 
-      if (data?.user_name) {
+      if (data[0].user_name) {
         router.push('/dashboard');
       } else {
         router.push('/welcome');

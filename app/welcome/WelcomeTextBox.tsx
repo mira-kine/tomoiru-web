@@ -1,20 +1,13 @@
 'use client';
 import React, { useReducer, useState } from 'react';
-import { welcomeText } from '../data/welcome-text.js';
+import { welcomeText } from '../data/welcome-text';
 import { useRouter } from 'next/navigation';
 
 interface WelcomeProps {
   handleWelcome: (username: string) => Promise<any>;
 }
 
-interface WelcomeTextProps {
-  welcomeText?: string;
-}
-
-export default function WelcomeTextBox(
-  { handleWelcome }: WelcomeProps,
-  welcomeText: WelcomeTextProps
-) {
+export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState('');
   const router = useRouter();
