@@ -52,7 +52,9 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
     <>
       {/* display only the first index */}
       {/* find where the state matches the current index */}
-      <div className="text-2xl">{welcomeText?.at(state.index).text}</div>
+      <div className="text-2xl">
+        {welcomeText ? welcomeText.at(state.index).text : null}
+      </div>
       {!userMode && (
         <div className="flex justify-end">
           <button
