@@ -54,7 +54,6 @@ export default async function Welcome() {
         <Image
           className="w-full"
           src="/assets/tomomi_open.png"
-          priority="true"
           width="375px"
           height="300px"
           alt="tomomi character animating talking"
