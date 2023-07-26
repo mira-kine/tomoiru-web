@@ -87,7 +87,7 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
               aria-label="name"
               name="username"
               placeholder="what would you like to be called?"
-              className="ring-peach rounded-lg ring-2 ring-inset m-3 p-2 shadow-md shadow-licorice/30 w-1/2 caret-peach"
+              className="ring-peach rounded-lg ring-2 ring-inset m-3 p-2 shadow-md shadow-licorice/30 w-1/2 caret-peach text-md"
             />
             <button
               type="submit"
