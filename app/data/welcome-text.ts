@@ -1,7 +1,7 @@
 // temporary text for now
 interface WelcomeText {
   id: number;
-  text: string;
+  text?: string;
 }
 
 type WelcomeTexts = WelcomeText[];
