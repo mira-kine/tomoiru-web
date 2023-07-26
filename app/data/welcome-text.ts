@@ -1,4 +1,12 @@
-export const welcomeText = [
+// temporary text for now
+interface WelcomeText {
+  id: number;
+  text?: string;
+}
+
+type WelcomeTexts = WelcomeText[];
+
+export const welcomeText: WelcomeTexts = [
   {
     id: 0,
     text: 'Hi there!'
