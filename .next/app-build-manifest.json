@@ -5,10 +5,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/loading": [
+    "/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/loading.js"
+      "static/chunks/app/login/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -19,7 +19,7 @@
     "/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
+      "static/chunks/app/loading.js"
     ],
     "/welcome/page": [
       "static/chunks/webpack.js",
