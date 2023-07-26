@@ -4,7 +4,7 @@ import { welcomeText } from '../data/welcome-text.js';
 import { useRouter } from 'next/navigation';
 
 interface WelcomeProps {
-  handleWelcome: (username: string) => void;
+  handleWelcome: (username: string) => Promise<any>;
 }
 export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const [userMode, setUserMode] = useState(false);
@@ -46,12 +46,12 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
     dispatch({ type: 'next' });
     setUserMode(false);
   };
-  console.log('state.index', state.index);
+
   return (
     <>
       {/* display only the first index */}
       {/* find where the state matches the current index */}
-      <div className="text-2xl">{welcomeText.at(state.index).text}</div>
+      <div className="text-2xl">{welcomeText?.at(state.index).text}</div>
       {!userMode && (
         <div className="flex justify-end">
           <button
