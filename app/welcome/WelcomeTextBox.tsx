@@ -11,7 +11,10 @@ interface WelcomeTextProps {
   welcomeText?: string;
 }
 
-export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
+export default function WelcomeTextBox(
+  { handleWelcome }: WelcomeProps,
+  welcomeText: WelcomeTextProps
+) {
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState('');
   const router = useRouter();
