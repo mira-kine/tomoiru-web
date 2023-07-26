@@ -48,12 +48,16 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
     setUserMode(false);
   };
 
+  const textToDisplay = state && state.index !== undefined && welcomeText
+  ? welcomeText[state.index]?.text ?? 'Hi'
+  : 'Hi';
+  
   return (
     <>
       {/* display only the first index */}
       {/* find where the state matches the current index */}
       <div className="text-2xl">
-        {welcomeText !== undefined ? welcomeText.at(state.index).text : 'Hi'}
+        {textToDisplay}
       </div>
       {!userMode && (
         <div className="flex justify-end">
