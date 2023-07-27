@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "/page": "app/page.js",
 <<<<<<< HEAD
   "/dashboard/page": "app/dashboard/page.js",
@@ -8,4 +9,7 @@
   "/dashboard/page": "app/dashboard/page.js",
 >>>>>>> dev
   "/chat/page": "app/chat/page.js"
+=======
+  "/welcome/page": "app/welcome/page.js"
+>>>>>>> dev
 }
