@@ -14,30 +14,6 @@ export default async function Welcome() {
     data: { session }
   } = await supabase.auth.getSession();
   // create two modes of state that renders components depending on what is available
-  // get user so you can update
-  // set user to cookie
-
-  // useEffect(() => {
-  //   // declaring data fetching function
-  //   const fetchUsername = async () => {
-  //     const {
-  //       data: { user }
-  //     } = await supabase.auth.getUser();
-  //     if (user) {
-  //       const { data } = await supabase
-  //         .from('users')
-  //         .select('*')
-  //         .match({ id: user.id });
-  //       if (data) {
-  //         setUsername(data.user_name);
-  //       } else {
-  //         setUsername('');
-  //         alert('Please enter a username');
-  //       }
-  //     }
-  //   };
-  //   fetchUsername().catch(console.error);
-  // }, []);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">

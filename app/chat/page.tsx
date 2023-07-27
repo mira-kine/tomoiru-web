@@ -93,7 +93,7 @@ export default function Chat() {
                   setMessage(e.target.value);
                 }}
                 aria-label="user chat input"
-                name="message"
+                name="query"
                 placeholder="write your message here"
                 className="rounded-xl w-full p-4 truncate overflow-y-scroll"
               />

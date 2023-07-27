@@ -14,7 +14,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="fixed shadow-navbar w-full bg-white text-licorice h-20 z-12">
+    <nav className="fixed shadow-navbar w-full bg-white text-licorice h-20 z-8">
       <div className="block relative h-18 tablet:flex tablet:justify-between tablet:items-center tablet:h-20 tablet:ml-8 tablet:w-11/12 tablet:max-w-screen-lg">
         <input
           type="checkbox"

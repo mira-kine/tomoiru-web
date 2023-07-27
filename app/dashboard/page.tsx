@@ -1,25 +1,24 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/legacy/image';
+
 
 export default function Dashboard() {
   // user id is already in session
-
   const [name, setName] = useState('temporary');
-  console.log('setName', setName);
   // set name with whatever is in cookie
   return (
-    <div className="home-container">
-      <div className="dashboard-title-container">
-        <h1>{name}&apos;s Home</h1>
-      </div>
-      <div className="home-container-bg">
-        <div className="tomomi-house-container">
-          <img
-            className="tomomi-house-img"
-            src={'../assets/tomoiru-room.png'}
-            alt="built in spline 3D modeling of a corner of a room"
+    <div className="flex flex-col h-full w-full">
+      {/* <div className="absolute inset-0">
+      <Image
+            src="/assets/tomoiru-temp-bg.png"
+            alt="drawn background of the sky"
+            layout="fill"
+            className="w-full h-full inset-0 object-cover relative"
           />
-        </div>
+      </div> */}
+      <div className="flex justify-center items-center font-script z-5 text-white bg-melon h-3/4 w-3/5">
+        <h1>{name}&apos;s Home</h1>
       </div>
     </div>
   );
