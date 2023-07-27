@@ -1,3 +1,5 @@
 {
-  "/welcome/page": "app/welcome/page.js"
+  "/chat/api/route": "app/chat/api/route.js",
+  "/chat/page": "app/chat/page.js",
+  "/prompt/api/route": "app/prompt/api/route.js"
 }
