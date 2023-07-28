@@ -1,9 +1,11 @@
 'use client';
 import React, { useState } from 'react';
+import NavBar from '../components/NavBar';
 import Image from 'next/legacy/image';
 
 
 export default function Dashboard() {
+  <NavBar />
   // user id is already in session
   const [name, setName] = useState('temporary');
   // set name with whatever is in cookie

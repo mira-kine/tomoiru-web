@@ -1,6 +1,6 @@
-import React from 'react';
-import NavBar from './components/NavBar';
+import React, {Suspense} from 'react';
 import localFont from 'next/font/local';
+import Loading from './loading'
 // These styles apply to every route in the application
 import type { Metadata } from 'next';
 import './global.css';
@@ -36,8 +36,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bubbly.variable} ${gruppo.variable}`}>
       <body>
-        <NavBar />
+        <Suspense fallback={<Loading />}>
         {children}
+        </Suspense>
       </body>
     </html>
   );
