@@ -106,6 +106,7 @@ export default function LogIn() {
             alt="drawn background of the sky"
             layout="fill"
             className="w-full h-full inset-0 object-cover absolute -z-1"
+            priority="true"
           />
         </div>
         <div className="flex flex-col items-center justify-center m-2 h-3/4 tablet:h-full w-5/6 tablet:w-11/12 z-2">

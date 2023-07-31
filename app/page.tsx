@@ -14,6 +14,7 @@ export default function Title() {
           alt="drawn background of the sky"
           layout="fill"
           className="w-full h-full inset-0 object-cover absolute -z-1"
+          priority={true}
         />
       </div>
       <div className="flex flex-col items-center content-center justify-center m-8 h-1/2 w-5/6 mobile:w-3/5 tablet:w-3/5 bg-melon shadow-lg rounded-lg opacity-80 p-4">
