@@ -13,6 +13,7 @@ export default function NavBar() {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     router.refresh();
+    router.push('/login')
   };
 
   const handleNav = () => {
@@ -30,7 +31,7 @@ export default function NavBar() {
       router.refresh();
     }
     fetchUser();
-  }, [user])
+  }, [])
 
   return (
     <>
