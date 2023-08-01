@@ -28,8 +28,11 @@ module.exports = {
       },
       boxShadow: {
         'navbar': '0 5px 10px 0px rgba(170, 170, 170, 0.85)'
-      }
+      },
     }
   },
-  plugins: []
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: []
+  }
 };

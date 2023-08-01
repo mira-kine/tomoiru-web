@@ -57,7 +57,7 @@ export default function NavBar() {
           </button>
             <ul className="font-medium flex px-8 mx-16 rounded-lg w-full bg-white">
               <li>
-                <Link href="/" className="block py-2 pl-3 pr-4 text-licorice rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen" aria-current="page">Home</Link>
+                <Link href="/dashboard" className="block py-2 pl-3 pr-4 text-licorice rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen" aria-current="page">Home</Link>
               </li>
               <li>
                 <Link href="/about" className="block py-2 pl-3 pr-4 text-licorice rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparent">About</Link>
