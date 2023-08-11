@@ -8,6 +8,7 @@ const [message, setMessage] = useState('');
 const [response, setResponse] = useState('');
 const router = useRouter();
 
+
 //   handle for chat responses
   const handleChat = async (e: any) => {
     e.preventDefault();
@@ -37,12 +38,12 @@ const router = useRouter();
         prompt: promptData.prompt
       })
     });
+    console.log('chatResp', chatResp)
     if (!chatResp.ok) {
       throw new Error(chatResp.statusText);
     }
 
     const data = chatResp.body;
-    console.log('data', data)
 
     if (data) {
       // turning into readable stream
@@ -63,19 +64,20 @@ const router = useRouter();
     }
   };
 
+
   const handleBack = () => {
     router.push('/dashboard');
   };
   return (
-    <div className="flex justify-center items-center w-4/5 h-4/5 absolute top-24 bg-licorice opacity-70 rounded-3xl shadow-xl shadow-black">
+    <div className="flex justify-center items-center w-4/5 h-3/4 absolute bg-licorice opacity-70 rounded-3xl shadow-xl shadow-black mt-16">
         <div className="flex flex-col justify-start items-center relative w-11/12 h-5/6 min-w-[75%] shadow-white bg-black rounded-3xl pb-8">
           {/* <button onClick={handleBack}>
             <span className="text-white">{'<'}</span>
           </button> */}
-          <div className="w-11/12 h-4/5 bg-white relative rounded-xl p-12 font-sans overflow-y-auto font-bold">
+          <div className="w-11/12 h-4/5 mt-6 bg-white relative rounded-xl p-12 font-sans overflow-y-auto font-bold">
             {/* map through responses here */}
             <div className="chat chat-start">
-            <span>Hi, ask me anything!</span>
+            {/* <span>Hi, ask me anything!</span> */}
             {response !== null && (
                 <span className="chat-bubble">{response}
                 </span>

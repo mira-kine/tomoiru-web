@@ -33,6 +33,8 @@ export default function NavBar() {
     fetchUser();
   }, [])
 
+  console.log('user', user)
+
   return (
     <>
     {user?.id ? (
@@ -48,7 +50,7 @@ export default function NavBar() {
           </button>
             )}
           {showNav && (
-            <div className="flex w-full transition ease-in-out delay-150 translate-x-4">
+            <div className="flex w-full transition ease-in-out delay-150 translate-x-2">
                 <button onClick={() => handleNav()} className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-peach focus:outline-none focus:ring-2 focus:ring-peach text-licorice" aria-controls="navbar-default" aria-expanded="false">
               <span className="sr-only">Open main menu</span>
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
