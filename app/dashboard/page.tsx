@@ -10,7 +10,8 @@ export default function Dashboard() {
   // set name with whatever is in cookie
   return (
     <>
-    <div className="flex relative items-center align-center justify-center h-full w-full">
+    <div className="flex flex-col relative items-center align-center justify-center h-full w-full">
+    {/* <NavBar /> */}
       <div className="absolute inset-0">
         <Image
             src={dashboardImg}
