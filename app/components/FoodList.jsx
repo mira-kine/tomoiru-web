@@ -1,7 +1,4 @@
 // import React from 'react';
-// import '../views/FoodRecs/FoodRecs';
-// import '../views/FoodRecs/FoodRecs.css';
-// import { useNavigate } from 'react-router-dom';
 
 // export default function FoodList({ foodsList }) {
 //   // handleClick -> if I click on food name, display will change to name with description + button to eat it

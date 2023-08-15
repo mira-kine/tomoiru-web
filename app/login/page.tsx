@@ -1,51 +1,51 @@
-'use client';
-import React, { useState } from 'react';
-import { createPagesBrowserClient } from '@supabase/auth-helpers-nextjs';
-import { useRouter } from 'next/navigation';
-import type { Database } from '../../types/supabase';
-import Image from 'next/legacy/image';
+"use client";
+import React, { useState } from "react";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
+import type { Database } from "../../types/supabase";
+import Image from "next/legacy/image";
 
 // Client Components can be used to trigger the authentication process from event handlers.
 // ... aka createClientComponentClient from auth-helpers-nextjs
 
 export default function LogIn() {
-  const [errorMessage, setErrorMessage] = useState('');
-  const [email, setEmail] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState("");
   // set out password component later on in components folder
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [visible, setVisible] = useState<boolean>(false);
-  const [view, setView] = useState('signin');
+  const [view, setView] = useState("signin");
   const router = useRouter();
   const supabase = createPagesBrowserClient<Database>();
 
   const handleSignIn = async (e: any) => {
     e.preventDefault();
-    setErrorMessage('');
+    setErrorMessage("");
     await supabase.auth.signInWithPassword({
       email,
-      password
+      password,
     });
 
     const {
-      data: { session }
+      data: { session },
     } = await supabase.auth.getSession();
 
     if (!session) {
-      setErrorMessage('No user found. Try again, or sign up with new account');
+      setErrorMessage("No user found. Try again, or sign up with new account");
     }
 
     if (session) {
       const { data }: any = await supabase
-        .from('users')
-        .select('*')
+        .from("users")
+        .select("*")
         .match({ id: session.user.id });
 
       // set this somewhere in session data for future usage
 
       if (data[0].user_name) {
-        router.push('/dashboard');
+        router.push("/dashboard");
       } else {
-        router.push('/welcome');
+        router.push("/welcome");
       }
     }
     router.refresh();
@@ -53,24 +53,24 @@ export default function LogIn() {
 
   const handleSignUp = async (e: any) => {
     e.preventDefault();
-    setErrorMessage('');
+    setErrorMessage("");
     try {
       await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: `${location.origin}/auth/callback`
-        }
+          emailRedirectTo: `${location.origin}/auth/callback`,
+        },
       });
-      setView('check-email');
+      setView("check-email");
     } catch (error) {
-      setErrorMessage('Error signing up. Try again');
+      setErrorMessage("Error signing up. Try again");
     }
   };
 
   const handleSetView = () => {
-    setErrorMessage('');
-    setView('signin');
+    setErrorMessage("");
+    setView("signin");
   };
 
   return (
@@ -106,13 +106,14 @@ export default function LogIn() {
             alt="drawn background of the sky"
             layout="fill"
             className="w-full h-full inset-0 object-cover absolute -z-1"
+            priority={true}
           />
         </div>
         <div className="flex flex-col items-center justify-center m-2 h-3/4 tablet:h-full w-5/6 tablet:w-11/12 z-2">
           <div className="flex flex-col align-center justify-center wrap m-2 h-5/6 tablet:h-full laptop:h-5/6 w-5/6">
             <div className="flex flex-col justify-between wrap align-center mt-1 p-2 bg-melon drop-shadow-lg rounded-xl opacity-80 p-4 items-center w-full tablet:h-3/4 tablet:justify-center laptop:h-full laptop:p-4">
               <div className="flex flex-col justify-center p-2 items-center wrap tablet:m-8">
-                {view === 'signin' ? (
+                {view === "signin" ? (
                   <>
                     <span className="text-5xl tablet:text-8xl laptop:text-9xl p-2 font-script flex">
                       Welcome
@@ -133,7 +134,7 @@ export default function LogIn() {
                 )}
               </div>
               {/* add check email view for now because current ver pkce + supabase does not auto confirm */}
-              {view === 'check-email' ? (
+              {view === "check-email" ? (
                 <>
                   <div
                     className="bg-periwinkle/100 border-t border-b border-blue-500 text-licorice px-4 py-3 flex flex-col items-center content-center justify-center m-4 laptop:m-0 drop-shadow-lg"
@@ -169,7 +170,7 @@ export default function LogIn() {
                     <div className="m-2 w-full text-md tablet:text-xl flex items-center max-w-lg relative">
                       <input
                         value={password}
-                        type={visible ? 'text' : 'password'}
+                        type={visible ? "text" : "password"}
                         name="password"
                         aria-label="Password"
                         placeholder="Password"
@@ -230,7 +231,7 @@ export default function LogIn() {
                       )}
                     </div>
                     <div className="p-3 flex flex-col">
-                      {view === 'signin' && (
+                      {view === "signin" && (
                         <>
                           <button
                             type="submit"
@@ -245,7 +246,7 @@ export default function LogIn() {
                             </span>
                             <button
                               onClick={() => {
-                                setView('signup');
+                                setView("signup");
                               }}
                               className="underline hover:text-white p-1"
                             >
@@ -254,7 +255,7 @@ export default function LogIn() {
                           </div>
                         </>
                       )}
-                      {view === 'signup' && (
+                      {view === "signup" && (
                         <>
                           <button
                             type="submit"

@@ -1,7 +1,7 @@
-'use client';
-import React, { useReducer, useState } from 'react';
-import { welcomeText } from '../data/welcome-text';
-import { useRouter } from 'next/navigation';
+"use client";
+import React, { useReducer, useState } from "react";
+import { welcomeText } from "../data/welcome-text";
+import { useRouter } from "next/navigation";
 
 interface WelcomeProps {
   handleWelcome: (username: string) => Promise<any>;
@@ -9,15 +9,15 @@ interface WelcomeProps {
 
 export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const [userMode, setUserMode] = useState(false);
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const router = useRouter();
 
   const initialState = { index: 0 };
   function reducer(state: any, action: any) {
     switch (action.type) {
-      case 'next':
+      case "next":
         return { index: state.index + 1 };
-      case 'stop':
+      case "stop":
         setUserMode(true);
         // once currentUser is updated in local storage then
         return { index: state.index };
@@ -30,13 +30,13 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
 
   const handleUserInput = () => {
     if (state.index < 2 || state.index >= 3) {
-      dispatch({ type: 'next' });
+      dispatch({ type: "next" });
     }
     if (state.index === 1) {
-      dispatch({ type: 'stop' });
+      dispatch({ type: "stop" });
     }
     if (state.index === welcomeText.length - 2) {
-      router.push('/dashboard');
+      router.push("/dashboard");
       router.refresh();
     }
   };
@@ -44,21 +44,20 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await handleWelcome(username);
-    dispatch({ type: 'next' });
+    dispatch({ type: "next" });
     setUserMode(false);
   };
 
-  const textToDisplay = state && state.index !== undefined && welcomeText
-  ? welcomeText[state.index]?.text ?? 'Hi'
-  : 'Hi';
-  
+  const textToDisplay =
+    state && state.index !== undefined && welcomeText
+      ? welcomeText[state.index]?.text ?? "Hi"
+      : "Hi";
+
   return (
     <>
       {/* display only the first index */}
       {/* find where the state matches the current index */}
-      <div className="text-2xl">
-        {textToDisplay}
-      </div>
+      <div className="text-2xl">{textToDisplay}</div>
       {!userMode && (
         <div className="flex justify-end">
           <button

@@ -1,11 +1,11 @@
-'use client';
-import React from 'react';
-import WelcomeTextBox from './WelcomeTextBox';
+"use client";
+import React from "react";
+import WelcomeTextBox from "./WelcomeTextBox";
 import {
   type Session,
-  createPagesBrowserClient
-} from '@supabase/auth-helpers-nextjs';
-import type { Database } from '../../types/supabase';
+  createPagesBrowserClient,
+} from "@supabase/auth-helpers-nextjs";
+import type { Database } from "../../types/supabase";
 
 export default function WelcomeInput({ session }: { session: Session | null }) {
   const supabase = createPagesBrowserClient<Database>();
@@ -14,18 +14,18 @@ export default function WelcomeInput({ session }: { session: Session | null }) {
   const handleWelcome = async (username: string) => {
     try {
       const {
-        data: { user }
+        data: { user },
       } = await supabase.auth.getUser();
       if (user) {
         await supabase
-          .from('users')
+          .from("users")
           .update({
-            user_name: username
+            user_name: username,
           })
-          .eq('id', user.id);
+          .eq("id", user.id);
       }
     } catch (error) {
-      alert('Error updating the data');
+      alert("Error updating the data");
     }
   };
 
