@@ -1,4 +1,4 @@
-import ChatBox from './chatbox'
+import ChatBox from "./chatbox";
 
 export default function Chat() {
   return (

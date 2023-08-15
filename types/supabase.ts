@@ -75,23 +75,23 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'my_foods_name_fkey';
-            columns: ['name'];
-            referencedRelation: 'food_recs';
-            referencedColumns: ['name'];
+            foreignKeyName: "my_foods_name_fkey";
+            columns: ["name"];
+            referencedRelation: "food_recs";
+            referencedColumns: ["name"];
           },
           {
-            foreignKeyName: 'my_foods_rec_id_fkey';
-            columns: ['rec_id'];
-            referencedRelation: 'food_recs';
-            referencedColumns: ['id'];
+            foreignKeyName: "my_foods_rec_id_fkey";
+            columns: ["rec_id"];
+            referencedRelation: "food_recs";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: 'my_foods_uuid_fkey';
-            columns: ['uuid'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
-          }
+            foreignKeyName: "my_foods_uuid_fkey";
+            columns: ["uuid"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
         ];
       };
       users: {
@@ -112,11 +112,11 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'users_id_fkey';
-            columns: ['id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
-          }
+            foreignKeyName: "users_id_fkey";
+            columns: ["id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
         ];
       };
     };
@@ -126,7 +126,7 @@ export interface Database {
     Functions: {
       ivfflathandler: {
         Args: {
-          '': unknown;
+          "": unknown;
         };
         Returns: unknown;
       };
@@ -144,37 +144,37 @@ export interface Database {
       };
       vector_avg: {
         Args: {
-          '': number[];
+          "": number[];
         };
         Returns: string;
       };
       vector_dims: {
         Args: {
-          '': string;
+          "": string;
         };
         Returns: number;
       };
       vector_norm: {
         Args: {
-          '': string;
+          "": string;
         };
         Returns: number;
       };
       vector_out: {
         Args: {
-          '': string;
+          "": string;
         };
         Returns: unknown;
       };
       vector_send: {
         Args: {
-          '': string;
+          "": string;
         };
         Returns: string;
       };
       vector_typmod_in: {
         Args: {
-          '': unknown[];
+          "": unknown[];
         };
         Returns: number;
       };

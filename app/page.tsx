@@ -1,8 +1,8 @@
-'use client';
+"use client";
 // Will be rendered as the main component of this page
-import React from 'react';
-import Image from 'next/legacy/image';
-import Link from 'next/link';
+import React from "react";
+import Image from "next/legacy/image";
+import Link from "next/link";
 
 export default function Title() {
   return (
@@ -19,7 +19,7 @@ export default function Title() {
       <div className="flex flex-col items-center content-center justify-center m-8 h-1/2 w-5/6 mobile:w-3/5 tablet:w-3/5 bg-melon shadow-lg rounded-lg opacity-80 p-4">
         <div className="flex flex-col flex-wrap justify-center items-center">
           <div className="flex justify-center flex-wrap font-script text-7xl tablet:text-9xl p-2 m-2">
-            {' '}
+            {" "}
             Tomoiru
           </div>
           <div className="flex sub-title font-sans text-xl mobile:text-2xl tablet:text-3xl laptop:text-5xl justify-center pb-4">

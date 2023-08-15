@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export function useForm(inputs = {}) {
   const [formState, setFormState] = useState(inputs);
-  const [formError, setFormError] = useState('');
+  const [formError, setFormError] = useState("");
 
   const handleForm = (e) => {
     // set target values to name, value type key value pair.

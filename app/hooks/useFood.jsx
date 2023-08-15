@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { getFoodById } from '../api/foods';
+import React, { useEffect, useState } from "react";
+import { getFoodById } from "../api/foods";
 
 export function useFood(foodId) {
   const [selectedFood, setSelectedFood] = useState({});

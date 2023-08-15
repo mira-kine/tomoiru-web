@@ -6,18 +6,18 @@
 @import 'tailwindcss/utilities'; */
 
 @font-face {
-  font-family: 'Bubbly';
-  src: url('/public/fonts/Cherry_Bomb_One/CherryBombOne-Regular.ttf');
+  font-family: "Bubbly";
+  src: url("/public/fonts/Cherry_Bomb_One/CherryBombOne-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'Gruppo';
-  src: url('/public/fonts/Gruppo/Gruppo-Regular.ttf');
+  font-family: "Gruppo";
+  src: url("/public/fonts/Gruppo/Gruppo-Regular.ttf");
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -29,7 +29,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
