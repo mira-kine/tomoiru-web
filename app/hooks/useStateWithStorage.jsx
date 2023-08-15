@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function useStateWithStorage(storageKey, initialValue) {
   const [value, setValue] = useState(
-    localStorage.getItem(storageKey) || initialValue
+    localStorage.getItem(storageKey) || initialValue,
     //   get item in storage key
     // if no current value, set it to initial value
   );

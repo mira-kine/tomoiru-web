@@ -1,9 +1,9 @@
-import WelcomeInput from './WelcomeInput';
-import Image from 'next/legacy/image';
-import React from 'react';
-import type { Database } from '../../types/supabase';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import WelcomeInput from "./WelcomeInput";
+import Image from "next/legacy/image";
+import React from "react";
+import type { Database } from "../../types/supabase";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 export default async function Welcome() {
   // create supabase client first
@@ -11,33 +11,9 @@ export default async function Welcome() {
   // const [username, setUsername] = useState('');
   const supabase = createServerComponentClient<Database>({ cookies });
   const {
-    data: { session }
+    data: { session },
   } = await supabase.auth.getSession();
   // create two modes of state that renders components depending on what is available
-  // get user so you can update
-  // set user to cookie
-
-  // useEffect(() => {
-  //   // declaring data fetching function
-  //   const fetchUsername = async () => {
-  //     const {
-  //       data: { user }
-  //     } = await supabase.auth.getUser();
-  //     if (user) {
-  //       const { data } = await supabase
-  //         .from('users')
-  //         .select('*')
-  //         .match({ id: user.id });
-  //       if (data) {
-  //         setUsername(data.user_name);
-  //       } else {
-  //         setUsername('');
-  //         alert('Please enter a username');
-  //       }
-  //     }
-  //   };
-  //   fetchUsername().catch(console.error);
-  // }, []);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">

@@ -1,17 +1,21 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import type { Database } from './types/supabase';
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import type { Database } from "./types/supabase";
+
 
 export async function middleware(req: NextRequest) {
-  const res = NextResponse.next()
-  const supabase = createMiddlewareClient<Database>({ req, res })
-  
-const {
-  data: { user },
-} = await supabase.auth.getUser()
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient<Database>({ req, res });
 
-// if user is not signed in and the current path is not / redirect the user to /
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  return res
+  if(user?.id) {
+    NextResponse.redirect(new URL('/dashboard', req.url))
+  }
+
+  return res;
 }
+ 
