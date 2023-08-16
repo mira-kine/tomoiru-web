@@ -1,6 +1,8 @@
 {
+  "/chat/api/route": "app/chat/api/route.js",
   "/page": "app/page.js",
-  "/chat/page": "app/chat/page.js",
   "/food/page": "app/food/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/chat/page": "app/chat/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/prompt/api/route": "app/prompt/api/route.js"
 }

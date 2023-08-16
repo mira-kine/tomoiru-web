@@ -70,15 +70,21 @@ export default function ChatBox() {
   return (
     <div className="flex justify-center items-center w-4/5 h-3/4 absolute bg-licorice opacity-70 rounded-3xl shadow-xl shadow-black mt-16">
       <div className="flex flex-col justify-start items-center relative w-11/12 h-5/6 min-w-[75%] shadow-white bg-black rounded-3xl pb-8">
-        <button onClick={handleBack}>
-            <span className="text-white">{'<'}</span>
+        <div className="w-full">
+        <button className="text-white btn glass btn-white ml-6 mt-2" onClick={handleBack}>
+          Back
           </button>
+        </div>
         <div className="w-11/12 h-4/5 mt-6 bg-white relative rounded-xl p-12 font-sans overflow-y-auto font-bold">
           {/* map through responses here */}
           <div className="chat chat-start">
-            {/* <span>Hi, ask me anything!</span> */}
+            <div className="chat-image avatar">
+              <div className="w-10 rounded-full">
+                {/* add image of avatar */}
+              </div>
+            </div>
             {response !== null && (
-              <span className="chat-bubble">{response}</span>
+              <div className="chat-bubble">{response} Hi Ask me anything</div>
             )}
           </div>
         </div>
@@ -100,7 +106,7 @@ export default function ChatBox() {
               className="rounded-xl w-full p-4 truncate overflow-y-scroll"
             />
           </div>
-          <button className="text-white p-2" onClick={handleChat}>
+          <button className="text-white btn glass btn-white ml-4 p-4" onClick={handleChat}>
             Ask
           </button>
         </form>
