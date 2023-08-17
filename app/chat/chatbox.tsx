@@ -37,7 +37,6 @@ export default function ChatBox() {
         prompt: promptData.prompt,
       }),
     });
-    console.log("chatResp", chatResp);
     if (!chatResp.ok) {
       throw new Error(chatResp.statusText);
     }
@@ -84,7 +83,7 @@ export default function ChatBox() {
               </div>
             </div>
             {response !== null && (
-              <div className="chat-bubble">{response} Hi Ask me anything</div>
+              <div className="chat-bubble bg-peach">{response} Hi! Ask me anything</div>
             )}
           </div>
         </div>
@@ -92,8 +91,7 @@ export default function ChatBox() {
           className="w-10/12 bg-pink flex justify-start mt-8"
           onSubmit={handleChat}
         >
-          <div className="w-full">
-            {/* <label className="font-sans text-white">You:</label> */}
+          <div className="w-full form-control">
             <input
               type="text"
               value={message}
