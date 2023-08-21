@@ -72,6 +72,7 @@ export default function ChatBox() {
   const handleChat = async (e: any) => {
     e.preventDefault();
     dispatch({type: 'TOMOMI_TYPING'});
+    dispatch({type: 'ADD_USER_MESSAGE', content: message})
     // set response with whatever previous answers were
     // build contextualized prompt
     const promptResp = await fetch("/prompt/api", {
@@ -114,13 +115,11 @@ export default function ChatBox() {
         const chunkValue = decoder.decode(value);
         // update current chunk string
         dispatch({type: 'UPDATE_TOMOMI_RESPONSE', content: chunkValue});
-        console.log('conversationState.responseContent', conversationState.responseContent)
       }
       // update interface with answer in responses
       if (done) {
         dispatch({ type: 'ADD_TOMOMI_RESPONSE', content: conversationState.responseContent});
       }
-      console.log('conversationState.messages', conversationState.messages)
     }
   };
 
@@ -136,15 +135,16 @@ export default function ChatBox() {
           Back
           </button>
         </div>
-        <div className="w-11/12 h-4/5 mt-6 bg-white relative rounded-xl p-12 font-sans overflow-y-auto font-bold">
+        <div className="w-11/12 h-full mt-6 bg-white relative rounded-xl p-12 font-sans overflow-y-auto font-bold">
               {conversationState.messages.map((message, index) => (
-                <div key={index} className="chat chat-start h-3/4 w-full overflow-y-auto">
+                <div key={index} className={message.isUser ? "chat chat-end h-1/4 w-full mb-4" : "chat chat-start h-1/4 w-full mb-4"}>
                   <div className={message.isUser ? 'chat-bubble bg-periwinkle text-licorice' : 'chat-bubble bg-licorice text-white'}>
                     {message.content}
                   </div>
                 </div>
               ))}
-              {conversationState.loading && <div className="chat-bubble bg-perwinkle">...</div>}
+              {conversationState.loading && <div className="chat-bubble bg-perwinkle"><span className="loading loading-dots loading-sm"></span></div>}
+              </div>
         <form
           className="w-10/12 bg-pink flex justify-start mt-8"
           onSubmit={handleChat}
@@ -166,11 +166,12 @@ export default function ChatBox() {
             Ask
           </button>
         </form>
-      </div>
     </div>
     </div>
   );
 }
 
-// 1. make sure that chunks are being accumulated properly
-// 2. display user messages as well 
+// TODO:
+// 1. display user messages as well
+// 2. animate chat bubble
+// 3. After MVP: Separate into chunks of maximum words
