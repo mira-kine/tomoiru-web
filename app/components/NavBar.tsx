@@ -38,7 +38,7 @@ export default function NavBar() {
   return (
     <>
       {user?.id ? (
-        <div className="w-5/6 bg-white/70 z-10">
+        <div className="w-5/6 bg-white/70 z-50 md:hidden">
           <div className="navbar bg-white">
             <div className="navbar">
               <div className="dropdown">
