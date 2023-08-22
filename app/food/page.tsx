@@ -1,3 +1,4 @@
+import FoodImg from "./foodimg";
 import FoodList from "./foodlist";
 
 export default function FoodSelect() {
@@ -7,7 +8,9 @@ export default function FoodSelect() {
         <FoodList />
     </div>
     <div className="bg-melon w-1/2 h-3/4 mb-12 ml-8 mr-4 flex flex-column justify-center items-center">
-      <div className="bg-licorice text-white h-1/2 w-1/2">Buttons</div>
+      <div className="bg-licorice text-white h-1/2 w-1/2">
+        <FoodImg />
+      </div>
     </div>
   </div>;
 }
