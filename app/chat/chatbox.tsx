@@ -172,6 +172,5 @@ export default function ChatBox() {
 }
 
 // TODO:
-// 1. display user messages as well
-// 2. animate chat bubble
-// 3. After MVP: Separate into chunks of maximum words
+// 1. After MVP: Separate into chunks of maximum words
+// 2. Prompt can be more conversational - add to database
