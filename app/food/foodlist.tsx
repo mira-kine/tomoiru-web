@@ -27,7 +27,7 @@ useEffect(() => {
     })
 }, [supabase])
 
-const handleChooseFood = (id) => {
+const handleChooseFood = () => {
     setShowFood(!showFood);
     // show food description of id
 }
@@ -37,7 +37,7 @@ const handleChooseFood = (id) => {
     {foodList.map((food: Food) => (
         <>
         <div key={food.id}>
-            <button onClick={() => {handleChooseFood(food.id)}}className="btn btn-outline m-2 text-licorice hover:bg-chick hover:text-peach">
+            <button onClick={() => {handleChooseFood()}}className="btn btn-outline m-2 text-licorice hover:bg-chick hover:text-peach">
                 {food.name}
                 {/* <span>
                     {foodList.filter((food) => (
