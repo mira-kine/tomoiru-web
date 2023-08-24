@@ -8,6 +8,7 @@ export default function NavBar() {
   const supabase = createClientComponentClient();
   const router = useRouter();
   const [user, setUser] = useState({id: ''});
+  const [showNav, setShowNav] = useState(false);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -33,14 +34,17 @@ export default function NavBar() {
   return (
     <>
       {user?.id ? (
-        <div className="w-full bg-white/70 z-50 md:hidden shadow-xl">
-          <div className="navbar bg-white">
-            <div className="navbar">
-              <div className="dropdown">
-                <label tabIndex={0} className="btn btn-ghost lg:hidden">
+        <div className="w-1/12 z-45 flex ml-12">
+          <div className="bg-peach flex items-center p-4 justify-center z-50 mt-4">
+            <div className="flex items-center">
+              {/* <div className="dropdown"> */}
+                <button className="bg-white p-4 rounded-full hover:animate-bounce" onClick={() => {setShowNav(!showNav)}}>
+                <label tabIndex={0}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
-                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-white rounded-box w-52">
+                </button>
+                {showNav ? (
+                <ul tabIndex={0} className="ml-8 p-2 shadow-lg bg-white rounded-box w-full flex">
                   <li>
                     <Link
                         href="/dashboard"
@@ -50,13 +54,6 @@ export default function NavBar() {
                         Home
                     </Link>
                     </li>
-        {/* <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li> */}
                     <li>
                       <Link
                         href="/chat"
@@ -90,29 +87,11 @@ export default function NavBar() {
                       </Link>
                     </li>
                   </ul>
+                ) : null}
                 </div>
-                <a className="btn btn-ghost normal-case text-2xl">Tomoiru</a>
               </div>
-              <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                  <li><a>Item 1</a></li>
-                  <li tabIndex={0}>
-                    <details>
-                      <summary>Parent</summary>
-                      <ul className="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                      </ul>
-                    </details>
-                  </li>
-                  <li><a>Item 3</a></li>
-                </ul>
-              </div>
-              {/* <div className="navbar-end">
-                <a className="btn">Button</a>
-              </div> */}
             </div>
-        </div>
+        // </div>
       ) : null}
     </>
   );

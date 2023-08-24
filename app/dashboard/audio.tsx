@@ -59,7 +59,7 @@ const playButtons = () => {
 }
 
   return (
-    <div className="w-5/6 h-1/2 mt-8 flex justify-center items-center">
+    <div className="w-5/6 h-1/2 mt-8 flex bg-chick justify-center items-center">
         <div className="h-1/2">
             {/* <audio src={track} controls loop autoPlay /> */}
             {/* add image of cover */}
@@ -87,7 +87,7 @@ const playButtons = () => {
                     <BiSkipNext />
                 </IconContext.Provider>
             </button> */}
-            <audio src={track} controls autoPlay/>
+            <audio src={track} controls />
         </div>
     </div>
   )
