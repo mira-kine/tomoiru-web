@@ -34,21 +34,20 @@ export default function NavBar() {
   return (
     <>
       {user?.id ? (
-        <div className="w-1/12 z-20 flex ml-12 fixed">
+        <div className="w-5/12 z-20 flex ml-12 fixed">
           <div className="flex items-center p-4 justify-center z-30 mt-4">
-            <div className="flex items-center">
-              {/* <div className="dropdown"> */}
-                <button className="bg-white/50 p-6 rounded-full hover:bg-white" onClick={() => {setShowNav(!showNav)}}>
-                <label tabIndex={0}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            <div className="flex flex-col laptop:flex-row items-center cursor-point w-full">
+                <button className="bg-white/50 p-6 rounded-full hover:bg-white cursor-point" onClick={() => {setShowNav(!showNav)}}>
+                <label tabIndex={0} className="cursor-point">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 cursor-point" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
                 </button>
                 {showNav ? (
-                <ul tabIndex={0} className="ml-8 p-2 shadow-lg bg-white rounded-box w-full flex">
+                <ul tabIndex={0} className="ml-8 p-2 mt-8 laptop:mt-0 shadow-lg bg-white rounded-box w-full flex flex-col laptop:flex-row">
                   <li>
                     <Link
                         href="/dashboard"
-                        className="block py-2 pl-3 pr-4 text-licorice rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                         aria-current="page"
                       >
                         Home
@@ -57,7 +56,7 @@ export default function NavBar() {
                     <li>
                       <Link
                         href="/chat"
-                        className="block py-2 pl-3 pr-4 text-licorice rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                       >
                         Chat
                       </Link>
@@ -65,7 +64,7 @@ export default function NavBar() {
                     <li>
                       <Link
                         href="/food"
-                        className="block py-2 pl-3 pr-4 text-licorice rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
                       >
                         Food
                       </Link>
@@ -73,7 +72,7 @@ export default function NavBar() {
                     <li>
                       <button
                         onClick={handleSignOut}
-                        className="block py-2 pl-3 pr-4 text-licorice rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                       >
                         Sign out
                       </button>
@@ -81,7 +80,7 @@ export default function NavBar() {
                     <li>
                       <Link
                         href="/about"
-                        className="block py-2 pl-3 pr-4 text-licorice rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparent"
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparent"
                       >
                         About
                       </Link>
@@ -91,7 +90,6 @@ export default function NavBar() {
                 </div>
               </div>
             </div>
-        // </div>
       ) : null}
     </>
   );
