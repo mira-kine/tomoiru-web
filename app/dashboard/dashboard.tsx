@@ -19,6 +19,7 @@ export default function DashboardClient() {
   }, []);
 
   const particlesLoaded = useCallback(async (container: Container | undefined) => {
+  console.log('container', container)
   }, []);
 
   return (
