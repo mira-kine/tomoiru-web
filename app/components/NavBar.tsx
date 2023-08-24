@@ -34,13 +34,13 @@ export default function NavBar() {
   return (
     <>
       {user?.id ? (
-        <div className="w-1/12 z-45 flex ml-12">
-          <div className="bg-peach flex items-center p-4 justify-center z-50 mt-4">
+        <div className="w-1/12 z-20 flex ml-12 fixed">
+          <div className="flex items-center p-4 justify-center z-30 mt-4">
             <div className="flex items-center">
               {/* <div className="dropdown"> */}
-                <button className="bg-white p-4 rounded-full hover:animate-bounce" onClick={() => {setShowNav(!showNav)}}>
+                <button className="bg-white/50 p-6 rounded-full hover:bg-white" onClick={() => {setShowNav(!showNav)}}>
                 <label tabIndex={0}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
                 </button>
                 {showNav ? (
