@@ -15,7 +15,7 @@ export default function NavBar() {
     router.push("/login");
     router.refresh();
   };
-
+  
   useEffect(() => {
     const fetchUser = async () => {
       const {
@@ -53,12 +53,18 @@ export default function NavBar() {
                         Home
                     </Link>
                     </li>
+        {/* <li>
+          <a>Parent</a>
+          <ul className="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </li> */}
                     <li>
                       <Link
                         href="/chat"
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                       >
-                        Chat
                         Chat
                       </Link>
                     </li>
@@ -67,7 +73,6 @@ export default function NavBar() {
                         href="/food"
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
                       >
-                        Food
                         Food
                       </Link>
                     </li>
