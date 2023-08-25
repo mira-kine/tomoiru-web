@@ -128,7 +128,7 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="flex justify-center items-center w-4/5 h-3/4 absolute bg-licorice opacity-70 rounded-3xl shadow-xl shadow-black mt-16">
+    <div className="flex justify-center items-center w-4/5 h-3/4 absolute bg-licorice opacity-70 rounded-3xl shadow-xl shadow-black mt-32">
       <div className="flex flex-col justify-start items-center relative w-11/12 h-5/6 min-w-[75%] shadow-white bg-black rounded-3xl pb-8">
         <div className="w-full">
         <button className="text-white btn glass btn-white ml-6 mt-2" onClick={handleBack}>

@@ -25,7 +25,7 @@ export default function DashboardClient() {
           <div className="bg-melon w-1/12 flex justify-center z-20 absolute right-0 top-0 mr-12 mt-4">
             <AudioPlayer />
           </div>
-          <div className="bg-white/50 rounded-full z-20 p-4 absolute bottom-52 right-48 hover:animate-bounce cursor-pointer">
+          <div className="bg-white/50 rounded-full z-20 p-4 absolute tablet:bottom-52 tablet:right-48 hover:animate-bounce cursor-pointer">
             <div className="bg-white p-4 rounded-full">
               <span className="inline-block p-2 font-sans" onClick={() => {handleNavChat()}}>Chat</span>
             </div>

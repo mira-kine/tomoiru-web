@@ -160,6 +160,7 @@ export default function LogIn() {
                         type="email"
                         name="email"
                         aria-label="Email"
+                        autoComplete="off"
                         onChange={(e) => {
                           setEmail(e.target.value);
                         }}

@@ -41,6 +41,7 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
     }
   };
 
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await handleWelcome(username);

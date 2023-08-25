@@ -16,6 +16,7 @@ export default function NavBar() {
     router.refresh();
   };
 
+  // get with cookie instead of setting to state?
   useEffect(() => {
     const fetchUser = async () => {
       const {
@@ -31,6 +32,11 @@ export default function NavBar() {
     router.refresh();
   }, []);
 
+  const handleNavigate = (page: string) => {
+    router.push(`/${page}`);
+    setShowNav(!showNav)
+  }
+
   return (
     <>
       {user?.id ? (
@@ -45,31 +51,29 @@ export default function NavBar() {
                 {showNav ? (
                 <ul tabIndex={0} className="ml-8 p-2 mt-8 laptop:mt-0 shadow-lg bg-white rounded-box w-full flex flex-col laptop:flex-row">
                   <li>
-                    <Link
-                        href="/dashboard"
+                    <button
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                         aria-current="page"
+                        onClick={() => {handleNavigate('dashboard')}}
                       >
                         Home
-                    </Link>
+                    </button>
                     </li>
                     <li>
-                      <Link
-                        href="/chat"
+                      <button
+                        onClick={() => {handleNavigate('chat')}}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                       >
                         Chat
-                        Chat
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link
-                        href="/food"
+                      <button
+                        onClick={() => {handleNavigate('food')}}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
                       >
                         Food
-                        Food
-                      </Link>
+                      </button>
                     </li>
                     <li>
                       <button
@@ -80,12 +84,12 @@ export default function NavBar() {
                       </button>
                     </li>
                     <li>
-                      <Link
-                        href="/about"
+                      <button
+                        onClick={() => {handleNavigate('about')}}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparent"
                       >
                         About
-                      </Link>
+                      </button>
                     </li>
                   </ul>
                 ) : null}
