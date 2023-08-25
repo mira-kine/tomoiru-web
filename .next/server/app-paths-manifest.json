@@ -1,13 +1,13 @@
 {
   "/chat/api/route": "app/chat/api/route.js",
   "/page": "app/page.js",
-  "/about/page": "app/about/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/login/page": "app/login/page.js",
-  "/unauthenticated/page": "app/unauthenticated/page.js",
-  "/welcome/page": "app/welcome/page.js",
   "/chat/page": "app/chat/page.js",
   "/food/page": "app/food/page.js",
+  "/login/page": "app/login/page.js",
+  "/welcome/page": "app/welcome/page.js",
+  "/unauthenticated/page": "app/unauthenticated/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/about/page": "app/about/page.js",
   "/auth/callback/route": "app/auth/callback/route.js",
   "/auth/signout/route": "app/auth/signout/route.js",
   "/prompt/api/route": "app/prompt/api/route.js"
