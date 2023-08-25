@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation';
 export default function DashboardClient() {
     const router = useRouter();
   
-    const handleNavChat = () => {
-      router.push('/chat')
+    const handleNavCircle = (place: string) => {
+      router.push(`/${place}`)
     }
   return (
     <>
@@ -27,7 +27,12 @@ export default function DashboardClient() {
           </div>
           <div className="bg-white/50 rounded-full z-20 p-4 absolute tablet:bottom-52 tablet:right-48 hover:animate-bounce cursor-pointer">
             <div className="bg-white p-4 rounded-full">
-              <span className="inline-block p-2 font-sans" onClick={() => {handleNavChat()}}>Chat</span>
+              <span className="inline-block p-2 font-sans" onClick={() => {handleNavCircle('chat')}}>Chat</span>
+            </div>
+          </div>
+          <div className="bg-white/50 rounded-full z-20 p-4 absolute tablet:top-32 hover:animate-bounce cursor-pointer">
+            <div className="bg-white p-4 rounded-full">
+              <span className="inline-block p-2 font-sans" onClick={() => {handleNavCircle('food')}}>Food</span>
             </div>
           </div>
     </>
