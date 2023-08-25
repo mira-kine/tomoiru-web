@@ -18,7 +18,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <div className="flex flex-col relative items-center align-center justify-center h-5/6 w-full">
+      <div className="flex flex-col relative items-center align-center justify-center h-full w-full">
         <DashboardClient />
       </div>
     </>
