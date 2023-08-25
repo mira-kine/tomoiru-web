@@ -2,6 +2,6 @@
   "/welcome/page": "app/welcome/page.js",
   "/unauthenticated/page": "app/unauthenticated/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/chat/page": "app/chat/page.js",
-  "/login/page": "app/login/page.js"
+  "/food/page": "app/food/page.js",
+  "/chat/page": "app/chat/page.js"
 }

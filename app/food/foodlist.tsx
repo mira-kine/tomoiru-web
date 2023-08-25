@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import type { Database } from "../../types/supabase";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
-// import Image from 'next/legacy/image';
 
 interface Food {
     id: number;
@@ -36,8 +35,9 @@ const handleChooseFood = () => {
     <div className="bg-white/50 rounded-2xl p-4 overflow-y-auto display flex flex-col justify-center items-center w-3/4">
     {foodList.map((food: Food) => (
         <>
-        <div key={food.id}>
-            <button onClick={() => {handleChooseFood()}}className="btn btn-outline m-2 text-licorice hover:bg-chick hover:text-peach">
+        <div key={food.id} className="z-30">
+            <button onClick={() => {handleChooseFood()}} className="
+            text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/20">
                 {food.name}
                 {/* <span>
                     {foodList.filter((food) => (
@@ -48,15 +48,6 @@ const handleChooseFood = () => {
         </div>
         </>
     ))}
-        <div>
-            {/* {showFood ? (
-                // <Image src={food.image} alt="image of chosen food" width={125} height={125}/>
-                <div>
-                    {food}
-                </div>
-            ) : null} */}
-            
-        </div>
     </div>
   )
 }
