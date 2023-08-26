@@ -22,9 +22,6 @@ export default function DashboardClient() {
               priority={true}
             />
           </div>
-          <div className="bg-melon w-1/12 flex justify-center z-20 absolute right-0 top-0 mr-12 mt-4">
-            <AudioPlayer />
-          </div>
           <div className="bg-white/50 rounded-full z-20 p-4 absolute tablet:bottom-52 tablet:right-48 hover:animate-bounce cursor-pointer">
             <div className="bg-white p-4 rounded-full">
               <span className="inline-block p-2 font-sans" onClick={() => {handleNavCircle('chat')}}>Chat</span>
@@ -34,6 +31,9 @@ export default function DashboardClient() {
             <div className="bg-white p-4 rounded-full">
               <span className="inline-block p-2 font-sans" onClick={() => {handleNavCircle('food')}}>Food</span>
             </div>
+          </div>
+          <div className="w-3/12 bg-melon flex justify-center z-50 absolute left-0 bottom-0 ml-32 mb-12">
+            <AudioPlayer />
           </div>
     </>
   )
