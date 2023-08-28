@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Image from "next/image";
+import Image from "next/legacy/image";
 import dashboardImg from '../../public/assets/dashboard.png'
 import AudioPlayer from "./audio";
 import { useRouter } from 'next/navigation';

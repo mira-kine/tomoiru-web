@@ -2,8 +2,6 @@
 import React, {useState, useEffect} from 'react'
 import type { Database } from "../../types/supabase";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
-import DisplayTrack from '../components/Audio/DisplayTrack';
-import ProgressBar from '../components/Audio/ProgressBar';
 import Controls from '../components/Audio/Controls';
 
 
@@ -15,7 +13,8 @@ export interface Track {
 
 export default function AudioPlayer() {
 const supabase = createPagesBrowserClient<Database>();
-const [tracks, setTracks] = useState<Track[] | null>([]);
+const [tracks, setTracks] = useState<Track[]>([]);
+
 
 useEffect(() => {
     const fetchTracks = async () => {
@@ -32,9 +31,7 @@ useEffect(() => {
 
   return (
     <div className="w-5/6 h-1/2 flex flex-col bg-chick justify-center items-center z-30">
-            {/* <DisplayTrack /> */}
-            <Controls tracks={tracks} />
-            <ProgressBar />
+      <Controls tracks={tracks}/>
     </div>
   )
 }
