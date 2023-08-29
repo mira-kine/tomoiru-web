@@ -2,7 +2,6 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 
 export default function NavBar() {
   const supabase = createClientComponentClient();
@@ -30,13 +29,14 @@ export default function NavBar() {
       throw error;
     })
     router.refresh();
-  }, []);
+  }, [router, supabase.auth]);
 
   const handleNavigate = (page: string) => {
     router.push(`/${page}`);
     setShowNav(!showNav)
   }
 
+  
   return (
     <>
       {user?.id ? (
