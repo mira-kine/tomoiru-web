@@ -8,7 +8,7 @@ export default function DashboardCarousel() {
     <>
     <div className="w-full max-w-5xl carousel rounded-box shadow-2xl">
   <div className="carousel w-full">
-    <div id="slide1" className="carousel-item relative w-full">
+    <div id="livingroom" className="carousel-item relative w-full">
           <Image
               src={dashboardImg}
               alt="drawn background of a japanese style living room"
@@ -28,7 +28,7 @@ export default function DashboardCarousel() {
               priority={true}
             />
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide1" className="btn btn-circle bg-white/50 text-white">❮</a> 
+      <a href="#livingroom" className="btn btn-circle bg-white/50 text-white">❮</a> 
       <a href="#slide3" className="btn btn-circle bg-white/50 text-white">❯</a>
     </div>
   </div> 
@@ -53,7 +53,7 @@ export default function DashboardCarousel() {
             />
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
       <a href="#slide3" className="btn btn-circle bg-white/50 text-white">❮</a> 
-      <a href="#slide1" className="btn btn-circle bg-white/50 text-white">❯</a>
+      <a href="#livingroom" className="btn btn-circle bg-white/50 text-white">❯</a>
     </div>
   </div>
 </div>
