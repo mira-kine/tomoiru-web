@@ -30,7 +30,7 @@ export default function NavBar() {
       throw error;
     })
     router.refresh();
-  }, []);
+  }, [router, supabase.auth]);
 
   const handleNavigate = (page: string) => {
     router.push(`/${page}`);

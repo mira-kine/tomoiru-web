@@ -23,7 +23,7 @@ export default async function Dashboard() {
       <div className="absolute inset-0">
         <Image
           src="/assets/food-bg.png"
-          alt="drawn background of the sky"
+          alt="drawn background of living room"
           layout="fill"
           className="w-full h-full inset-0 object-cover absolute -z-1"
           priority={true}
