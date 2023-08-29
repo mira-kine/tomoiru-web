@@ -34,8 +34,9 @@ export default function NavBar() {
   const handleNavigate = (page: string) => {
     router.push(`/${page}`);
     setShowNav(!showNav)
-  
+  }
 
+  
   return (
     <>
       {user?.id ? (
