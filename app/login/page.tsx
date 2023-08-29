@@ -4,12 +4,13 @@ import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import type { Database } from "../../types/supabase";
 import Image from "next/legacy/image";
+import toast from 'react-hot-toast'
+import tomoIcon from '../../public/assets/icons/play.png'
 
 // Client Components can be used to trigger the authentication process from event handlers.
 // ... aka createClientComponentClient from auth-helpers-nextjs
 
 export default function LogIn() {
-  const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState("");
   // set out password component later on in components folder
   const [password, setPassword] = useState("");
@@ -20,7 +21,6 @@ export default function LogIn() {
 
   const handleSignIn = async (e: any) => {
     e.preventDefault();
-    setErrorMessage("");
     await supabase.auth.signInWithPassword({
       email,
       password,
@@ -30,8 +30,11 @@ export default function LogIn() {
       data: { session },
     } = await supabase.auth.getSession();
 
+    console.log('session', session)
+
+
     if (!session) {
-      setErrorMessage("No user found. Try again, or sign up with new account");
+      toast.error("No user found. Try again, or sign up with new account");
     }
 
     if (session) {
@@ -53,23 +56,55 @@ export default function LogIn() {
 
   const handleSignUp = async (e: any) => {
     e.preventDefault();
-    setErrorMessage("");
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
     try {
-      await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          emailRedirectTo: `${location.origin}/auth/callback`,
-        },
-      });
-      setView("check-email");
+      if(session?.user.email === email) {
+        toast.custom((signupToast) => (
+          <div
+            className={`${
+              signupToast.visible ? 'animate-enter' : 'animate-leave'
+            } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5 z-40`}
+          >
+            <div className="flex-1 w-0 p-4">
+              <div className="flex items-start">
+                <div className="flex-shrink-0 pt-0.5">
+                  <Image src={tomoIcon} alt="icon of tomomi"/>
+                </div>
+                <div className="ml-3 flex-1">
+                  <p className="mt-1 text-sm text-gray-500">
+                    You already have an account!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex border-l border-gray-200">
+              <button
+                onClick={() => {toast.dismiss(signupToast.id)}}
+                className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        ))
+      }
+        await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: `${location.origin}/auth/callback`,
+          },
+        });
     } catch (error) {
-      setErrorMessage("Error signing up. Try again");
+      toast.error("Error signing up. Try again");
     }
   };
 
   const handleSetView = () => {
-    setErrorMessage("");
     setView("signin");
   };
 
@@ -77,7 +112,6 @@ export default function LogIn() {
     <>
       <div className="flex relative items-center align-center justify-center h-full w-full">
         <div className="absolute inset-0">
-
           <Image
             src="/assets/auth_background.jpg"
             alt="drawn background of the sky"
@@ -90,29 +124,6 @@ export default function LogIn() {
           <div className="flex flex-col align-center justify-center wrap m-2 h-5/6 tablet:h-full laptop:h-5/6 w-5/6">
             <div className="flex flex-col justify-between wrap align-center mt-1 p-2 bg-melon drop-shadow-lg rounded-xl opacity-80 p-4 items-center w-full tablet:h-3/4 tablet:justify-center laptop:h-full laptop:p-4">
               <div className="flex flex-col justify-center p-2 items-center wrap tablet:m-8">
-              {errorMessage && (
-            <div
-              className="z-50 bg-white border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
-              role="alert"
-            >
-              <div className="flex">
-                <div className="py-1">
-                  <svg
-                    className="fill-current h-6 w-6 text-teal-500 mr-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm tablet:text-md font-bold">
-                    {errorMessage}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
                 {view === "signin" ? (
                   <>
                     <span className="text-5xl tablet:text-8xl laptop:text-9xl p-2 font-script flex">
@@ -134,21 +145,6 @@ export default function LogIn() {
                 )}
               </div>
               {/* add check email view for now because current ver pkce + supabase does not auto confirm */}
-              {view === "check-email" ? (
-                <>
-                  <div
-                    className="bg-periwinkle/100 border-t border-b border-blue-500 text-licorice px-4 py-3 flex flex-col items-center content-center justify-center m-4 laptop:m-0 drop-shadow-lg"
-                    role="alert"
-                  >
-                    <p className="font-extrabold font-sans text-md tablet:text-2xl laptop:text-3xl">
-                      Please check your email to confirm
-                    </p>
-                    <p className="text-sm font-sans tablet:text-xl laptop:text-xl">
-                      Then sign back in to meet Tomomi!
-                    </p>
-                  </div>
-                </>
-              ) : (
                 <>
                   <form
                     onSubmit={(e) => handleSignIn(e)}
@@ -283,8 +279,6 @@ export default function LogIn() {
                     </div>
                   </form>
                 </>
-              )}
-              
             </div>
           </div>
         </div>

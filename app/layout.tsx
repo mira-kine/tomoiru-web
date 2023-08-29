@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import localFont from "next/font/local";
 import Loading from "./loading";
 import NavBar from "./components/NavBar";
+import {Toaster} from 'react-hot-toast'
 // These styles apply to every route in the application
 import type { Metadata } from "next";
 import "./global.css";
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body>
         <Suspense fallback={<Loading />}>
           <NavBar />
+          <Toaster />
           {children}
         </Suspense>
       </body>
