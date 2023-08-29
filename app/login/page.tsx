@@ -73,7 +73,6 @@ export default function LogIn() {
     setView("signin");
   };
 
-  console.log('errorMessage', errorMessage)
   return (
     <>
       <div className="flex relative items-center align-center justify-center h-full w-full">
@@ -93,7 +92,7 @@ export default function LogIn() {
               <div className="flex flex-col justify-center p-2 items-center wrap tablet:m-8">
               {errorMessage && (
             <div
-              className="z-40 bg-chick border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+              className="z-50 bg-white border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
               role="alert"
             >
               <div className="flex">

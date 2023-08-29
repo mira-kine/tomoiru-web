@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import type { Database } from "../../types/supabase";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
-import Controls from '../components/Audio/Controls';
+// import Controls from '../components/Audio/Controls';
 
 
 export interface Track {
@@ -15,7 +15,6 @@ export default function AudioPlayer() {
 const supabase = createPagesBrowserClient<Database>();
 const [tracks, setTracks] = useState<Track[]>([]);
 
-
 useEffect(() => {
     const fetchTracks = async () => {
         const {data} = await supabase.from('tracks').select('*');
@@ -27,11 +26,15 @@ useEffect(() => {
         throw error;
     })
 }, [supabase]);
-
-
   return (
     <div className="w-5/6 h-1/2 flex flex-col bg-chick justify-center items-center z-30">
-      <Controls tracks={tracks}/>
+      <audio src={tracks[0]?.publicUrl} controls/>
+      {/* <Controls /> */}
     </div>
   )
 }
+
+// []: fetch tracks
+// []: display first track, get by id: name, progress bar, play/pause toggle, next, back, seek
+// play/pause toggle depending on onclick
+// 
