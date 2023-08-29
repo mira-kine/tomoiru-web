@@ -30,16 +30,17 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
 
   const handleUserInput = () => {
     if (state.index < 2 || state.index >= 3) {
+      if (state.index === welcomeText.length - 2) {
+        router.push("/dashboard");
+        router.refresh();
+      }
       dispatch({ type: "next" });
     }
     if (state.index === 1) {
       dispatch({ type: "stop" });
     }
-    if (state.index === welcomeText.length - 2) {
-      router.push("/dashboard");
-      router.refresh();
-    }
   };
+
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();

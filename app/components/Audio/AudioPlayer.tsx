@@ -1,0 +1,40 @@
+'use client'
+import React, {useState, useEffect} from 'react'
+import type { Database } from "../../../types/supabase";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+// import Controls from '../components/Audio/Controls';
+
+
+export interface Track {
+    id: number;
+    name: string;
+    publicUrl: string;
+  }
+
+export default function AudioPlayer() {
+const supabase = createPagesBrowserClient<Database>();
+const [tracks, setTracks] = useState<Track[]>([]);
+
+useEffect(() => {
+    const fetchTracks = async () => {
+        const {data} = await supabase.from('tracks').select('*');
+        if(data) {
+            setTracks(data);
+        }
+    }
+    fetchTracks().catch((error) => {
+        throw error;
+    })
+}, [supabase]);
+  return (
+    <div className="w-5/6 h-1/2 flex flex-col justify-center items-center z-30">
+      <audio src={tracks[0]?.publicUrl} controls/>
+      {/* <Controls /> */}
+    </div>
+  )
+}
+
+// []: fetch tracks
+// []: display first track, get by id: name, progress bar, play/pause toggle, next, back, seek
+// play/pause toggle depending on onclick
+// 
