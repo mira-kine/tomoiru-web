@@ -18,13 +18,13 @@ export default function DashboardClient() {
           <div className="w-11/12 max-w-6xl rounded-2xl p-4 z-20 flex justify-center">
           <DashboardCarousel />
           </div>
-          <div className="w-3/12 flex justify-center z-50 absolute left-0 bottom-0 ml-28 mb-12">
+          <div className="w-3/12 flex justify-center z-50 absolute left-0 bottom-0 ml-28 tablet:ml-8 mb-12 tablet:mb-4">
             <AudioPlayer />
           </div>
         </>
      )
     }
-    <button onClick={() => {setHelpView(!helpView)}} className="btn glass shadow-xl bg-white hover:bg-peach text-licorice flex justify-center z-50 absolute bottom-0 right-0 mr-12 mb-12">Help</button>
+    <button onClick={() => {setHelpView(!helpView)}} className="btn glass shadow-xl bg-white hover:bg-peach text-licorice flex justify-center z-50 absolute bottom-0 right-0 mr-12 mb-12 tablet:mb-4">Help</button>
     </>
   )
 }
