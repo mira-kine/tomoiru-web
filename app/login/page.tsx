@@ -47,8 +47,8 @@ export default function LogIn() {
       } else {
         router.push("/welcome");
       }
+      router.refresh();
     }
-    router.refresh();
   };
 
   const handleSignUp = async (e: any) => {
@@ -73,13 +73,27 @@ export default function LogIn() {
     setView("signin");
   };
 
+  console.log('errorMessage', errorMessage)
   return (
     <>
       <div className="flex relative items-center align-center justify-center h-full w-full">
         <div className="absolute inset-0">
-          {errorMessage && (
+
+          <Image
+            src="/assets/auth_background.jpg"
+            alt="drawn background of the sky"
+            layout="fill"
+            className="w-full h-full inset-0 object-cover absolute -z-1"
+            priority={true}
+          />
+        </div>
+        <div className="flex flex-col items-center justify-center m-2 h-3/4 tablet:h-full w-5/6 tablet:w-11/12 z-30">
+          <div className="flex flex-col align-center justify-center wrap m-2 h-5/6 tablet:h-full laptop:h-5/6 w-5/6">
+            <div className="flex flex-col justify-between wrap align-center mt-1 p-2 bg-melon drop-shadow-lg rounded-xl opacity-80 p-4 items-center w-full tablet:h-3/4 tablet:justify-center laptop:h-full laptop:p-4">
+              <div className="flex flex-col justify-center p-2 items-center wrap tablet:m-8">
+              {errorMessage && (
             <div
-              className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+              className="z-40 bg-chick border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
               role="alert"
             >
               <div className="flex">
@@ -100,19 +114,6 @@ export default function LogIn() {
               </div>
             </div>
           )}
-
-          <Image
-            src="/assets/auth_background.jpg"
-            alt="drawn background of the sky"
-            layout="fill"
-            className="w-full h-full inset-0 object-cover absolute -z-1"
-            priority={true}
-          />
-        </div>
-        <div className="flex flex-col items-center justify-center m-2 h-3/4 tablet:h-full w-5/6 tablet:w-11/12 z-2">
-          <div className="flex flex-col align-center justify-center wrap m-2 h-5/6 tablet:h-full laptop:h-5/6 w-5/6">
-            <div className="flex flex-col justify-between wrap align-center mt-1 p-2 bg-melon drop-shadow-lg rounded-xl opacity-80 p-4 items-center w-full tablet:h-3/4 tablet:justify-center laptop:h-full laptop:p-4">
-              <div className="flex flex-col justify-center p-2 items-center wrap tablet:m-8">
                 {view === "signin" ? (
                   <>
                     <span className="text-5xl tablet:text-8xl laptop:text-9xl p-2 font-script flex">
@@ -284,6 +285,7 @@ export default function LogIn() {
                   </form>
                 </>
               )}
+              
             </div>
           </div>
         </div>
