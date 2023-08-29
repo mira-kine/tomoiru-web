@@ -40,7 +40,7 @@ export default function NavBar() {
   return (
     <>
       {user?.id ? (
-        <div className="w-5/12 z-20 flex ml-12 fixed">
+        <div className="w-5/12 z-50 flex ml-12 fixed">
           <div className="flex items-center p-4 justify-center z-30 mt-4">
             <div className="flex flex-col laptop:flex-row items-center cursor-point w-full">
                 <button className="bg-white/50 p-6 rounded-full hover:bg-white cursor-point" onClick={() => {setShowNav(!showNav)}}>
