@@ -5,6 +5,7 @@
   "/dashboard/page": "app/dashboard/page.js",
   "/login/page": "app/login/page.js",
   "/chat/page": "app/chat/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/food/page": "app/food/page.js",
   "/unauthenticated/page": "app/unauthenticated/page.js",
   "/welcome/page": "app/welcome/page.js",
