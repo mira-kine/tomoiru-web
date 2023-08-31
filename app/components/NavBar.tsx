@@ -36,6 +36,7 @@ export default function NavBar() {
     setShowNav(!showNav)
   }
 
+  
   return (
     <>
       {user?.id ? (
