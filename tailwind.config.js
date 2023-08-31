@@ -25,6 +25,7 @@ module.exports = {
         melon: "#BAEBD6",
         peach: "#F7B390",
         chick: "#FDF6B4",
+        grey: '#808080'
       },
       boxShadow: {
         navbar: "0 5px 10px 0px rgba(170, 170, 170, 0.85)",
