@@ -25,9 +25,17 @@ export default function Title() {
           <div className="flex sub-title font-sans text-xl mobile:text-2xl tablet:text-3xl laptop:text-5xl justify-center pb-4">
             Travel to Japan with a friend
           </div>
-          <div className="flex">
-            <div className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md px-5 py-2.5 mt-4 text-center mr-2 mb-2 shadow-md">
+          <div className="flex flex-col">
+            <div className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-lg px-6 py-2.5 mt-4 text-center mr-2 mb-2 shadow-md">
               <Link href="/login">Enter</Link>
+            </div>
+            <div className="flex">
+              <div className="text-licorice border-2 border-white bg-white/40 hover:bg-white cursor-pointer font-sans font-bold rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2 shadow-md">
+                <Link href="/about">About</Link>
+              </div>
+              <div className="text-licorice border-2 border-white bg-white/40 hover:bg-white font-sans font-bold rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2 shadow-md">
+                <Link href="/demo">Demo</Link>
+              </div>
             </div>
           </div>
         </div>
