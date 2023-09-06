@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import type { Database } from "../../types/supabase";
+import type { Database } from "../../../types/supabase";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 
 interface Food {
@@ -32,7 +32,8 @@ const handleChooseFood = () => {
 }
 
   return (
-    <div className="bg-white/50 rounded-2xl p-4 overflow-y-auto display flex flex-col justify-center items-center w-3/4">
+    <div className="bg-white/50 rounded-2xl overflow-y-auto display flex flex-col items-center w-1/2 my-4 px-12 ml-20 mr-4">
+        <span className="font-script text-5xl text-licorice py-8">Tomomi Recs</span>
     {foodList.map((food: Food) => (
         <>
         <div key={food.id} className="z-30">
