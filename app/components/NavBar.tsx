@@ -72,7 +72,15 @@ export default function NavBar() {
                         onClick={() => {handleNavigate('food')}}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
                       >
-                        Food
+                        Recs
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => {handleNavigate('fooddiary')}}
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
+                      >
+                        Food Diary
                       </button>
                     </li>
                     <li>
