@@ -2,7 +2,6 @@ import React from 'react'
 import FoodList from './foodlist'
 import Image from 'next/legacy/image';
 import sakurabg from '../../../public/assets/sakura-bg.png'
-import DisplayInfo from './displayinfo';
 
 export default function FoodListPage() {
   return (
@@ -16,10 +15,12 @@ export default function FoodListPage() {
             priority={true}
           />
     </div>
-      <div className="z-40 flex bg-peach w-9/12 h-5/6">
+    <div className="z-20 flex flex-col items-center content-center justify-center w-11/12 h-full">
         <FoodList />
-        <DisplayInfo />
-      </div>
+    </div>
   </div>
   )
 }
+
+// states: display/don't display information + default display 
+// user events: on click, display correct information by id

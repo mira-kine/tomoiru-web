@@ -23,3 +23,5 @@
 
 //   return { selectedFood, setSelectedFood };
 // }
+
+// set export Food type here and use hook instead of repeated code
