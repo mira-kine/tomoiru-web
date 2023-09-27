@@ -140,17 +140,17 @@ export interface Database {
       tracks: {
         Row: {
           id: number
-          name: string | null
+          track_name: string | null
           publicUrl: string | null
         }
         Insert: {
           id?: number
-          name?: string | null
+          track_name?: string | null
           publicUrl?: string | null
         }
         Update: {
           id?: number
-          name?: string | null
+          track_name?: string | null
           publicUrl?: string | null
         }
         Relationships: []
@@ -197,11 +197,11 @@ export interface Database {
           match_threshold: number
           match_count: number
         }
-        Returns: {
+        Returns: Array<{
           id: number
           content: string
           similarity: number
-        }[]
+        }>
       }
       vector_avg: {
         Args: {

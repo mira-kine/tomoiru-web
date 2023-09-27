@@ -7,17 +7,22 @@ import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 
 export interface Track {
     id: number;
-    name: string;
+    track_name: string;
     publicUrl: string;
   }
 
 export default function AudioPlayer() {
 const supabase = createPagesBrowserClient<Database>();
-const [tracks, setTracks] = useState<Track[]>([]);
+const [tracks, setTracks] = useState<Track[]>([{
+  id: 0,
+  track_name: '',
+  publicUrl: ''
+}]);
 
 useEffect(() => {
     const fetchTracks = async () => {
         const {data} = await supabase.from('tracks').select('*');
+        console.log('data', data)
         if(data) {
             setTracks(data);
         }

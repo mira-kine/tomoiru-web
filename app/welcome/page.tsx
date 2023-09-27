@@ -1,20 +1,8 @@
 import WelcomeInput from "./WelcomeInput";
 import Image from "next/legacy/image";
 import React from "react";
-import type { Database } from "../../types/supabase";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 
 export default async function Welcome() {
-  // create supabase client first
-  // const supabase = createPagesBrowserClient<Database>();
-  // const [username, setUsername] = useState('');
-  const supabase = createServerComponentClient<Database>({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  // create two modes of state that renders components depending on what is available
-
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div className="absolute inset-0">
@@ -34,7 +22,7 @@ export default async function Welcome() {
           alt="tomomi character animating talking"
         />
       </div>
-      <WelcomeInput session={session} />
+      <WelcomeInput />
     </div>
   );
 }

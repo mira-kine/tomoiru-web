@@ -1,10 +1,6 @@
 {
-  "/chat/api/route": "app/chat/api/route.js",
-  "/page": "app/page.js",
-  "/chat/page": "app/chat/page.js",
-  "/unauthenticated/page": "app/unauthenticated/page.js",
-  "/login/page": "app/login/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
   "/welcome/page": "app/welcome/page.js",
-  "/prompt/api/route": "app/prompt/api/route.js"
+  "/login/page": "app/login/page.js",
+  "/unauthenticated/page": "app/unauthenticated/page.js",
+  "/demo/page": "app/demo/page.js"
 }
