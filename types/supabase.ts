@@ -140,18 +140,18 @@ export interface Database {
       tracks: {
         Row: {
           id: number
-          track_name: string | null
-          publicUrl: string | null
+          track_name: string
+          publicUrl: string
         }
         Insert: {
           id?: number
-          track_name?: string | null
-          publicUrl?: string | null
+          track_name?: string
+          publicUrl?: string
         }
         Update: {
           id?: number
-          track_name?: string | null
-          publicUrl?: string | null
+          track_name?: string
+          publicUrl?: string
         }
         Relationships: []
       }

@@ -22,7 +22,6 @@ const [tracks, setTracks] = useState<Track[]>([{
 useEffect(() => {
     const fetchTracks = async () => {
         const {data} = await supabase.from('tracks').select('*');
-        console.log('data', data)
         if(data) {
             setTracks(data);
         }
@@ -33,7 +32,7 @@ useEffect(() => {
 }, [supabase]);
   return (
     <div className="w-5/6 h-1/2 flex flex-col justify-center items-center z-30">
-      <audio src={tracks[0]?.publicUrl} controls/>
+      <audio src={tracks?.[0].publicUrl} controls/>
       {/* <Controls /> */}
     </div>
   )
