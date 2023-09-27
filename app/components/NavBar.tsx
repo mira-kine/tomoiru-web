@@ -93,6 +93,14 @@ export default function NavBar() {
                     </li>
                     <li>
                       <button
+                        onClick={() => {handleNavigate('journal')}}
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
+                      >
+                        Journal
+                      </button>
+                    </li>
+                    <li>
+                      <button
                         onClick={handleSignOut}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                       >
