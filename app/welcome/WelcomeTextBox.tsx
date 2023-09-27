@@ -2,16 +2,38 @@
 import React, { useReducer, useState } from "react";
 import { welcomeText } from "../data/welcome-text";
 import { useRouter } from "next/navigation";
+import {
+  createClientComponentClient,
+} from "@supabase/auth-helpers-nextjs";
+import type { Database } from "@/types/supabase";
 
-interface WelcomeProps {
-  handleWelcome: (username: string) => Promise<any>;
-}
-
-export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
+export default function WelcomeTextBox() {
+  const supabase = createClientComponentClient<Database>();
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState("");
   const router = useRouter();
 
+  const handleWelcome = async (username: string) => {
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      console.log('supabase', supabase)
+      if (user) {
+       const {data, error} = await supabase
+          .from("users")
+          .update({
+            user_name: username,
+          })
+          .eq("id", user.id);
+          console.log('data', data)
+          console.log('error', error)
+      }
+    } catch (error) {
+      alert("Error updating the data");
+    }
+  };
+  
   const initialState = { index: 0 };
   function reducer(state: any, action: any) {
     switch (action.type) {
@@ -50,7 +72,7 @@ export default function WelcomeTextBox({ handleWelcome }: WelcomeProps) {
   };
 
   const textToDisplay =
-    state && state.index !== undefined && welcomeText
+    state?.index !== undefined && welcomeText
       ? welcomeText[state.index]?.text ?? "Hi"
       : "Hi";
 

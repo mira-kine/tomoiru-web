@@ -1,13 +1,14 @@
 // import FoodImg from "./foodimg";
 import FoodList from "./foodlist";
 import Image from 'next/legacy/image';
+import sakurabg from '../../public/assets/sakura-bg.png'
 
 export default function FoodSelect() {
   // import foods
   return <div className="flex w-full h-full justify-center items-center">
       <div className="absolute inset-0">
         <Image
-            src="/assets/food-bg.png"
+            src={sakurabg}
             alt="drawn background of the sky"
             layout="fill"
             className="w-full h-full inset-0 object-cover absolute -z-1"
