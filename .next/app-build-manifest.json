@@ -1,116 +1,55 @@
 {
   "pages": {
-    "/layout": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/610-4f23065ad8f93718.js",
-      "static/chunks/48-e32e4534570c4beb.js",
-      "static/css/d8673681bad3daab.css",
-      "static/chunks/app/layout-5bcb48e94714c4bb.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/287-deeb561a933526d3.js",
-      "static/chunks/app/page-38d4085088737a8f.js"
-    ],
     "/loading": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/48-e32e4534570c4beb.js",
-      "static/chunks/app/loading-a7d01ca047174b1a.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/loading.js"
     ],
-    "/about/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/app/about/page-8b071b624840f143.js"
-    ],
-    "/chat/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/app/chat/page-f811179f54292d36.js"
-    ],
-    "/dashboard/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/610-4f23065ad8f93718.js",
-      "static/chunks/app/dashboard/page-971741a65635ca02.js"
-    ],
-    "/demo/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/app/demo/page-c92823cddd7ee6c9.js"
-    ],
-    "/fooddiary/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/app/fooddiary/page-50649fc6f82a7ed3.js"
-    ],
-    "/food/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/610-4f23065ad8f93718.js",
-      "static/chunks/app/food/page-4f465cb8a6131c90.js"
-    ],
-    "/journal/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/app/journal/page-524e9a25d88b62de.js"
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/login/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/610-4f23065ad8f93718.js",
-      "static/chunks/app/login/page-91ac0dac83a99800.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/login/page.js"
     ],
-    "/unauthenticated/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/app/unauthenticated/page-e58da7268a27baf3.js"
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ],
     "/welcome/page": [
-      "static/chunks/webpack-6e08caf3b868c064.js",
-      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
-      "static/chunks/727-7ad8bdaf9b2e9841.js",
-      "static/chunks/main-app-4d48bb704bf2b9b7.js",
-      "static/chunks/178-1acedd6128586178.js",
-      "static/chunks/610-4f23065ad8f93718.js",
-      "static/chunks/app/welcome/page-974928009c066016.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/welcome/page.js"
+    ],
+    "/dashboard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/dashboard/page.js"
+    ],
+    "/chat/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/chat/page.js"
+    ],
+    "/food/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/food/page.js"
+    ],
+    "/unauthenticated/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/unauthenticated/page.js"
+    ],
+    "/fooddiary/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/fooddiary/page.js"
     ]
   }
 }

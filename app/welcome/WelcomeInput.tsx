@@ -29,28 +29,6 @@ export default function WelcomeInput({ session }: { session: Session | null }) {
     }
   };
 
-  // useEffect(() => {
-  //   // declaring data fetching function
-  //   const fetchUsername = async () => {
-  //     const {
-  //       data: { user }
-  //     } = await supabase.auth.getUser();
-  //     if (user) {
-  //       const { data } = await supabase
-  //         .from('users')
-  //         .select('*')
-  //         .match({ id: user.id });
-  //       if (data) {
-  //         setUsername(data.user_name);
-  //       } else {
-  //         setUsername('');
-  //         alert('Please enter a username');
-  //       }
-  //     }
-  //   };
-  //   fetchUsername().catch(console.error);
-  // }, []);
-
   return (
     <div className="bg-white z-10 w-3/4 p-4 font-sans text-2xl shadow-lg rounded-lg shadow-licorice/30">
       <div className="flex flex-col wrap">
