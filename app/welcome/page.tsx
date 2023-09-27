@@ -7,8 +7,6 @@ import { cookies } from "next/headers";
 
 export default async function Welcome() {
   // create supabase client first
-  // const supabase = createPagesBrowserClient<Database>();
-  // const [username, setUsername] = useState('');
   const supabase = createServerComponentClient<Database>({ cookies });
   const {
     data: { session },

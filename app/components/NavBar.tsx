@@ -31,6 +31,7 @@ export default function NavBar() {
     router.refresh();
   }, [router, supabase.auth]);
 
+
   const handleNavigate = (page: string) => {
     router.push(`/${page}`);
     setShowNav(!showNav)

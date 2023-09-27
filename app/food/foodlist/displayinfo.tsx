@@ -1,17 +1,29 @@
 'use client'
 import React from 'react'
-import type { Food } from './foodlist';
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+import type { Database } from "../../../types/supabase";
+import type { Food } from '@/app/hooks/useFood';
 
 interface DisplayFoodInfoProps {
   foodById: Food;
   showFood: boolean;
 }
 
-export default function DisplayInfo({foodById, showFood}: DisplayFoodInfoProps) {
+
+export default function DisplayInfo({showFood, foodById}: DisplayFoodInfoProps){
+  const supabase = createPagesBrowserClient<Database>();
+
+  console.log('foodById', foodById)
   // display default page first
-  const handleAdd = () => {
-    // add food by Id to my food list on supabase
-  }
+  const handleAdd = async () => {
+    // add food by Id to my food list on supabase my_foods list
+    try {
+      await supabase.from('my_foods').insert(foodById);
+    } catch (error) {
+      console.error('Error upserting data', error)
+    }
+  } 
+      
 
   return (
     <>
@@ -25,7 +37,7 @@ export default function DisplayInfo({foodById, showFood}: DisplayFoodInfoProps) 
           <span className="font-script">{foodById.name}</span>
           <span className="font-sans bg-melon w-full">{foodById.description}</span>
         </div>
-          <button className="btn mt-8" onClick={handleAdd}>Add to your wishlist</button>
+          <button className="btn mt-8" onClick={() => {handleAdd()}}>Add to your wishlist</button>
       </div>
     </>
   )

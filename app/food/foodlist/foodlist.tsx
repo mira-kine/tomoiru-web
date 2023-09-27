@@ -1,34 +1,12 @@
 'use client'
-import React, { useState, useEffect } from 'react'
-import type { Database } from "../../../types/supabase";
-import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+import { useFood } from '@/app/hooks/useFood';
+import React, { useState } from 'react'
 import DisplayInfo from './displayinfo';
-
-export interface Food {
-    id: number;
-    name: string;
-    image: string;
-    description: string;
-}
+import type { Food } from '@/app/hooks/useFood';
 
 export default function FoodList() {
-const [foodList, setFoodList] = useState<any>([]);
-const supabase = createPagesBrowserClient<Database>();
-const [foodById, setFoodById] = useState<Food>({
-    id: 0, name: '', image: '', description: ''
-});
 const [showFood, setShowFood] = useState(false);
-
-// fetch foods
-useEffect(() => {
-    const fetchFood = async () => {
-        const {data} = await supabase.from('food_recs').select('*');
-        setFoodList(data);
-    }
-    fetchFood().catch(error => {
-        throw error;
-    })
-}, [supabase])
+const {foodList, setFoodById, foodById} = useFood();
 
 const handleChooseFood = (id: number) => {
     // match ID to foodList

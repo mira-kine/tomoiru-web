@@ -1,27 +1,38 @@
-// import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import type { Database } from "../../types/supabase";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 
-// export function useFood(foodId) {
-//   const [selectedFood, setSelectedFood] = useState({});
-//   const [loading, setLoading] = useState(true);
+// useFood to get foodById
+// useFood to get all food
+export interface Food {
+    id: number;
+    name: string;
+    image: string;
+    description: string;
+}
 
-//   useEffect(() => {
-//     const fetchFoodById = async () => {
-//       try {
-//         const resp = await getFoodById(foodId);
-//         setSelectedFood(resp);
-//         setLoading(false);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-//     fetchFoodById();
-//   }, [foodId]);
+export function useFood() {
+    const supabase = createPagesBrowserClient<Database>();
+    const [foodById, setFoodById] = useState<Food>({
+        id: 0, name: '', image: '', description: ''
+    });
+    const [foodList, setFoodList] = useState<any>([]);
 
-//   if (loading) {
-//     <h1>Loading...</h1>;
-//   }
 
-//   return { selectedFood, setSelectedFood };
-// }
+    useEffect(() => {
+        const fetchFood = async () => {
+            const {data} = await supabase.from('food_recs').select('*');
+            setFoodList(data);
+        }
+        fetchFood().catch(error => {
+            throw error;
+        })
+    }, [supabase])
+
+
+
+
+  return { foodList, setFoodList, foodById, setFoodById };
+}
 
 // set export Food type here and use hook instead of repeated code
