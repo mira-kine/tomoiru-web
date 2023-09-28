@@ -1,12 +1,15 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useUser } from "../context/UserContextProvider";
 
 export default function NavBar() {
   const supabase = createClientComponentClient();
   const router = useRouter();
-  const [user, setUser] = useState({id: ''});
+  // const [user, setUser] = useState({id: ''});
+  const {user} = useUser();
+  console.log('user', user)
   const [showNav, setShowNav] = useState(false);
 
   const handleSignOut = async () => {
@@ -16,20 +19,20 @@ export default function NavBar() {
   };
 
   // get with cookie instead of setting to state?
-  useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (user) {
-        setUser(user);
-      }
-    };
-    fetchUser().catch((error) => {
-      throw error;
-    })
-    router.refresh();
-  }, [router, supabase.auth]);
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const {
+  //       data: { user },
+  //     } = await supabase.auth.getUser();
+  //     if (user) {
+  //       setUser(user);
+  //     }
+  //   };
+  //   fetchUser().catch((error) => {
+  //     throw error;
+  //   })
+  //   router.refresh();
+  // }, [router, supabase.auth]);
 
 
   const handleNavigate = (page: string) => {

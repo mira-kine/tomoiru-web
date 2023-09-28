@@ -6,6 +6,7 @@ import {Toaster} from 'react-hot-toast'
 // These styles apply to every route in the application
 import type { Metadata } from "next";
 import "./global.css";
+import { UserContextProvider } from "./context/UserContextProvider";
 // adding this line to fix current bug of dyanmic serve error
 export const dynamic = "force-dynamic";
 
@@ -38,9 +39,11 @@ export default function RootLayout({
     <html lang="en" className={`${bubbly.variable} ${gruppo.variable}`}>
       <body>
         <Suspense fallback={<Loading />}>
+          <UserContextProvider>
           <NavBar />
           <Toaster />
           {children}
+          </UserContextProvider>
         </Suspense>
       </body>
     </html>
