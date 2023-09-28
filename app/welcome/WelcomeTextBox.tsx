@@ -6,28 +6,24 @@ import {
   createClientComponentClient,
 } from "@supabase/auth-helpers-nextjs";
 import type { Database } from "@/types/supabase";
+import { useUser } from "../context/UserContextProvider";
 
 export default function WelcomeTextBox() {
   const supabase = createClientComponentClient<Database>();
   const [userMode, setUserMode] = useState(false);
   const [username, setUsername] = useState("");
+  const {user} = useUser();
   const router = useRouter();
 
   const handleWelcome = async (username: string) => {
     try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      console.log('supabase', supabase)
       if (user) {
-       const {data, error} = await supabase
+       await supabase
           .from("users")
           .update({
             user_name: username,
           })
           .eq("id", user.id);
-          console.log('data', data)
-          console.log('error', error)
       }
     } catch (error) {
       alert("Error updating the data");
