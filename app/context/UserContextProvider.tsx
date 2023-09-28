@@ -2,17 +2,17 @@
 import { useState, useEffect, useContext, createContext, } from 'react';
 import type {Dispatch, SetStateAction} from 'react';
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-
+import type { Database } from '@/types/supabase';
 
 interface User {
     id: string;
     email: string;
-    user_name: string;
+    user_name: string | null;
 }
 
 interface UserProps {
     user: User;
-    setUser: Dispatch<SetStateAction<User>>
+    setUser: Dispatch<SetStateAction<User >>;
 }
 
 const UserContext = createContext<UserProps>({
@@ -21,7 +21,7 @@ const UserContext = createContext<UserProps>({
 });
 
 const UserContextProvider = ({children}: any) => {
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient<Database>();
     const [user, setUser] = useState<User>({
       id: '', email: '', user_name: ''
     });
@@ -32,8 +32,10 @@ const UserContextProvider = ({children}: any) => {
             data: { user },
           } = await supabase.auth.getUser();
           if(user) {
-            await supabase.from('users').select().eq('id', user.id)
-            setUser(user);
+            const {data} = await supabase.from('users').select().eq('id', user.id).single()
+            if(data) {
+              setUser(data);
+            }
           }
         };
         fetchUser().catch((error) => {

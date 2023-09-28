@@ -12,5 +12,8 @@ export default function Journal() {
             priority={true}
           />
     </div>
+    <div className="bg-white/40 rounded-xl flex justify-center items-center z-40 w-3/4 h-1/2 text-black font-script text-5xl">
+      Coming soon!
+    </div>
   </div>;
 }

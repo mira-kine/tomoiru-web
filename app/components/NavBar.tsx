@@ -7,9 +7,7 @@ import { useUser } from "../context/UserContextProvider";
 export default function NavBar() {
   const supabase = createClientComponentClient();
   const router = useRouter();
-  // const [user, setUser] = useState({id: ''});
   const {user} = useUser();
-  console.log('user', user)
   const [showNav, setShowNav] = useState(false);
 
   const handleSignOut = async () => {
@@ -18,25 +16,9 @@ export default function NavBar() {
     router.refresh();
   };
 
-  // get with cookie instead of setting to state?
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const {
-  //       data: { user },
-  //     } = await supabase.auth.getUser();
-  //     if (user) {
-  //       setUser(user);
-  //     }
-  //   };
-  //   fetchUser().catch((error) => {
-  //     throw error;
-  //   })
-  //   router.refresh();
-  // }, [router, supabase.auth]);
-
 
   const handleNavigate = (page: string) => {
-    router.push(`/${page}`);
+    router.push(`${page}`);
     setShowNav(!showNav)
   }
 
@@ -58,14 +40,14 @@ export default function NavBar() {
                     <button
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                         aria-current="page"
-                        onClick={() => {handleNavigate('dashboard')}}
+                        onClick={() => {handleNavigate('/dashboard')}}
                       >
                         Home
                     </button>
                     </li>
                     <li>
                       <button
-                        onClick={() => {handleNavigate('chat')}}
+                        onClick={() => {handleNavigate('/chat')}}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white md:hover:bg-transparen"
                       >
                         Chat
@@ -73,7 +55,15 @@ export default function NavBar() {
                     </li>
                     <li>
                       <button
-                        onClick={() => {handleNavigate('food')}}
+                        onClick={() => {handleNavigate('/food')}}
+                        className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
+                      >
+                        Food
+                      </button>
+                    </li>
+                    {/* <li>
+                      <button
+                        onClick={() => {handleNavigate('/food/foodlist')}}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
                       >
                         Recs
@@ -81,12 +71,12 @@ export default function NavBar() {
                     </li>
                     <li>
                       <button
-                        onClick={() => {handleNavigate('fooddiary')}}
+                        onClick={() => {handleNavigate('/fooddiary')}}
                         className="block py-2 pl-3 pr-4 text-licorice font-sans rounded hover:bg-gray-100 md:hover:bg-trant md:border-0 md:p-0 hover:bg-peach hover:text-white"
                       >
                         Food Diary
                       </button>
-                    </li>
+                    </li> */}
                     <li>
                       <button
                         onClick={() => {handleNavigate('journal')}}

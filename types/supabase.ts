@@ -157,17 +157,17 @@ export interface Database {
       }
       users: {
         Row: {
-          email: string | null
+          email: string
           id: string
           user_name: string | null
         }
         Insert: {
-          email?: string | null
+          email: string
           id: string
           user_name?: string | null
         }
         Update: {
-          email?: string | null
+          email?: string
           id?: string
           user_name?: string | null
         }
