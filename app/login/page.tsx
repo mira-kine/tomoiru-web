@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import type { Database } from "../../types/supabase";
 import Image from "next/legacy/image";
