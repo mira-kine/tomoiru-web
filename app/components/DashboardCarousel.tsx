@@ -8,6 +8,7 @@ export default function DashboardCarousel() {
   return (
     <>
     <div className="w-full laptop:w-5/6 desktop:w-full max-w-5xl carousel rounded-box shadow-2xl">
+    <div className="w-full laptop:w-5/6 desktop:w-full max-w-5xl carousel rounded-box shadow-2xl">
   <div className="carousel w-full">
     <div id="livingroom" className="carousel-item relative w-full">
           <Image

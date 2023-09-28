@@ -197,11 +197,11 @@ export interface Database {
           match_threshold: number
           match_count: number
         }
-        Returns: {
+        Returns: Array<{
           id: number
           content: string
           similarity: number
-        }[]
+        }>
       }
       vector_avg: {
         Args: {

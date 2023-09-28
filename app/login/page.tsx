@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import type { Database } from "../../types/supabase";
 import Image from "next/legacy/image";
@@ -18,8 +18,8 @@ export default function LogIn() {
   const [visible, setVisible] = useState<boolean>(false);
   const [view, setView] = useState("signin");
   const router = useRouter();
-  const supabase = createPagesBrowserClient<Database>();
   const {user} = useUser();
+  const supabase = createClientComponentClient<Database>();
 
   const handleSignIn = async (e: any) => {
     e.preventDefault();
@@ -92,6 +92,8 @@ export default function LogIn() {
             emailRedirectTo: `${location.origin}/auth/callback`,
           },
         });
+        toast.success('Check your email for confirmation!')
+        
     } catch (error) {
       toast.error("Error signing up. Try again");
     }
