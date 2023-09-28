@@ -42,6 +42,15 @@
       "static/chunks/733-a425d634b5f8ad43.js",
       "static/chunks/app/chat/page-730591d0e42b9063.js"
     ],
+    "/loading": [
+      "static/chunks/webpack-16ed9220878ea574.js",
+      "static/chunks/bce60fc1-6bc3f06bf8e11559.js",
+      "static/chunks/727-7ad8bdaf9b2e9841.js",
+      "static/chunks/main-app-4d48bb704bf2b9b7.js",
+      "static/chunks/178-1acedd6128586178.js",
+      "static/chunks/48-e32e4534570c4beb.js",
+      "static/chunks/app/loading-a7d01ca047174b1a.js"
+    ],
     "/about/page": [
       "static/chunks/webpack-c340943e3a9e3453.js",
       "static/chunks/fd9d1056-5c1e07560c1f3eb4.js",
