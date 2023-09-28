@@ -48,6 +48,7 @@ export default function DashboardCarousel() {
   </div> 
 </div>
   </div>
+  </div>
   </>
   )
 }
