@@ -18,16 +18,13 @@ export default function WelcomeTextBox() {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      console.log('supabase', supabase)
       if (user) {
-       const {data, error} = await supabase
+       await supabase
           .from("users")
           .update({
             user_name: username,
           })
           .eq("id", user.id);
-          console.log('data', data)
-          console.log('error', error)
       }
     } catch (error) {
       alert("Error updating the data");
