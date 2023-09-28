@@ -6,6 +6,7 @@ import type { Database } from "../../types/supabase";
 import Image from "next/legacy/image";
 import toast from 'react-hot-toast'
 import tomoIcon from '../../public/assets/icons/play.png'
+import { useUser } from "../context/UserContextProvider";
 
 // Client Components can be used to trigger the authentication process from event handlers.
 // ... aka createClientComponentClient from auth-helpers-nextjs
@@ -17,6 +18,7 @@ export default function LogIn() {
   const [visible, setVisible] = useState<boolean>(false);
   const [view, setView] = useState("signin");
   const router = useRouter();
+  const {user} = useUser();
   const supabase = createClientComponentClient<Database>();
 
   const handleSignIn = async (e: any) => {
@@ -36,14 +38,7 @@ export default function LogIn() {
     }
 
     if (session) {
-      const { data }: any = await supabase
-        .from("users")
-        .select("*")
-        .match({ id: session.user.id });
-
-      // set this somewhere in session data for future usage
-
-      if (data[0].user_name) {
+      if (user.user_name) {
         router.push("/dashboard");
       } else {
         router.push("/welcome");

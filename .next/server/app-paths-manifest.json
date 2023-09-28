@@ -1,17 +1,20 @@
 {
   "/chat/api/route": "app/chat/api/route.js",
+  "/_not-found": "app/_not-found.js",
   "/page": "app/page.js",
   "/about/page": "app/about/page.js",
   "/chat/page": "app/chat/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/demo/page": "app/demo/page.js",
   "/food/page": "app/food/page.js",
-  "/fooddiary/page": "app/fooddiary/page.js",
   "/journal/page": "app/journal/page.js",
+  "/fooddiary/page": "app/fooddiary/page.js",
   "/unauthenticated/page": "app/unauthenticated/page.js",
   "/welcome/page": "app/welcome/page.js",
   "/login/page": "app/login/page.js",
   "/auth/callback/route": "app/auth/callback/route.js",
   "/auth/signout/route": "app/auth/signout/route.js",
+  "/food/foodrecs/page": "app/food/foodrecs/page.js",
+  "/food/fooddiary/page": "app/food/fooddiary/page.js",
   "/prompt/api/route": "app/prompt/api/route.js"
 }
