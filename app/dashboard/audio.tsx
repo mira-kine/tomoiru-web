@@ -4,12 +4,14 @@ import React, {useState, useEffect} from 'react'
 // import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 // import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 // import { IconContext } from "react-icons";
-import type { Database } from "../../types/supabase";
-import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+// TODO: Re-enable after backend audio endpoints are built
+// import type { Database } from "../../types/supabase";
+// import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 
 
 export default function AudioPlayer() {
-const supabase = createPagesBrowserClient<Database>();
+// TODO: Replace with backend API call
+// const supabase = createPagesBrowserClient<Database>();
 const [track, setTrack] = useState('');
 // const [isPlaying, setIsPlaying] = useState(false);
 // const [currTime, setCurrTime] = useState({
@@ -19,16 +21,20 @@ const [track, setTrack] = useState('');
 // const [seconds, setSeconds] = useState();
 
 useEffect(() => {
-    const fetchTracks = async () => {
-        const {data: {
-            publicUrl
-        }} = supabase.storage.from('tracks').getPublicUrl('tracks/calmpiano.mp3');
-        setTrack(publicUrl);
-    }
-    fetchTracks().catch((error) => {
-        throw error;
-    })
-}, [supabase.storage]);
+    // TODO: Fetch from backend API or CDN
+    // const fetchTracks = async () => {
+    //     const {data: {
+    //         publicUrl
+    //     }} = supabase.storage.from('tracks').getPublicUrl('tracks/calmpiano.mp3');
+    //     setTrack(publicUrl);
+    // }
+    // fetchTracks().catch((error) => {
+    //     throw error;
+    // })
+
+    // Placeholder: No track for now
+    setTrack('');
+}, []);
 
 // const [play, { pause, duration, sound }] = useSound(track);
 // useEffect(() => {

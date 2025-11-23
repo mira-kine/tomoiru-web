@@ -1,19 +1,17 @@
 "use client";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { useUser } from "../context/UserContextProvider";
+import { useState } from "react";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { authService } from "@/services/auth";
 
 export default function NavBar() {
-  const supabase = createClientComponentClient();
   const router = useRouter();
-  const {user} = useUser();
+  const { data: user } = useCurrentUser();
   const [showNav, setShowNav] = useState(false);
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.push("/login");
-    router.refresh();
+  const handleSignOut = () => {
+    authService.logout();
   };
 
 

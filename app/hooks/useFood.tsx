@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import type { Database } from "../../types/supabase";
-import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+// TODO: Re-enable after backend food endpoints are built
+// import type { Database } from "../../types/supabase";
+// import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 
 // useFood to get foodById
 // useFood to get all food
@@ -12,7 +13,8 @@ export interface Food {
 }
 
 export function useFood() {
-    const supabase = createPagesBrowserClient<Database>();
+    // TODO: Replace with backend API call
+    // const supabase = createPagesBrowserClient<Database>();
     const [foodById, setFoodById] = useState<Food>({
         id: 0, name: '', image: '', description: ''
     });
@@ -20,14 +22,18 @@ export function useFood() {
 
 
     useEffect(() => {
-        const fetchFood = async () => {
-            const {data} = await supabase.from('food_recs').select('*');
-            setFoodList(data);
-        }
-        fetchFood().catch(error => {
-            throw error;
-        })
-    }, [supabase])
+        // TODO: Fetch from backend API
+        // const fetchFood = async () => {
+        //     const {data} = await supabase.from('food_recs').select('*');
+        //     setFoodList(data);
+        // }
+        // fetchFood().catch(error => {
+        //     throw error;
+        // })
+
+        // Placeholder: Empty list for now
+        setFoodList([]);
+    }, [])
 
 
 

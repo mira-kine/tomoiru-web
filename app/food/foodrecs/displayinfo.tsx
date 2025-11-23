@@ -1,9 +1,10 @@
 'use client'
 import React from 'react'
-import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
-import type { Database } from "../../../types/supabase";
+// TODO: Re-enable after backend food endpoints are built
+// import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+// import type { Database } from "../../../types/supabase";
 import type { Food } from '@/app/hooks/useFood';
-import { useUser } from '@/app/context/UserContextProvider';
+// import { useUser } from '@/app/context/UserContextProvider';
 import toast from 'react-hot-toast'
 
 
@@ -14,19 +15,25 @@ interface DisplayFoodInfoProps {
 
 
 export default function DisplayInfo({showFood, foodById}: DisplayFoodInfoProps){
-  const supabase = createPagesBrowserClient<Database>();
-  const {user} = useUser();
+  // TODO: Re-enable after backend food endpoints are built
+  // const supabase = createPagesBrowserClient<Database>();
+  // const {user} = useUser();
+
   // display default page first
   const handleAdd = async ({id, name, image, description}: Food) => {
-    // add food by Id to my food list on supabase my_foods list
-    try {
-      await supabase.from('my_foods').insert({
-        food_id: id, name, image, description, uuid: user.id, 
-      })
-      toast.success('added to food diary!')
-    } catch (error) {
-      console.error('Error upserting data', error)
-    }
+    // TODO: Implement with backend API
+    // add food by Id to my food list on backend my_foods table
+    toast.error('Food diary feature coming soon! Backend endpoint needed.');
+    console.log('Would add food:', {id, name, image, description});
+
+    // try {
+    //   await supabase.from('my_foods').insert({
+    //     food_id: id, name, image, description, uuid: user.id,
+    //   })
+    //   toast.success('added to food diary!')
+    // } catch (error) {
+    //   console.error('Error upserting data', error)
+    // }
   } 
       
 
