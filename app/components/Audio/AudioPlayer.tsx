@@ -38,7 +38,7 @@ useEffect(() => {
 }, []);
   return (
     <div className="w-5/6 h-1/2 flex flex-col justify-center items-center z-30">
-      <audio src={tracks?.[0].publicUrl} controls/>
+      {/* <audio src={tracks?.[0].publicUrl} controls/> */}
       {/* <Controls /> */}
     </div>
   )

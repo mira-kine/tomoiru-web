@@ -34,7 +34,7 @@ export async function getCurrentUser(): Promise<User> {
   }
 
   try {
-    const response = await fetch(`${API_URL}/api/v1/users/me`, {
+    const response = await fetch(`${API_URL}/api/v1/auth/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
