@@ -38,8 +38,16 @@ export const authService = {
       password,
     });
 
+    console.log('Login response:', response.data);
+    console.log('Access token:', response.data.access_token);
+
     // Store token in cookies
     setAuthToken(response.data.access_token);
+
+    // Verify token was saved
+    const savedToken = document.cookie.split('; ').find(row => row.startsWith('tomoiru_auth_token='));
+    console.log('Token saved to cookie:', !!savedToken);
+    console.log('Cookie value:', savedToken);
 
     return response.data;
   },

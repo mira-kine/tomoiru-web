@@ -1,5 +1,6 @@
 import { getCurrentUser } from "@/lib/serverAuth";
 import DashboardClient from "./dashboard";
+import ProtectedLayout from "../components/ProtectedLayout";
 import Image from "next/legacy/image";
 import matchaBg from '../../public/assets/matcha-bg.png';
 
@@ -16,7 +17,7 @@ export default async function Dashboard() {
   const user = await getCurrentUser();
 
   return (
-    <>
+    <ProtectedLayout>
       <div className="flex flex-col relative items-center align-center justify-center h-full w-full">
         <div className="absolute inset-0">
           <Image
@@ -29,7 +30,7 @@ export default async function Dashboard() {
         </div>
         <DashboardClient />
       </div>
-    </>
+    </ProtectedLayout>
   );
 }
 

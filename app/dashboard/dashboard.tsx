@@ -18,7 +18,7 @@ export default function DashboardClient() {
           <div className="w-11/12 max-w-6xl rounded-2xl p-4 z-20 flex justify-center">
           <DashboardCarousel />
           </div>
-          <div className="w-3/12 flex justify-center z-50 absolute left-0 bottom-0 tablet:left-6 ml-28 tablet:ml-8 mb-12 tablet:mb-4">
+          <div className="flex justify-center z-50 absolute left-0 top-0 ml-4 mt-4">
             <AudioPlayer />
           </div>
         </>

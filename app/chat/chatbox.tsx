@@ -134,6 +134,16 @@ export default function ChatBox() {
       const token = getAuthToken();
       const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+      // Debug logging
+      console.log('Chat request - Token exists:', !!token);
+      console.log('Chat request - API URL:', API_URL);
+
+      if (!token) {
+        toast.error('No authentication token found. Please log in again.');
+        router.push('/login');
+        return;
+      }
+
       // Build conversation history in backend format (assistant instead of tomomi)
       const conversationHistory = conversationState.messages.map(msg => ({
         role: msg.role === 'tomomi' ? 'assistant' : msg.role,
@@ -154,8 +164,12 @@ export default function ChatBox() {
         }),
       });
 
+      console.log('Chat response status:', response.status);
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('Chat error response:', errorText);
+        throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`);
       }
 
       const data = response.body;
