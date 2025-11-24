@@ -18,7 +18,7 @@ export default function DashboardCarousel() {
               className="w-full"
               priority={true}
             />
-          <Link href="/chat" className="absolute cursor-pointer hover:opacity-90 rounded-box transition-all duration-300" style={{ top: '67%', left: '71%', transform: 'translate(-50%, -50%)', width: '100%', height: '46.3%' }}>
+          <Link href="/chat" className="absolute cursor-pointer hover:glass hover:shadow-xl rounded-box transition-all duration-300" style={{ top: '64.5%', left: '81.2%', transform: 'translate(-50%, -50%)', width: '15%', height: '22.8%' }}>
             <Image
               src={computer}
               alt="computer to chat with Tomomi"

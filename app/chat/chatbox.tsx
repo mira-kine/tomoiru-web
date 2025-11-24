@@ -282,7 +282,7 @@ export default function ChatBox() {
         </div>
 
         <form
-          className="w-11/12 flex justify-start mt-4"
+          className="w-11/12 flex justify-start mt-4 mb-4"
           onSubmit={handleChat}
         >
           <div className="w-full form-control">

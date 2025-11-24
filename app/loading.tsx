@@ -4,9 +4,9 @@ import loading from '../public/assets/loading.png'
 
 export default function Loading() {
   return (
-    <div className="flex flex-col justify-center content-center items-center w-full h-full">
+    <div className="flex flex-col justify-center content-center items-center w-full h-full align-center">
       <Image
-        className="w-full z-50 transform:'translate(-50%, -50%)"
+        className="w-1/2 z-50 transform:'translate(-50%, -50%)"
         src={loading}
         alt="loading acorn png"
       />
