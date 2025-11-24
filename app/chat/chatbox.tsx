@@ -238,49 +238,51 @@ export default function ChatBox() {
 
   return (
     <div className="flex justify-center items-center w-4/5 h-3/4 absolute bg-licorice/80 rounded-3xl shadow-xl shadow-black mt-32">
-      <div className="flex flex-col justify-start items-center relative w-11/12 h-5/6 min-w-[75%] shadow-white bg-black/70 rounded-3xl pb-8">
+      <div className="flex flex-col items-center relative w-11/12 h-full min-w-[75%] shadow-white bg-black/70 rounded-3xl p-4">
         <div className="w-full">
           <button className="text-white btn glass ml-6 mt-2" onClick={handleBack}>
             Back
           </button>
         </div>
 
-        <div className="w-11/12 h-full mt-6 bg-white relative rounded-xl p-12 font-sans overflow-y-auto font-bold">
-          {conversationState.messages.map((msg, index) => (
-            <div
-              key={index}
-              className={msg.role === 'user' ? "chat chat-end h-1/4 w-full mb-4" : "chat chat-start h-1/4 w-full mb-4"}
-            >
-              <div className={msg.role === 'user' ? 'chat-bubble bg-periwinkle text-licorice mb-4' : 'chat-bubble bg-grey text-white mb-4'}>
-                {msg.content}
+        <div className="w-11/12 flex-1 mt-6 bg-white rounded-xl p-6 overflow-y-auto">
+          <div className="space-y-4">
+            {conversationState.messages.map((msg, index) => (
+              <div
+                key={index}
+                className={msg.role === 'user' ? "chat chat-end w-full" : "chat chat-start w-full"}
+              >
+                <div className={msg.role === 'user' ? 'chat-bubble bg-periwinkle text-licorice' : 'chat-bubble bg-grey text-white'}>
+                  {msg.content}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
 
-          {/* Show streaming response as it comes in */}
-          {conversationState.loading && conversationState.responseContent && (
-            <div className="chat chat-start h-1/4 w-full mb-4">
-              <div className="chat-bubble bg-grey text-white mb-4">
-                {conversationState.responseContent}
+            {/* Show streaming response as it comes in */}
+            {conversationState.loading && conversationState.responseContent && (
+              <div className="chat chat-start w-full">
+                <div className="chat-bubble bg-grey text-white">
+                  {conversationState.responseContent}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Loading indicator when waiting for first chunk */}
-          {conversationState.loading && !conversationState.responseContent && (
-            <div className="chat chat-start h-1/4 w-full mb-4">
-              <div className="chat-bubble bg-grey">
-                <span className="loading loading-dots loading-sm"></span>
+            {/* Loading indicator when waiting for first chunk */}
+            {conversationState.loading && !conversationState.responseContent && (
+              <div className="chat chat-start w-full">
+                <div className="chat-bubble bg-grey">
+                  <span className="loading loading-dots loading-sm"></span>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Auto-scroll anchor */}
-          <div ref={messagesEndRef} />
+            {/* Auto-scroll anchor */}
+            <div ref={messagesEndRef} />
+          </div>
         </div>
 
         <form
-          className="w-10/12 bg-pink flex justify-start mt-8"
+          className="w-11/12 flex justify-start mt-4"
           onSubmit={handleChat}
         >
           <div className="w-full form-control">
