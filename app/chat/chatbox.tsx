@@ -37,6 +37,11 @@ interface AddTomomiResponseAction {
   type: 'ADD_TOMOMI_RESPONSE';
 }
 
+interface ReplaceTomomiResponseAction {
+  type: 'REPLACE_TOMOMI_RESPONSE';
+  content: string;
+}
+
 interface ErrorAction {
   type: 'ERROR';
 }
@@ -46,6 +51,7 @@ type ConversationAction =
   | TomomiTypingAction
   | UpdateTomomiResponseAction
   | AddTomomiResponseAction
+  | ReplaceTomomiResponseAction
   | ErrorAction;
 
 function conversationReducer(
@@ -70,6 +76,12 @@ function conversationReducer(
       return {
         ...state,
         responseContent: state.responseContent + action.content
+      };
+
+    case 'REPLACE_TOMOMI_RESPONSE':
+      return {
+        ...state,
+        responseContent: action.content
       };
 
     case 'ADD_TOMOMI_RESPONSE':
@@ -134,10 +146,6 @@ export default function ChatBox() {
       const token = getAuthToken();
       const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
-      // Debug logging
-      console.log('Chat request - Token exists:', !!token);
-      console.log('Chat request - API URL:', API_URL);
-
       if (!token) {
         toast.error('No authentication token found. Please log in again.');
         router.push('/login');
@@ -151,7 +159,7 @@ export default function ChatBox() {
       }));
 
       // Call backend streaming endpoint
-      const response = await fetch(`${API_URL}/api/v1/chat/stream`, {
+      const response = await fetch(`${API_URL}/api/v1/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -163,8 +171,6 @@ export default function ChatBox() {
           num_context_docs: 3,
         }),
       });
-
-      console.log('Chat response status:', response.status);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -178,20 +184,36 @@ export default function ChatBox() {
         const reader = data.getReader();
         const decoder = new TextDecoder();
         let done = false;
+        let accumulatedText = '';
 
-        // Read streaming response chunks
+        // Read all response chunks
         while (!done) {
           const { value, done: doneReading } = await reader.read();
           done = doneReading;
 
           if (value) {
             const chunkValue = decoder.decode(value);
+            accumulatedText += chunkValue;
+
+            // Display chunks as they arrive (for true streaming)
             dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: chunkValue });
           }
         }
 
-        // Finalize response
-        if (done) {
+        // After streaming completes, check if response is JSON and extract text
+        if (done && accumulatedText) {
+          try {
+            const jsonResponse = JSON.parse(accumulatedText);
+            if (jsonResponse.response) {
+              // Backend sent JSON - replace accumulated response with just the text
+              console.log('[Chat] Parsing JSON response, extracting text only');
+              dispatch({ type: 'REPLACE_TOMOMI_RESPONSE', content: jsonResponse.response });
+            }
+          } catch {
+            // Not JSON, keep the raw text response
+            console.log('[Chat] Plain text response (not JSON)');
+          }
+
           dispatch({ type: 'ADD_TOMOMI_RESPONSE' });
         }
       }

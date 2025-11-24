@@ -38,16 +38,20 @@ export const authService = {
       password,
     });
 
-    console.log('Login response:', response.data);
-    console.log('Access token:', response.data.access_token);
+    console.log('[loginWithEmail] Login response received');
+    console.log('[loginWithEmail] Access token exists:', !!response.data.access_token);
+    console.log('[loginWithEmail] Access token value:', response.data.access_token);
 
-    // Store token in cookies
+    if (!response.data.access_token) {
+      throw new Error('No access token in response');
+    }
+
+    // Store token in client-accessible storage
     setAuthToken(response.data.access_token);
 
-    // Verify token was saved
-    const savedToken = document.cookie.split('; ').find(row => row.startsWith('tomoiru_auth_token='));
-    console.log('Token saved to cookie:', !!savedToken);
-    console.log('Cookie value:', savedToken);
+    // Verify token was saved to localStorage
+    const savedInLocalStorage = localStorage.getItem('tomoiru_auth_token');
+    console.log('[loginWithEmail] Token saved to localStorage:', !!savedInLocalStorage);
 
     return response.data;
   },

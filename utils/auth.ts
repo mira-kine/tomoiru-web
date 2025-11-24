@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 
 const TOKEN_KEY = 'tomoiru_auth_token';
-const CLIENT_TOKEN_KEY = 'tomoiru_client_token'; // Client-side accessible token
+const CLIENT_TOKEN_KEY = 'tomoiru_auth_token'; // Client-side accessible token
 
 /**
  * Store JWT token in cookies and localStorage
@@ -10,43 +10,74 @@ const CLIENT_TOKEN_KEY = 'tomoiru_client_token'; // Client-side accessible token
  * We also store in a client-accessible location for client-side fetch requests
  */
 export const setAuthToken = (token: string): void => {
-  console.log('[setAuthToken] Saving token...');
+  console.log('[setAuthToken] ========== START ==========');
+  console.log('[setAuthToken] Token received:', token);
+  console.log('[setAuthToken] Token type:', typeof token);
+  console.log('[setAuthToken] Token length:', token?.length);
+  console.log('[setAuthToken] window defined:', typeof window !== 'undefined');
 
-  // Store in client-side accessible cookie
-  Cookies.set(CLIENT_TOKEN_KEY, token, {
-    expires: 7, // 7 days
-    secure: process.env.NODE_ENV === 'production', // HTTPS only in production
-    sameSite: 'lax', // CSRF protection
-    path: '/', // Ensure cookie is accessible on all paths
-  });
-
-  // Also store in localStorage as fallback
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(TOKEN_KEY, token);
+  if (!token) {
+    console.error('[setAuthToken] ERROR: Token is empty or undefined!');
+    return;
   }
 
-  console.log('[setAuthToken] Token saved successfully');
+  // Store in client-side accessible cookie
+  try {
+    Cookies.set(CLIENT_TOKEN_KEY, token, {
+      expires: 7,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+    });
+    console.log('[setAuthToken] Cookie saved');
+  } catch (error) {
+    console.error('[setAuthToken] Failed to save cookie:', error);
+  }
+
+  // Store in localStorage
+  if (typeof window !== 'undefined') {
+    try {
+      console.log('[setAuthToken] Attempting to save to localStorage...');
+      localStorage.setItem(TOKEN_KEY, token);
+      console.log('[setAuthToken] localStorage.setItem called');
+
+      // Verify it was saved
+      const verify = localStorage.getItem(TOKEN_KEY);
+      console.log('[setAuthToken] Verification - Token in localStorage:', !!verify);
+      console.log('[setAuthToken] Verification - Matches original:', verify === token);
+    } catch (error) {
+      console.error('[setAuthToken] Failed to save to localStorage:', error);
+    }
+  } else {
+    console.warn('[setAuthToken] window is undefined - cannot use localStorage');
+  }
+
+  console.log('[setAuthToken] ========== END ==========');
 };
 
 /**
  * Get JWT token from client-accessible storage
+ *
+ * Note: Backend sets httpOnly cookie which JavaScript cannot read
+ * We rely on localStorage for client-side token access
  */
 export const getAuthToken = (): string | undefined => {
-  // Try client-side cookie first
-  let token = Cookies.get(CLIENT_TOKEN_KEY);
+  console.log('[getAuthToken] Checking localStorage...');
 
-  // Fallback to localStorage
-  if (!token && typeof window !== 'undefined') {
-    token = localStorage.getItem(TOKEN_KEY) || undefined;
+  // Use localStorage (backend's httpOnly cookie can't be read by JS)
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem(TOKEN_KEY) || undefined;
+    console.log('[getAuthToken] Token found in localStorage:', !!token);
+    if (token) {
+      console.log('[getAuthToken] Token preview:', token.substring(0, 20) + '...');
+    }
+    return token;
   }
 
-  console.log('[getAuthToken] Token found:', !!token);
-  return token;
+  console.log('[getAuthToken] No token found');
+  return undefined;
 };
 
-/**
- * Remove JWT token (logout)
- */
 export const removeAuthToken = (): void => {
   Cookies.remove(TOKEN_KEY);
   Cookies.remove(CLIENT_TOKEN_KEY);
@@ -55,9 +86,6 @@ export const removeAuthToken = (): void => {
   }
 };
 
-/**
- * Check if user is authenticated (has valid token)
- */
 export const isAuthenticated = (): boolean => {
   return !!getAuthToken();
 };
