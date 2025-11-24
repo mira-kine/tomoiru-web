@@ -11,20 +11,6 @@ export interface User {
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-
-/**
- * Server-side function to get current authenticated user
- *
- * Used in Server Components for:
- * - Fast initial page loads with user data
- * - Server-side auth validation
- * - Automatic redirect to /login if not authenticated
- *
- * Note: Uses cache: 'no-store' to always get fresh auth data
- * Session persistence is handled by React Query on the client side
- *
- * @throws Redirects to /login if no token or invalid token
- */
 export async function getCurrentUser(): Promise<User> {
   const cookieStore = cookies();
   const token = cookieStore.get('tomoiru_auth_token')?.value;

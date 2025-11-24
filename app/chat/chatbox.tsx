@@ -186,7 +186,6 @@ export default function ChatBox() {
         let done = false;
         let accumulatedText = '';
 
-        // Read all response chunks
         while (!done) {
           const { value, done: doneReading } = await reader.read();
           done = doneReading;
@@ -195,22 +194,17 @@ export default function ChatBox() {
             const chunkValue = decoder.decode(value);
             accumulatedText += chunkValue;
 
-            // Display chunks as they arrive (for true streaming)
             dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: chunkValue });
           }
         }
 
-        // After streaming completes, check if response is JSON and extract text
         if (done && accumulatedText) {
           try {
             const jsonResponse = JSON.parse(accumulatedText);
             if (jsonResponse.response) {
-              // Backend sent JSON - replace accumulated response with just the text
-              console.log('[Chat] Parsing JSON response, extracting text only');
               dispatch({ type: 'REPLACE_TOMOMI_RESPONSE', content: jsonResponse.response });
             }
           } catch {
-            // Not JSON, keep the raw text response
             console.log('[Chat] Plain text response (not JSON)');
           }
 
@@ -222,7 +216,6 @@ export default function ChatBox() {
       console.error('Chat error:', error);
       dispatch({ type: 'ERROR' });
 
-      // Show appropriate error message
       if (error.message.includes('401')) {
         toast.error('Session expired. Please log in again.');
         router.push('/login?error=session_expired');
@@ -237,28 +230,36 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="flex justify-center items-center w-4/5 h-3/4 absolute bg-licorice/80 rounded-3xl shadow-xl shadow-black mt-32">
-      <div className="flex flex-col items-center relative w-11/12 h-full min-w-[75%] shadow-white bg-black/70 rounded-3xl p-4">
+    <div className="flex justify-center items-center w-4/5 h-3/4 absolute rounded-3xl shadow-xl shadow-armygreen mt-32 glass">
+      <div className="flex flex-col items-center relative w-11/12 h-full min-w-[75%] shadow-white rounded-3xl p-4">
         <div className="w-full">
-          <button className="text-white btn glass ml-6 mt-2" onClick={handleBack}>
+          <button className="text-white btn glass ml-6 mt-2 bg-armygreen" onClick={handleBack}>
             Back
           </button>
         </div>
-
-        <div className="w-11/12 flex-1 mt-6 bg-white rounded-xl p-6 overflow-y-auto">
+<div className="items-center text-center mt-4">
+       <div className="avatar avatar-online">
+  <div className="w-28 rounded-full bg-white/50 p-1">
+    <img src="/assets/tomomi_open.png" className="w-full"/>
+  </div>
+</div>
+  <div>
+    <span className="text-licorice font-script laptop:text-lg desktop:text-2xl">Tomomi</span>
+  </div>
+</div>
+        <div className="w-11/12 flex-1 mt-6 bg-white rounded-xl p-6 overflow-y-auto glass">
           <div className="space-y-4">
             {conversationState.messages.map((msg, index) => (
               <div
                 key={index}
                 className={msg.role === 'user' ? "chat chat-end w-full" : "chat chat-start w-full"}
               >
-                <div className={msg.role === 'user' ? 'chat-bubble bg-periwinkle text-licorice' : 'chat-bubble bg-grey text-white'}>
+                <div className={msg.role === 'user' ? 'chat-bubble bg-periwinkle text-licorice ' : 'chat-bubble bg-black/20 text-licorice'}>
                   {msg.content}
                 </div>
               </div>
             ))}
 
-            {/* Show streaming response as it comes in */}
             {conversationState.loading && conversationState.responseContent && (
               <div className="chat chat-start w-full">
                 <div className="chat-bubble bg-grey text-white">
@@ -267,7 +268,6 @@ export default function ChatBox() {
               </div>
             )}
 
-            {/* Loading indicator when waiting for first chunk */}
             {conversationState.loading && !conversationState.responseContent && (
               <div className="chat chat-start w-full">
                 <div className="chat-bubble bg-grey">
@@ -302,7 +302,7 @@ export default function ChatBox() {
           <button
             type="submit"
             disabled={conversationState.loading}
-            className="text-white btn bg-licorice glass ml-4 p-4 disabled:opacity-50"
+            className="text-white btn bg-armygreen glass ml-4 p-4 disabled:opacity-50"
           >
             {conversationState.loading ? 'Sending...' : 'Ask'}
           </button>
