@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from "next/legacy/image";
+import Link from 'next/link';
 import dashboardImg from '../../public/assets/dashboard.png'
 import computer from '../../public/assets/computer.png'
 import kitchen from '../../public/assets/kitchen.png'
@@ -17,8 +18,16 @@ export default function DashboardCarousel() {
               className="w-full"
               priority={true}
             />
+          <Link href="/chat" className="absolute cursor-pointer hover:opacity-90 rounded-box transition-all duration-300" style={{ top: '67%', left: '71%', transform: 'translate(-50%, -50%)', width: '100%', height: '46.3%' }}>
+            <Image
+              src={computer}
+              alt="computer to chat with Tomomi"
+              layout="fill"
+              objectFit="contain"
+            />
+          </Link>
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide4" className="btn btn-circle glass bg-white/50 text-white">❮</a> 
+      <a href="#slide4" className="btn btn-circle glass bg-white/50 text-white">❮</a>
       <a href="#slide2" className="btn btn-circle glass bg-white/50 text-white">❯</a>
     </div>
   </div> 

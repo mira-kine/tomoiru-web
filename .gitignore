@@ -25,3 +25,25 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+playwright.config.ts
+/tests/
+
+# Claude Code generated documentation
+BACKEND_AUTH_GUIDE.md
+BACKEND_AUTH_ROUTES.md
+FRONTEND_MVP_IMPLEMENTATION.md
+FRONTEND_MVP_PART2.md
+MIGRATION_PLAN_AND_TODO.md
+MIGRATION_PROGRESS.md
+QUICK_START_NEXT_SESSION.md
+REACT_QUERY_SETUP.md
+SESSION_PROGRESS.md
+SESSION_RESUME_PROMPT.md
