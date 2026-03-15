@@ -1,11 +1,11 @@
-import apiClient from './api';
-import { setAuthToken, removeAuthToken } from '@/utils/auth';
+import apiClient from "./api";
+import { setAuthToken, removeAuthToken } from "@/utils/auth";
 
 export interface User {
   id: string;
   email: string;
   user_name: string | null; // Set during welcome flow - if null, user needs to complete welcome
-  auth_provider: 'google' | 'email';
+  auth_provider: "google" | "email";
   created_at: string;
   updated_at: string;
 }
@@ -32,26 +32,38 @@ export const authService = {
    * - If null → redirect to /welcome
    * - If set → redirect to /dashboard
    */
-  loginWithEmail: async (email: string, password: string): Promise<AuthResponse> => {
-    const response = await apiClient.post<AuthResponse>('/api/v1/auth/login', {
+  loginWithEmail: async (
+    email: string,
+    password: string,
+  ): Promise<AuthResponse> => {
+    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login", {
       email,
       password,
     });
 
-    console.log('[loginWithEmail] Login response received');
-    console.log('[loginWithEmail] Access token exists:', !!response.data.access_token);
-    console.log('[loginWithEmail] Access token value:', response.data.access_token);
+    console.log("[loginWithEmail] Login response received");
+    console.log(
+      "[loginWithEmail] Access token exists:",
+      !!response.data.access_token,
+    );
+    console.log(
+      "[loginWithEmail] Access token value:",
+      response.data.access_token,
+    );
 
     if (!response.data.access_token) {
-      throw new Error('No access token in response');
+      throw new Error("No access token in response");
     }
 
     // Store token in client-accessible storage
     setAuthToken(response.data.access_token);
 
     // Verify token was saved to localStorage
-    const savedInLocalStorage = localStorage.getItem('tomoiru_auth_token');
-    console.log('[loginWithEmail] Token saved to localStorage:', !!savedInLocalStorage);
+    const savedInLocalStorage = localStorage.getItem("tomoiru_auth_token");
+    console.log(
+      "[loginWithEmail] Token saved to localStorage:",
+      !!savedInLocalStorage,
+    );
 
     return response.data;
   },
@@ -61,8 +73,11 @@ export const authService = {
    *
    * New users always have user_name = null, so they'll go through welcome flow
    */
-  signupWithEmail: async (email: string, password: string): Promise<AuthResponse> => {
-    const response = await apiClient.post<AuthResponse>('/api/v1/auth/signup', {
+  signupWithEmail: async (
+    email: string,
+    password: string,
+  ): Promise<AuthResponse> => {
+    const response = await apiClient.post<AuthResponse>("/api/v1/auth/signup", {
       email,
       password,
     });
@@ -77,7 +92,7 @@ export const authService = {
    * Get current user profile
    */
   getCurrentUser: async (): Promise<User> => {
-    const response = await apiClient.get<User>('/api/v1/users/me');
+    const response = await apiClient.get<User>("/api/v1/auth/me");
     return response.data;
   },
 
@@ -86,14 +101,14 @@ export const authService = {
    */
   logout: () => {
     removeAuthToken();
-    window.location.href = '/login';
+    window.location.href = "/login";
   },
 
   /**
    * Refresh token (extends expiration)
    */
   refreshToken: async (): Promise<AuthResponse> => {
-    const response = await apiClient.post<AuthResponse>('/api/v1/auth/refresh');
+    const response = await apiClient.post<AuthResponse>("/api/v1/auth/refresh");
     setAuthToken(response.data.access_token);
     return response.data;
   },

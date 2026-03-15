@@ -4,9 +4,8 @@
     "es2021": true
   },
   "extends": [
-    "standard-with-typescript",
+    "next/core-web-vitals",
     "plugin:react/recommended",
-    "next",
     "prettier"
   ],
   "parserOptions": {
