@@ -33,3 +33,7 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Documentation (except README)
+*.md
+!README.md
