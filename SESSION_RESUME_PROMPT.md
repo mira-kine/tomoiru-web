@@ -44,6 +44,34 @@ Copy and paste this into Claude Code to continue where we left off:
    - Conversation history maintained
    - "Tomomi" branding throughout
 
+### Pre-MVP Feature (PRIORITY)
+
+**Demo Mode Flow:**
+1. **Demo Button on Login Page** (`app/login/page.tsx`)
+   - Add "Demo" button on welcome/login landing page
+   - Allows users to try the app without creating an account
+   - Uses standardized demo user credentials
+
+2. **Demo User Experience**
+   - User clicks "Demo" → Auto-login with demo account
+   - Full access to chat with Tomomi
+   - Can navigate dashboard and interact with features
+   - **No data persistence** - Demo user's interactions are not saved
+   - Clear indication in UI that user is in demo mode
+
+3. **Implementation Requirements:**
+   - **Backend:** Create demo user account with fixed credentials
+   - **Frontend:** Add demo login flow in `services/auth.ts`
+   - **UI:** "Demo" button next to "Sign In" / "Sign Up"
+   - **Dashboard:** Display "Demo Mode" badge/indicator
+   - **Restrictions:** Consider read-only access or session-only storage
+
+4. **User Flow:**
+   ```
+   Landing Page → Click "Demo" → Skip auth/welcome → Dashboard (Demo Mode)
+   → Chat with Tomomi → No conversation saved → Logout clears session
+   ```
+
 ### Post-MVP Features (NEXT TO IMPLEMENT)
 
 **Phase 4 - Audio & Food Diary:**
@@ -217,7 +245,47 @@ export default async function Page() {
 
 ## Next Steps (After Testing)
 
-### Immediate: Audio & Food Diary Implementation
+### PRIORITY: Demo Mode Implementation
+
+**Before Post-MVP features, implement demo flow for user acquisition:**
+
+**1. Backend Setup:**
+- Create demo user account in database
+  - Email: `demo@tomoiru.com` (or similar)
+  - Password: Fixed demo password
+  - Username: "Demo User" or "Guest"
+  - Consider: Mark account as `is_demo: true` in database
+
+**2. Frontend Implementation:**
+
+**Add Demo Login Function** (`services/auth.ts`):
+```typescript
+export const demoLogin = async () => {
+  return await apiClient.post('/auth/login', {
+    email: 'demo@tomoiru.com',
+    password: process.env.NEXT_PUBLIC_DEMO_PASSWORD
+  });
+};
+```
+
+**Update Login Page** (`app/login/page.tsx`):
+- Add "Try Demo" or "Demo" button
+- Style to be visually distinct from Sign Up/Sign In
+- On click: Auto-login with demo credentials → Redirect to dashboard
+- Skip welcome flow for demo user
+
+**Dashboard Demo Indicator** (`app/dashboard/dashboard.tsx`):
+- Display badge/banner: "Demo Mode - Your changes won't be saved"
+- Consider: Different styling for demo mode
+- Optional: Add "Create Account" CTA in demo mode
+
+**3. Testing:**
+- Verify demo login works
+- Confirm no conversation persistence for demo user
+- Test logout clears demo session
+- Ensure demo user cannot access sensitive operations
+
+### Post-MVP: Audio & Food Diary Implementation
 
 **1. Backend Development (User or Backend Team):**
 - Audio endpoints OR CDN integration decision
@@ -252,20 +320,28 @@ export default async function Page() {
 
 ## Known TODOs in Codebase
 
+**Highest Priority (Pre-MVP):**
+1. **DEMO MODE** - Implement demo login flow
+   - Backend: Create demo user account
+   - `services/auth.ts` - Add `demoLogin()` function
+   - `app/login/page.tsx` - Add "Demo" button
+   - `app/dashboard/dashboard.tsx` - Add demo mode indicator
+   - Skip welcome flow for demo user
+
 **High Priority:**
-1. `app/auth/callback/route.ts:44` - Check user_name, redirect to /welcome if null
-2. `services/api.ts:35` - Save user progress before auto-logout
+2. `app/auth/callback/route.ts:44` - Check user_name, redirect to /welcome if null
+3. `services/api.ts:35` - Save user progress before auto-logout
 
 **Post-MVP (After Testing):**
-3. `app/dashboard/audio.tsx:24` - Uncomment and implement backend audio
-4. `app/components/Audio/AudioPlayer.tsx:24` - Uncomment and implement
-5. `app/hooks/useFood.tsx:24` - Uncomment and implement backend food API
-6. `app/food/foodrecs/displayinfo.tsx:24` - Uncomment and implement wishlist
+4. `app/dashboard/audio.tsx:24` - Uncomment and implement backend audio
+5. `app/components/Audio/AudioPlayer.tsx:24` - Uncomment and implement
+6. `app/hooks/useFood.tsx:24` - Uncomment and implement backend food API
+7. `app/food/foodrecs/displayinfo.tsx:24` - Uncomment and implement wishlist
 
 **Future Enhancements:**
-7. `services/chat.ts:95-140` - Conversation persistence endpoints
-8. `chatbox.tsx:277-283` - Markdown rendering, copy to clipboard, etc.
-9. `next.config.cjs:6` - Add backend image hostname when implemented
+8. `services/chat.ts:95-140` - Conversation persistence endpoints
+9. `chatbox.tsx:277-283` - Markdown rendering, copy to clipboard, etc.
+10. `next.config.cjs:6` - Add backend image hostname when implemented
 
 ---
 
@@ -281,21 +357,26 @@ export default async function Page() {
 ## How to Resume
 
 **When I return, we'll be working on:**
-1. **Audio features** - Implementing audio player with backend OR CDN
-2. **Food diary** - Implementing recommendations and wishlist
+1. **Demo Mode (PRIORITY)** - Allow users to try the app without signing up
+2. **Audio features** - Implementing audio player with backend OR CDN
+3. **Food diary** - Implementing recommendations and wishlist
 
 **What I need help with:**
-- Creating services for audio/food with React Query
-- Updating components to use new backend APIs
+- Implementing demo login flow on frontend
+- Adding demo button to login page
+- Creating demo user indicator in dashboard
+- Creating services for audio/food with React Query (post-MVP)
 - Testing the features after implementation
 - Debugging any issues
 - Following the same patterns we established for auth
 
 **Current state:**
-- Backend running: `http://localhost:8000`
-- Frontend: Built successfully, ready for `npm run dev`
-- Auth flow: Complete and tested (or being tested)
-- Food/audio: Commented out, ready to implement
+- Deployed: Vercel deployment should be successful
+- Backend running: `http://localhost:8000` (local) or `https://tomoiru-backend.onrender.com` (production)
+- Frontend: Built successfully, deployed to Vercel
+- Auth flow: Complete and deployed ✅
+- Demo mode: Not yet implemented (NEXT PRIORITY)
+- Food/audio: Commented out, waiting for post-MVP
 
 **Start the conversation with:**
-"I'm ready to continue working on Tomoiru. I've finished testing the auth flow [mention any bugs found, or say 'everything works!']. Let's start implementing the audio player and food diary features. Which should we tackle first?"
+"I'm ready to continue working on Tomoiru. I want to implement the demo mode feature so users can try the app without creating an account. Can we add a 'Demo' button to the login page that uses a standardized demo user account?"
