@@ -376,17 +376,21 @@ export const demoLogin = async () => {
 - Frontend: Built successfully, deployed to Vercel
 - Auth flow: Complete and deployed ✅
 - MCP: Playwright MCP server configured and connected ✅
-- Demo mode: IN PROGRESS 🚧
+- Demo mode: MOSTLY COMPLETE 🎉
   - ✅ Demo credentials added to `.env.local` (demo@tomoiru.com / TomoiruDemo2024!)
+  - ✅ Demo credentials added to `.env.production`
   - ✅ `demoLogin()` function added to `services/auth.ts`
-  - ✅ `handleDemoLogin()` handler added to login page (`app/login/page.tsx:106-121`)
-  - ✅ Demo button UI added to SIGNIN view (`app/login/page.tsx:274-282`)
-  - 🚧 NEXT: Add Demo button UI to SIGNUP view (below Google OAuth button, same styling)
-  - ⏳ Pending: Update User interface to include `is_demo` flag
+  - ✅ Demo page (`/demo`) updated with "Try Demo Now" button (keeps video showcase)
+  - ✅ `handleDemoLogin()` handler in demo page with loading states
+  - ✅ Auth endpoint consistency fixed - all email login uses `/api/v1/auth/login/email`
+  - ✅ Backend CORS configured for `http://localhost:3000`
+  - ✅ Demo user account created in backend database
+  - ✅ End-to-end demo flow tested with Playwright MCP: landing → demo → dashboard ✅
+  - ✅ Demo button on login page (both signin and signup views)
+  - 🚧 IN PROGRESS: Tutorial-like help for demo users (design planned, not implemented)
   - ⏳ Pending: Add demo mode indicator badge to dashboard
-  - ⏳ Pending: Create demo user account in backend database
-  - ⏳ Pending: Test end-to-end with Playwright MCP
+  - ⏳ Pending: Test complete demo user experience with tutorial help
 - Food/audio: Commented out, waiting for post-MVP
 
 **Start the conversation with:**
-"I'm ready to continue the demo mode implementation. We need to add the Demo button UI to the SIGNUP view (same purple gradient style as signin view). Then we can use Playwright MCP to preview the changes."
+"I'm ready to continue the demo mode implementation. We successfully tested the demo login flow end-to-end! Now let's add the tutorial-like help component for demo users to guide them through the app features."

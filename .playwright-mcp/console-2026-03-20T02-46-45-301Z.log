@@ -1,0 +1,5 @@
+[   10776ms] [ERROR] Access to XMLHttpRequest at 'http://localhost:8000/api/v1/auth/login/email' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3000/demo:0
+[   10777ms] [ERROR] Demo login error: AxiosError: Network Error
+    at XMLHttpRequest.handleError (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:133:21)
+    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:56:41) @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:37
+[   10820ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:8000/api/v1/auth/login/email:0

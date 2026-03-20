@@ -38,7 +38,7 @@ export const authService = {
       throw new Error("Demo credentials not configured");
     }
 
-    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login", {
+    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login/email", {
       email: demoEmail,
       password: demoPassword,
     });
@@ -64,7 +64,7 @@ export const authService = {
     email: string,
     password: string,
   ): Promise<AuthResponse> => {
-    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login", {
+    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login/email", {
       email,
       password,
     });

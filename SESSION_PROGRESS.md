@@ -1,211 +1,253 @@
-# Session Progress - Frontend Migration
+# Session Progress - Demo Mode Implementation
 
-**Date:** November 20, 2025
-**Session Focus:** Setting up React Query + Backend Integration
-
----
-
-## ✅ Completed Today
-
-### 1. Environment Setup
-- ✅ Updated `.env.local` with backend URLs
-- ✅ Removed Supabase environment variables (commented out)
-- ✅ Added `NEXT_PUBLIC_API_URL=http://localhost:8000`
-
-### 2. Package Management
-- ✅ Installed React Query: `@tanstack/react-query`
-- ✅ Installed React Query DevTools: `@tanstack/react-query-devtools`
-- ✅ Confirmed axios is installed
-
-### 3. Directory Structure Created
-```
-tomoiru-web/
-├── app/
-│   └── providers/          ✅ Created
-├── lib/                    ✅ Created (for server-side helpers)
-├── services/               ✅ Created (API clients)
-├── utils/                  ✅ Created (token management)
-└── hooks/                  ✅ Created (React Query hooks)
-```
-
-### 4. Core Files Created
-
-**✅ app/providers/QueryProvider.tsx**
-- React Query provider wrapperr
-- DevTools configured for development
-- Smart caching configuration (5min stale, 10min cache)
-
-**✅ utils/auth.ts**
-- Token management with js-cookie
-- Functions: `setAuthToken()`, `getAuthToken()`, `removeAuthToken()`, `isAuthenticated()`
-- Secure cookie settings (7-day expiration, HTTPS in prod)
-
-**✅ services/api.ts**
-- Base axios client pointing to backend
-- Automatic JWT token injection (request interceptor)
-- Auto-logout on 401 errors (response interceptor)
-- TODO: Add progress preservation before logout redirect
-
-**✅ services/auth.ts**
-- Complete auth service with all methods
-- User interface matching backend schema (includes `user_name`, `updated_at`)
-- OAuth and email/password login
-- Comments explaining welcome flow logic (user_name null → /welcome)
-
-### 5. Cleanup Completed
-- ✅ Deleted `app/auth/` (old Supabase OAuth routes)
-- ✅ Deleted `app/prompt/` (old Embedbase RAG)
-- ✅ Deleted `app/context/UserContextProvider.tsx` (replaced with React Query)
+**Date:** March 19, 2026
+**Session Focus:** Demo Mode Implementation & Testing
 
 ---
 
-## ⏸️ Where We Stopped
+## ✅ Completed This Session
 
-**Last task:** About to create `services/users.ts`
+### 1. Demo Page Enhancement
+- ✅ **Updated `/app/demo/page.tsx`**
+  - Kept existing video demo design
+  - Added "Try Demo Now" button with purple/pink gradient
+  - Added `handleDemoLogin()` function with loading states
+  - Integrated with `authService.demoLogin()`
+  - Shows toast notifications for success/error
+  - Redirects to `/dashboard` on successful demo login
 
----
+### 2. Production Environment Configuration
+- ✅ **Updated `.env.production`**
+  - Added `NEXT_PUBLIC_DEMO_EMAIL=demo@tomoiru.com`
+  - Added `NEXT_PUBLIC_DEMO_PASSWORD=TomoiruDemo2024!`
+  - Production deployment will now have demo credentials
 
-## 🔜 Next Steps (In Order)
+### 3. Auth Endpoint Consistency Fix
+- ✅ **Fixed `services/auth.ts`**
+  - Changed `loginWithEmail` endpoint from `/api/v1/auth/login` → `/api/v1/auth/login/email`
+  - Now all email-based login uses consistent endpoint
+  - `demoLogin`: `/api/v1/auth/login/email` ✅
+  - `loginWithEmail`: `/api/v1/auth/login/email` ✅
+  - `signupWithEmail`: `/api/v1/auth/signup` ✅
+  - `loginWithGoogle`: `/api/v1/auth/login/google` ✅
 
-### Immediate Next Tasks:
+### 4. Backend CORS Configuration
+- ✅ **Backend updated to allow CORS from `http://localhost:3000`**
+  - Fixed CORS blocking issue
+  - Frontend can now successfully call backend API
 
-1. **Create services/users.ts**
-   - `updateProfile()` method for setting username in welcome flow
-   - Reference: `FRONTEND_MVP_IMPLEMENTATION.md` Step 3.3
+### 5. End-to-End Testing with Playwright MCP
+- ✅ **Tested complete demo flow:**
+  1. Navigated to landing page (`http://localhost:3000`)
+  2. Clicked "Demo" link → navigated to `/demo`
+  3. Clicked "Try Demo Now" button
+  4. Successfully authenticated with demo credentials
+  5. Auth token saved to localStorage
+  6. Redirected to `/dashboard`
+  7. Dashboard loaded successfully with demo user authenticated
+- ✅ **Verified:**
+  - Demo login works end-to-end
+  - No CORS errors
+  - Token persistence working
+  - Navigation flow correct
 
-2. **Create services/chat.ts**
-   - `sendMessage()` - POST to `/api/v1/chat/`
-   - Conversation management methods (if backend has them)
-   - Reference: `FRONTEND_MVP_PART2.md` Step 10
-
-3. **Create lib/serverAuth.ts**
-   - Server-side helper: `getCurrentUser()`
-   - For use in Server Components
-   - Reference: `REACT_QUERY_SETUP.md` Step 5
-
-4. **Create React Query Hooks**
-   - `hooks/useCurrentUser.ts` - Query + mutation for user
-   - `hooks/useConversations.ts` - Conversation management
-   - `hooks/useChat.ts` - Send message mutation
-   - Reference: `REACT_QUERY_SETUP.md` Step 4
-
-5. **Update app/layout.tsx**
-   - Wrap with QueryProvider
-   - Remove old UserContextProvider import
-
-6. **Create new auth callback**
-   - `app/auth/callback/page.tsx` for backend OAuth
-   - Reference: `FRONTEND_MVP_IMPLEMENTATION.md` Step 5
-
-7. **Update pages to use new architecture**
-   - Login page → use authService
-   - Dashboard → Server Component + Client Component pattern
-   - Welcome → use React Query mutation
-   - Chat → use backend API
-
-8. **Update remaining Supabase references**
-   - 9 files still have Supabase imports
-   - Need to replace with new services
-
----
-
-## 📁 Files Still Using Supabase (Need Updates)
-
-```bash
-app/components/Audio/AudioPlayer.tsx
-app/components/NavBar.tsx
-app/dashboard/audio.tsx
-app/dashboard/page.tsx
-app/food/foodrecs/displayinfo.tsx
-app/hooks/useFood.tsx
-app/login/page.tsx
-app/unauthenticated/page.tsx
-app/welcome/WelcomeTextBox.tsx
-```
-
-**To find them:**
-```bash
-grep -r "@supabase" app/ --include="*.ts" --include="*.tsx" -l
-```
+### 6. Backend Demo Account
+- ✅ **Demo user created in backend database**
+  - Email: `demo@tomoiru.com`
+  - Password: `TomoiruDemo2024!`
+  - Account verified and working
 
 ---
 
-## 🗂️ Optional Cleanup (Later)
+## 🚧 In Progress (Paused)
 
-These files can be deleted if backend doesn't need frontend streaming:
-- `app/chat/api/route.ts` - Old OpenAI streaming
-- `app/utils/OpenAIStream.ts` - Streaming utility
+### Tutorial-like Help for Demo Users
+
+**Status:** Design discussion started, implementation not yet begun
+
+**Plan:**
+- Enhance `app/components/Help.tsx` to accept `isDemo` prop
+- Pass user information from dashboard to Help component
+- Show different help content for demo users:
+  - Guided tutorial cards
+  - Feature explanations
+  - Links to key areas (Chat with Tomomi, etc.)
+  - "Coming Soon" badges for in-development features
+  - Pro tips and navigation guidance
+
+**Next Steps:**
+1. Update `Help.tsx` to accept `isDemo?: boolean` prop
+2. Create enhanced tutorial UI for demo users
+3. Pass user data from `DashboardClient` to `Help` component
+4. Detect if user email is `demo@tomoiru.com` or has `is_demo` flag
+5. Test help component with demo user
 
 ---
 
-## 📚 Reference Documents
+## 🔜 Next Session Tasks
 
-**Main Implementation Guides:**
-1. **REACT_QUERY_SETUP.md** ⭐ - Modern architecture with React Query + Server Components
-2. **FRONTEND_MVP_IMPLEMENTATION.md** - Services layer and basic setup
-3. **FRONTEND_MVP_PART2.md** - PostgreSQL integration (chat history, food diary, etc.)
-4. **QUICK_START_NEXT_SESSION.md** - Quick reference and checklist
+### Immediate Priority:
 
-**Backend Guides:**
-- **BACKEND_AUTH_GUIDE.md** - Backend setup (already working)
-- **BACKEND_AUTH_ROUTES.md** - API endpoints reference
+1. **Complete Tutorial Help for Demo Users**
+   - Update `app/components/Help.tsx` with demo-specific content
+   - Add cards for: Chat with Tomomi, Dashboard features, Food features (coming soon), Journal (in dev)
+   - Style with gradients and clear CTAs
+   - Pass `isDemo` prop from dashboard
+
+2. **Add Demo Mode Indicator to Dashboard**
+   - Add badge/banner showing "Demo Mode"
+   - Explain that changes won't be saved
+   - Optional: Add "Create Account" CTA
+
+3. **Test Complete Demo Experience**
+   - Verify help content shows correctly for demo users
+   - Test all clickable links in help guide
+   - Verify demo indicator is visible
+   - Test logout clears session properly
+
+### Future Enhancements:
+
+4. **Deploy Demo Mode to Production**
+   - Verify `.env.production` is synced to Vercel
+   - Test demo flow on production URL
+   - Monitor demo account usage
+
+5. **Consider Demo Account Restrictions**
+   - Decide if demo user should have read-only access
+   - Consider clearing demo user conversations periodically
+   - Add rate limiting for demo account if needed
 
 ---
 
-## 🚀 Resume Work - Copy/Paste This:
+## 📁 Files Modified This Session
 
 ```
-I'm continuing the Tomoiru frontend migration. We left off about to create services/users.ts.
+✏️ Modified:
+- app/demo/page.tsx           (Added demo login button & handler)
+- .env.production              (Added demo credentials)
+- services/auth.ts             (Fixed loginWithEmail endpoint)
 
-Progress so far:
-- ✅ Environment variables updated (.env.local)
-- ✅ React Query installed and QueryProvider created
-- ✅ Directory structure created (lib/, services/, utils/, hooks/)
-- ✅ Core files: utils/auth.ts, services/api.ts, services/auth.ts
-- ✅ Deleted old Supabase auth routes and UserContext
-- ⏸️ Stopped before creating services/users.ts
-
-Current directory: /Users/mkine/personal-projects/tomoiru-web
-Backend directory: /Users/mkine/personal-projects/tomoiru/tomoiru-backend/tomoiru-backend
-
-Please review SESSION_PROGRESS.md and let's continue with creating services/users.ts, following the same review-before-commit workflow we've been using.
-
-Reference: REACT_QUERY_SETUP.md and FRONTEND_MVP_IMPLEMENTATION.md
+🧪 Tested:
+- Complete demo login flow (landing → demo → dashboard)
+- Auth token persistence
+- CORS configuration
+- Dashboard loading with demo user
 ```
 
 ---
 
-## 💡 Key Decisions Made Today
+## 🔧 Technical Details
 
-1. **Architecture:** React Query (client-side) + Server Components (initial auth)
-2. **No UserContext:** Using React Query hooks instead (modern approach)
-3. **Directory structure:** Root-level for shared code (industry standard)
-4. **Token storage:** Cookies (not localStorage) for SSR compatibility
-5. **User interface:** Includes `user_name` and `updated_at` fields
-6. **Welcome flow:** Triggered when `user_name` is null
+### Demo Flow Architecture
+```
+Landing Page (/)
+    ↓
+Click "Demo" link
+    ↓
+Demo Page (/demo)
+- Video showcase
+- "Try Demo Now" button
+    ↓
+Click "Try Demo Now"
+    ↓
+authService.demoLogin()
+- POST to /api/v1/auth/login/email
+- Credentials from .env
+    ↓
+Success: Token saved
+    ↓
+router.push('/dashboard')
+    ↓
+Dashboard loads with demo user
+```
+
+### Auth Endpoint Mapping
+| Function | Endpoint |
+|----------|----------|
+| demoLogin | `/api/v1/auth/login/email` |
+| loginWithEmail | `/api/v1/auth/login/email` |
+| signupWithEmail | `/api/v1/auth/signup` |
+| loginWithGoogle | `/api/v1/auth/login/google` |
+| OAuth callback | `/api/v1/auth/google/callback` |
+
+---
+
+## 💡 Key Decisions Made
+
+1. **Keep Video on Demo Page**
+   - User wanted to preserve existing demo video showcase
+   - Added button below video instead of replacing page
+
+2. **Consistent Endpoint Naming**
+   - All email-based auth uses `/login/email` suffix
+   - Makes it easier to add other auth providers in future
+   - Signup uses `/signup` (not `/signup/email`) since OAuth has separate flow
+
+3. **Demo Credentials in Environment**
+   - Stored in `.env.local` and `.env.production`
+   - Not hardcoded in source code
+   - Can be updated without code changes
+
+4. **End-to-End Testing with Playwright MCP**
+   - Used browser automation to verify complete flow
+   - Caught CORS issue early
+   - Confirmed token persistence and routing
 
 ---
 
 ## ⚠️ Important Notes
 
-1. **Backend must be running** at `http://localhost:8000` for testing
-2. **user_name field** determines welcome flow routing
-3. **Progress preservation** TODO added to api.ts (for session expiration)
-4. **Streaming chat** - keeping old files for now, can add streaming later
-5. **OAuth redirect** - Backend redirects to frontend with token in URL
+1. **Backend must be running** at `http://localhost:8000` for local testing
+2. **CORS configured** for `http://localhost:3000` (development)
+3. **Demo account exists** in backend database
+4. **Production deployment** needs Vercel env vars synced with `.env.production`
+5. **Help component enhancement** is next priority before considering demo complete
 
 ---
 
-## 🎯 Success Criteria
+## 🎯 Demo Mode Completion Checklist
 
-When migration is complete, we'll have:
-- ✅ React Query for data fetching (like DI in Python)
-- ✅ Server Components for initial auth checks
-- ✅ JWT token-based authentication
-- ✅ No Supabase dependencies
-- ✅ Chat integrated with backend RAG
-- ✅ PostgreSQL for all data persistence
+- [x] Demo credentials configured in `.env.local` and `.env.production`
+- [x] `demoLogin()` function implemented in `services/auth.ts`
+- [x] Demo button UI added to demo page
+- [x] Demo login handler with loading states
+- [x] Auth endpoint consistency fixed
+- [x] Backend CORS configured
+- [x] Demo user created in backend
+- [x] End-to-end flow tested and working
+- [ ] Tutorial-like help for demo users
+- [ ] Demo mode indicator on dashboard
+- [ ] Production deployment tested
+- [ ] User flow documented
 
 ---
 
-**Great progress today! 🎉 Pick up with SESSION_PROGRESS.md when ready.**
+## 🚀 Resume Next Session - Copy/Paste This:
+
+```
+I'm continuing the Tomoiru demo mode implementation. We successfully completed the demo login flow and tested it end-to-end with Playwright MCP.
+
+Completed:
+- ✅ Demo page with "Try Demo Now" button (keeps video)
+- ✅ Demo credentials in .env.production
+- ✅ Auth endpoint consistency (all email login uses /login/email)
+- ✅ Demo flow tested end-to-end: landing → demo → login → dashboard
+- ✅ Backend demo account created and working
+
+In Progress:
+- 🚧 Tutorial-like help for demo users (design discussed, not implemented)
+
+Next Tasks:
+1. Update app/components/Help.tsx to show demo-specific tutorial content
+2. Add demo mode indicator badge to dashboard
+3. Test complete demo user experience
+
+Current directory: /Users/mkine/personal-projects/tomoiru-web
+Backend running: http://localhost:8000 (local)
+
+Please review SESSION_PROGRESS.md and SESSION_RESUME_PROMPT.md, then let's continue with enhancing the Help component for demo users.
+```
+
+---
+
+**Excellent progress on demo mode! 🎉 Ready to add tutorial help next session.**
