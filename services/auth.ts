@@ -26,6 +26,34 @@ export const authService = {
   },
 
   /**
+   * Demo login - Automatically log in with demo account
+   *
+   * Demo users skip the welcome flow and go directly to dashboard
+   */
+  demoLogin: async (): Promise<AuthResponse> => {
+    const demoEmail = process.env.NEXT_PUBLIC_DEMO_EMAIL;
+    const demoPassword = process.env.NEXT_PUBLIC_DEMO_PASSWORD;
+
+    if (!demoEmail || !demoPassword) {
+      throw new Error("Demo credentials not configured");
+    }
+
+    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login", {
+      email: demoEmail,
+      password: demoPassword,
+    });
+
+    if (!response.data.access_token) {
+      throw new Error("No access token in response");
+    }
+
+    // Store token in client-accessible storage
+    setAuthToken(response.data.access_token);
+
+    return response.data;
+  },
+
+  /**
    * Login with email and password
    *
    * After login, check user.user_name:

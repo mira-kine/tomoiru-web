@@ -1,13 +1,34 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from "next/legacy/image";
 import { useRouter } from "next/navigation";
+import toast from 'react-hot-toast';
+import { authService } from '@/services/auth';
 
 
 export default function Demo() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleBackTitle = () => {
     router.push('/')
+  }
+
+  const handleDemoLogin = async () => {
+    setIsLoading(true);
+
+    try {
+      await authService.demoLogin();
+      toast.success('Welcome to the demo!');
+      // Demo users skip welcome flow and go directly to dashboard
+      router.push('/dashboard');
+      router.refresh();
+    } catch (error: any) {
+      console.error('Demo login error:', error);
+      toast.error(error.response?.data?.detail || 'Demo login failed. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -32,6 +53,13 @@ export default function Demo() {
             Current features include a cute welcome introduction, choosing username, comforting dashboard, and Tomomi chatbot.
             Developing features include Tomomi food recommendations, food diary and journal.
             </div>
+            <button
+              onClick={handleDemoLogin}
+              disabled={isLoading}
+              className="text-licorice border-2 border-white bg-gradient-to-r from-purple-200 via-purple-300 to-pink-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-purple-100 font-sans font-bold rounded-lg text-lg tablet:text-xl px-6 py-3 text-center shadow-lg shadow-licorice/20 disabled:opacity-50"
+            >
+              {isLoading ? 'Loading Demo...' : 'Try Demo Now'}
+            </button>
           </div>
         </div>
       </div>

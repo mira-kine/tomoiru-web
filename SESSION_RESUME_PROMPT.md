@@ -375,8 +375,18 @@ export const demoLogin = async () => {
 - Backend running: `http://localhost:8000` (local) or `https://tomoiru-backend.onrender.com` (production)
 - Frontend: Built successfully, deployed to Vercel
 - Auth flow: Complete and deployed ✅
-- Demo mode: Not yet implemented (NEXT PRIORITY)
+- MCP: Playwright MCP server configured and connected ✅
+- Demo mode: IN PROGRESS 🚧
+  - ✅ Demo credentials added to `.env.local` (demo@tomoiru.com / TomoiruDemo2024!)
+  - ✅ `demoLogin()` function added to `services/auth.ts`
+  - ✅ `handleDemoLogin()` handler added to login page (`app/login/page.tsx:106-121`)
+  - ✅ Demo button UI added to SIGNIN view (`app/login/page.tsx:274-282`)
+  - 🚧 NEXT: Add Demo button UI to SIGNUP view (below Google OAuth button, same styling)
+  - ⏳ Pending: Update User interface to include `is_demo` flag
+  - ⏳ Pending: Add demo mode indicator badge to dashboard
+  - ⏳ Pending: Create demo user account in backend database
+  - ⏳ Pending: Test end-to-end with Playwright MCP
 - Food/audio: Commented out, waiting for post-MVP
 
 **Start the conversation with:**
-"I'm ready to continue working on Tomoiru. I want to implement the demo mode feature so users can try the app without creating an account. Can we add a 'Demo' button to the login page that uses a standardized demo user account?"
+"I'm ready to continue the demo mode implementation. We need to add the Demo button UI to the SIGNUP view (same purple gradient style as signin view). Then we can use Playwright MCP to preview the changes."
