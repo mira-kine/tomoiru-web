@@ -32,15 +32,15 @@ export const authService = {
    */
   demoLogin: async (): Promise<AuthResponse> => {
     const demoEmail = process.env.NEXT_PUBLIC_DEMO_EMAIL;
-    const demoPassword = process.env.NEXT_PUBLIC_DEMO_PASSWORD;
+    const demoKey = process.env.NEXT_PUBLIC_DEMO_KEY;
 
-    if (!demoEmail || !demoPassword) {
+    if (!demoEmail || !demoKey) {
       throw new Error("Demo credentials not configured");
     }
 
     const response = await apiClient.post<AuthResponse>("/api/v1/auth/login/email", {
       email: demoEmail,
-      password: demoPassword,
+      password: demoKey,
     });
 
     if (!response.data.access_token) {
