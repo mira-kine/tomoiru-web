@@ -17,19 +17,11 @@ export interface AuthResponse {
 }
 
 export const authService = {
-  /**
-   * Redirect to Google OAuth (backend handles OAuth flow)
-   */
   loginWithGoogle: () => {
     const backendUrl = process.env.NEXT_PUBLIC_API_URL;
     window.location.href = `${backendUrl}/api/v1/auth/login/google`;
   },
 
-  /**
-   * Demo login - Automatically log in with demo account
-   *
-   * Demo users skip the welcome flow and go directly to dashboard
-   */
   demoLogin: async (): Promise<AuthResponse> => {
     const demoEmail = process.env.NEXT_PUBLIC_DEMO_EMAIL;
     const demoKey = process.env.NEXT_PUBLIC_DEMO_KEY;
@@ -47,19 +39,11 @@ export const authService = {
       throw new Error("No access token in response");
     }
 
-    // Store token in client-accessible storage
     setAuthToken(response.data.access_token);
 
     return response.data;
   },
 
-  /**
-   * Login with email and password
-   *
-   * After login, check user.user_name:
-   * - If null → redirect to /welcome
-   * - If set → redirect to /dashboard
-   */
   loginWithEmail: async (
     email: string,
     password: string,
@@ -83,10 +67,8 @@ export const authService = {
       throw new Error("No access token in response");
     }
 
-    // Store token in client-accessible storage
     setAuthToken(response.data.access_token);
 
-    // Verify token was saved to localStorage
     const savedInLocalStorage = localStorage.getItem("tomoiru_auth_token");
     console.log(
       "[loginWithEmail] Token saved to localStorage:",
@@ -96,11 +78,6 @@ export const authService = {
     return response.data;
   },
 
-  /**
-   * Sign up with email and password
-   *
-   * New users always have user_name = null, so they'll go through welcome flow
-   */
   signupWithEmail: async (
     email: string,
     password: string,
@@ -110,31 +87,21 @@ export const authService = {
       password,
     });
 
-    // Store token in cookies
     setAuthToken(response.data.access_token);
 
     return response.data;
   },
 
-  /**
-   * Get current user profile
-   */
   getCurrentUser: async (): Promise<User> => {
     const response = await apiClient.get<User>("/api/v1/auth/me");
     return response.data;
   },
 
-  /**
-   * Logout user (clear token and redirect)
-   */
   logout: () => {
     removeAuthToken();
     window.location.href = "/login";
   },
 
-  /**
-   * Refresh token (extends expiration)
-   */
   refreshToken: async (): Promise<AuthResponse> => {
     const response = await apiClient.post<AuthResponse>("/api/v1/auth/refresh");
     setAuthToken(response.data.access_token);
