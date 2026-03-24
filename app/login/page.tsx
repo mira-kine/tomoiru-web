@@ -110,12 +110,11 @@ export default function LogIn() {
       await authService.demoLogin();
       toast.success('Welcome to the demo!');
       // Demo users skip welcome flow and go directly to dashboard
-      router.push('/dashboard');
-      router.refresh();
+      // Use window.location for full page reload to ensure cookie is sent with request
+      window.location.href = '/dashboard';
     } catch (error: any) {
       console.error('Demo login error:', error);
       toast.error(error.response?.data?.detail || 'Demo login failed. Please try again later.');
-    } finally {
       setIsLoading(false);
     }
   };
