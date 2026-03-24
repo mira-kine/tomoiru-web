@@ -17,22 +17,15 @@ export interface AuthResponse {
 }
 
 export const authService = {
-  /**
-   * Redirect to Google OAuth (backend handles OAuth flow)
-   */
   loginWithGoogle: () => {
     const backendUrl = process.env.NEXT_PUBLIC_API_URL;
     window.location.href = `${backendUrl}/api/v1/auth/login/google`;
   },
 
-  /**
-   * Demo login - Automatically log in with demo account
-   *
-   * Demo users skip the welcome flow and go directly to dashboard
-   */
+  // demo log in bypasses 
   demoLogin: async (): Promise<AuthResponse> => {
     const demoEmail = process.env.NEXT_PUBLIC_DEMO_EMAIL;
-    const demoPassword = process.env.NEXT_PUBLIC_DEMO_PASSWORD;
+    const demoPassword = process.env.NEXT_PUBLIC_DEMO_KEY;
 
     if (!demoEmail || !demoPassword) {
       throw new Error("Demo credentials not configured");
@@ -53,13 +46,6 @@ export const authService = {
     return response.data;
   },
 
-  /**
-   * Login with email and password
-   *
-   * After login, check user.user_name:
-   * - If null → redirect to /welcome
-   * - If set → redirect to /dashboard
-   */
   loginWithEmail: async (
     email: string,
     password: string,
