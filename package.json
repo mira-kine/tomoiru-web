@@ -32,7 +32,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "npx prettier . --write"
+    "format": "npx prettier . --write",
+    "claude": "claude"
   },
   "browserslist": {
     "production": [
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@anthropic-ai/claude-code": "^2.1.92",
     "@next/eslint-plugin-next": "^14.2.33",
     "@playwright/test": "^1.56.1",
     "@tanstack/react-query-devtools": "^5.90.2",

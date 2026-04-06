@@ -33,9 +33,11 @@ export default function Title() {
               <div className="text-licorice border-2 border-white bg-white/40 hover:bg-white cursor-pointer font-sans font-bold rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2 shadow-md">
                 <Link href="/about">About</Link>
               </div>
+               <Link href="/demo">
               <div className="text-licorice border-2 border-white bg-white/40 hover:bg-white font-sans font-bold rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2 shadow-md">
-                <Link href="/demo">Demo</Link>
               </div>
+                Demo
+                </Link>
             </div>
           </div>
         </div>

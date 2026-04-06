@@ -1,6 +1,6 @@
 import WelcomeInput from "./WelcomeInput";
 import ProtectedLayout from "../components/ProtectedLayout";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React from "react";
 
 export default async function Welcome() {
