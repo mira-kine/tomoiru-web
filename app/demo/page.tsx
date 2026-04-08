@@ -20,9 +20,9 @@ export default function Demo() {
     try {
       await authService.demoLogin();
       toast.success('Welcome to the demo!');
-      // Demo users skip welcome flow and go directly to dashboard
+      // Demo users go to dashboard with demo=true param to trigger story and tooltips
       // Use window.location for full page reload to ensure cookie is sent with request
-      window.location.href = '/dashboard';
+      window.location.href = '/dashboard?demo=true';
     } catch (error: any) {
       console.error('Demo login error:', error);
       toast.error(error.response?.data?.detail || 'Demo login failed. Please try again later.');
