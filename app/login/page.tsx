@@ -17,7 +17,6 @@ export default function LogIn() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Show error messages from query params (e.g., session_expired, OAuth errors)
   useEffect(() => {
     const error = searchParams.get('error');
     if (error === 'session_expired') {
@@ -99,7 +98,6 @@ export default function LogIn() {
   };
 
   const handleGoogleLogin = () => {
-    // Redirects to backend OAuth flow
     authService.loginWithGoogle();
   };
 
@@ -137,23 +135,23 @@ export default function LogIn() {
         </div>
         <div className="flex flex-col items-center justify-center m-2 h-3/4 tablet:h-full w-5/6 tablet:w-11/12 z-30">
           <div className="flex flex-col align-center justify-center wrap m-2 h-5/6 tablet:h-full laptop:h-5/6 w-5/6">
-            <div className="flex flex-col justify-between wrap align-center mt-1 p-2 bg-melon drop-shadow-lg rounded-xl opacity-80 p-4 items-center w-full tablet:h-3/4 tablet:justify-center laptop:h-full laptop:p-4">
+            <div className="flex flex-col justify-between wrap align-center mt-1 p-2 drop-shadow-lg rounded-xl opacity-90 p-4 items-center w-full tablet:h-3/4 tablet:justify-center laptop:h-full laptop:p-4">
               <div className="flex flex-col justify-center p-2 items-center wrap tablet:m-8">
                 {view === "signin" ? (
                   <>
-                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-2 font-script flex">
+                    <span className="text-4xl tablet:text-7xl laptop:text-8xl font-script flex">
                       Welcome
                     </span>
-                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-2 font-script">
+                    <span className="text-4xl tablet:text-7xl laptop:text-8xl font-script flex">
                       Back
                     </span>
                   </>
                 ) : (
                   <>
-                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-1 font-script flex">
+                    <span className="text-4xl tablet:text-7xl laptop:text-8xl font-script flex">
                       Glad you
                     </span>
-                    <span className="text-5xl tablet:text-8xl laptop:text-9xl p-1 font-script">
+                    <span className="text-4xl tablet:text-7xl laptop:text-8xl font-script flex">
                       are here
                     </span>
                   </>
@@ -162,9 +160,9 @@ export default function LogIn() {
               <>
                 <form
                   onSubmit={(e) => view === "signin" ? handleSignIn(e) : handleSignUp(e)}
-                  className="flex flex-col m-2 justify-center content-center wrap items-center w-5/6"
+                  className="flex flex-col justify-center content-center wrap items-center w-5/6"
                 >
-                  <div className="m-2 w-full text-md tablet:text-xl max-w-lg">
+                  <div className="w-full text-md tablet:text-xl flex items-center max-w-lg relative">
                     <input
                       value={email}
                       type="email"
@@ -176,10 +174,10 @@ export default function LogIn() {
                       }}
                       placeholder="Email"
                       disabled={isLoading}
-                      className="p-2 m-2 w-11/12 tablet:w-full text-md tablet:text-xl shadow-lg shadow-licorice/20 disabled:opacity-50"
+                      className="p-2 m-2 w-full tablet:w-full text-md tablet:text-xl shadow-lg shadow-licorice/20 disabled:opacity-50"
                     />
                   </div>
-                  <div className="m-2 w-full text-md tablet:text-xl flex items-center max-w-lg relative">
+                  <div className="w-full text-md tablet:text-xl flex items-center max-w-lg relative">
                     <input
                       value={password}
                       type={visible ? "text" : "password"}
@@ -190,11 +188,11 @@ export default function LogIn() {
                         setPassword(e.target.value);
                       }}
                       disabled={isLoading}
-                      className="p-2 m-2 w-full tablet:pr-11 text-md tablet:text-xl shadow-lg shadow-licorice/20 disabled:opacity-50"
+                      className="p-2 m-2 w-full text-md tablet:text-xl shadow-lg shadow-licorice/20 disabled:opacity-50"
                     />
                     {visible ? (
                       <span
-                        className="text-licorice hover:text-melon hover:cursor-pointer absolute right-4 z-12"
+                        className="text-licorice hover:bg-melon hover:cursor-pointer absolute right-4 z-12"
                         onClick={() => {
                           setVisible(!visible);
                         }}
@@ -249,17 +247,16 @@ export default function LogIn() {
                         <button
                           type="submit"
                           disabled={isLoading}
-                          className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/20 disabled:opacity-50"
+                          className="text-licorice border-2 border-white bg-white transition duration-300 hover:bg-melon font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/40 disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                           {isLoading ? 'Signing In...' : 'Sign In'}
                         </button>
 
-                        {/* Google OAuth Button */}
                         <button
                           type="button"
                           onClick={handleGoogleLogin}
                           disabled={isLoading}
-                          className="text-licorice border-2 border-white bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-100 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/20 disabled:opacity-50 flex items-center justify-center gap-2"
+                          className="text-licorice border-2 border-white bg-white transition duration-300 hover:bg-melon focus:ring-4 focus:outline-none focus:ring-gray-100 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/40 disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                           <svg className="w-5 h-5" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -270,12 +267,11 @@ export default function LogIn() {
                           Sign in with Google
                         </button>
 
-                        {/* Demo Button */}
                         <button
                           type="button"
                           onClick={handleDemoLogin}
                           disabled={isLoading}
-                          className="text-licorice border-2 border-white bg-gradient-to-r from-purple-200 via-purple-300 to-pink-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-purple-100 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/20 disabled:opacity-50"
+                          className="text-licorice border-2 border-white bg-white transition duration-300 hover:bg-melon font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/40 disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                           {isLoading ? 'Loading...' : 'Try Demo'}
                         </button>
@@ -289,7 +285,7 @@ export default function LogIn() {
                             onClick={() => {
                               setView("signup");
                             }}
-                            className="underline hover:text-white p-1"
+                            className="underline hover:text-melon p-1"
                           >
                             Sign Up
                           </button>
@@ -301,17 +297,16 @@ export default function LogIn() {
                         <button
                           type="submit"
                           disabled={isLoading}
-                          className="text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-md shadow-licorice/20 disabled:opacity-50"
+                          className="text-licorice border-2 border-white bg-white transition duration-300 hover:bg-melon font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-md shadow-licorice/20 disabled:opacity-50"
                         >
                           {isLoading ? 'Creating Account...' : 'Sign Up'}
                         </button>
 
-                        {/* Google OAuth Button */}
                         <button
                           type="button"
                           onClick={handleGoogleLogin}
                           disabled={isLoading}
-                          className="text-licorice border-2 border-white bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-100 font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/20 disabled:opacity-50 flex items-center justify-center gap-2"
+                          className="text-licorice border-2 border-white bg-white transition duration-300 hover:bg-melon font-sans font-bold rounded-lg text-md tablet:text-xl laptop:text-2xl desktop:text-2xl px-5 py-2.5 text-center mr-2 mb-2 shadow-lg shadow-licorice/20 disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                           <svg className="w-5 h-5" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>

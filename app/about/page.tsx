@@ -15,13 +15,13 @@ export default function About() {
   return (
     <>
       <div className="flex flex-col relative items-center h-full w-full">
-        <button className="z-50 absolute text-licorice border-2 border-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-sans font-bold rounded-lg text-lg px-6 py-2.5 mt-4 text-center shadow-md left-12 top-8" onClick={() => {handleBack()}}>
+        <button className="z-50 absolute text-licorice border-2 border-white transition duration-300 hover:bg-white dark:focus:ring-red-400 font-sans font-bold rounded-lg text-lg px-6 py-2.5 mt-4 text-center shadow-md left-12 top-8" onClick={() => {handleBack()}}>
           Back
         </button>
         <div className="absolute inset-0">
           <Image
-            src="/assets/auth_background.jpg"
-            alt="drawn background of the sky"
+            src="/assets/sakura-bg.png"
+            alt="wallpaper of blue background with pink hearts"
             layout="fill"
             className="w-full h-full inset-0 object-cover absolute -z-1"
             priority={true}
@@ -36,7 +36,7 @@ export default function About() {
             priority={true}
           />
         </div>
-        <div className="flex flex-col mt-2 mb-8 h-3/4 w-5/6 bg-melon shadow-lg rounded-lg opacity-80 pt-4 px-2 mb-12">
+        <div className="flex flex-col m-8 p-12 h-3/4 w-5/6 bg-white shadow-lg rounded-lg opacity-80">
           <div className="flex flex-col flex-wrap">
             <div className="flex flex-wrap font-script text-licorice text-3xl mobile:text-4xl tablet:text-5xl p-2 m-2">
               <p>Tomoiru started because of my own tomos...</p>

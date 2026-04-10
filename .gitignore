@@ -38,3 +38,8 @@ node_modules/
 # Documentation (except README)
 *.md
 !README.md
+
+# agents
+.claude
+.skills
+.superpowers
