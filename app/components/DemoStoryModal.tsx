@@ -53,7 +53,6 @@ export default function DemoStoryModal({ onComplete, onSkip }: DemoStoryModalPro
       tabIndex={0}
     >
       <div className="relative w-full h-full">
-        {/* Background */}
         <div className="absolute inset-0">
           <Image
             src="/assets/welcome-bg.png"
@@ -64,7 +63,6 @@ export default function DemoStoryModal({ onComplete, onSkip }: DemoStoryModalPro
           />
         </div>
 
-        {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
           {/* Tomomi Character */}
           <div className="mb-8">
@@ -77,13 +75,11 @@ export default function DemoStoryModal({ onComplete, onSkip }: DemoStoryModalPro
             />
           </div>
 
-          {/* Dialog Box */}
           <div className="bg-white/90 rounded-lg shadow-2xl p-8 max-w-2xl w-full">
             <p className="text-licorice text-xl tablet:text-2xl font-sans text-center mb-6">
               {storyDialogs[currentDialog]}
             </p>
 
-            {/* Progress Indicator */}
             <div className="flex justify-center gap-2 mb-4">
               {storyDialogs.map((_, index) => (
                 <div
@@ -110,7 +106,7 @@ export default function DemoStoryModal({ onComplete, onSkip }: DemoStoryModalPro
 
               <button
                 onClick={handleNext}
-                className="btn bg-gradient-to-r from-purple-200 via-purple-300 to-pink-200 hover:bg-gradient-to-bl border-2 border-white text-licorice font-bold"
+                className="btn glass hover:bg-gray-200 text-licorice"
               >
                 {currentDialog < storyDialogs.length - 1 ? 'Next' : 'Start Demo'}
               </button>

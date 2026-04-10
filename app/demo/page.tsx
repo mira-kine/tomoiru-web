@@ -42,20 +42,20 @@ export default function Demo() {
             priority={true}
           />
           </div>
-        <div className="flex flex-col items-center content-center justify-center m-8 h-3/4 w-5/6 mobile:w-3/5 tablet:w-4/5 bg-melon shadow-lg rounded-lg opacity-80 p-4">
+        <div className="flex flex-col items-center content-center justify-center m-8 h-3/4 w-5/6 mobile:w-3/5 tablet:w-4/5 bg-white/20 border-radius-50 shadow-lg rounded-lg opacity-80 p-4">
         <button className="btn glass hover:bg-white" onClick={handleBackTitle}>Back</button>
           <div className="flex flex-col flex-wrap justify-center items-center">
             <div className="flex justify-center flex-wrap font-script text-7xl w-3/4 tablet:w-full p-2 m-2 items-center">
              <video controls src={'/assets/tomoiru-demo-09.mp4'} style={{width: "620px", height: "350px" }}/>
             </div>
-            <div className="flex sub-title font-sans text-md tablet:text-xl font-bold justify-center pb-4">
+            <div className="flex sub-title font-sans text-md tablet:text-xl font-bold justify-center pb-4 m-4">
             Current features include a cute welcome introduction, choosing username, comforting dashboard, and Tomomi chatbot.
             Developing features include Tomomi food recommendations, food diary and journal.
             </div>
             <button
               onClick={handleDemoLogin}
               disabled={isLoading}
-              className="text-licorice border-2 border-white bg-gradient-to-r from-purple-200 via-purple-300 to-pink-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-purple-100 font-sans font-bold rounded-lg text-lg tablet:text-xl px-6 py-3 text-center shadow-lg shadow-licorice/20 disabled:opacity-50"
+              className="text-licorice border-2 border-white bg-white/80 transition duration-300 hover:bg-white font-sans font-bold rounded-lg text-lg tablet:text-xl px-6 py-3 text-center shadow-lg shadow-licorice/60 disabled:opacity-50"
             >
               {isLoading ? 'Loading Demo...' : 'Try Demo Now'}
             </button>
