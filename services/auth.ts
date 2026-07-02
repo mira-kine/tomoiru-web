@@ -53,27 +53,11 @@ export const authService = {
       password,
     });
 
-    console.log("[loginWithEmail] Login response received");
-    console.log(
-      "[loginWithEmail] Access token exists:",
-      !!response.data.access_token,
-    );
-    console.log(
-      "[loginWithEmail] Access token value:",
-      response.data.access_token,
-    );
-
     if (!response.data.access_token) {
       throw new Error("No access token in response");
     }
 
     setAuthToken(response.data.access_token);
-
-    const savedInLocalStorage = localStorage.getItem("tomoiru_auth_token");
-    console.log(
-      "[loginWithEmail] Token saved to localStorage:",
-      !!savedInLocalStorage,
-    );
 
     return response.data;
   },

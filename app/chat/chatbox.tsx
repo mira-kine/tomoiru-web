@@ -191,11 +191,19 @@ export default function ChatBox() {
           done = doneReading;
 
           if (value) {
-            const chunkValue = decoder.decode(value);
+            // stream: true buffers multi-byte characters split across chunks
+            const chunkValue = decoder.decode(value, { stream: true });
             accumulatedText += chunkValue;
 
             dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: chunkValue });
           }
+        }
+
+        // Flush any bytes still buffered in the decoder
+        const finalChunk = decoder.decode();
+        if (finalChunk) {
+          accumulatedText += finalChunk;
+          dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: finalChunk });
         }
 
         if (done && accumulatedText) {

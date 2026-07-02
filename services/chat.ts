@@ -51,15 +51,6 @@ const toBackendMessages = (messages: Message[]): BackendMessage[] => {
   }));
 };
 
-/**
- * Transform backend messages (with "assistant") to frontend format (with "tomomi")
- */
-const toFrontendMessages = (messages: BackendMessage[]): Message[] => {
-  return messages.map(msg => ({
-    role: msg.role === 'assistant' ? 'tomomi' : msg.role,
-    content: msg.content,
-  }));
-};
 
 export const chatService = {
   /**
@@ -87,55 +78,9 @@ export const chatService = {
     return response.data;
   },
 
-  // ========================================
-  // Future: Conversation Management
-  // Uncomment when backend implements these endpoints
-  // ========================================
-
-  // /**
-  //  * Get all conversations for current user
-  //  */
-  // getConversations: async (): Promise<Conversation[]> => {
-  //   const response = await apiClient.get<Conversation[]>('/api/v1/conversations/');
-  //   return response.data;
-  // },
-
-  // /**
-  //  * Get a specific conversation with all messages
-  //  */
-  // getConversation: async (conversationId: string): Promise<ConversationDetail> => {
-  //   const response = await apiClient.get<ConversationDetail>(`/api/v1/conversations/${conversationId}`);
-  //   // Transform backend "assistant" to frontend "tomomi"
-  //   return {
-  //     ...response.data,
-  //     messages: toFrontendMessages(response.data.messages),
-  //   };
-  // },
-
-  // /**
-  //  * Create a new conversation
-  //  */
-  // createConversation: async (title: string): Promise<Conversation> => {
-  //   const response = await apiClient.post<Conversation>('/api/v1/conversations/', {
-  //     title,
-  //   });
-  //   return response.data;
-  // },
-
-  // /**
-  //  * Delete a conversation
-  //  */
-  // deleteConversation: async (conversationId: string): Promise<void> => {
-  //   await apiClient.delete(`/api/v1/conversations/${conversationId}`);
-  // },
-
-  // /**
-  //  * Update conversation title
-  //  */
-  // updateConversation: async (conversationId: string, title: string): Promise<Conversation> => {
-  //   const response = await apiClient.patch<Conversation>(`/api/v1/conversations/${conversationId}`, {
-  //     title,
-  //   });
-  //   return response.data;
-  // },
+  // TODO: Conversation persistence (list/get/create/delete/rename) using the
+  // Conversation/ConversationDetail types above. Blocked on backend
+  // /api/v1/conversations endpoints. Note: messages loaded from the backend
+  // must be transformed to frontend format (role "assistant" → "tomomi"),
+  // the inverse of toBackendMessages.
 };
