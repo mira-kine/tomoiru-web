@@ -30,7 +30,6 @@ export default function DashboardClient() {
     if (tooltipStep !== null) {
       const nextStep = tooltipStep + 1;
       if (nextStep >= 4) {
-        // Demo complete
         setTooltipStep(null);
       } else {
         setTooltipStep(nextStep);
@@ -63,7 +62,6 @@ export default function DashboardClient() {
      )
     }
 
-    {/* Regular Help button or Exit Demo button */}
     {isDemoMode ? (
       <button
         onClick={handleExitDemo}
@@ -80,7 +78,6 @@ export default function DashboardClient() {
       </button>
     )}
 
-    {/* Story Modal */}
     {isDemoMode && showStory && (
       <DemoStoryModal
         onComplete={handleStoryComplete}
@@ -88,7 +85,6 @@ export default function DashboardClient() {
       />
     )}
 
-    {/* Tooltip Overlay */}
     {isDemoMode && tooltipStep !== null && !showStory && (
       <DemoTooltip
         step={tooltipStep}

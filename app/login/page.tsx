@@ -35,8 +35,6 @@ export default function LogIn() {
     try {
       await authService.loginWithEmail(email, password);
       toast.success('Welcome back!');
-      // Backend returns token, authService saves it
-      // Redirect handled by backend response or we can check user data
       router.push('/dashboard');
       router.refresh();
     } catch (error: any) {
