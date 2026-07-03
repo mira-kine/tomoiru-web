@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { API_URL } from '@/lib/config';
 
 export interface User {
   id: string;
@@ -10,7 +11,16 @@ export interface User {
   updated_at: string;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+async function fetchMe(token: string): Promise<Response> {
+  return fetch(`${API_URL}/api/v1/auth/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    // Always fetch fresh for security (React Query handles session caching)
+    cache: 'no-store',
+  });
+}
+
 export async function getCurrentUser(): Promise<User> {
   const cookieStore = cookies();
   const token = cookieStore.get('tomoiru_auth_token')?.value;
@@ -19,24 +29,21 @@ export async function getCurrentUser(): Promise<User> {
     redirect('/login');
   }
 
+  let response: Response;
   try {
-    const response = await fetch(`${API_URL}/api/v1/auth/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      // Always fetch fresh for security (React Query handles session caching)
-      cache: 'no-store',
-    });
-
-    if (!response.ok) {
-      redirect('/login');
-    }
-
-    return response.json();
+    response = await fetchMe(token);
   } catch (error) {
+    // Network failure (e.g. backend cold start) - the user may still have a
+    // valid session, so surface the error instead of bouncing to /login.
     console.error('Server auth error:', error);
+    throw new Error('Could not reach the server. Please try again in a moment.');
+  }
+
+  if (!response.ok) {
     redirect('/login');
   }
+
+  return response.json();
 }
 
 /**
@@ -56,12 +63,7 @@ export async function getAuthenticatedUser(): Promise<User | null> {
   }
 
   try {
-    const response = await fetch(`${API_URL}/api/v1/users/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      cache: 'no-store',
-    });
+    const response = await fetchMe(token);
 
     if (!response.ok) {
       return null;

@@ -1,5 +1,7 @@
+import axios, { AxiosResponse } from "axios";
 import apiClient from "./api";
 import { setAuthToken, removeAuthToken } from "@/utils/auth";
+import { API_URL } from "@/lib/config";
 
 export interface User {
   id: string;
@@ -16,10 +18,25 @@ export interface AuthResponse {
   user: User;
 }
 
+// The backend runs on Render's free tier and cold starts can take 30-60s,
+// well past the client's default 30s timeout. Auth calls get a longer window
+// and one retry on timeout/network failure (by then the server is usually up).
+const AUTH_TIMEOUT_MS = 90000;
+
+async function postAuth<T>(url: string, body?: object): Promise<AxiosResponse<T>> {
+  try {
+    return await apiClient.post<T>(url, body, { timeout: AUTH_TIMEOUT_MS });
+  } catch (error) {
+    if (axios.isAxiosError(error) && !error.response) {
+      return await apiClient.post<T>(url, body, { timeout: AUTH_TIMEOUT_MS });
+    }
+    throw error;
+  }
+}
+
 export const authService = {
   loginWithGoogle: () => {
-    const backendUrl = process.env.NEXT_PUBLIC_API_URL;
-    window.location.href = `${backendUrl}/api/v1/auth/login/google`;
+    window.location.href = `${API_URL}/api/v1/auth/login/google`;
   },
 
   demoLogin: async (): Promise<AuthResponse> => {
@@ -30,7 +47,7 @@ export const authService = {
       throw new Error("Demo credentials not configured");
     }
 
-    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login/email", {
+    const response = await postAuth<AuthResponse>("/api/v1/auth/login/email", {
       email: demoEmail,
       password: demoKey,
     });
@@ -48,7 +65,7 @@ export const authService = {
     email: string,
     password: string,
   ): Promise<AuthResponse> => {
-    const response = await apiClient.post<AuthResponse>("/api/v1/auth/login/email", {
+    const response = await postAuth<AuthResponse>("/api/v1/auth/login/email", {
       email,
       password,
     });
@@ -66,7 +83,7 @@ export const authService = {
     email: string,
     password: string,
   ): Promise<AuthResponse> => {
-    const response = await apiClient.post<AuthResponse>("/api/v1/auth/signup", {
+    const response = await postAuth<AuthResponse>("/api/v1/auth/signup", {
       email,
       password,
     });

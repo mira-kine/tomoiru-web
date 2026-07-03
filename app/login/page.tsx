@@ -6,6 +6,8 @@ import Image from "next/legacy/image";
 import toast from 'react-hot-toast';
 import tomoIcon from '../../public/assets/icons/play.png';
 import { authService } from '@/services/auth';
+import { warmUpBackend } from '@/lib/config';
+import { showWakeNoticeAfterDelay } from '@/lib/wakeToast';
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -16,6 +18,11 @@ export default function LogIn() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // Wake the free-tier backend as soon as the login page renders
+  useEffect(() => {
+    warmUpBackend();
+  }, []);
 
   useEffect(() => {
     const error = searchParams.get('error');
@@ -31,6 +38,7 @@ export default function LogIn() {
   const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    const dismissWakeNotice = showWakeNoticeAfterDelay();
 
     try {
       await authService.loginWithEmail(email, password);
@@ -41,6 +49,7 @@ export default function LogIn() {
       console.error('Login error:', error);
       toast.error(error.response?.data?.detail || 'Login failed. Please check your credentials.');
     } finally {
+      dismissWakeNotice();
       setIsLoading(false);
     }
   };
@@ -48,6 +57,7 @@ export default function LogIn() {
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    const dismissWakeNotice = showWakeNoticeAfterDelay();
 
     try {
       await authService.signupWithEmail(email, password);
@@ -91,6 +101,7 @@ export default function LogIn() {
         toast.error(errorMessage);
       }
     } finally {
+      dismissWakeNotice();
       setIsLoading(false);
     }
   };
@@ -101,17 +112,20 @@ export default function LogIn() {
 
   const handleDemoLogin = async () => {
     setIsLoading(true);
+    const dismissWakeNotice = showWakeNoticeAfterDelay();
 
     try {
       await authService.demoLogin();
       toast.success('Welcome to the demo!');
       // Demo users skip welcome flow and go directly to dashboard
       // Use window.location for full page reload to ensure cookie is sent with request
-      window.location.href = '/dashboard';
+      window.location.href = '/dashboard?demo=true';
     } catch (error: any) {
       console.error('Demo login error:', error);
       toast.error(error.response?.data?.detail || 'Demo login failed. Please try again later.');
       setIsLoading(false);
+    } finally {
+      dismissWakeNotice();
     }
   };
 

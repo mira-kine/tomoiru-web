@@ -1,14 +1,20 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from "next/legacy/image";
 import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
 import { authService } from '@/services/auth';
+import { warmUpBackend } from '@/lib/config';
+import { showWakeNoticeAfterDelay } from '@/lib/wakeToast';
 
 
 export default function Demo() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    warmUpBackend();
+  }, []);
 
   const handleBackTitle = () => {
     router.push('/')
@@ -16,6 +22,7 @@ export default function Demo() {
 
   const handleDemoLogin = async () => {
     setIsLoading(true);
+    const dismissWakeNotice = showWakeNoticeAfterDelay();
 
     try {
       await authService.demoLogin();
@@ -25,6 +32,8 @@ export default function Demo() {
       console.error('Demo login error:', error);
       toast.error(error.response?.data?.detail || 'Demo login failed. Please try again later.');
       setIsLoading(false);
+    } finally {
+      dismissWakeNotice();
     }
   }
 

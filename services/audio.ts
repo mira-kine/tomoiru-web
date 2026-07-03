@@ -1,4 +1,5 @@
 import apiClient from './api';
+import { API_URL } from '@/lib/config';
 
 export interface Track {
   id: number;
@@ -24,7 +25,6 @@ export const audioService = {
   },
 
   getStreamUrl: (trackId: number): string => {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
     return `${API_URL}/api/v1/audio/stream/${trackId}`;
   },
 };
