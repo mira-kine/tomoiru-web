@@ -9,10 +9,10 @@ const [showFood, setShowFood] = useState(false);
 const {foodList, setFoodById, foodById} = useFood();
 
 const handleChooseFood = (id: number) => {
-    // match ID to foodList
-    setShowFood(true);
     const foundFood = foodList.find((food: Food) => food.id === id);
+    if (!foundFood) return;
     setFoodById(foundFood);
+    setShowFood(true);
 }
 
   return (

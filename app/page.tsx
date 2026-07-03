@@ -1,10 +1,17 @@
 "use client";
 // Will be rendered as the main component of this page
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import { warmUpBackend } from "@/lib/config";
 
 export default function Title() {
+  // Wake the free-tier backend while the user reads the landing page,
+  // so login/demo doesn't hit a cold start.
+  useEffect(() => {
+    warmUpBackend();
+  }, []);
+
   return (
     <div className="flex relative items-center justify-center w-screen h-screen">
       <div className="absolute inset-0">

@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import AudioPlayer from "../components/Audio/AudioPlayer";
 import DashboardCarousel from '../components/DashboardCarousel';
 import Help from '../components/Help';
 import DemoStoryModal from '../components/DemoStoryModal';
@@ -30,7 +29,6 @@ export default function DashboardClient() {
     if (tooltipStep !== null) {
       const nextStep = tooltipStep + 1;
       if (nextStep >= 4) {
-        // Demo complete
         setTooltipStep(null);
       } else {
         setTooltipStep(nextStep);
@@ -50,20 +48,12 @@ export default function DashboardClient() {
             <Help />
         </div>
       ) : (
-        <>
-          <div className="w-11/12 max-w-6xl rounded-2xl p-4 z-20 flex justify-center">
+        <div className="w-11/12 max-w-6xl rounded-2xl p-4 z-20 flex justify-center">
           <DashboardCarousel />
-          </div>
-          {!isDemoMode && (
-            <div className="flex justify-center z-50 absolute left-0 top-0 ml-4 mt-4">
-              <AudioPlayer />
-            </div>
-          )}
-        </>
+        </div>
      )
     }
 
-    {/* Regular Help button or Exit Demo button */}
     {isDemoMode ? (
       <button
         onClick={handleExitDemo}
@@ -80,7 +70,6 @@ export default function DashboardClient() {
       </button>
     )}
 
-    {/* Story Modal */}
     {isDemoMode && showStory && (
       <DemoStoryModal
         onComplete={handleStoryComplete}
@@ -88,7 +77,6 @@ export default function DashboardClient() {
       />
     )}
 
-    {/* Tooltip Overlay */}
     {isDemoMode && tooltipStep !== null && !showStory && (
       <DemoTooltip
         step={tooltipStep}

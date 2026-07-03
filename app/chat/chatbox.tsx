@@ -4,6 +4,7 @@ import { useState, useReducer, useRef, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
 import { getAuthToken } from '@/utils/auth';
+import { API_URL } from '@/lib/config';
 
 // Message with Tomomi branding
 interface Message {
@@ -144,7 +145,6 @@ export default function ChatBox() {
 
     try {
       const token = getAuthToken();
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
       if (!token) {
         toast.error('No authentication token found. Please log in again.');
@@ -191,11 +191,19 @@ export default function ChatBox() {
           done = doneReading;
 
           if (value) {
-            const chunkValue = decoder.decode(value);
+            // stream: true buffers multi-byte characters split across chunks
+            const chunkValue = decoder.decode(value, { stream: true });
             accumulatedText += chunkValue;
 
             dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: chunkValue });
           }
+        }
+
+        // Flush any bytes still buffered in the decoder
+        const finalChunk = decoder.decode();
+        if (finalChunk) {
+          accumulatedText += finalChunk;
+          dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: finalChunk });
         }
 
         if (done && accumulatedText) {

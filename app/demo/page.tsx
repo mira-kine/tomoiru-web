@@ -1,14 +1,20 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from "next/legacy/image";
 import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
 import { authService } from '@/services/auth';
+import { warmUpBackend } from '@/lib/config';
+import { showWakeNoticeAfterDelay } from '@/lib/wakeToast';
 
 
 export default function Demo() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    warmUpBackend();
+  }, []);
 
   const handleBackTitle = () => {
     router.push('/')
@@ -16,17 +22,18 @@ export default function Demo() {
 
   const handleDemoLogin = async () => {
     setIsLoading(true);
+    const dismissWakeNotice = showWakeNoticeAfterDelay();
 
     try {
       await authService.demoLogin();
       toast.success('Welcome to the demo!');
-      // Demo users go to dashboard with demo=true param to trigger story and tooltips
-      // Use window.location for full page reload to ensure cookie is sent with request
       window.location.href = '/dashboard?demo=true';
     } catch (error: any) {
       console.error('Demo login error:', error);
       toast.error(error.response?.data?.detail || 'Demo login failed. Please try again later.');
       setIsLoading(false);
+    } finally {
+      dismissWakeNotice();
     }
   }
 
@@ -45,9 +52,9 @@ export default function Demo() {
         <div className="flex flex-col items-center content-center justify-center m-8 h-3/4 w-5/6 mobile:w-3/5 tablet:w-4/5 bg-white/20 border-radius-50 shadow-lg rounded-lg opacity-80 p-4">
         <button className="btn glass hover:bg-white" onClick={handleBackTitle}>Back</button>
           <div className="flex flex-col flex-wrap justify-center items-center">
-            <div className="flex justify-center flex-wrap font-script text-7xl w-3/4 tablet:w-full p-2 m-2 items-center">
-             <video controls src={'/assets/tomoiru-demo-09.mp4'} style={{width: "620px", height: "350px" }}/>
-            </div>
+            {/* <div className="flex justify-center flex-wrap font-script text-7xl w-3/4 tablet:w-full p-2 m-2 items-center"> */}
+             {/* <video controls src={'/assets/tomoiru-demo-09.mp4'} style={{width: "620px", height: "350px" }}/> */}
+            {/* </div> */}
             <div className="flex sub-title font-sans text-md tablet:text-xl font-bold justify-center pb-4 m-4">
             Current features include a cute welcome introduction, choosing username, comforting dashboard, and Tomomi chatbot.
             Developing features include Tomomi food recommendations, food diary and journal.

@@ -1,9 +1,7 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 import { getAuthToken, removeAuthToken } from '@/utils/auth';
+import { API_URL } from '@/lib/config';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-
-// Create axios instance
 const apiClient: AxiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
@@ -30,7 +28,12 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
-    if (error.response?.status === 401) {
+    // A 401 from an auth endpoint (e.g. wrong password on login) is the
+    // caller's error to handle - only session expiry on app requests should
+    // clear the token and bounce to /login.
+    const isAuthRequest = error.config?.url?.startsWith('/api/v1/auth/');
+
+    if (error.response?.status === 401 && !isAuthRequest) {
       // Token expired or invalid - clear it and redirect to login
       removeAuthToken();
 

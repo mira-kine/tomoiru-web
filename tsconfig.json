@@ -16,6 +16,7 @@
     "noEmit": true,
     "jsx": "preserve",
     "incremental": true,
+    "sourceMap": true,
     "plugins": [{ "name": "next" }],
     "paths": { "@/*": ["./*"] }
   },
