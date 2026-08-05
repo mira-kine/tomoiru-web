@@ -13,7 +13,7 @@ export default function Title() {
   }, []);
 
   return (
-    <div className="flex relative items-center justify-center w-screen h-screen">
+    <div className="flex relative items-center justify-center w-full min-h-dvh">
       <div className="absolute inset-0">
         <Image
           src="/assets/auth_background.jpg"

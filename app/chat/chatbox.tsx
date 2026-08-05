@@ -3,57 +3,23 @@
 import { useState, useReducer, useRef, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
-import { getAuthToken } from '@/utils/auth';
-import { API_URL } from '@/lib/config';
+import { chatService, ChatAuthError, Message } from '@/services/chat';
 
-// Message with Tomomi branding
-interface Message {
-  content: string;
-  role: 'user' | 'tomomi';
-}
-
-// Conversation state for streaming
 interface ConversationState {
   messages: Message[];
-  responseContent: string; // Accumulated streaming response
+  responseContent: string;
   loading: boolean;
 }
 
-// Action types for reducer
-interface AddUserMessageAction {
-  type: 'ADD_USER_MESSAGE';
-  content: string;
-}
-
-interface TomomiTypingAction {
-  type: 'TOMOMI_TYPING';
-}
-
-interface UpdateTomomiResponseAction {
-  type: 'UPDATE_TOMOMI_RESPONSE';
-  content: string; // New chunk
-}
-
-interface AddTomomiResponseAction {
-  type: 'ADD_TOMOMI_RESPONSE';
-}
-
-interface ReplaceTomomiResponseAction {
-  type: 'REPLACE_TOMOMI_RESPONSE';
-  content: string;
-}
-
-interface ErrorAction {
-  type: 'ERROR';
-}
-
+// Reducer actions as a discriminated union — the `type` string narrows which
+// payload is valid, so `content` is only accessible on the actions that carry it.
 type ConversationAction =
-  | AddUserMessageAction
-  | TomomiTypingAction
-  | UpdateTomomiResponseAction
-  | AddTomomiResponseAction
-  | ReplaceTomomiResponseAction
-  | ErrorAction;
+  | { type: 'ADD_USER_MESSAGE'; content: string }
+  | { type: 'UPDATE_TOMOMI_RESPONSE'; content: string } // New streamed chunk
+  | { type: 'REPLACE_TOMOMI_RESPONSE'; content: string } // Authoritative final text
+  | { type: 'TOMOMI_TYPING' }
+  | { type: 'ADD_TOMOMI_RESPONSE' }
+  | { type: 'ERROR' };
 
 function conversationReducer(
   state: ConversationState,
@@ -119,7 +85,6 @@ export default function ChatBox() {
   const router = useRouter();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when new messages arrive
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -136,95 +101,38 @@ export default function ChatBox() {
       return;
     }
 
-    // Add user message
     dispatch({ type: 'ADD_USER_MESSAGE', content: message });
     dispatch({ type: 'TOMOMI_TYPING' });
 
     const currentMessage = message;
-    setMessage(''); // Clear input immediately
+    setMessage('');
 
     try {
-      const token = getAuthToken();
-
-      if (!token) {
-        toast.error('No authentication token found. Please log in again.');
-        router.push('/login');
-        return;
-      }
-
-      // Build conversation history in backend format (assistant instead of tomomi)
-      const conversationHistory = conversationState.messages.map(msg => ({
-        role: msg.role === 'tomomi' ? 'assistant' : msg.role,
-        content: msg.content
-      }));
-
-      // Call backend streaming endpoint
-      const response = await fetch(`${API_URL}/api/v1/chat`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          message: currentMessage,
-          conversation_history: conversationHistory,
-          num_context_docs: 3,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Chat error response:', errorText);
-        throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`);
-      }
-
-      const data = response.body;
-
-      if (data) {
-        const reader = data.getReader();
-        const decoder = new TextDecoder();
-        let done = false;
-        let accumulatedText = '';
-
-        while (!done) {
-          const { value, done: doneReading } = await reader.read();
-          done = doneReading;
-
-          if (value) {
-            // stream: true buffers multi-byte characters split across chunks
-            const chunkValue = decoder.decode(value, { stream: true });
-            accumulatedText += chunkValue;
-
-            dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: chunkValue });
-          }
-        }
-
-        // Flush any bytes still buffered in the decoder
-        const finalChunk = decoder.decode();
-        if (finalChunk) {
-          accumulatedText += finalChunk;
-          dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: finalChunk });
-        }
-
-        if (done && accumulatedText) {
-          try {
-            const jsonResponse = JSON.parse(accumulatedText);
-            if (jsonResponse.response) {
-              dispatch({ type: 'REPLACE_TOMOMI_RESPONSE', content: jsonResponse.response });
-            }
-          } catch {
-            console.log('[Chat] Plain text response (not JSON)');
-          }
-
-          dispatch({ type: 'ADD_TOMOMI_RESPONSE' });
+      // Transport/decoding lives in chatService.streamMessage; the component
+      // only maps stream events onto reducer actions.
+      let gotResponse = false;
+      for await (const event of chatService.streamMessage(
+        currentMessage,
+        conversationState.messages,
+      )) {
+        gotResponse = true;
+        if (event.type === 'chunk') {
+          dispatch({ type: 'UPDATE_TOMOMI_RESPONSE', content: event.text });
+        } else {
+          dispatch({ type: 'REPLACE_TOMOMI_RESPONSE', content: event.text });
         }
       }
 
+      if (gotResponse) {
+        dispatch({ type: 'ADD_TOMOMI_RESPONSE' });
+      } else {
+        dispatch({ type: 'ERROR' });
+      }
     } catch (error: any) {
       console.error('Chat error:', error);
       dispatch({ type: 'ERROR' });
 
-      if (error.message.includes('401')) {
+      if (error instanceof ChatAuthError) {
         toast.error('Session expired. Please log in again.');
         router.push('/login?error=session_expired');
       } else {
@@ -284,7 +192,6 @@ export default function ChatBox() {
               </div>
             )}
 
-            {/* Auto-scroll anchor */}
             <div ref={messagesEndRef} />
           </div>
         </div>

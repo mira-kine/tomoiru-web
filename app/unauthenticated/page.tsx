@@ -15,7 +15,7 @@ export default async function Unauthenticated() {
   }
 
   return (
-    <div className="flex items-center justify-center h-full w-full">
+    <div className="flex items-center justify-center min-h-dvh w-full">
       <div className="text-center p-8 bg-white rounded-lg shadow-lg">
         <h1 className="text-2xl font-script mb-4">Welcome to Tomoiru!</h1>
         <p className="font-sans mb-4">Please sign in to use the app.</p>

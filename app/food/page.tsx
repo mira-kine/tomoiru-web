@@ -4,7 +4,7 @@ import FoodButtons from './FoodButtons';
 
 export default function FoodSelect() {
   return (
-  <div className="flex w-full h-full justify-center items-center">
+  <div className="flex relative w-full min-h-dvh justify-center items-center">
       <div className="absolute inset-0">
         <Image
             src={sakurabg}

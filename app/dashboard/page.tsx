@@ -18,7 +18,7 @@ export default async function Dashboard() {
 
   return (
     <ProtectedLayout>
-      <div className="flex flex-col relative items-center align-center justify-center h-full w-full">
+      <div className="flex flex-col relative items-center align-center justify-center h-dvh w-full">
         <div className="absolute inset-0">
           <Image
             src={matchaBg}

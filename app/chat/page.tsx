@@ -7,7 +7,7 @@ import Image from "next/legacy/image";
 export default function Chat() {
   return (
     <ProtectedLayout>
-      <div className="flex justify-center align-start w-full h-full">
+      <div className="flex relative justify-center align-start w-full h-dvh">
         <div className="absolute inset-0">
           <Image
             src={sakurabg}

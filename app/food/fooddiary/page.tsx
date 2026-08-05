@@ -3,7 +3,7 @@ import foodbg from '../../../public/assets/food-bg.png'
 
 export default function FoodDiary() {
   return (
-  <div className="flex w-full h-full justify-center items-center">
+  <div className="flex relative w-full min-h-dvh justify-center items-center">
       <div className="absolute inset-0">
         <Image
             src={foodbg}

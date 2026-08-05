@@ -14,7 +14,7 @@ export default function About() {
 
   return (
     <>
-      <div className="flex flex-col relative items-center h-full w-full">
+      <div className="flex flex-col relative items-center min-h-dvh w-full">
         <button className="z-50 absolute text-licorice border-2 border-white transition duration-300 hover:bg-white dark:focus:ring-red-400 font-sans font-bold rounded-lg text-lg px-6 py-2.5 mt-4 text-center shadow-md left-12 top-8" onClick={() => {handleBack()}}>
           Back
         </button>

@@ -39,7 +39,7 @@ export default function Demo() {
 
   return (
     <>
-      <div className="flex relative items-center align-center justify-center h-full w-full">
+      <div className="flex relative items-center align-center justify-center min-h-dvh w-full">
         <div className="absolute inset-0">
           <Image
             src="/assets/auth_background.jpg"

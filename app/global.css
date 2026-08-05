@@ -21,11 +21,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  width: 100vw;
+  /* Pages own their height (min-h-dvh / h-dvh on the page root). The body
+     must be allowed to grow and scroll for mobile. */
+  min-height: 100dvh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 code {

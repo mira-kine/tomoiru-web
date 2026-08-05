@@ -6,7 +6,7 @@ import React from "react";
 export default async function Welcome() {
   return (
     <ProtectedLayout>
-      <div className="flex flex-col items-center justify-center w-full h-full">
+      <div className="flex flex-col relative items-center justify-center w-full min-h-dvh">
         <div className="absolute inset-0">
           <Image
             src="/assets/welcome-bg.png"
