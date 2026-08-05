@@ -1,10 +1,10 @@
 'use client'
 import React, { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import DashboardCarousel from '../components/DashboardCarousel';
-import Help from '../components/Help';
-import DemoStoryModal from '../components/DemoStoryModal';
-import DemoTooltip from '../components/DemoTooltip';
+import DashboardCarousel from '../../components/DashboardCarousel';
+import Help from '../../components/Help';
+import DemoStoryModal from '../../components/DemoStoryModal';
+import DemoTooltip from '../../components/DemoTooltip';
 
 export default function DashboardClient() {
   const router = useRouter();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducer, useState, FormEvent } from "react";
-import { welcomeText } from "../data/welcome-text";
+import { welcomeText } from "../../data/welcome-text";
 import { useRouter } from "next/navigation";
 import { useUpdateUser } from "@/hooks/useCurrentUser";
 import toast from 'react-hot-toast';

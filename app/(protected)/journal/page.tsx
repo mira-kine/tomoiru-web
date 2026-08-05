@@ -1,5 +1,5 @@
 import Image from 'next/legacy/image';
-import journalbg from '../../public/assets/journal-bg.png'
+import journalbg from '../../../public/assets/journal-bg.png'
 
 export default function Journal() {
   return <div className="flex relative w-full min-h-dvh justify-center items-center">

@@ -1,7 +1,7 @@
 import React from 'react'
 import FoodList from './foodlist'
 import Image from 'next/legacy/image';
-import sakurabg from '../../../public/assets/sakura-bg.png'
+import sakurabg from '../../../../public/assets/sakura-bg.png'
 
 export default function FoodListPage() {
   return (

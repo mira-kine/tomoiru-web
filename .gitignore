@@ -22,6 +22,9 @@
 .env
 /.next
 
+# TypeScript incremental build cache (machine-local, regenerated on build)
+*.tsbuildinfo
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
