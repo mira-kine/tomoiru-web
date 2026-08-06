@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from "react";
+import { Suspense, useState, useEffect, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/legacy/image";
 import toast from 'react-hot-toast';
@@ -9,20 +9,13 @@ import { authService } from '@/services/auth';
 import { warmUpBackend } from '@/lib/config';
 import { showWakeNoticeAfterDelay } from '@/lib/wakeToast';
 
-export default function LogIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [visible, setVisible] = useState<boolean>(false);
-  const [view, setView] = useState<"signin" | "signup">("signin");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const router = useRouter();
+/**
+ * Reads the ?error param and surfaces it as a toast. Isolated into its own
+ * component so useSearchParams can sit behind a Suspense boundary without
+ * pulling the whole login form under it.
+ */
+function LoginErrorToasts() {
   const searchParams = useSearchParams();
-
-  // Wake the free-tier backend as soon as the login page renders
-  useEffect(() => {
-    warmUpBackend();
-  }, []);
 
   useEffect(() => {
     const error = searchParams.get('error');
@@ -34,6 +27,23 @@ export default function LogIn() {
       toast.error(`Authentication error: ${error}`);
     }
   }, [searchParams]);
+
+  return null;
+}
+
+export default function LogIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState<boolean>(false);
+  const [view, setView] = useState<"signin" | "signup">("signin");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+
+  // Wake the free-tier backend as soon as the login page renders
+  useEffect(() => {
+    warmUpBackend();
+  }, []);
 
   const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
@@ -135,6 +145,9 @@ export default function LogIn() {
 
   return (
     <>
+      <Suspense fallback={null}>
+        <LoginErrorToasts />
+      </Suspense>
       <div className="flex relative items-center align-center justify-center min-h-dvh w-full">
         <div className="absolute inset-0">
           <Image

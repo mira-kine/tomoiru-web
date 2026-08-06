@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import DashboardClient from "./dashboard";
 import Image from "next/legacy/image";
 import matchaBg from '../../../public/assets/matcha-bg.png';
@@ -20,7 +21,9 @@ export default function Dashboard() {
           priority={true}
         />
       </div>
-      <DashboardClient />
+      <Suspense fallback={null}>
+        <DashboardClient />
+      </Suspense>
     </div>
   );
 }
